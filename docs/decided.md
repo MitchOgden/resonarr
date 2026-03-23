@@ -22,6 +22,9 @@
 - Dry-run and live mode should share the same decision logic; the difference should only be whether actions are executed.
 - The recommended MVP default behavior is hybrid discovery plus conservative monitoring.
 - MVP should be minimal and may use a CLI or minimal UI rather than a polished full web app.
+- Resonarr v1 should support artist deepening by proven affinity as an MVP-capable policy capability.
+- Strong positive evidence for an artist may justify conservative same-artist expansion.
+- This should be implemented through policy/scoring and existing action intents, not as a separate subsystem or Lidarr-coupled rule.
 
 ## Deferred / Later
 

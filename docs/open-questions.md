@@ -16,3 +16,15 @@
 - What should be hard suppression versus cooldown-based suppression?
 - What minimum explainability payload must every policy decision and action plan include?
 - What minimum approval and override flow is required for destructive actions in MVP?
+- What exact threshold defines “proven affinity” for an artist in v1?
+- Which signals should count toward artist deepening in MVP?
+  - ratings only?
+  - ratings + play count?
+  - ratings + recency?
+- How should missing releases be ranked for artist deepening?
+  - popularity-based?
+  - canonical album preference?
+  - hybrid scoring?
+- Should v1 recommend only a single “best next release” or allow multiple candidates for the same artist?
+- What cooldown should apply after an artist-deepening recommendation or acquisition?
+- Should a diversity penalty be applied to avoid over-representing a small number of artists?

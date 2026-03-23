@@ -15,6 +15,8 @@
 - Define provider connector boundary
 - Define normalization and identity resolution flow
 - Define policy engine inputs/outputs
+- Define artist-deepening policy behavior for proven-affinity expansion
+- Define ranking inputs for selecting the next best missing release from an already-liked artist
 - Define Lidarr execution adapter behavior
 - Define memory/suppression behavior
 - Define dry-run and audit model
@@ -23,6 +25,7 @@
 
 - Define minimum UI surface
 - Define dry-run views
+- Define explainability for artist-deepening recommendations and actions
 - Define action history / audit views
 - Define suppression management view
 - Define config/setup flow

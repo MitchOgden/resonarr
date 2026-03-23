@@ -53,6 +53,7 @@ Validate that the system can produce a trustworthy, conservative, explainable di
   - hybrid
 - normalize candidates into a canonical internal model
 - score/filter candidates through a policy engine
+- support artist deepening by proven affinity as a policy/scoring capability for conservative same-artist expansion
 - separate:
   - artist discovery decision
   - monitoring strategy decision
@@ -240,7 +241,7 @@ Minimum internal entities:
 
 ### Discovery workflow
 
-provider input → normalization → policy/scoring → dry-run/action plan → Lidarr execution or review
+provider input + same-artist affinity inputs → normalization → policy/scoring → dry-run/action plan → Lidarr execution or review
 
 ### Feedback/prune workflow
 

@@ -433,6 +433,18 @@ may produce:
 
 with no execution call
 
+### Example: Artist Deepening by Proven Affinity
+
+A policy decision may determine that an artist has strong proven affinity based on user feedback signals.
+
+That may produce:
+
+- `recommend_candidate`
+- `acquire_artist`
+- `set_monitoring_strategy`
+
+No new action intent is required; this capability should operate through existing intents.
+
 ---
 
 ## Relationship to ActionPlan

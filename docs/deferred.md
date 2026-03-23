@@ -15,5 +15,7 @@
 - Rich notifications
 - Postgres migration if and when SQLite becomes limiting
 - Broader governance and approval workflows beyond MVP basics
+- Sampler playlist probing via Plex playlist creation and feedback observation
+- Playlist-driven recommendation workflows beyond MVP basics
 
 These are compatible with the product direction, but they should not drive v1 scope.

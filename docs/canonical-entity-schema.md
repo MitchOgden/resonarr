@@ -186,6 +186,7 @@ Represents a discoverable item entering policy evaluation before action planning
 - A candidate is not yet a decision
 - A candidate can exist before perfect entity resolution, but unresolved state must be explicit
 - Candidates are more ephemeral than core canonical entities, but should still be auditable
+- Candidates may also represent missing releases from already-known artists surfaced through policy, including artist deepening by proven affinity
 
 ---
 

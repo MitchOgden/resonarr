@@ -51,6 +51,18 @@ The product concept is better framed as:
 - prune albums/artists based on rules
 - use that history to influence future discovery and suppress bad matches
 
+## Artist deepening by proven affinity
+
+Resonarr should support artist deepening based on proven affinity.
+
+When the system detects strong positive evidence for a specific artist through listening or rating behavior, it may recommend or conservatively acquire additional high-confidence releases from that same artist.
+
+This behavior should be:
+- explainable
+- policy-driven
+- conservative by default
+- subject to cooldown and diversity controls to prevent over-expansion
+
 ## Discovery modes discussed
 
 Discovery should support three first-class modes:
