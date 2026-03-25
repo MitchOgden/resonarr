@@ -2,18 +2,21 @@
 
 import time
 from .client import LidarrClient
+from resonarr.state.memory_store import MemoryStore
 from resonarr.domain.action_intent import ActionIntent
 from resonarr.config.settings import (
     ROOT_FOLDER,
     QUALITY_PROFILE_NAME,
     METADATA_PROFILE_NAME,
     ACQUIRE_SCORE_THRESHOLD,
-    RECOMMEND_SCORE_THRESHOLD
+    RECOMMEND_SCORE_THRESHOLD,
+    ARTIST_COOLDOWN_HOURS
 )
 
 class LidarrAdapter:
     def __init__(self):
         self.client = LidarrClient()
+        self.memory = MemoryStore()
 
     def acquire_artist_best_release(self, mbid):
         print(f"[INFO] Processing artist MBID: {mbid}")
@@ -256,6 +259,26 @@ class LidarrAdapter:
     # ------------------------    
 
     def _decide_acquire_artist(self, mbid, artist, albums):
+
+        last = self.memory.get_artist_last_action(mbid)
+
+        if last:
+            elapsed = time.time() - last["last_action_ts"]
+            cooldown_seconds = ARTIST_COOLDOWN_HOURS * 3600
+
+            if elapsed < cooldown_seconds:
+                print("[INFO] Artist in cooldown — skipping")
+
+                return ActionIntent(
+                    action_type="NO_ACTION",
+                    artist_mbid=mbid,
+                    artist_name=artist["artistName"],
+                    reason=f"in_cooldown ({int(elapsed)}s elapsed)",
+                    metadata={
+                        "cooldown_hours": ARTIST_COOLDOWN_HOURS
+                    }
+                )
+
         best, score = self._select_best_album(albums)
 
         if score >= ACQUIRE_SCORE_THRESHOLD:
@@ -294,6 +317,7 @@ class LidarrAdapter:
 
         if intent.action_type == "RECOMMEND_ONLY":
             print("[INFO] Recommendation only — not executing")
+            self.memory.set_artist_action(intent.artist_mbid)
             return
 
         if intent.action_type == "ACQUIRE_ARTIST":
@@ -302,6 +326,8 @@ class LidarrAdapter:
             )
 
             self._apply_monitoring(artist, best_album, albums)
+
+            self.memory.set_artist_action(intent.artist_mbid)
 
     # ------------------------
     # Monitoring
