@@ -183,18 +183,6 @@ class LidarrAdapter:
         
         return data
 
-    def sort_key(x):
-        score = x["score"]
-
-        release_date = x["album"].get("releaseDate") or "2025"
-        year = int(release_date[:4])
-        age = 2025 - year
-
-        # distance from ideal core age (~6–8 years)
-        distance = abs(7 - age)
-
-        return (score, -distance)
-
     def _select_best_album(self, albums):
         
         affinity = self.memory.get_artist_affinity(self.current_mbid)
@@ -275,7 +263,19 @@ class LidarrAdapter:
             })
 
         # highest score → closest to "ideal core age" wins ✔
-        scored.sort(key=self.sort_key, reverse=True)
+        def sort_key(x):
+            score = x["score"]
+
+            release_date = x["album"].get("releaseDate") or "2025"
+            year = int(release_date[:4])
+            age = 2025 - year
+
+            distance = abs(7 - age)
+
+            return (score, -distance)
+
+
+        scored.sort(key=sort_key, reverse=True)
 
         # Debug output
         print("\n[DEBUG] Album scoring:")

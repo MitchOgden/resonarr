@@ -18,3 +18,9 @@ RECOMMEND_SCORE_THRESHOLD = int(os.getenv("RESONARR_RECOMMEND_THRESHOLD", 2))
 # --- Cooldown (MVP) ---
 
 ARTIST_COOLDOWN_HOURS = int(os.getenv("RESONARR_ARTIST_COOLDOWN_HOURS", 24))
+
+# --- Plex ---
+
+PLEX_BASE_URL = os.getenv("PLEX_BASE_URL")
+PLEX_TOKEN = os.getenv("PLEX_TOKEN")
+PLEX_MUSIC_LIBRARY = os.getenv("PLEX_MUSIC_LIBRARY", "Music")
