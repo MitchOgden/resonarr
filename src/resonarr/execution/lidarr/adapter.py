@@ -7,6 +7,8 @@ from resonarr.config.settings import (
     ROOT_FOLDER,
     QUALITY_PROFILE_NAME,
     METADATA_PROFILE_NAME,
+    ACQUIRE_SCORE_THRESHOLD,
+    RECOMMEND_SCORE_THRESHOLD
 )
 
 class LidarrAdapter:
@@ -41,6 +43,8 @@ class LidarrAdapter:
         print(f"  Artist: {intent.artist_name}")
         print(f"  Album: {intent.target_album_title}")
         print(f"  Reason: {intent.reason}")
+        print(f"  Score: {intent.score}")
+        print(f"  Thresholds: acquire={ACQUIRE_SCORE_THRESHOLD}, recommend={RECOMMEND_SCORE_THRESHOLD}")
 
         self._execute_action_intent(intent, artist, albums)
 
@@ -241,25 +245,37 @@ class LidarrAdapter:
         for s in scored[:5]:
             print(f"- {s['album']['title']} | score={s['score']} | {', '.join(s['reasons'])}")
 
-        best = scored[0]["album"]
+        best_entry = scored[0]
+        best = best_entry["album"]
+        best_score = best_entry["score"]
 
-        return best
+        return best, best_score
 
     # ------------------------
     # Decision
     # ------------------------    
 
     def _decide_acquire_artist(self, mbid, artist, albums):
-        best = self._select_best_album(albums)
+        best, score = self._select_best_album(albums)
+
+        if score >= ACQUIRE_SCORE_THRESHOLD:
+            action_type = "ACQUIRE_ARTIST"
+            reason = f"score {score} >= acquire threshold {ACQUIRE_SCORE_THRESHOLD}"
+        elif score >= RECOMMEND_SCORE_THRESHOLD:
+            action_type = "RECOMMEND_ONLY"
+            reason = f"score {score} below acquire threshold {ACQUIRE_SCORE_THRESHOLD}"
+        else:
+            action_type = "NO_ACTION"
+            reason = f"score {score} below recommend threshold {RECOMMEND_SCORE_THRESHOLD}"
 
         return ActionIntent(
-            action_type="ACQUIRE_ARTIST",
+            action_type=action_type,
             artist_mbid=mbid,
             artist_name=artist["artistName"],
             target_album_id=best["id"],
             target_album_title=best["title"],
-            reason="highest_scoring_album",
-            score=None,  # can add later
+            reason=reason,
+            score=score,
             metadata={
                 "album_count": len(albums)
             }
@@ -270,6 +286,14 @@ class LidarrAdapter:
 
         if intent.dry_run:
             print("[INFO] Dry run — no changes applied")
+            return
+
+        if intent.action_type == "NO_ACTION":
+            print("[INFO] No action taken")
+            return
+
+        if intent.action_type == "RECOMMEND_ONLY":
+            print("[INFO] Recommendation only — not executing")
             return
 
         if intent.action_type == "ACQUIRE_ARTIST":
