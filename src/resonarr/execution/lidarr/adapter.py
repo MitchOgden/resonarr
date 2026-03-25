@@ -296,34 +296,11 @@ class LidarrAdapter:
 
     def _decide_acquire_artist(self, mbid, artist, albums):
 
-        signals = self.signals.get_artist_signals(artist["artistName"])
-
-        if signals:
-            print(f"[DEBUG] Signals: {signals}")
-
-            # --- PLAY COUNT → AFFINITY ---
-            play_count = signals.get("play_count")
-
-            if play_count is not None:
-                if play_count >= 50:
-                    multiplier = 2.5
-                    reason = "plex_high_playcount"
-                elif play_count >= 20:
-                    multiplier = 2.0
-                    reason = "plex_medium_playcount"
-                elif play_count >= 5:
-                    multiplier = 1.5
-                    reason = "plex_low_playcount"
-                else:
-                    multiplier = None
-
-                if multiplier:
-                    print(f"[DEBUG] Applying affinity from play_count={play_count} → {multiplier}")
-                    self.memory.boost_artist_affinity(
-                        mbid,
-                        multiplier=multiplier,
-                        reason=reason
-                    )
+        self.signals.apply_artist_signals(
+            mbid,
+            artist["artistName"],
+            self.memory
+        )
 
             # --- FUTURE: rating-based suppression ---
 
