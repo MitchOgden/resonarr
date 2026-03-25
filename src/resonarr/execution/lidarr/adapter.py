@@ -5,6 +5,7 @@ from .client import LidarrClient
 from resonarr.state.memory_store import MemoryStore
 from resonarr.domain.action_intent import ActionIntent
 from resonarr.signals.service import SignalService
+from resonarr.scoring.album_selector import AlbumSelector
 from resonarr.config.settings import (
     ROOT_FOLDER,
     QUALITY_PROFILE_NAME,
@@ -19,6 +20,7 @@ class LidarrAdapter:
         self.client = LidarrClient()
         self.memory = MemoryStore()
         self.signals = SignalService()
+        self.album_selector = AlbumSelector()
 
     def acquire_artist_best_release(self, mbid):
         print(f"[INFO] Processing artist MBID: {mbid}")
@@ -185,111 +187,6 @@ class LidarrAdapter:
         
         return data
 
-    def _select_best_album(self, albums):
-        
-        affinity = self.memory.get_artist_affinity(self.current_mbid)
-
-        deepening = affinity > 1.0
-        
-        candidates = [
-            a for a in albums
-            if a.get("albumType") == "Album"
-            and "set" not in (a.get("title") or "").lower()
-            and "collection" not in (a.get("title") or "").lower()
-        ]
-
-        if not candidates:
-            print("[WARN] No 'Album' types found, falling back to official releases")
-
-            candidates = [
-                a for a in albums
-                if a.get("releaseStatus") == "official"
-            ]
-
-        if not candidates:
-            raise Exception("No valid albums found")
-
-        scored = []
-
-        for album in candidates:
-            score = 0
-            reasons = []
-
-            # --- Release date scoring ---
-            release_date = album.get("releaseDate")
-
-            if release_date:
-                year = int(release_date[:4])
-                current_year = 2025  # safe static for MVP
-
-                age = current_year - year
-
-                if deepening:
-                    # Strong preference for "true core era"
-                    if age <= 2:
-                        score += 0
-                        reasons.append("very_recent_penalty(0)")
-                    elif age <= 6:
-                        score += 5
-                        reasons.append("core_catalog_peak(+5)")
-                    elif age <= 15:
-                        score += 3
-                        reasons.append("strong_catalog(+3)")
-                    else:
-                        score += 1
-                        reasons.append("deep_catalog(+1)")
-                else:
-                    # original behavior
-                    if year >= 2015:
-                        score += 3
-                        reasons.append("recent_release(+3)")
-                    elif year >= 2005:
-                        score += 2
-                        reasons.append("modern_release(+2)")
-                    elif year >= 1990:
-                        score += 1
-                        reasons.append("older_release(+1)")
-                    else:
-                        score -= 1
-                        reasons.append("very_old_release(-1)")
-
-            adjusted_score = score * affinity
-
-            reasons.append(f"affinity_multiplier({affinity})")
-
-            scored.append({
-                "album": album,
-                "score": adjusted_score,
-                "base_score": score,
-                "reasons": reasons
-            })
-
-        # highest score → closest to "ideal core age" wins ✔
-        def sort_key(x):
-            score = x["score"]
-
-            release_date = x["album"].get("releaseDate") or "2025"
-            year = int(release_date[:4])
-            age = 2025 - year
-
-            distance = abs(7 - age)
-
-            return (score, -distance)
-
-
-        scored.sort(key=sort_key, reverse=True)
-
-        # Debug output
-        print("\n[DEBUG] Album scoring:")
-        for s in scored[:5]:
-            print(f"- {s['album']['title']} | score={s['score']} (base={s['base_score']}) | affinity={affinity} | {', '.join(s['reasons'])}")
-
-        best_entry = scored[0]
-        best = best_entry["album"]
-        best_score = best_entry["score"]
-
-        return best, best_score
-
     # ------------------------
     # Decision
     # ------------------------    
@@ -343,8 +240,12 @@ class LidarrAdapter:
                     }
                 )
 
-        self.current_mbid = mbid
-        best, score = self._select_best_album(albums)
+        affinity = self.memory.get_artist_affinity(mbid)
+
+        best, score = self.album_selector.select_best_album(
+            albums,
+            affinity
+        )
 
         if score >= ACQUIRE_SCORE_THRESHOLD:
             action_type = "ACQUIRE_ARTIST"
