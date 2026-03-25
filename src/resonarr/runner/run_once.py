@@ -12,6 +12,10 @@ TEST_ARTIST_MBID = "cc197bad-dc9c-440d-a5b5-d52ba2e14234"  # Radiohead
 def main():
     adapter = LidarrAdapter()
 
+    # --- TEST: simulate negative feedback ---
+    # Uncomment to test suppression
+    # adapter.memory.suppress_artist(TEST_ARTIST_MBID, reason="test_dislike")
+
     print("=== Resonarr Run Once ===")
 
     result = adapter.acquire_artist_best_release(TEST_ARTIST_MBID)

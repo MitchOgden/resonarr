@@ -57,7 +57,7 @@ class LidarrAdapter:
             "artist": intent.artist_name,
             "selected_album": intent.target_album_title,
             "reason": intent.reason,
-            "album_count": intent.metadata["album_count"]
+            "album_count": intent.metadata.get("album_count")
         }
 
     # ------------------------
@@ -260,6 +260,24 @@ class LidarrAdapter:
 
     def _decide_acquire_artist(self, mbid, artist, albums):
 
+        artist_state = self.memory.get_artist_last_action(mbid)
+
+        if artist_state and artist_state.get("suppressed"):
+            reason = artist_state.get("suppression_reason", "unknown")
+
+            print("[INFO] Artist is suppressed — skipping")
+
+            return ActionIntent(
+                action_type="NO_ACTION",
+                artist_mbid=mbid,
+                artist_name=artist["artistName"],
+                target_album_title="(suppressed)",
+                reason=f"artist_suppressed ({reason})",
+                metadata={
+                    "album_count": len(albums)
+                }
+            )
+
         last = self.memory.get_artist_last_action(mbid)
 
         if last:
@@ -273,9 +291,11 @@ class LidarrAdapter:
                     action_type="NO_ACTION",
                     artist_mbid=mbid,
                     artist_name=artist["artistName"],
+                    target_album_title="(cooldown)",
                     reason=f"in_cooldown ({int(elapsed)}s elapsed)",
                     metadata={
-                        "cooldown_hours": ARTIST_COOLDOWN_HOURS
+                        "cooldown_hours": ARTIST_COOLDOWN_HOURS,
+                        "album_count": len(albums)
                     }
                 )
 
