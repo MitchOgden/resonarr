@@ -4,6 +4,7 @@ import time
 from .client import LidarrClient
 from resonarr.state.memory_store import MemoryStore
 from resonarr.domain.action_intent import ActionIntent
+from resonarr.signals.service import SignalService
 from resonarr.config.settings import (
     ROOT_FOLDER,
     QUALITY_PROFILE_NAME,
@@ -17,6 +18,7 @@ class LidarrAdapter:
     def __init__(self):
         self.client = LidarrClient()
         self.memory = MemoryStore()
+        self.signals = SignalService()
 
     def acquire_artist_best_release(self, mbid):
         print(f"[INFO] Processing artist MBID: {mbid}")
@@ -293,6 +295,21 @@ class LidarrAdapter:
     # ------------------------    
 
     def _decide_acquire_artist(self, mbid, artist, albums):
+
+        signals = self.signals.get_artist_signals(artist["artistName"])
+
+        if signals:
+            print(f"[DEBUG] Signals: {signals}")
+
+            if signals.get("suppressed"):
+                self.memory.suppress_artist(mbid, reason="signal")
+
+            if signals.get("affinity"):
+                self.memory.boost_artist_affinity(
+                    mbid,
+                    multiplier=signals["affinity"],
+                    reason="signal"
+                )
 
         artist_state = self.memory.get_artist_state(mbid)
 
