@@ -184,6 +184,9 @@ class LidarrAdapter:
         return data
 
     def _select_best_album(self, albums):
+        
+        affinity = self.memory.get_artist_affinity(self.current_mbid)
+        
         candidates = [
             a for a in albums
             if a.get("albumType") == "Album"
@@ -228,9 +231,14 @@ class LidarrAdapter:
                 score -= 1
                 reasons.append("missing_release_date(-1)")
 
+            adjusted_score = score * affinity
+
+            reasons.append(f"affinity_multiplier({affinity})")
+
             scored.append({
                 "album": album,
-                "score": score,
+                "score": adjusted_score,
+                "base_score": score,
                 "reasons": reasons
             })
 
@@ -246,7 +254,7 @@ class LidarrAdapter:
         # Debug output
         print("\n[DEBUG] Album scoring:")
         for s in scored[:5]:
-            print(f"- {s['album']['title']} | score={s['score']} | {', '.join(s['reasons'])}")
+            print(f"- {s['album']['title']} | score={s['score']} (base={s['base_score']}) | {', '.join(s['reasons'])}")
 
         best_entry = scored[0]
         best = best_entry["album"]
@@ -299,6 +307,7 @@ class LidarrAdapter:
                     }
                 )
 
+        self.current_mbid = mbid
         best, score = self._select_best_album(albums)
 
         if score >= ACQUIRE_SCORE_THRESHOLD:

@@ -50,3 +50,34 @@ class MemoryStore:
             return False
 
         return artist.get("suppressed", False)
+    
+    def boost_artist_affinity(self, mbid, multiplier=1.5, reason="manual"):
+        artist = self.state["artists"].get(mbid, {})
+
+        artist["affinity"] = multiplier
+        artist["affinity_reason"] = reason
+        artist["affinity_ts"] = int(time.time())
+
+        self.state["artists"][mbid] = artist
+        self._save()
+
+
+    def get_artist_affinity(self, mbid):
+        artist = self.state["artists"].get(mbid)
+
+        if not artist:
+            return 1.0
+
+        return artist.get("affinity", 1.0)
+    
+    def unsuppress_artist(self, mbid):
+        artist = self.state["artists"].get(mbid)
+
+        if not artist:
+            return
+
+        artist["suppressed"] = False
+        artist["suppression_reason"] = None
+
+        self.state["artists"][mbid] = artist
+        self._save()

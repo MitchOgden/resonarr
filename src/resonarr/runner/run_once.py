@@ -15,6 +15,11 @@ def main():
     # --- TEST: simulate negative feedback ---
     # Uncomment to test suppression
     # adapter.memory.suppress_artist(TEST_ARTIST_MBID, reason="test_dislike")
+    # adapter.memory.unsuppress_artist(TEST_ARTIST_MBID)
+
+    # --- TEST: simulate positive affinity ---
+    # Uncomment to test deepening
+    adapter.memory.boost_artist_affinity(TEST_ARTIST_MBID, multiplier=2.0, reason="test_like")
 
     print("=== Resonarr Run Once ===")
 
