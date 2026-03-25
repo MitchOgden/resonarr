@@ -29,3 +29,5 @@ class LidarrClient:
     def put(self, path, json):
         url = f"{self.base_url}{path}"
         return self.session.put(url, json=json)
+    
+    

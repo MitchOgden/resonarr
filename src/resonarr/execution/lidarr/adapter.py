@@ -2,7 +2,12 @@
 
 import time
 from .client import LidarrClient
-
+from resonarr.domain.action_intent import ActionIntent
+from resonarr.config.settings import (
+    ROOT_FOLDER,
+    QUALITY_PROFILE_NAME,
+    METADATA_PROFILE_NAME,
+)
 
 class LidarrAdapter:
     def __init__(self):
@@ -29,18 +34,65 @@ class LidarrAdapter:
         if not albums:
             return {"status": "failed", "reason": "no albums found"}
 
-        best_album = self._select_best_album(albums)
+        intent = self._decide_acquire_artist(mbid, artist, albums)
 
-        print(f"[INFO] Selected album: {best_album['title']}")
+        print(f"[INFO] Intent decided:")
+        print(f"  Action: {intent.action_type}")
+        print(f"  Artist: {intent.artist_name}")
+        print(f"  Album: {intent.target_album_title}")
+        print(f"  Reason: {intent.reason}")
 
-        self._apply_monitoring(artist, best_album, albums)
+        self._execute_action_intent(intent, artist, albums)
 
         return {
             "status": "success",
-            "artist": artist["artistName"],
-            "selected_album": best_album["title"],
-            "album_count": len(albums)
+            "action": intent.action_type,
+            "artist": intent.artist_name,
+            "selected_album": intent.target_album_title,
+            "reason": intent.reason,
+            "album_count": intent.metadata["album_count"]
         }
+
+    # ------------------------
+    # Profiles
+    # ------------------------
+
+    def _get_quality_profiles(self):
+        resp = self.client.get("/api/v1/qualityprofile")
+        print(f"[DEBUG] Quality profiles status: {resp.status_code}")
+        data = resp.json()
+        print(f"[DEBUG] Quality profiles returned: {len(data)}")
+        return data
+
+
+    def _get_metadata_profiles(self):
+        resp = self.client.get("/api/v1/metadataprofile")
+        print(f"[DEBUG] Metadata profiles status: {resp.status_code}")
+        data = resp.json()
+        print(f"[DEBUG] Metadata profiles returned: {len(data)}")
+        return data
+
+
+    def _resolve_quality_profile_id(self, name="Lossless"):
+        profiles = self._get_quality_profiles()
+
+        for profile in profiles:
+            if profile.get("name", "").lower() == name.lower():
+                print(f"[DEBUG] Resolved quality profile '{name}' -> ID {profile['id']}")
+                return profile["id"]
+
+        raise Exception(f"Quality profile '{name}' not found")
+
+
+    def _resolve_metadata_profile_id(self, name="Standard"):
+        profiles = self._get_metadata_profiles()
+
+        for profile in profiles:
+            if profile.get("name", "").lower() == name.lower():
+                print(f"[DEBUG] Resolved metadata profile '{name}' -> ID {profile['id']}")
+                return profile["id"]
+
+        raise Exception(f"Metadata profile '{name}' not found")
 
     # ------------------------
     # Artist
@@ -79,12 +131,15 @@ class LidarrAdapter:
         if not lookup:
             raise Exception("Artist lookup failed")
 
+        quality_profile_id = self._resolve_quality_profile_id(QUALITY_PROFILE_NAME)
+        metadata_profile_id = self._resolve_metadata_profile_id(METADATA_PROFILE_NAME)
+
         payload = {
             "artistName": lookup["artistName"],
             "foreignArtistId": lookup["foreignArtistId"],
-            "qualityProfileId": 1,
-            "metadataProfileId": 1,
-            "rootFolderPath": "/volume1/music/library",  # FIX THIS
+            "qualityProfileId": quality_profile_id,
+            "metadataProfileId": metadata_profile_id,
+            "rootFolderPath": ROOT_FOLDER,
             "monitored": False,
             "addOptions": {
                 "searchForMissingAlbums": False
@@ -122,26 +177,107 @@ class LidarrAdapter:
         return data
 
     def _select_best_album(self, albums):
-        # Step 1 — Prefer real albums
-        valid = [
+        candidates = [
             a for a in albums
             if a.get("albumType") == "Album"
         ]
 
-        # Step 2 — Fallback if somehow empty
-        if not valid:
+        if not candidates:
             print("[WARN] No 'Album' types found, falling back to official releases")
 
-            valid = [
+            candidates = [
                 a for a in albums
                 if a.get("releaseStatus") == "official"
             ]
 
-        if not valid:
+        if not candidates:
             raise Exception("No valid albums found")
 
-        # Step 3 — pick first (temporary)
-        return valid[0]
+        scored = []
+
+        for album in candidates:
+            score = 0
+            reasons = []
+
+            # --- Release date scoring ---
+            release_date = album.get("releaseDate")
+
+            if release_date:
+                year = int(release_date[:4])
+
+                if year >= 2015:
+                    score += 3
+                    reasons.append("recent_release(+3)")
+                elif year >= 2005:
+                    score += 2
+                    reasons.append("modern_release(+2)")
+                elif year >= 1990:
+                    score += 1
+                    reasons.append("older_release(+1)")
+                else:
+                    score -= 1
+                    reasons.append("very_old_release(-1)")
+            else:
+                score -= 1
+                reasons.append("missing_release_date(-1)")
+
+            scored.append({
+                "album": album,
+                "score": score,
+                "reasons": reasons
+            })
+
+        # Sort highest score first
+        scored.sort(
+            key=lambda x: (
+                x["score"],
+                x["album"].get("releaseDate") or ""
+            ),
+            reverse=True
+        )
+
+        # Debug output
+        print("\n[DEBUG] Album scoring:")
+        for s in scored[:5]:
+            print(f"- {s['album']['title']} | score={s['score']} | {', '.join(s['reasons'])}")
+
+        best = scored[0]["album"]
+
+        return best
+
+    # ------------------------
+    # Decision
+    # ------------------------    
+
+    def _decide_acquire_artist(self, mbid, artist, albums):
+        best = self._select_best_album(albums)
+
+        return ActionIntent(
+            action_type="ACQUIRE_ARTIST",
+            artist_mbid=mbid,
+            artist_name=artist["artistName"],
+            target_album_id=best["id"],
+            target_album_title=best["title"],
+            reason="highest_scoring_album",
+            score=None,  # can add later
+            metadata={
+                "album_count": len(albums)
+            }
+        )
+    
+    def _execute_action_intent(self, intent: ActionIntent, artist, albums):
+        print(f"\n[INFO] Executing intent: {intent.action_type}")
+
+        if intent.dry_run:
+            print("[INFO] Dry run — no changes applied")
+            return
+
+        if intent.action_type == "ACQUIRE_ARTIST":
+            best_album = next(
+                a for a in albums if a["id"] == intent.target_album_id
+            )
+
+            self._apply_monitoring(artist, best_album, albums)
 
     # ------------------------
     # Monitoring
