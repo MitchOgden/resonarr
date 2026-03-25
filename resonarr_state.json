@@ -1,10 +1,10 @@
 {
   "artists": {
-    "cc197bad-dc9c-440d-a5b5-d52ba2e14234": {
+    "bf600e2b-dc2d-4839-a1be-6ebef4087cd0": {
       "affinity": 2.0,
-      "affinity_reason": "test_like",
-      "affinity_ts": 1774438670,
-      "last_action_ts": 1774438671
+      "affinity_reason": "plex_medium_playcount",
+      "affinity_ts": 1774474338,
+      "last_action_ts": 1774474338
     }
   }
 }

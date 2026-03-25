@@ -6,7 +6,7 @@ load_dotenv()
 from resonarr.execution.lidarr.adapter import LidarrAdapter
 
 # 👉 Replace with a real MBID for testing
-TEST_ARTIST_MBID = "cc197bad-dc9c-440d-a5b5-d52ba2e14234"  # Radiohead
+TEST_ARTIST_MBID = "bf600e2b-dc2d-4839-a1be-6ebef4087cd0"  # 311
 
 
 def main():
