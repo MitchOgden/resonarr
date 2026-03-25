@@ -13,6 +13,7 @@ class SignalService:
         signals = self.extractor.extract_artist_signals(artist_name)
 
         if signals:
+            print(f"[DEBUG] Signals: {signals.to_dict()}")
             self.interpreter.apply_artist_signals(mbid, signals, memory)
-
+    
         return signals

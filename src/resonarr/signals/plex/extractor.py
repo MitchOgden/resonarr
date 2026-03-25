@@ -1,3 +1,5 @@
+from resonarr.signals.models import ArtistSignals
+
 class PlexSignalExtractor:
     def __init__(self, plex_client):
         self.plex = plex_client
@@ -32,8 +34,10 @@ class PlexSignalExtractor:
         print(f"  rating={rating}")
         print(f"  play_count={play_count}")
 
-        return {
-            "rating": rating,
-            "play_count": play_count,
-            "source": "plex_real"
-        }
+        return ArtistSignals(
+            rating=rating,
+            play_count=play_count,
+            normalized_play_ratio=None,  # not available yet
+            last_played=None,            # not available yet
+            source="plex_real"
+        )

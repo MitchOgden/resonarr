@@ -3,10 +3,10 @@ class SignalInterpreter:
         if not signals:
             return
 
-        print(f"[DEBUG] Signals: {signals}")
+        print(f"[DEBUG] Signals: {signals.to_dict()}")
 
         # --- PLAY COUNT → AFFINITY ---
-        play_count = signals.get("play_count")
+        play_count = signals.play_count
 
         if play_count is not None:
             if play_count >= 50:
