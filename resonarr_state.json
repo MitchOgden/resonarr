@@ -3,8 +3,8 @@
     "bf600e2b-dc2d-4839-a1be-6ebef4087cd0": {
       "affinity": 2.0,
       "affinity_reason": "plex_medium_playcount",
-      "affinity_ts": 1774480522,
-      "last_action_ts": 1774480522
+      "affinity_ts": 1774480851,
+      "last_action_ts": 1774480683
     }
   }
 }

@@ -12,14 +12,10 @@ TEST_ARTIST_MBID = "bf600e2b-dc2d-4839-a1be-6ebef4087cd0"  # 311
 def main():
     adapter = LidarrAdapter()
 
-    # --- TEST: simulate negative feedback ---
-    # Uncomment to test suppression
+    # --- OPTIONAL TEST HOOKS ---
     # adapter.memory.suppress_artist(TEST_ARTIST_MBID, reason="test_dislike")
     # adapter.memory.unsuppress_artist(TEST_ARTIST_MBID)
-
-    # --- TEST: simulate positive affinity ---
-    # Uncomment to test deepening
-    adapter.memory.boost_artist_affinity(TEST_ARTIST_MBID, multiplier=2.0, reason="test_like")
+    # adapter.memory.boost_artist_affinity(TEST_ARTIST_MBID, multiplier=2.0, reason="test_like")
 
     print("=== Resonarr Run Once ===")
 

@@ -2,23 +2,23 @@ class PlexSignalExtractor:
     def __init__(self, plex_client):
         self.plex = plex_client
 
-    def extract_artist_signals(self, artist_name):
-        artists = self.plex.get_artists()
+    def _normalize(self, name):
+        return name.lower().strip()
 
-        match = None
+    def _match_artist(self, artists, artist_name):
+        target = self._normalize(artist_name)
 
-        def normalize(name):
-            return name.lower().strip()
-
-
-        target = normalize(artist_name)
-
-        for a in artists:
-            plex_name = normalize(a.get("title", ""))
+        for artist in artists:
+            plex_name = self._normalize(artist.get("title", ""))
 
             if target == plex_name or target in plex_name:
-                match = a
-                break
+                return artist
+
+        return None
+
+    def extract_artist_signals(self, artist_name):
+        artists = self.plex.get_artists()
+        match = self._match_artist(artists, artist_name)
 
         if not match:
             print(f"[DEBUG] Plex: artist not found: {artist_name}")
@@ -32,7 +32,6 @@ class PlexSignalExtractor:
         print(f"  rating={rating}")
         print(f"  play_count={play_count}")
 
-        # DO NOT influence system yet
         return {
             "rating": rating,
             "play_count": play_count,

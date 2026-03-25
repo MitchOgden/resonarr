@@ -219,10 +219,10 @@ class LidarrAdapter:
                 }
             )
 
-        last = self.memory.get_artist_last_action(mbid)
+        artist_state = self.memory.get_artist_state(mbid)
 
-        if last and last.get("last_action_ts"):
-            elapsed = time.time() - last["last_action_ts"]
+        if artist_state.get("last_action_ts"):
+            elapsed = time.time() - artist_state["last_action_ts"]
             cooldown_seconds = ARTIST_COOLDOWN_HOURS * 3600
 
             if elapsed < cooldown_seconds:
