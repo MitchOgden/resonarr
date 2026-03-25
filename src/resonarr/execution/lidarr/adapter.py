@@ -183,13 +183,29 @@ class LidarrAdapter:
         
         return data
 
+    def sort_key(x):
+        score = x["score"]
+
+        release_date = x["album"].get("releaseDate") or "2025"
+        year = int(release_date[:4])
+        age = 2025 - year
+
+        # distance from ideal core age (~6–8 years)
+        distance = abs(7 - age)
+
+        return (score, -distance)
+
     def _select_best_album(self, albums):
         
         affinity = self.memory.get_artist_affinity(self.current_mbid)
+
+        deepening = affinity > 1.0
         
         candidates = [
             a for a in albums
             if a.get("albumType") == "Album"
+            and "set" not in (a.get("title") or "").lower()
+            and "collection" not in (a.get("title") or "").lower()
         ]
 
         if not candidates:
@@ -214,22 +230,38 @@ class LidarrAdapter:
 
             if release_date:
                 year = int(release_date[:4])
+                current_year = 2025  # safe static for MVP
 
-                if year >= 2015:
-                    score += 3
-                    reasons.append("recent_release(+3)")
-                elif year >= 2005:
-                    score += 2
-                    reasons.append("modern_release(+2)")
-                elif year >= 1990:
-                    score += 1
-                    reasons.append("older_release(+1)")
+                age = current_year - year
+
+                if deepening:
+                    # Strong preference for "true core era"
+                    if age <= 2:
+                        score += 0
+                        reasons.append("very_recent_penalty(0)")
+                    elif age <= 6:
+                        score += 5
+                        reasons.append("core_catalog_peak(+5)")
+                    elif age <= 15:
+                        score += 3
+                        reasons.append("strong_catalog(+3)")
+                    else:
+                        score += 1
+                        reasons.append("deep_catalog(+1)")
                 else:
-                    score -= 1
-                    reasons.append("very_old_release(-1)")
-            else:
-                score -= 1
-                reasons.append("missing_release_date(-1)")
+                    # original behavior
+                    if year >= 2015:
+                        score += 3
+                        reasons.append("recent_release(+3)")
+                    elif year >= 2005:
+                        score += 2
+                        reasons.append("modern_release(+2)")
+                    elif year >= 1990:
+                        score += 1
+                        reasons.append("older_release(+1)")
+                    else:
+                        score -= 1
+                        reasons.append("very_old_release(-1)")
 
             adjusted_score = score * affinity
 
@@ -242,19 +274,13 @@ class LidarrAdapter:
                 "reasons": reasons
             })
 
-        # Sort highest score first
-        scored.sort(
-            key=lambda x: (
-                x["score"],
-                x["album"].get("releaseDate") or ""
-            ),
-            reverse=True
-        )
+        # highest score → closest to "ideal core age" wins ✔
+        scored.sort(key=self.sort_key, reverse=True)
 
         # Debug output
         print("\n[DEBUG] Album scoring:")
         for s in scored[:5]:
-            print(f"- {s['album']['title']} | score={s['score']} (base={s['base_score']}) | {', '.join(s['reasons'])}")
+            print(f"- {s['album']['title']} | score={s['score']} (base={s['base_score']}) | affinity={affinity} | {', '.join(s['reasons'])}")
 
         best_entry = scored[0]
         best = best_entry["album"]
