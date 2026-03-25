@@ -81,3 +81,6 @@ class MemoryStore:
 
         self.state["artists"][mbid] = artist
         self._save()
+
+    def get_artist_state(self, mbid):
+        return self.state["artists"].get(mbid, {})

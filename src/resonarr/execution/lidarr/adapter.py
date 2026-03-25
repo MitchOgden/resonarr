@@ -268,7 +268,7 @@ class LidarrAdapter:
 
     def _decide_acquire_artist(self, mbid, artist, albums):
 
-        artist_state = self.memory.get_artist_last_action(mbid)
+        artist_state = self.memory.get_artist_state(mbid)
 
         if artist_state and artist_state.get("suppressed"):
             reason = artist_state.get("suppression_reason", "unknown")
@@ -288,7 +288,7 @@ class LidarrAdapter:
 
         last = self.memory.get_artist_last_action(mbid)
 
-        if last:
+        if last and last.get("last_action_ts"):
             elapsed = time.time() - last["last_action_ts"]
             cooldown_seconds = ARTIST_COOLDOWN_HOURS * 3600
 
