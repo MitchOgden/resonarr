@@ -36,14 +36,22 @@ class LidarrAdapter:
         artist = self._wait_for_artist(mbid)
 
         if not artist:
-            return {"status": "failed", "reason": "artist hydration timeout"}
-
+            return {
+                "status": "failed",
+                "action": "NO_ACTION",
+                "reason": "artist hydration timeout"
+            }
+        
         albums = self._get_albums(artist["id"])
 
         if not albums:
-            return {"status": "failed", "reason": "no albums found"}
+            return {
+                "status": "failed",
+                "action": "NO_ACTION",
+                "reason": "no albums found"
+            }
 
-        intent = self._decide_acquire_artist(mbid, artist, albums)
+        intent = self._decide_artist_action(mbid, artist, albums)
 
         print(f"[INFO] Intent decided:")
         print(f"  Action: {intent.action_type}")
@@ -141,6 +149,10 @@ class LidarrAdapter:
 
         if not lookup:
             raise Exception("Artist lookup failed")
+        if lookup.get("foreignArtistId") != mbid:
+            raise Exception(
+                f"MBID mismatch — expected {mbid}, got {lookup.get('foreignArtistId')}"
+            )
 
         quality_profile_id = self._resolve_quality_profile_id(QUALITY_PROFILE_NAME)
         metadata_profile_id = self._resolve_metadata_profile_id(METADATA_PROFILE_NAME)
@@ -191,15 +203,13 @@ class LidarrAdapter:
     # Decision
     # ------------------------    
 
-    def _decide_acquire_artist(self, mbid, artist, albums):
+    def _decide_artist_action(self, mbid, artist, albums):
 
-        self.signals.apply_artist_signals(
+        signals = self.signals.apply_artist_signals(
             mbid,
             artist["artistName"],
             self.memory
         )
-
-            # --- FUTURE: rating-based suppression ---
 
         artist_state = self.memory.get_artist_state(mbid)
 
@@ -218,8 +228,6 @@ class LidarrAdapter:
                     "album_count": len(albums)
                 }
             )
-
-        artist_state = self.memory.get_artist_state(mbid)
 
         if artist_state.get("last_action_ts"):
             elapsed = time.time() - artist_state["last_action_ts"]
