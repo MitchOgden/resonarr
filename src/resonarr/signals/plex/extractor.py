@@ -29,8 +29,8 @@ class PlexSignalExtractor:
         rating = match.get("userRating")
         play_count = match.get("viewCount")
 
-        print("[DEBUG] Plex artist raw:")
-        print(f"  name={match.get('title')}")
+        print("[DEBUG] Plex signals:")
+        print(f"  artist={match.get('title')}")
         print(f"  rating={rating}")
         print(f"  play_count={play_count}")
 

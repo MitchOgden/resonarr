@@ -3,8 +3,6 @@ class SignalInterpreter:
         if not signals:
             return
 
-        print(f"[DEBUG] Signals: {signals.to_dict()}")
-
         # --- PLAY COUNT → AFFINITY ---
         play_count = signals.play_count
 
