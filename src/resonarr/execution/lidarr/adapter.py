@@ -58,7 +58,7 @@ class LidarrAdapter:
         print(f"  Artist: {intent.artist_name}")
         print(f"  Album: {intent.target_album_title}")
         print(f"  Reason: {intent.reason}")
-        print(f"  Score: {intent.score:.2f}")
+        print(f"  Score: {intent.score}:.2f")
         print(f"  Thresholds: acquire={ACQUIRE_SCORE_THRESHOLD}, recommend={RECOMMEND_SCORE_THRESHOLD}")
 
         self._execute_action_intent(intent, artist, albums)
@@ -272,13 +272,13 @@ class LidarrAdapter:
 
         if score >= ACQUIRE_SCORE_THRESHOLD:
             action_type = "ACQUIRE_ARTIST"
-            reason = f"score {score:.2f} >= acquire threshold {ACQUIRE_SCORE_THRESHOLD}"
+            reason = f"score {score}:.2f >= acquire threshold {ACQUIRE_SCORE_THRESHOLD}"
         elif score >= RECOMMEND_SCORE_THRESHOLD:
             action_type = "RECOMMEND_ONLY"
-            reason = f"score {score:.2f} below acquire threshold {ACQUIRE_SCORE_THRESHOLD}"
+            reason = f"score {score}:.2f below acquire threshold {ACQUIRE_SCORE_THRESHOLD}"
         else:
             action_type = "NO_ACTION"
-            reason = f"score {score:.2f} below recommend threshold {RECOMMEND_SCORE_THRESHOLD}"
+            reason = f"score {score}:.2f below recommend threshold {RECOMMEND_SCORE_THRESHOLD}"
 
         return ActionIntent(
             action_type=action_type,
