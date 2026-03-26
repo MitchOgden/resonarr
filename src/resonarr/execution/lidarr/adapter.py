@@ -185,6 +185,7 @@ class LidarrAdapter:
             time.sleep(delay)
         return None
 
+
     # ------------------------
     # Albums
     # ------------------------
@@ -197,6 +198,16 @@ class LidarrAdapter:
         data = resp.json()
         print(f"[DEBUG] Albums returned: {len(data)}")
         
+        return data
+
+    def _get_tracks(self, album_id):
+        resp = self.client.get(f"/api/v1/track?albumId={album_id}")
+
+        print(f"[DEBUG] Track API status: {resp.status_code}")
+
+        data = resp.json()
+        print(f"[DEBUG] Tracks returned for album {album_id}: {len(data)}")
+
         return data
 
     # ------------------------
@@ -252,10 +263,17 @@ class LidarrAdapter:
 
         owned = signals.owned_albums if signals else set()
 
+        album_tracks = {}
+        for album in albums:
+            album_id = album.get("id")
+            if album_id is not None:
+                album_tracks[album_id] = self._get_tracks(album_id)
+
         best, score = self.album_selector.select_best_album(
             albums,
             affinity,
-            owned_albums=owned
+            owned_albums=owned,
+            album_tracks=album_tracks
         )
 
         if score >= ACQUIRE_SCORE_THRESHOLD:

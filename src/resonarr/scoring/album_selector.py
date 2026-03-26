@@ -9,12 +9,14 @@ class AlbumSelector:
             .strip()
         )
     
-    def select_best_album(self, albums, affinity, owned_albums=None):
+    def select_best_album(self, albums, affinity, owned_albums=None, album_tracks=None):
         deepening = affinity > 1.0
 
         candidates = []
 
         owned_mbids = owned_albums or set()
+
+        album_tracks = album_tracks or {}
 
         for a in albums:
             if a.get("albumType") != "Album":
@@ -22,48 +24,46 @@ class AlbumSelector:
 
             title = a.get("title")
             monitored = a.get("monitored", False)
-            track_file_count = a.get("statistics", {}).get("trackFileCount", 0)
-            lidarr_mbid = a.get("foreignAlbumId")
 
-            # --- SKIP: owned in Plex (release-level MBID match) ---
+            # --- SKIP: owned in Plex (MBID match) ---
             lidarr_releases = a.get("releases") or []
-            track_file_count = a.get("statistics", {}).get("trackFileCount", 0)
-            total_track_count = a.get("statistics", {}).get("trackCount", 0)
-
-            is_owned_in_plex = False
 
             for release in lidarr_releases:
                 release_mbid = release.get("foreignReleaseId")
+
                 if release_mbid and release_mbid in owned_mbids:
-                    is_owned_in_plex = True
+                    print(f"[DEBUG] Skipping Plex-owned album (MBID match): {title}")
+                    continue_outer = True
                     break
+            else:
+                continue_outer = False
 
+            if continue_outer:
+                continue
 
-            # --- OWNERSHIP CLASSIFICATION ---
-            if is_owned_in_plex:
-                if total_track_count > 0 and track_file_count >= total_track_count:
+            # --- OWNERSHIP / PARTIAL CHECK: track-level truth ---
+            tracks = album_tracks.get(a.get("id"), [])
+            total_tracks = len(tracks)
+            has_file_count = sum(1 for t in tracks if t.get("hasFile"))
+
+            if total_tracks > 0:
+                if has_file_count == total_tracks:
                     print(f"[DEBUG] Skipping fully owned album: {title}")
                     continue
-                else:
-                    print(f"[DEBUG] Partial album detected: {title} ({track_file_count}/{total_track_count})")
+                elif has_file_count > 0:
+                    print(f"[DEBUG] Partial album detected: {title} ({has_file_count}/{total_tracks})")
                     partial = True
+                else:
+                    partial = False
             else:
                 partial = False
 
-
-            # --- SKIP: owned in Lidarr (files exist) ---
-            track_file_count = a.get("statistics", {}).get("trackFileCount", 0)
-
-            if track_file_count > 0:
-                print(f"[DEBUG] Skipping owned album in Lidarr: {title} (trackFileCount={track_file_count})")
-                continue
-
-
             # --- SKIP: already monitored ---
-            if a.get("monitored"):
+            if monitored:
                 print(f"[DEBUG] Skipping monitored album: {title}")
                 continue
 
+            a["_partial"] = partial
             candidates.append(a)
 
         if not candidates:
@@ -82,6 +82,10 @@ class AlbumSelector:
         for album in candidates:
             score = 0
             reasons = []
+
+            if album.get("_partial"):
+                score += 3
+                reasons.append("partial_album_boost(+3)")
 
             release_date = album.get("releaseDate")
             if release_date:
@@ -115,9 +119,6 @@ class AlbumSelector:
                     else:
                         score -= 1
                         reasons.append("very_old_release(-1)")
-            if partial:
-                score += 3
-                reasons.append("partial_album_boost(+3)")
                 
             adjusted_score = score * affinity
             reasons.append(f"affinity_multiplier({affinity})")
