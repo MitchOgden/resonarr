@@ -58,8 +58,6 @@ class PlexSignalExtractor:
         owned_album_mbids = set()
 
         for album in albums:
-            title = album.get("title")
-            guids = album.get("Guid")
 
             mbid = self._extract_mbid(album)
 
