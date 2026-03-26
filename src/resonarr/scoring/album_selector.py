@@ -2,6 +2,7 @@ from resonarr.config.settings import (
     PARTIAL_COMPLETION_BASE_BOOST,
     PARTIAL_COMPLETION_MAX_BOOST,
     PARTIAL_COMPLETION_CURVE_POWER,
+    PARTIAL_COMPLETION_MIN_RATIO
 )
 
 class AlbumSelector:
@@ -108,13 +109,16 @@ class AlbumSelector:
 
             if album.get("_partial"):
                 ratio = album.get("_completion_ratio", 0.0)
-                partial_boost = PARTIAL_COMPLETION_BASE_BOOST + (
-                    PARTIAL_COMPLETION_MAX_BOOST * (ratio ** PARTIAL_COMPLETION_CURVE_POWER)
-                )
 
-                score += partial_boost
-                reasons.append(f"partial_completion_boost(+{partial_boost:.2f})")
+                if ratio >= PARTIAL_COMPLETION_MIN_RATIO:
+                    partial_boost = PARTIAL_COMPLETION_BASE_BOOST + (
+                        PARTIAL_COMPLETION_MAX_BOOST * (ratio ** PARTIAL_COMPLETION_CURVE_POWER)
+                    )
 
+                    score += partial_boost
+                    reasons.append(f"partial_completion_boost(+{partial_boost:.2f})")
+                else:
+                    reasons.append(f"partial_below_min_ratio({ratio:.2f})")
             release_date = album.get("releaseDate")
             if release_date:
                 year = int(release_date[:4])
