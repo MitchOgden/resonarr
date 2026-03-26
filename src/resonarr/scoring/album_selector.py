@@ -21,17 +21,38 @@ class AlbumSelector:
                 continue
 
             title = a.get("title")
-            lidarr_mbid = a.get("foreignAlbumId")
             monitored = a.get("monitored", False)
+            track_file_count = a.get("statistics", {}).get("trackFileCount", 0)
+            lidarr_mbid = a.get("foreignAlbumId")
 
-            # --- SKIP: already monitored ---
-            if monitored:
-                print(f"[DEBUG] Skipping monitored album: {title}")
+            # --- SKIP: owned in Plex (release-level MBID match) ---
+            lidarr_releases = a.get("releases") or []
+
+            for release in lidarr_releases:
+                release_mbid = release.get("foreignReleaseId")
+
+                if release_mbid and release_mbid in owned_mbids:
+                    print(f"[DEBUG] Skipping Plex-owned album (MBID match): {title}")
+                    continue_outer = True
+                    break
+            else:
+                continue_outer = False
+
+            if continue_outer:
                 continue
 
-            # --- SKIP: owned in Plex (MBID match) ---
-            if lidarr_mbid and lidarr_mbid in owned_mbids:
-                print(f"[DEBUG] Skipping Plex-owned album (MBID): {title}")
+
+            # --- SKIP: owned in Lidarr (files exist) ---
+            track_file_count = a.get("statistics", {}).get("trackFileCount", 0)
+
+            if track_file_count > 0:
+                print(f"[DEBUG] Skipping owned album in Lidarr: {title} (trackFileCount={track_file_count})")
+                continue
+
+
+            # --- SKIP: already monitored ---
+            if a.get("monitored"):
+                print(f"[DEBUG] Skipping monitored album: {title}")
                 continue
 
             candidates.append(a)
