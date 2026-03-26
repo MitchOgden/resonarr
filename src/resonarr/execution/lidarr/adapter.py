@@ -273,6 +273,19 @@ class LidarrAdapter:
             album_tracks=album_tracks
         )
 
+        if best is None:
+            return ActionIntent(
+                action_type="NO_ACTION",
+                artist_mbid=mbid,
+                artist_name=artist["artistName"],
+                target_album_title="(all albums owned)",
+                reason="no eligible albums remain after ownership filtering",
+                score=None,
+                metadata={
+                    "album_count": len(albums)
+                }
+            )
+
         if score >= ACQUIRE_SCORE_THRESHOLD:
             action_type = "ACQUIRE_ARTIST"
             reason = f"score {score:.2f} >= acquire threshold {ACQUIRE_SCORE_THRESHOLD}"

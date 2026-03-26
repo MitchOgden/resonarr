@@ -83,15 +83,8 @@ class AlbumSelector:
             candidates.append(a)
 
         if not candidates:
-            print("[WARN] All albums already owned — allowing re-selection fallback")
-
-            candidates = [
-                a for a in albums
-                if a.get("albumType") == "Album"
-            ]
-
-        if not candidates:
-            raise Exception("No valid albums found")
+            print("[INFO] No eligible albums remain after ownership filtering")
+            return None, None
 
         scored = []
 
