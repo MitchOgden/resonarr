@@ -14,27 +14,24 @@ class AlbumSelector:
 
         candidates = []
 
-        owned_albums = owned_albums or set()
+        owned_mbids = owned_albums or set()
 
         for a in albums:
             if a.get("albumType") != "Album":
                 continue
 
-            title = self._normalize_title(a.get("title", ""))
-
-            if "set" in title or "collection" in title:
-                continue
-
+            title = a.get("title")
+            lidarr_mbid = a.get("foreignAlbumId")
             monitored = a.get("monitored", False)
 
+            # --- SKIP: already monitored ---
             if monitored:
-                print(f"[DEBUG] Skipping monitored album: {a.get('title')}")
+                print(f"[DEBUG] Skipping monitored album: {title}")
                 continue
 
-            lidarr_mbid = a.get("foreignAlbumId")
-
-            if lidarr_mbid and lidarr_mbid in owned_albums:
-                print(f"[DEBUG] Skipping Plex-owned album (MBID match): {a.get('title')}")
+            # --- SKIP: owned in Plex (MBID match) ---
+            if lidarr_mbid and lidarr_mbid in owned_mbids:
+                print(f"[DEBUG] Skipping Plex-owned album (MBID): {title}")
                 continue
 
             candidates.append(a)
