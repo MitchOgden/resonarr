@@ -6,7 +6,9 @@ from resonarr.execution.lidarr.adapter import LidarrAdapter
 from resonarr.config.settings import (
     DEEPEN_MAX_EVALUATIONS_PER_RUN,
     DEEPEN_MAX_ACQUIRES_PER_RUN,
+    ARTIST_COOLDOWN_HOURS
 )
+import time
 
 
 def main():
@@ -26,6 +28,7 @@ def main():
     evaluations = 0
     acquires = 0
     skipped_prefilter = 0
+    skipped_cooldown = 0
     recommended = 0
     no_action = 0
 
@@ -50,6 +53,20 @@ def main():
             print("[INFO] Skipping candidate at pre-filter: fully owned and no partials")
             skipped_prefilter += 1
             continue
+
+        artist_state = adapter.memory.get_artist_state(mbid)
+        last_action_ts = artist_state.get("last_action_ts")
+        cooldown_seconds = ARTIST_COOLDOWN_HOURS * 3600
+
+        if last_action_ts:
+            elapsed = time.time() - last_action_ts
+            if elapsed < cooldown_seconds:
+                print(
+                    f"[INFO] Skipping candidate at pre-filter: cooldown "
+                    f"({int(elapsed)}s elapsed, {ARTIST_COOLDOWN_HOURS}h cooldown)"
+                )
+                skipped_cooldown += 1
+                continue
 
         if acquires >= DEEPEN_MAX_ACQUIRES_PER_RUN:
             print("[INFO] Acquire cap reached — remaining candidates will not be evaluated this run")
@@ -77,6 +94,7 @@ def main():
     print(f"[INFO] Recommended: {recommended}")
     print(f"[INFO] No action: {no_action}")
     print(f"[INFO] Skipped pre-filter: {skipped_prefilter}")
+    print(f"[INFO] Skipped cooldown: {skipped_cooldown}")
 
 
 if __name__ == "__main__":
