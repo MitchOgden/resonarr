@@ -6,7 +6,7 @@ load_dotenv()
 from resonarr.execution.lidarr.adapter import LidarrAdapter
 
 # 👉 Replace with a real MBID for testing
-TEST_ARTIST_MBID = "bf600e2b-dc2d-4839-a1be-6ebef4087cd0"  # 311
+TEST_ARTIST_MBID = "12398bf3-1b99-47b7-930c-f3956773f35a"
 
 
 def main():
