@@ -28,18 +28,14 @@ class AlbumSelector:
             # --- SKIP: owned in Plex (MBID match) ---
             lidarr_releases = a.get("releases") or []
 
+            is_plex_owned = False
+
             for release in lidarr_releases:
                 release_mbid = release.get("foreignReleaseId")
 
                 if release_mbid and release_mbid in owned_mbids:
-                    print(f"[DEBUG] Skipping Plex-owned album (MBID match): {title}")
-                    continue_outer = True
+                    is_plex_owned = True
                     break
-            else:
-                continue_outer = False
-
-            if continue_outer:
-                continue
 
             # --- OWNERSHIP / PARTIAL CHECK: track-level truth ---
             tracks = album_tracks.get(a.get("id"), [])
@@ -50,13 +46,20 @@ class AlbumSelector:
                 if has_file_count == total_tracks:
                     print(f"[DEBUG] Skipping fully owned album: {title}")
                     continue
+
                 elif has_file_count > 0:
                     print(f"[DEBUG] Partial album detected: {title} ({has_file_count}/{total_tracks})")
                     partial = True
+
                 else:
                     partial = False
             else:
                 partial = False
+
+            # --- IMPORTANT: Plex-owned but NOT complete ---
+            if is_plex_owned and has_file_count < total_tracks:
+                print(f"[DEBUG] Plex-owned but incomplete: {title}")
+                partial = True
 
             # --- SKIP: already monitored ---
             if monitored:
