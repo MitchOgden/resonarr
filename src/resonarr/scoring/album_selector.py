@@ -23,6 +23,19 @@ class AlbumSelector:
                 continue
 
             title = a.get("title")
+
+            normalized_title = (title or "").lower()
+            secondary_types = [t.lower() for t in (a.get("secondaryTypes") or [])]
+
+            if "playlist:" in normalized_title:
+                continue
+
+            if "compilation" in secondary_types:
+                continue
+
+            if "collection" in normalized_title or "box" in normalized_title:
+                continue
+
             monitored = a.get("monitored", False)
 
             # --- SKIP: owned in Plex (MBID match) ---
@@ -146,7 +159,7 @@ class AlbumSelector:
         print("\n[DEBUG] Album scoring:")
         for s in scored[:5]:
             print(
-                f"- {s['album']['title']} | score={s['score']} "
+                f"- {s['album']['title']} | score={s['score']:.2f} "
                 f"(base={s['base_score']}) | affinity={affinity} | "
                 f"{', '.join(s['reasons'])}"
             )
