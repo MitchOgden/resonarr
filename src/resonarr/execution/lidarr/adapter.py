@@ -58,7 +58,10 @@ class LidarrAdapter:
         print(f"  Artist: {intent.artist_name}")
         print(f"  Album: {intent.target_album_title}")
         print(f"  Reason: {intent.reason}")
-        print(f"  Score: {intent.score:.2f}")
+
+        score_text = f"{intent.score:.2f}" if intent.score is not None else "None"
+        print(f"  Score: {score_text}")
+
         print(f"  Thresholds: acquire={ACQUIRE_SCORE_THRESHOLD}, recommend={RECOMMEND_SCORE_THRESHOLD}")
 
         self._execute_action_intent(intent, artist, albums)
