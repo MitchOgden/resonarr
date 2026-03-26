@@ -193,20 +193,20 @@ class LidarrAdapter:
     def _get_albums(self, artist_id):
         resp = self.client.get(f"/api/v1/album?artistId={artist_id}")
         
-        print(f"[DEBUG] Album API status: {resp.status_code}")
+    #   print(f"[DEBUG] Album API status: {resp.status_code}")
         
         data = resp.json()
-        print(f"[DEBUG] Albums returned: {len(data)}")
+    #   print(f"[DEBUG] Albums returned: {len(data)}")
         
         return data
 
     def _get_tracks(self, album_id):
         resp = self.client.get(f"/api/v1/track?albumId={album_id}")
 
-        print(f"[DEBUG] Track API status: {resp.status_code}")
+    #   print(f"[DEBUG] Track API status: {resp.status_code}")
 
         data = resp.json()
-        print(f"[DEBUG] Tracks returned for album {album_id}: {len(data)}")
+    #   print(f"[DEBUG] Tracks returned for album {album_id}: {len(data)}")
 
         return data
 

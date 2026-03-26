@@ -61,12 +61,7 @@ class PlexSignalExtractor:
             title = album.get("title")
             guids = album.get("Guid")
 
-            print(f"[DEBUG] Plex album raw: {title}")
-            print(f"[DEBUG] Plex GUIDs: {guids}")
-
             mbid = self._extract_mbid(album)
-
-            print(f"[DEBUG] Extracted MBID: {mbid}")
 
             if mbid:
                 owned_album_mbids.add(mbid)
