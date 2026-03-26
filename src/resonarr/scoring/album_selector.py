@@ -55,7 +55,11 @@ class AlbumSelector:
             total_tracks = len(tracks)
             has_file_count = sum(1 for t in tracks if t.get("hasFile"))
 
+            completion_ratio = 0.0
+
             if total_tracks > 0:
+                completion_ratio = has_file_count / total_tracks
+
                 if has_file_count == total_tracks:
                     print(f"[DEBUG] Skipping fully owned album: {title}")
                     continue
@@ -80,6 +84,10 @@ class AlbumSelector:
                 continue
 
             a["_partial"] = partial
+            a["_partial_track_count"] = has_file_count
+            a["_partial_total_tracks"] = total_tracks
+            a["_completion_ratio"] = completion_ratio
+
             candidates.append(a)
 
         if not candidates:
@@ -93,8 +101,11 @@ class AlbumSelector:
             reasons = []
 
             if album.get("_partial"):
-                score += 3
-                reasons.append("partial_album_boost(+3)")
+                ratio = album.get("_completion_ratio", 0.0)
+                partial_boost = PARTIAL_COMPLETION_MAX_BOOST * (ratio ** PARTIAL_COMPLETION_CURVE_POWER)
+
+                score += partial_boost
+                reasons.append(f"partial_completion_boost(+{partial_boost:.2f})")
 
             release_date = album.get("releaseDate")
             if release_date:
@@ -151,9 +162,18 @@ class AlbumSelector:
 
         print("\n[DEBUG] Album scoring:")
         for s in scored[:5]:
+            album = s["album"]
+            ratio = album.get("_completion_ratio", 0.0)
+            partial_count = album.get("_partial_track_count", 0)
+            total_count = album.get("_partial_total_tracks", 0)
+
+            partial_text = ""
+            if album.get("_partial"):
+                partial_text = f" | completion={partial_count}/{total_count} ({ratio:.2f})"
+
             print(
-                f"- {s['album']['title']} | score={s['score']:.2f} "
-                f"(base={s['base_score']}) | affinity={affinity} | "
+                f"- {album['title']} | score={s['score']:.2f} "
+                f"(base={s['base_score']}) | affinity={affinity}{partial_text} | "
                 f"{', '.join(s['reasons'])}"
             )
 
