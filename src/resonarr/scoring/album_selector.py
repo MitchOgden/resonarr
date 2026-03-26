@@ -1,3 +1,8 @@
+from resonarr.config.settings import (
+    PARTIAL_COMPLETION_MAX_BOOST,
+    PARTIAL_COMPLETION_CURVE_POWER,
+)
+
 class AlbumSelector:
     
     def _normalize_title(self, name):
@@ -173,7 +178,7 @@ class AlbumSelector:
 
             print(
                 f"- {album['title']} | score={s['score']:.2f} "
-                f"(base={s['base_score']}) | affinity={affinity}{partial_text} | "
+                f"(base={s['base_score']:.2f}) | affinity={affinity}{partial_text} | "
                 f"{', '.join(s['reasons'])}"
             )
 
