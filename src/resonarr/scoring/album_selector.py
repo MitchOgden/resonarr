@@ -27,19 +27,28 @@ class AlbumSelector:
 
             # --- SKIP: owned in Plex (release-level MBID match) ---
             lidarr_releases = a.get("releases") or []
+            track_file_count = a.get("statistics", {}).get("trackFileCount", 0)
+            total_track_count = a.get("statistics", {}).get("trackCount", 0)
+
+            is_owned_in_plex = False
 
             for release in lidarr_releases:
                 release_mbid = release.get("foreignReleaseId")
-
                 if release_mbid and release_mbid in owned_mbids:
-                    print(f"[DEBUG] Skipping Plex-owned album (MBID match): {title}")
-                    continue_outer = True
+                    is_owned_in_plex = True
                     break
-            else:
-                continue_outer = False
 
-            if continue_outer:
-                continue
+
+            # --- OWNERSHIP CLASSIFICATION ---
+            if is_owned_in_plex:
+                if total_track_count > 0 and track_file_count >= total_track_count:
+                    print(f"[DEBUG] Skipping fully owned album: {title}")
+                    continue
+                else:
+                    print(f"[DEBUG] Partial album detected: {title} ({track_file_count}/{total_track_count})")
+                    partial = True
+            else:
+                partial = False
 
 
             # --- SKIP: owned in Lidarr (files exist) ---
@@ -106,7 +115,10 @@ class AlbumSelector:
                     else:
                         score -= 1
                         reasons.append("very_old_release(-1)")
-
+            if partial:
+                score += 3
+                reasons.append("partial_album_boost(+3)")
+                
             adjusted_score = score * affinity
             reasons.append(f"affinity_multiplier({affinity})")
 
