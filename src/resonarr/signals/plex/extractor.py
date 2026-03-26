@@ -22,6 +22,17 @@ class PlexSignalExtractor:
         artists = self.plex.get_artists()
         match = self._match_artist(artists, artist_name)
 
+        albums = self.plex.get_albums(match.get("ratingKey"))
+
+        owned_albums = set()
+
+        for album in albums:
+            title = (album.get("title") or "").lower()
+            track_count = album.get("leafCount", 0)
+
+            if track_count > 0:
+                owned_albums.add(title)
+
         if not match:
             print(f"[DEBUG] Plex: artist not found: {artist_name}")
             return None
@@ -37,7 +48,8 @@ class PlexSignalExtractor:
         return ArtistSignals(
             rating=rating,
             play_count=play_count,
-            normalized_play_ratio=None,  # not available yet
-            last_played=None,            # not available yet
+            normalized_play_ratio=None,
+            last_played=None,
+            owned_albums=owned_albums,
             source="plex_real"
         )

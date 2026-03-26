@@ -250,9 +250,12 @@ class LidarrAdapter:
 
         affinity = self.memory.get_artist_affinity(mbid)
 
+        owned = signals.owned_albums if signals else set()
+
         best, score = self.album_selector.select_best_album(
             albums,
-            affinity
+            affinity,
+            owned_albums=owned
         )
 
         if score >= ACQUIRE_SCORE_THRESHOLD:

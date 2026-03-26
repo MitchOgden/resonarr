@@ -1,19 +1,32 @@
 class AlbumSelector:
-    def select_best_album(self, albums, affinity):
+    def select_best_album(self, albums, affinity, owned_albums=None):
         deepening = affinity > 1.0
 
-        candidates = [
-            a for a in albums
-            if a.get("albumType") == "Album"
-            and "set" not in (a.get("title") or "").lower()
-            and "collection" not in (a.get("title") or "").lower()
-        ]
+        candidates = []
+
+        owned_albums = owned_albums or set()
+
+        for a in albums:
+            if a.get("albumType") != "Album":
+                continue
+
+            title = (a.get("title") or "").lower()
+
+            if "set" in title or "collection" in title:
+                continue
+
+            if title in owned_albums:
+                print(f"[DEBUG] Skipping Plex-owned album: {a.get('title')}")
+                continue
+
+            candidates.append(a)
 
         if not candidates:
-            print("[WARN] No 'Album' types found, falling back to official releases")
+            print("[WARN] All albums already owned — allowing re-selection fallback")
+
             candidates = [
                 a for a in albums
-                if a.get("releaseStatus") == "official"
+                if a.get("albumType") == "Album"
             ]
 
         if not candidates:
