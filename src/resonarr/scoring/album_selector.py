@@ -1,4 +1,14 @@
 class AlbumSelector:
+    
+    def _normalize_title(self, name):
+        return (
+            name.lower()
+            .replace("’", "'")
+            .replace("-", " ")
+            .replace("_", " ")
+            .strip()
+        )
+    
     def select_best_album(self, albums, affinity, owned_albums=None):
         deepening = affinity > 1.0
 
@@ -10,13 +20,21 @@ class AlbumSelector:
             if a.get("albumType") != "Album":
                 continue
 
-            title = (a.get("title") or "").lower()
+            title = self._normalize_title(a.get("title", ""))
 
             if "set" in title or "collection" in title:
                 continue
 
-            if title in owned_albums:
-                print(f"[DEBUG] Skipping Plex-owned album: {a.get('title')}")
+            monitored = a.get("monitored", False)
+
+            if monitored:
+                print(f"[DEBUG] Skipping monitored album: {a.get('title')}")
+                continue
+
+            lidarr_mbid = a.get("foreignAlbumId")
+
+            if lidarr_mbid and lidarr_mbid in owned_albums:
+                print(f"[DEBUG] Skipping Plex-owned album (MBID match): {a.get('title')}")
                 continue
 
             candidates.append(a)

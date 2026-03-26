@@ -17,7 +17,7 @@ class PlexClient:
 
         r = requests.get(url, params=params, headers=headers)
         r.raise_for_status()
-        
+
         return r.json()
 
     def search(self, query):
@@ -42,3 +42,30 @@ class PlexClient:
         data = self._get(f"/library/sections/{section_id}/all")
 
         return data.get("MediaContainer", {}).get("Metadata", [])
+    
+    def get_albums(self, artist_rating_key):
+        """
+        Fetch albums with FULL metadata (including GUIDs)
+        """
+        data = self._get(f"/library/metadata/{artist_rating_key}/children")
+
+        albums = data.get("MediaContainer", {}).get("Metadata", [])
+
+        full_albums = []
+
+        for album in albums:
+            rating_key = album.get("ratingKey")
+
+            if not rating_key:
+                continue
+
+            full = self._get(f"/library/metadata/{rating_key}")
+
+            meta = full.get("MediaContainer", {}).get("Metadata", [])
+
+            if meta:
+                full_albums.append(meta[0])
+            else:
+                full_albums.append(album)  # fallback
+
+        return full_albums
