@@ -12,6 +12,7 @@ from resonarr.config.settings import (
     METADATA_PROFILE_NAME,
     ACQUIRE_SCORE_THRESHOLD,
     RECOMMEND_SCORE_THRESHOLD,
+    STAGED_RECOMMEND_SCORE_THRESHOLD,
     ARTIST_COOLDOWN_HOURS
 )
 
@@ -117,7 +118,8 @@ class LidarrAdapter:
             mbid,
             artist,
             albums,
-            allow_monitored_albums=staged_artist_created
+            allow_monitored_albums=staged_artist_created,
+            staged_artist_created=staged_artist_created,
         )
 
         print("[INFO] Intent decided:")
@@ -352,7 +354,14 @@ class LidarrAdapter:
     # Decision
     # ------------------------    
 
-    def _decide_artist_action(self, mbid, artist, albums, allow_monitored_albums=False):
+    def _decide_artist_action(
+        self,
+        mbid,
+        artist,
+        albums,
+        allow_monitored_albums=False,
+        staged_artist_created=False,
+    ):
 
         signals = self.signals.apply_artist_signals(
             mbid,
@@ -428,15 +437,33 @@ class LidarrAdapter:
                 }
             )
 
+        effective_recommend_threshold = (
+            STAGED_RECOMMEND_SCORE_THRESHOLD
+            if staged_artist_created
+            else RECOMMEND_SCORE_THRESHOLD
+        )
+
         if score >= ACQUIRE_SCORE_THRESHOLD:
             action_type = "ACQUIRE_ARTIST"
             reason = f"score {score:.2f} >= acquire threshold {ACQUIRE_SCORE_THRESHOLD}"
-        elif score >= RECOMMEND_SCORE_THRESHOLD:
+        elif score >= effective_recommend_threshold:
             action_type = "RECOMMEND_ONLY"
-            reason = f"score {score:.2f} below acquire threshold {ACQUIRE_SCORE_THRESHOLD}"
+            if staged_artist_created:
+                reason = (
+                    f"score {score:.2f} below acquire threshold {ACQUIRE_SCORE_THRESHOLD} "
+                    f"but >= staged recommend threshold {STAGED_RECOMMEND_SCORE_THRESHOLD}"
+                )
+            else:
+                reason = f"score {score:.2f} below acquire threshold {ACQUIRE_SCORE_THRESHOLD}"
         else:
             action_type = "NO_ACTION"
-            reason = f"score {score:.2f} below recommend threshold {RECOMMEND_SCORE_THRESHOLD}"
+            if staged_artist_created:
+                reason = (
+                    f"score {score:.2f} below staged recommend threshold "
+                    f"{STAGED_RECOMMEND_SCORE_THRESHOLD}"
+                )
+            else:
+                reason = f"score {score:.2f} below recommend threshold {RECOMMEND_SCORE_THRESHOLD}"
 
         return ActionIntent(
             action_type=action_type,

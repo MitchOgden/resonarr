@@ -55,6 +55,11 @@ def main():
             print("[INFO] Existing starter album acquisition candidate already recorded")
             continue
 
+        if candidate.get("status") == "starter_album_recommendation":
+            skipped_existing += 1
+            print("[INFO] Existing starter album recommendation already recorded")
+            continue
+
         if candidate.get("status") == "starter_album_exhausted":
             skipped_existing += 1
             print("[INFO] Starter album exhaustion already recorded for this candidate")
@@ -86,6 +91,37 @@ def main():
                 resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
             )
             print("[INFO] Extend candidate intentionally staged as unmonitored artist in Lidarr")
+
+        if result.get("action") == "RECOMMEND_ONLY":
+            intent = result["intent"]
+
+            if not intent.target_album_id or not intent.target_album_title:
+                failed += 1
+                print("[INFO] Planning failed: missing target album details for recommendation")
+                continue
+
+            score_text = f"{intent.score:.2f}" if intent.score is not None else "None"
+
+            print("[INFO] Starter album recommendation created")
+            print(f"[INFO] Resolved artist: {result.get('resolved_artist_name') or intent.artist_name}")
+            print(f"[INFO] MBID: {result.get('artist_mbid')}")
+            print(f"[INFO] Album: {intent.target_album_title}")
+            print(f"[INFO] Reason: {intent.reason}")
+            print(f"[INFO] Score: {score_text}")
+
+            memory.mark_extend_candidate_starter_album_recommendation(
+                artist_name=artist_name,
+                artist_mbid=result.get("artist_mbid"),
+                resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
+                album_id=intent.target_album_id,
+                album_title=intent.target_album_title,
+                reason=intent.reason,
+                score=intent.score,
+            )
+
+            memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
+            planned += 1
+            continue
 
         if result.get("action") != "ACQUIRE_ARTIST":
             skipped_non_acquire += 1
@@ -132,7 +168,7 @@ def main():
         planned += 1
 
     print("\n=== EXTEND PROMOTION SUMMARY ===")
-    print(f"[INFO] Starter album candidates created: {planned}")
+    print(f"[INFO] Starter album outputs created: {planned}")
     print(f"[INFO] Skipped existing starter album candidate: {skipped_existing}")
     print(f"[INFO] Skipped recommendation backoff: {skipped_backoff}")
     print(f"[INFO] Skipped below acquire threshold: {skipped_non_acquire}")
