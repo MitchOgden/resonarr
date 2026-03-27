@@ -123,6 +123,8 @@ class MemoryStore:
                 "artist_name": artist_name,
                 "first_seen_ts": now,
                 "status": "new",
+                "seen_count": 0,
+                "recommendation_count": 0,
             }
 
         existing_seeds = set(candidate.get("source_seeds", []))
@@ -135,6 +137,8 @@ class MemoryStore:
         candidate["seed_playcount"] = max(candidate.get("seed_playcount", 0), seed_playcount)
         candidate["seed_rank"] = min(candidate.get("seed_rank", seed_rank), seed_rank)
         candidate["last_seen_ts"] = now
+        candidate["seen_count"] = candidate.get("seen_count", 0) + 1
+        candidate.setdefault("recommendation_count", 0)
 
         self.state["extend_candidates"][key] = candidate
         self._save()
@@ -154,9 +158,25 @@ class MemoryStore:
 
         candidate["status"] = "recommended"
         candidate["last_recommended_ts"] = now
+        candidate["recommendation_count"] = candidate.get("recommendation_count", 0) + 1
+
+        self.state["extend_candidates"][key] = candidate
+        self._save()
+
+    def mark_extend_candidate_promotable(self, artist_name):
+        key = artist_name.lower().strip()
+        now = int(time.time())
+
+        candidate = self.state["extend_candidates"].get(key, {})
+        if not candidate:
+            return
+
+        candidate["status"] = "promotable"
+        candidate["promotable_ts"] = now
 
         self.state["extend_candidates"][key] = candidate
         self._save()
 
     def list_extend_candidates(self):
         return list(self.state["extend_candidates"].values())
+    

@@ -10,6 +10,9 @@ from resonarr.config.settings import (
     EXTEND_SIMILAR_PER_SEED,
     EXTEND_MAX_RECOMMENDATIONS,
     EXTEND_RECOMMENDATION_BACKOFF_HOURS,
+    EXTEND_PROMOTION_MIN_SEEN_COUNT,
+    EXTEND_PROMOTION_MIN_SEED_COUNT,
+    EXTEND_PROMOTION_MIN_MATCH_SCORE,
 )
 
 
@@ -136,13 +139,35 @@ class ExtendCandidateSource:
             candidate["status"] = persisted.get("status", "new")
             candidate["first_seen_ts"] = persisted.get("first_seen_ts")
             candidate["last_seen_ts"] = persisted.get("last_seen_ts")
+            candidate["seen_count"] = persisted.get("seen_count", 1)
+            candidate["recommendation_count"] = persisted.get("recommendation_count", 0)
+
+            promotable = (
+                candidate["seen_count"] >= EXTEND_PROMOTION_MIN_SEEN_COUNT and
+                (
+                    candidate["seed_count"] >= EXTEND_PROMOTION_MIN_SEED_COUNT or
+                    candidate["best_match_score"] >= EXTEND_PROMOTION_MIN_MATCH_SCORE
+                )
+            )
+
+            candidate["is_promotable"] = promotable
+
+            if promotable and candidate["status"] != "promotable":
+                self.memory.mark_extend_candidate_promotable(candidate["artist_name"])
+                candidate["status"] = "promotable"
 
             candidates.append(candidate)
+
+        status_rank = {
+            "promotable": 0,
+            "new": 1,
+            "recommended": 2,
+        }
 
         candidates.sort(
             key=lambda x: (
                 x["in_recommendation_backoff"],
-                x.get("status") == "recommended",
+                status_rank.get(x.get("status", "new"), 3),
                 -x["seed_count"],
                 -x["best_match_score"],
                 -x["seed_playcount"],

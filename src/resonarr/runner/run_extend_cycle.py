@@ -24,9 +24,12 @@ def main():
         print(f"[INFO] Artist: {artist_name}")
         print(f"[INFO] Best match score: {candidate['best_match_score']:.2f}")
         print(f"[INFO] Seed count: {candidate['seed_count']}")
+        print(f"[INFO] Seen count: {candidate.get('seen_count', 1)}")
+        print(f"[INFO] Recommendation count: {candidate.get('recommendation_count', 0)}")
         print(f"[INFO] Seed playcount: {candidate['seed_playcount']}")
         print(f"[INFO] Source seeds: {', '.join(candidate['source_seeds'])}")
         print(f"[INFO] Status: {candidate.get('status', 'new')}")
+        print(f"[INFO] Is promotable: {candidate.get('is_promotable', False)}")
         print(f"[INFO] In recommendation backoff: {candidate['in_recommendation_backoff']}")
 
         if candidate["in_recommendation_backoff"]:
