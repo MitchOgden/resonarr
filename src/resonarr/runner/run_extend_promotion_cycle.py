@@ -60,6 +60,9 @@ def main():
             print("[INFO] Existing starter album recommendation already recorded")
             continue
 
+        if candidate.get("status") == "staged_artist":
+            print("[INFO] Evaluating existing staged artist in Lidarr")
+
         if candidate.get("status") == "starter_album_exhausted":
             print("[INFO] Re-evaluating previously exhausted candidate under current staged policy")
 
@@ -98,6 +101,12 @@ def main():
                 resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
             )
             print("[INFO] Extend candidate intentionally staged as unmonitored artist in Lidarr")
+        elif candidate.get("status") in {
+            "staged_artist",
+            "starter_album_exhausted",
+            "starter_album_recommendation",
+        }:
+            print("[INFO] Re-using existing staged artist in Lidarr")
 
         if result.get("action") == "RECOMMEND_ONLY":
             intent = result["intent"]
