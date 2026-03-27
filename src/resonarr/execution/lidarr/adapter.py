@@ -22,7 +22,62 @@ class LidarrAdapter:
         self.signals = SignalService()
         self.album_selector = AlbumSelector()
 
+    def _normalize(self, name):
+        return (name or "").lower().strip()
+
     def acquire_artist_best_release(self, mbid):
+        result = self.plan_artist_best_release(mbid)
+
+        if result.get("status") != "success":
+            return result
+
+        self._execute_action_intent(
+            result["intent"],
+            result["artist_payload"],
+            result["albums_payload"]
+        )
+
+        return {
+            "status": "success",
+            "action": result["action"],
+            "artist": result["artist"],
+            "selected_album": result["selected_album"],
+            "reason": result["reason"],
+            "album_count": result["album_count"]
+        }
+    
+    def plan_extended_artist_best_release(self, artist_name):
+        print(f"[INFO] Resolving extend artist: {artist_name}")
+
+        lookup = self.resolve_artist_by_name(artist_name)
+        if not lookup:
+            return {
+                "status": "failed",
+                "action": "NO_ACTION",
+                "artist": artist_name,
+                "reason": "artist lookup failed"
+            }
+
+        mbid = lookup.get("foreignArtistId")
+        resolved_name = lookup.get("artistName") or artist_name
+
+        if not mbid:
+            return {
+                "status": "failed",
+                "action": "NO_ACTION",
+                "artist": resolved_name,
+                "reason": "lookup result missing foreignArtistId"
+            }
+
+        print(f"[INFO] Resolved extend artist '{artist_name}' -> '{resolved_name}' ({mbid})")
+
+        result = self.plan_artist_best_release(mbid)
+        result["artist_mbid"] = mbid
+        result["resolved_artist_name"] = resolved_name
+
+        return result
+
+    def plan_artist_best_release(self, mbid):
         print(f"[INFO] Processing artist MBID: {mbid}")
 
         artist = self._get_artist_by_mbid(mbid)
@@ -41,7 +96,7 @@ class LidarrAdapter:
                 "action": "NO_ACTION",
                 "reason": "artist hydration timeout"
             }
-        
+
         albums = self._get_albums(artist["id"])
 
         if not albums:
@@ -53,7 +108,7 @@ class LidarrAdapter:
 
         intent = self._decide_artist_action(mbid, artist, albums)
 
-        print(f"[INFO] Intent decided:")
+        print("[INFO] Intent decided:")
         print(f"  Action: {intent.action_type}")
         print(f"  Artist: {intent.artist_name}")
         print(f"  Album: {intent.target_album_title}")
@@ -61,18 +116,19 @@ class LidarrAdapter:
 
         score_text = f"{intent.score:.2f}" if intent.score is not None else "None"
         print(f"  Score: {score_text}")
-
         print(f"  Thresholds: acquire={ACQUIRE_SCORE_THRESHOLD}, recommend={RECOMMEND_SCORE_THRESHOLD}")
-
-        self._execute_action_intent(intent, artist, albums)
 
         return {
             "status": "success",
             "action": intent.action_type,
             "artist": intent.artist_name,
+            "artist_mbid": mbid,
             "selected_album": intent.target_album_title,
             "reason": intent.reason,
-            "album_count": intent.metadata.get("album_count")
+            "album_count": intent.metadata.get("album_count"),
+            "intent": intent,
+            "artist_payload": artist,
+            "albums_payload": albums
         }
 
     # ------------------------
@@ -120,18 +176,50 @@ class LidarrAdapter:
     # Artist
     # ------------------------
 
-    def _lookup_artist(self, mbid):
-        resp = self.client.get(f"/api/v1/artist/lookup?term=musicbrainz:{mbid}")
-        
+    def _lookup_artist_by_term(self, term):
+        resp = self.client.get("/api/v1/artist/lookup", params={"term": term})
+
         print(f"[DEBUG] Lookup status: {resp.status_code}")
-        
+
         data = resp.json()
-        
+
         if not data:
             print("[ERROR] Lookup returned no results")
+            return []
+
+        return data
+
+    def _lookup_artist(self, mbid):
+        matches = self._lookup_artist_by_term(f"musicbrainz:{mbid}")
+
+        if not matches:
             return None
-        
-        return data[0]
+
+        exact = next(
+            (item for item in matches if item.get("foreignArtistId") == mbid),
+            None
+        )
+
+        return exact or matches[0]
+
+    def resolve_artist_by_name(self, artist_name):
+        matches = self._lookup_artist_by_term(artist_name)
+
+        if not matches:
+            return None
+
+        normalized_target = self._normalize(artist_name)
+
+        for item in matches:
+            if self._normalize(item.get("artistName")) == normalized_target:
+                return item
+
+        for item in matches:
+            candidate_name = self._normalize(item.get("artistName"))
+            if normalized_target in candidate_name or candidate_name in normalized_target:
+                return item
+
+        return matches[0]
 
     def _get_artist_by_mbid(self, mbid):
         resp = self.client.get("/api/v1/artist")

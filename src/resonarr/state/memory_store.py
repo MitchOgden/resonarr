@@ -177,6 +177,39 @@ class MemoryStore:
         self.state["extend_candidates"][key] = candidate
         self._save()
 
+    def mark_extend_candidate_starter_album_candidate(
+        self,
+        artist_name,
+        artist_mbid,
+        resolved_artist_name,
+        album_id,
+        album_title,
+        reason,
+        score,
+    ):
+        key = artist_name.lower().strip()
+        now = int(time.time())
+
+        candidate = self.state["extend_candidates"].get(key, {})
+        if not candidate:
+            candidate = {
+                "artist_name": artist_name,
+                "first_seen_ts": now,
+            }
+
+        candidate["status"] = "starter_album_candidate"
+        candidate["starter_album_candidate_ts"] = now
+        candidate["starter_album_candidate_count"] = candidate.get("starter_album_candidate_count", 0) + 1
+        candidate["resolved_artist_mbid"] = artist_mbid
+        candidate["resolved_artist_name"] = resolved_artist_name
+        candidate["starter_album_id"] = album_id
+        candidate["starter_album_title"] = album_title
+        candidate["starter_album_reason"] = reason
+        candidate["starter_album_score"] = score
+
+        self.state["extend_candidates"][key] = candidate
+        self._save()
+
     def list_extend_candidates(self):
         return list(self.state["extend_candidates"].values())
     

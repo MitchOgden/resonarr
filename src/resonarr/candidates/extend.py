@@ -152,16 +152,17 @@ class ExtendCandidateSource:
 
             candidate["is_promotable"] = promotable
 
-            if promotable and candidate["status"] != "promotable":
+            if promotable and candidate["status"] not in {"promotable", "starter_album_candidate"}:
                 self.memory.mark_extend_candidate_promotable(candidate["artist_name"])
                 candidate["status"] = "promotable"
 
             candidates.append(candidate)
 
         status_rank = {
-            "promotable": 0,
-            "new": 1,
-            "recommended": 2,
+            "starter_album_candidate": 0,
+            "promotable": 1,
+            "new": 2,
+            "recommended": 3,
         }
 
         candidates.sort(

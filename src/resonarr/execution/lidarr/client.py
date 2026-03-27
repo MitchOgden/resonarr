@@ -18,16 +18,14 @@ class LidarrClient:
             "Content-Type": "application/json"
         })
 
-    def get(self, path):
+    def get(self, path, params=None):
         url = f"{self.base_url}{path}"
-        return self.session.get(url)
+        return self.session.get(url, params=params)
 
-    def post(self, path, json):
+    def post(self, path, json=None, params=None):
         url = f"{self.base_url}{path}"
-        return self.session.post(url, json=json)
+        return self.session.post(url, json=json, params=params)
 
-    def put(self, path, json):
+    def put(self, path, json=None, params=None):
         url = f"{self.base_url}{path}"
-        return self.session.put(url, json=json)
-    
-    
+        return self.session.put(url, json=json, params=params)

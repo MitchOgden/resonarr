@@ -6,7 +6,6 @@ from resonarr.candidates.extend import ExtendCandidateSource
 
 def main():
     source = ExtendCandidateSource()
-    memory = source.memory
 
     print("=== Resonarr Extend Cycle ===")
 
@@ -17,6 +16,11 @@ def main():
     if not candidates:
         print("[INFO] No extend candidates available")
         return
+
+    promotable_count = 0
+    deferred_count = 0
+    backoff_count = 0
+    starter_album_count = 0
 
     for idx, candidate in enumerate(candidates, start=1):
         artist_name = candidate["artist_name"]
@@ -32,17 +36,30 @@ def main():
         print(f"[INFO] Is promotable: {candidate.get('is_promotable', False)}")
         print(f"[INFO] In recommendation backoff: {candidate['in_recommendation_backoff']}")
 
-        if candidate["in_recommendation_backoff"]:
-            print("[INFO] Skipping extend recommendation due to recommendation backoff")
+        if candidate.get("status") == "starter_album_candidate":
+            starter_album_count += 1
+            print("[INFO] Starter album acquisition candidate already exists")
             continue
 
-        print("[INFO] Recommendation: artist extension candidate")
+        if candidate["in_recommendation_backoff"]:
+            backoff_count += 1
+            print("[INFO] Skipping extend promotion due to recommendation backoff")
+            continue
 
-        memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
-        memory.mark_extend_candidate_recommended(artist_name)
+        if not candidate.get("is_promotable", False):
+            deferred_count += 1
+            print("[INFO] Holding candidate until promotion threshold is met")
+            continue
+
+        promotable_count += 1
+        print("[INFO] Candidate is promotable and ready for starter album planning")
 
     print("\n=== EXTEND SUMMARY ===")
     print(f"[INFO] Candidates processed: {len(candidates)}")
+    print(f"[INFO] Promotable now: {promotable_count}")
+    print(f"[INFO] Deferred pending more evidence: {deferred_count}")
+    print(f"[INFO] In recommendation backoff: {backoff_count}")
+    print(f"[INFO] Existing starter album candidates: {starter_album_count}")
 
 
 if __name__ == "__main__":
