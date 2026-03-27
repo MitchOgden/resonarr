@@ -48,6 +48,7 @@ def main():
         print(f"[INFO] Partial present: {candidate['partial_present']}")
         print(f"[INFO] Eligible albums: {candidate['eligible_album_count']}")
         print(f"[INFO] Fully owned: {candidate['fully_owned']}")
+        print(f"[INFO] In cooldown: {candidate['in_cooldown']}")
 
         if candidate["fully_owned"] and not candidate["partial_present"]:
             print("[INFO] Skipping candidate at pre-filter: fully owned and no partials")

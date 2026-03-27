@@ -1,10 +1,14 @@
+import time
+
 from resonarr.signals.lastfm.client import LastfmClient
 from resonarr.execution.lidarr.client import LidarrClient
+from resonarr.state.memory_store import MemoryStore
 from resonarr.config.settings import (
     DEEPEN_LASTFM_PERIOD,
     DEEPEN_MAX_CANDIDATES,
     DEEPEN_CANDIDATE_SCAN_LIMIT,
     DEEPEN_MIN_LASTFM_PLAYS,
+    ARTIST_COOLDOWN_HOURS,
 )
 
 
@@ -12,6 +16,7 @@ class DeepenCandidateSource:
     def __init__(self):
         self.lastfm = LastfmClient()
         self.lidarr = LidarrClient()
+        self.memory = MemoryStore()
 
     def _normalize(self, name):
         return (name or "").lower().strip()
@@ -35,6 +40,31 @@ class DeepenCandidateSource:
     def _get_tracks(self, album_id):
         resp = self.lidarr.get(f"/api/v1/track?albumId={album_id}")
         return resp.json()
+    
+    def _get_cooldown_state(self, mbid):
+        artist_state = self.memory.get_artist_state(mbid)
+        last_action_ts = artist_state.get("last_action_ts")
+
+        if not last_action_ts:
+            return {
+                "in_cooldown": False,
+                "cooldown_remaining_seconds": 0,
+            }
+
+        cooldown_seconds = ARTIST_COOLDOWN_HOURS * 3600
+        elapsed = time.time() - last_action_ts
+
+        if elapsed < cooldown_seconds:
+            remaining = int(cooldown_seconds - elapsed)
+            return {
+                "in_cooldown": True,
+                "cooldown_remaining_seconds": remaining,
+            }
+
+        return {
+            "in_cooldown": False,
+            "cooldown_remaining_seconds": 0,
+        }    
 
     def _classify_artist(self, lidarr_artist):
         artist_id = lidarr_artist.get("id")
@@ -109,6 +139,7 @@ class DeepenCandidateSource:
                 continue
 
             classification = self._classify_artist(lidarr_artist)
+            cooldown = self._get_cooldown_state(lidarr_artist.get("foreignArtistId"))
 
             candidates.append({
                 "rank": idx,
@@ -121,11 +152,14 @@ class DeepenCandidateSource:
                 "fully_owned": classification["fully_owned"],
                 "total_album_count": classification["total_album_count"],
                 "fully_owned_album_count": classification["fully_owned_album_count"],
+                "in_cooldown": cooldown["in_cooldown"],
+                "cooldown_remaining_seconds": cooldown["cooldown_remaining_seconds"],
             })
 
         candidates.sort(
             key=lambda x: (
                 not x["partial_present"],
+                x["in_cooldown"],
                 x["fully_owned"],
                 -x["eligible_album_count"],
                 -x["lastfm_playcount"],
