@@ -4,9 +4,11 @@ load_dotenv()
 from resonarr.candidates.extend import ExtendCandidateSource
 from resonarr.execution.lidarr.adapter import LidarrAdapter
 from resonarr.config.settings import EXTEND_PROMOTION_MAX_PLANS_PER_RUN
+from resonarr.utils.logging import configure_runner_logging
 
 
 def main():
+    configure_runner_logging("extend-promotion-cycle")
     source = ExtendCandidateSource()
     adapter = LidarrAdapter()
     memory = source.memory

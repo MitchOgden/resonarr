@@ -2,9 +2,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from resonarr.candidates.extend import ExtendCandidateSource
+from resonarr.utils.logging import configure_runner_logging
 
 
 def main():
+    configure_runner_logging("extend-cycle")
     source = ExtendCandidateSource()
 
     print("=== Resonarr Extend Cycle ===")

@@ -121,6 +121,20 @@ Suggested early docs:
 - `open-questions.md`
 - `roadmap.md`
 
+## Development workflow notes
+
+During active MVP development, the repository intentionally keeps certain runtime artifacts and excludes others:
+
+- `resonarr_state.json` is currently tracked because the state model is still evolving and the file is useful for debugging promotion, backoff, starter-album planning, and other decision behavior.
+- `logs/` is intentionally ignored. Runner commands write timestamped log files there for local debugging and review, but those files should not be committed.
+
+Current runner commands:
+
+- `python -m resonarr.runner.run_extend_cycle`
+- `python -m resonarr.runner.run_extend_promotion_cycle`
+
+These runners print the log file path at startup and write output to both the console and a timestamped file in `logs/`.
+
 ## Non-goals for early versions
 
 Resonarr is **not** trying to start as:

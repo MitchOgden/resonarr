@@ -1,3 +1,2 @@
 .env
-resonarr_state.json
-*.json
+logs/
