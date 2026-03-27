@@ -1,0 +1,476 @@
+[INFO] Timestamped log file: logs\extend-promotion-cycle-20260327-124924.log
+[INFO] Latest log file: logs\extend-promotion-cycle-latest.log
+=== Resonarr Extend Promotion Cycle ===
+[INFO] Promotable candidates found: 12
+
+=== Promotable Candidate 1/12 ===
+[INFO] Artist: BoyWithUke
+[INFO] Best match score: 1.00
+[INFO] Seed count: 1
+[INFO] Seen count: 3
+[INFO] Recommendation count: 0
+[INFO] Source seeds: AJR
+[INFO] Status: promotable
+[INFO] In recommendation backoff: False
+[INFO] Resolving extend artist: BoyWithUke
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'BoyWithUke' -> 'BoyWithUke' (a148ffde-581c-4c39-a8f1-bc49dec7fe68)
+[INFO] Processing artist MBID: a148ffde-581c-4c39-a8f1-bc49dec7fe68
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: BoyWithUke
+[DEBUG] Last.fm signals:
+  artist=BoyWithUke
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: Fever Dreams
+[DEBUG] Skipping monitored album: Serotonin Dreams
+[DEBUG] Skipping monitored album: Melatonin Dreams
+[DEBUG] Skipping monitored album: Lucid Dreams
+[DEBUG] Skipping monitored album: Burnout
+[DEBUG] Skipping monitored album: BoyWithUke: B Sides
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: BoyWithUke
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 2/12 ===
+[INFO] Artist: American Authors
+[INFO] Best match score: 0.89
+[INFO] Seed count: 1
+[INFO] Seen count: 3
+[INFO] Recommendation count: 0
+[INFO] Source seeds: AJR
+[INFO] Status: promotable
+[INFO] In recommendation backoff: False
+[INFO] Resolving extend artist: American Authors
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'American Authors' -> 'American Authors' (9ce0515d-cc88-4df6-8a2e-d231c13cb2c2)
+[INFO] Processing artist MBID: 9ce0515d-cc88-4df6-8a2e-d231c13cb2c2
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: American Authors
+[DEBUG] Last.fm signals:
+  artist=American Authors
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: Oh, What a Life
+[DEBUG] Skipping monitored album: What We Live For
+[DEBUG] Skipping monitored album: Seasons
+[DEBUG] Skipping monitored album: Best Night of My Life
+[DEBUG] Skipping monitored album: Call Your Mother
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: American Authors
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 3/12 ===
+[INFO] Artist: Em Beihold
+[INFO] Best match score: 0.87
+[INFO] Seed count: 1
+[INFO] Seen count: 3
+[INFO] Recommendation count: 0
+[INFO] Source seeds: AJR
+[INFO] Status: promotable
+[INFO] In recommendation backoff: False
+[INFO] Resolving extend artist: Em Beihold
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Em Beihold' -> 'Em Beihold' (7575e3b8-ba04-4acc-a895-9cc528f86525)
+[INFO] Processing artist MBID: 7575e3b8-ba04-4acc-a895-9cc528f86525
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: Em Beihold
+[DEBUG] Last.fm signals:
+  artist=Em Beihold
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: Egg in the Backseat
+[DEBUG] Skipping monitored album: Tales of a Failed Shapeshifter
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: Em Beihold
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 4/12 ===
+[INFO] Artist: The Astronomers
+[INFO] Best match score: 0.85
+[INFO] Seed count: 1
+[INFO] Seen count: 3
+[INFO] Recommendation count: 0
+[INFO] Source seeds: AJR
+[INFO] Status: promotable
+[INFO] In recommendation backoff: False
+[INFO] Resolving extend artist: The Astronomers
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'The Astronomers' -> 'The Astronomers' (2119e495-b0be-452d-adf2-ca38923ecca6)
+[INFO] Processing artist MBID: 2119e495-b0be-452d-adf2-ca38923ecca6
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: The Astronomers
+[DEBUG] Last.fm signals:
+  artist=The Astronomers
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: The Occasion
+[DEBUG] Skipping monitored album: Guess It's Just Life
+[DEBUG] Skipping monitored album: Sinking Ships & Story Tales
+[DEBUG] Skipping monitored album: Not Forever Anymore
+[DEBUG] Skipping monitored album: Good Morning World
+[DEBUG] Skipping monitored album: Good Night World
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: The Astronomers
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 5/12 ===
+[INFO] Artist: Andy Grammer
+[INFO] Best match score: 0.66
+[INFO] Seed count: 2
+[INFO] Seen count: 5
+[INFO] Recommendation count: 1
+[INFO] Source seeds: AJR, Surfaces
+[INFO] Status: promotable
+[INFO] In recommendation backoff: True
+[INFO] Cleared legacy extend recommendation backoff for promotable candidate
+[INFO] Resolving extend artist: Andy Grammer
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Andy Grammer' -> 'Andy Grammer' (9e60ea29-9607-4f7d-aa96-2092ef41f0d3)
+[INFO] Processing artist MBID: 9e60ea29-9607-4f7d-aa96-2092ef41f0d3
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: Andy Grammer
+[DEBUG] Last.fm signals:
+  artist=Andy Grammer
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: Magazines or Novels
+[DEBUG] Skipping monitored album: The Good Parts
+[DEBUG] Skipping monitored album: Andy Grammer
+[DEBUG] Skipping monitored album: Naive
+[DEBUG] Skipping monitored album: Monster
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: Andy Grammer
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 6/12 ===
+[INFO] Artist: Smino
+[INFO] Best match score: 1.00
+[INFO] Seed count: 1
+[INFO] Seen count: 5
+[INFO] Recommendation count: 0
+[INFO] Source seeds: Aminé
+[INFO] Status: promotable
+[INFO] In recommendation backoff: True
+[INFO] Cleared legacy extend recommendation backoff for promotable candidate
+[INFO] Resolving extend artist: Smino
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Smino' -> 'Smino' (96800e05-9924-4321-859a-76e0d4750f2f)
+[INFO] Processing artist MBID: 96800e05-9924-4321-859a-76e0d4750f2f
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: Smino
+[DEBUG] Last.fm signals:
+  artist=Smino
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: blkswn
+[DEBUG] Skipping monitored album: NØIR
+[DEBUG] Skipping monitored album: Luv 4 Rent
+[DEBUG] Skipping monitored album: Maybe in Nirvana
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: Smino
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 7/12 ===
+[INFO] Artist: David Guetta
+[INFO] Best match score: 1.00
+[INFO] Seed count: 1
+[INFO] Seen count: 5
+[INFO] Recommendation count: 0
+[INFO] Source seeds: Calvin Harris
+[INFO] Status: promotable
+[INFO] In recommendation backoff: True
+[INFO] Cleared legacy extend recommendation backoff for promotable candidate
+[INFO] Resolving extend artist: David Guetta
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'David Guetta' -> 'David Guetta' (302bd7b9-d012-4360-897a-93b00c855680)
+[INFO] Processing artist MBID: 302bd7b9-d012-4360-897a-93b00c855680
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: David Guetta
+[DEBUG] Last.fm signals:
+  artist=David Guetta
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: Pop Life
+[DEBUG] Skipping monitored album: Just a Little More Love
+[DEBUG] Skipping monitored album: Guetta Blaster
+[DEBUG] Skipping monitored album: Nothing but the Beat
+[DEBUG] Skipping monitored album: 7
+[DEBUG] Skipping monitored album: People (Jet Set 2) : Le Son d’Ibiza
+[DEBUG] Skipping monitored album: Listen
+[DEBUG] Skipping monitored album: One Love
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: David Guetta
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 8/12 ===
+[INFO] Artist: Briston Maroney
+[INFO] Best match score: 1.00
+[INFO] Seed count: 1
+[INFO] Seen count: 2
+[INFO] Recommendation count: 0
+[INFO] Source seeds: The Backseat Lovers
+[INFO] Status: promotable
+[INFO] In recommendation backoff: True
+[INFO] Cleared legacy extend recommendation backoff for promotable candidate
+[INFO] Resolving extend artist: Briston Maroney
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Briston Maroney' -> 'Briston Maroney' (c0dea069-4f46-4f44-8f44-76831e6abb07)
+[INFO] Processing artist MBID: c0dea069-4f46-4f44-8f44-76831e6abb07
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: Briston Maroney
+[DEBUG] Last.fm signals:
+  artist=Briston Maroney
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: JIMMY
+[DEBUG] Skipping monitored album: Ultrapure
+[DEBUG] Skipping monitored album: Sunflower
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: Briston Maroney
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 9/12 ===
+[INFO] Artist: Peekaboo
+[INFO] Best match score: 0.90
+[INFO] Seed count: 1
+[INFO] Seen count: 5
+[INFO] Recommendation count: 0
+[INFO] Source seeds: NGHTMRE
+[INFO] Status: promotable
+[INFO] In recommendation backoff: True
+[INFO] Cleared legacy extend recommendation backoff for promotable candidate
+[INFO] Resolving extend artist: Peekaboo
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Peekaboo' -> 'PEEKABOO' (c37cb509-b7fd-4212-a6fb-163535eba4c1)
+[INFO] Processing artist MBID: c37cb509-b7fd-4212-a6fb-163535eba4c1
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: PEEKABOO
+[DEBUG] Last.fm signals:
+  artist=PEEKABOO
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: Eyes Wide Open
+[DEBUG] Skipping monitored album: Are We Dreaming?
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: PEEKABOO
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 10/12 ===
+[INFO] Artist: Flipturn
+[INFO] Best match score: 0.82
+[INFO] Seed count: 1
+[INFO] Seen count: 2
+[INFO] Recommendation count: 0
+[INFO] Source seeds: The Backseat Lovers
+[INFO] Status: promotable
+[INFO] In recommendation backoff: True
+[INFO] Cleared legacy extend recommendation backoff for promotable candidate
+[INFO] Resolving extend artist: Flipturn
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Flipturn' -> 'flipturn' (0c97b403-1aae-4315-93ab-af54fe2169d6)
+[INFO] Processing artist MBID: 0c97b403-1aae-4315-93ab-af54fe2169d6
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: flipturn
+[DEBUG] Last.fm signals:
+  artist=flipturn
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: Live from Orlando
+[DEBUG] Skipping monitored album: Burnout Days (Reimagined)
+[DEBUG] Skipping monitored album: Burnout Days
+[DEBUG] Skipping monitored album: Shadowglow
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: flipturn
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 11/12 ===
+[INFO] Artist: Cardinal Bloom
+[INFO] Best match score: 0.80
+[INFO] Seed count: 1
+[INFO] Seen count: 2
+[INFO] Recommendation count: 0
+[INFO] Source seeds: The Backseat Lovers
+[INFO] Status: promotable
+[INFO] In recommendation backoff: True
+[INFO] Cleared legacy extend recommendation backoff for promotable candidate
+[INFO] Resolving extend artist: Cardinal Bloom
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Cardinal Bloom' -> 'Cardinal Bloom' (77f4b530-5657-4c75-ad4f-92a75f72deb1)
+[INFO] Processing artist MBID: 77f4b530-5657-4c75-ad4f-92a75f72deb1
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: Cardinal Bloom
+[DEBUG] Last.fm signals:
+  artist=Cardinal Bloom
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: The Only Place I’ve Ever Known
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: Cardinal Bloom
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== Promotable Candidate 12/12 ===
+[INFO] Artist: Capital Cities
+[INFO] Best match score: 0.78
+[INFO] Seed count: 1
+[INFO] Seen count: 5
+[INFO] Recommendation count: 0
+[INFO] Source seeds: Foster the People
+[INFO] Status: promotable
+[INFO] In recommendation backoff: True
+[INFO] Cleared legacy extend recommendation backoff for promotable candidate
+[INFO] Resolving extend artist: Capital Cities
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Capital Cities' -> 'Capital Cities' (119a2c67-e6d6-41cf-a58c-c51b75c80daa)
+[INFO] Processing artist MBID: 119a2c67-e6d6-41cf-a58c-c51b75c80daa
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex: artist not found: Capital Cities
+[DEBUG] Last.fm signals:
+  artist=Capital Cities
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Skipping monitored album: In a Tidal Wave of Mystery
+[DEBUG] Skipping monitored album: Solarize
+[DEBUG] Skipping monitored album: A Hurricane of Frowns
+[INFO] No eligible albums remain after ownership filtering
+[INFO] Intent decided:
+  Action: NO_ACTION
+  Artist: Capital Cities
+  Album: (all albums owned)
+  Reason: no eligible albums remain after ownership filtering
+  Score: None
+  Thresholds: acquire=9, recommend=4
+[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering
+
+=== EXTEND PROMOTION SUMMARY ===
+[INFO] Starter album candidates created: 0
+[INFO] Skipped existing starter album candidate: 0
+[INFO] Skipped recommendation backoff: 0
+[INFO] Skipped below acquire threshold: 12
+[INFO] Failed planning attempts: 0

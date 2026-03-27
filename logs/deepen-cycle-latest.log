@@ -1,0 +1,421 @@
+[INFO] Timestamped log file: logs\deepen-cycle-20260327-125010.log
+[INFO] Latest log file: logs\deepen-cycle-latest.log
+=== Resonarr Deepen Cycle ===
+[INFO] Candidates found (post-ranking pool): 30
+
+=== Candidate 1/30 ===
+[INFO] Artist: Ye
+[INFO] MBID: 164f0d73-1234-4e2c-8743-d77bf2191051
+[INFO] Last.fm plays: 20
+[INFO] Partial present: True
+[INFO] Eligible albums: 12
+[INFO] Fully owned: False
+[INFO] In cooldown: False
+[INFO] In recommendation backoff: False
+[INFO] Is suppressed: False
+[INFO] Processing artist MBID: 164f0d73-1234-4e2c-8743-d77bf2191051
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex signals:
+  artist=¥$, Ye, Ty Dolla $ign
+  rating=None
+  play_count=None
+[DEBUG] Last.fm signals:
+  artist=Ye
+  play_count=20
+  ratio=0.015
+[DEBUG] Merged signals: affinity=1.20 confidence=0.40 sources=['lastfm']
+[DEBUG] Partial album detected: My Beautiful Dark Twisted Fantasy (1/13)
+[DEBUG] Partial album detected: The Life of Pablo (2/19)
+[DEBUG] Partial album detected: ye (1/7)
+
+[DEBUG] Album scoring:
+- Jesus Is King | score=6.00 (base=5.00) | affinity=1.20 | core_catalog_peak(+5), affinity_multiplier(1.20)
+- Donda | score=6.00 (base=5.00) | affinity=1.20 | core_catalog_peak(+5), affinity_multiplier(1.20)
+- ye | score=3.60 (base=3.00) | affinity=1.20 | completion=1/7 (0.14) | partial_below_min_ratio(0.14), strong_catalog(+3), affinity_multiplier(1.20)
+- The Life of Pablo | score=3.60 (base=3.00) | affinity=1.20 | completion=2/19 (0.11) | partial_below_min_ratio(0.11), strong_catalog(+3), affinity_multiplier(1.20)
+- Yeezus | score=3.60 (base=3.00) | affinity=1.20 | strong_catalog(+3), affinity_multiplier(1.20)
+[INFO] Intent decided:
+  Action: RECOMMEND_ONLY
+  Artist: Ye
+  Album: Jesus Is King
+  Reason: score 6.00 below acquire threshold 9
+  Score: 6.00
+  Thresholds: acquire=9, recommend=4
+
+[INFO] Executing intent: RECOMMEND_ONLY
+[INFO] Recommendation only — not executing
+[INFO] Candidate result:
+{'status': 'success', 'action': 'RECOMMEND_ONLY', 'artist': 'Ye', 'selected_album': 'Jesus Is King', 'reason': 'score 6.00 below acquire threshold 9', 'album_count': 86}
+
+=== Candidate 2/30 ===
+[INFO] Artist: Blue October
+[INFO] MBID: d6a3eeec-cde0-4c10-89b2-93e0bd5f34e6
+[INFO] Last.fm plays: 5
+[INFO] Partial present: True
+[INFO] Eligible albums: 11
+[INFO] Fully owned: False
+[INFO] In cooldown: False
+[INFO] In recommendation backoff: False
+[INFO] Is suppressed: False
+[INFO] Processing artist MBID: d6a3eeec-cde0-4c10-89b2-93e0bd5f34e6
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex signals:
+  artist=Blue October
+  rating=None
+  play_count=5
+[DEBUG] Last.fm signals:
+  artist=Blue October
+  play_count=5
+  ratio=0.004
+[DEBUG] Merged signals: affinity=1.80 confidence=1.00 sources=['plex', 'lastfm']
+[DEBUG] Partial album detected: Approaching Normal (1/12)
+[DEBUG] Plex-owned but incomplete: Approaching Normal
+[DEBUG] Partial album detected: Foiled (4/13)
+[DEBUG] Plex-owned but incomplete: Foiled
+[DEBUG] Partial album detected: History for Sale (1/12)
+[DEBUG] Plex-owned but incomplete: History for Sale
+[DEBUG] Skipping monitored album: This Is What I Live For
+
+[DEBUG] Album scoring:
+- Spinning the Truth Around (Part I) | score=9.00 (base=5.00) | affinity=1.80 | core_catalog_peak(+5), affinity_multiplier(1.80)
+- Foiled | score=6.94 (base=3.85) | affinity=1.80 | completion=4/13 (0.31) | partial_completion_boost(+2.85), deep_catalog(+1), affinity_multiplier(1.80)
+- I Hope You’re Happy | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+- Home | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+- Sway | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+[INFO] Intent decided:
+  Action: ACQUIRE_ARTIST
+  Artist: Blue October
+  Album: Spinning the Truth Around (Part I)
+  Reason: score 9.00 >= acquire threshold 9
+  Score: 9.00
+  Thresholds: acquire=9, recommend=4
+
+[INFO] Executing intent: ACQUIRE_ARTIST
+
+[DEBUG] ===== BEFORE MONITORING =====
+- Approaching Normal | monitored=False
+- Foiled | monitored=False
+- History for Sale | monitored=False
+- I Hope You’re Happy | monitored=False
+- Consent to Treatment | monitored=False
+- Any Man in America | monitored=False
+- The Answers | monitored=False
+- Sway | monitored=False
+- I Hope You’re Happy | monitored=False
+- Home | monitored=False
+
+[DEBUG] Target album: Spinning the Truth Around (Part I) (ID: 635)
+
+[INFO] Applying monitoring (per-album)...
+[DEBUG] Update This Is What I Live For → False | status=202
+[DEBUG] Update Spinning the Truth Around (Part I) → True | status=202
+
+[DEBUG] ===== AFTER MONITORING =====
+- Approaching Normal | monitored=False
+- Foiled | monitored=False
+- History for Sale | monitored=False
+- I Hope You’re Happy | monitored=False
+- Consent to Treatment | monitored=False
+- Any Man in America | monitored=False
+- The Answers | monitored=False
+- Sway | monitored=False
+- I Hope You’re Happy | monitored=False
+- Home | monitored=False
+
+[DEBUG] Total monitored albums: 1
+[DEBUG] MONITORED: Spinning the Truth Around (Part I)
+[SUCCESS] Monitoring correctly applied
+[DEBUG] Album search command status: 201
+[DEBUG] Album search command response: {
+  "name": "AlbumSearch",
+  "commandName": "Album Search",
+  "body": {
+    "albumIds": [
+      635
+    ],
+    "sendUpdatesToClient": true,
+    "updateScheduledTask": true,
+    "requiresDiskAccess": false,
+    "isExclusive": false,
+    "isTypeExclusive": false,
+    "isLongRunning": false,
+    "name"
+[INFO] Candidate result:
+{'status': 'success', 'action': 'ACQUIRE_ARTIST', 'artist': 'Blue October', 'selected_album': 'Spinning the Truth Around (Part I)', 'reason': 'score 9.00 >= acquire threshold 9', 'album_count': 28}
+
+=== Candidate 3/30 ===
+[INFO] Artist: Radiohead
+[INFO] MBID: a74b1b7f-71a5-4011-9441-d0b5e4122711
+[INFO] Last.fm plays: 6
+[INFO] Partial present: True
+[INFO] Eligible albums: 9
+[INFO] Fully owned: False
+[INFO] In cooldown: False
+[INFO] In recommendation backoff: False
+[INFO] Is suppressed: False
+[INFO] Processing artist MBID: a74b1b7f-71a5-4011-9441-d0b5e4122711
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex signals:
+  artist=Radiohead
+  rating=None
+  play_count=6
+[DEBUG] Last.fm signals:
+  artist=Radiohead
+  play_count=6
+  ratio=0.005
+[DEBUG] Merged signals: affinity=1.80 confidence=1.00 sources=['plex', 'lastfm']
+[DEBUG] Partial album detected: OK Computer (1/12)
+[DEBUG] Plex-owned but incomplete: OK Computer
+
+[DEBUG] Album scoring:
+- A Moon Shaped Pool | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+- The King of Limbs | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+- In Rainbows | score=1.80 (base=1.00) | affinity=1.80 | deep_catalog(+1), affinity_multiplier(1.80)
+- Hail to the Thief | score=1.80 (base=1.00) | affinity=1.80 | deep_catalog(+1), affinity_multiplier(1.80)
+- Amnesiac | score=1.80 (base=1.00) | affinity=1.80 | deep_catalog(+1), affinity_multiplier(1.80)
+[INFO] Intent decided:
+  Action: RECOMMEND_ONLY
+  Artist: Radiohead
+  Album: A Moon Shaped Pool
+  Reason: score 5.40 below acquire threshold 9
+  Score: 5.40
+  Thresholds: acquire=9, recommend=4
+
+[INFO] Executing intent: RECOMMEND_ONLY
+[INFO] Recommendation only — not executing
+[INFO] Candidate result:
+{'status': 'success', 'action': 'RECOMMEND_ONLY', 'artist': 'Radiohead', 'selected_album': 'A Moon Shaped Pool', 'reason': 'score 5.40 below acquire threshold 9', 'album_count': 64}
+
+=== Candidate 4/30 ===
+[INFO] Artist: Modest Mouse
+[INFO] MBID: a96ac800-bfcb-412a-8a63-0a98df600700
+[INFO] Last.fm plays: 11
+[INFO] Partial present: True
+[INFO] Eligible albums: 7
+[INFO] Fully owned: False
+[INFO] In cooldown: False
+[INFO] In recommendation backoff: False
+[INFO] Is suppressed: False
+[INFO] Processing artist MBID: a96ac800-bfcb-412a-8a63-0a98df600700
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex signals:
+  artist=Modest Mouse
+  rating=None
+  play_count=13
+[DEBUG] Last.fm signals:
+  artist=Modest Mouse
+  play_count=11
+  ratio=0.008
+[DEBUG] Merged signals: affinity=1.80 confidence=1.00 sources=['plex', 'lastfm']
+[DEBUG] Partial album detected: Good News for People Who Love Bad News (3/17)
+[DEBUG] Plex-owned but incomplete: Good News for People Who Love Bad News
+[DEBUG] Partial album detected: We Were Dead Before the Ship Even Sank (2/14)
+[DEBUG] Plex-owned but incomplete: We Were Dead Before the Ship Even Sank
+[DEBUG] Skipping fully owned album: The Golden Casket
+
+[DEBUG] Album scoring:
+- Good News for People Who Love Bad News | score=6.07 (base=3.37) | affinity=1.80 | completion=3/17 (0.18) | partial_completion_boost(+2.37), deep_catalog(+1), affinity_multiplier(1.80)
+- Strangers to Ourselves | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+- We Were Dead Before the Ship Even Sank | score=1.80 (base=1.00) | affinity=1.80 | completion=2/14 (0.14) | partial_below_min_ratio(0.14), deep_catalog(+1), affinity_multiplier(1.80)
+- Sad Sappy Sucker | score=1.80 (base=1.00) | affinity=1.80 | deep_catalog(+1), affinity_multiplier(1.80)
+- The Moon & Antarctica | score=1.80 (base=1.00) | affinity=1.80 | deep_catalog(+1), affinity_multiplier(1.80)
+[INFO] Intent decided:
+  Action: RECOMMEND_ONLY
+  Artist: Modest Mouse
+  Album: Good News for People Who Love Bad News
+  Reason: score 6.07 below acquire threshold 9
+  Score: 6.07
+  Thresholds: acquire=9, recommend=4
+
+[INFO] Executing intent: RECOMMEND_ONLY
+[INFO] Recommendation only — not executing
+[INFO] Candidate result:
+{'status': 'success', 'action': 'RECOMMEND_ONLY', 'artist': 'Modest Mouse', 'selected_album': 'Good News for People Who Love Bad News', 'reason': 'score 6.07 below acquire threshold 9', 'album_count': 44}
+
+=== Candidate 5/30 ===
+[INFO] Artist: Incubus
+[INFO] MBID: e3e0abcd-7671-4482-a9d8-462f5acc9be5
+[INFO] Last.fm plays: 9
+[INFO] Partial present: True
+[INFO] Eligible albums: 7
+[INFO] Fully owned: False
+[INFO] In cooldown: False
+[INFO] In recommendation backoff: False
+[INFO] Is suppressed: False
+[INFO] Processing artist MBID: e3e0abcd-7671-4482-a9d8-462f5acc9be5
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex signals:
+  artist=Incubus
+  rating=None
+  play_count=9
+[DEBUG] Last.fm signals:
+  artist=Incubus
+  play_count=9
+  ratio=0.007
+[DEBUG] Merged signals: affinity=1.80 confidence=1.00 sources=['plex', 'lastfm']
+[DEBUG] Skipping fully owned album: 8
+[DEBUG] Partial album detected: A Crow Left of the Murder… (1/14)
+[DEBUG] Plex-owned but incomplete: A Crow Left of the Murder…
+[DEBUG] Partial album detected: Light Grenades (2/13)
+[DEBUG] Plex-owned but incomplete: Light Grenades
+[DEBUG] Partial album detected: Make Yourself (4/14)
+[DEBUG] Plex-owned but incomplete: Make Yourself
+[DEBUG] Partial album detected: S.C.I.E.N.C.E. (3/12)
+[DEBUG] Plex-owned but incomplete: S.C.I.E.N.C.E.
+[DEBUG] Skipping fully owned album: Morning View
+
+[DEBUG] Album scoring:
+- Make Yourself | score=6.77 (base=3.76) | affinity=1.80 | completion=4/14 (0.29) | partial_completion_boost(+2.76), deep_catalog(+1), affinity_multiplier(1.80)
+- S.C.I.E.N.C.E. | score=6.52 (base=3.62) | affinity=1.80 | completion=3/12 (0.25) | partial_completion_boost(+2.62), deep_catalog(+1), affinity_multiplier(1.80)
+- Light Grenades | score=5.94 (base=3.30) | affinity=1.80 | completion=2/13 (0.15) | partial_completion_boost(+2.30), deep_catalog(+1), affinity_multiplier(1.80)
+- If Not Now, When? | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+- A Crow Left of the Murder… | score=1.80 (base=1.00) | affinity=1.80 | completion=1/14 (0.07) | partial_below_min_ratio(0.07), deep_catalog(+1), affinity_multiplier(1.80)
+[INFO] Intent decided:
+  Action: RECOMMEND_ONLY
+  Artist: Incubus
+  Album: Make Yourself
+  Reason: score 6.77 below acquire threshold 9
+  Score: 6.77
+  Thresholds: acquire=9, recommend=4
+
+[INFO] Executing intent: RECOMMEND_ONLY
+[INFO] Recommendation only — not executing
+[INFO] Candidate result:
+{'status': 'success', 'action': 'RECOMMEND_ONLY', 'artist': 'Incubus', 'selected_album': 'Make Yourself', 'reason': 'score 6.77 below acquire threshold 9', 'album_count': 44}
+
+=== Candidate 6/30 ===
+[INFO] Artist: Panic! at the Disco
+[INFO] MBID: b9472588-93f3-4922-a1a2-74082cdf9ce8
+[INFO] Last.fm plays: 20
+[INFO] Partial present: True
+[INFO] Eligible albums: 6
+[INFO] Fully owned: False
+[INFO] In cooldown: False
+[INFO] In recommendation backoff: False
+[INFO] Is suppressed: False
+[INFO] Processing artist MBID: b9472588-93f3-4922-a1a2-74082cdf9ce8
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 481
+[DEBUG] Found artist match
+[DEBUG] Plex signals:
+  artist=Panic! at the Disco
+  rating=None
+  play_count=20
+[DEBUG] Last.fm signals:
+  artist=Panic! at the Disco
+  play_count=20
+  ratio=0.015
+[DEBUG] Merged signals: affinity=2.40 confidence=1.00 sources=['plex', 'lastfm']
+[DEBUG] Partial album detected: Death of a Bachelor (1/11)
+[DEBUG] Plex-owned but incomplete: Death of a Bachelor
+[DEBUG] Skipping fully owned album: Pretty. Odd.
+
+[DEBUG] Album scoring:
+- Viva las Vengeance | score=12.00 (base=5.00) | affinity=2.40 | core_catalog_peak(+5), affinity_multiplier(2.40)
+- Pray for the Wicked | score=7.20 (base=3.00) | affinity=2.40 | strong_catalog(+3), affinity_multiplier(2.40)
+- Death of a Bachelor | score=7.20 (base=3.00) | affinity=2.40 | completion=1/11 (0.09) | partial_below_min_ratio(0.09), strong_catalog(+3), affinity_multiplier(2.40)
+- Too Weird to Live, Too Rare to Die! | score=7.20 (base=3.00) | affinity=2.40 | strong_catalog(+3), affinity_multiplier(2.40)
+- Vices & Virtues | score=7.20 (base=3.00) | affinity=2.40 | strong_catalog(+3), affinity_multiplier(2.40)
+[INFO] Intent decided:
+  Action: ACQUIRE_ARTIST
+  Artist: Panic! at the Disco
+  Album: Viva las Vengeance
+  Reason: score 12.00 >= acquire threshold 9
+  Score: 12.00
+  Thresholds: acquire=9, recommend=4
+
+[INFO] Executing intent: ACQUIRE_ARTIST
+
+[DEBUG] ===== BEFORE MONITORING =====
+- Death of a Bachelor | monitored=False
+- Pretty. Odd. | monitored=False
+- Vices & Virtues | monitored=False
+- Too Weird to Live, Too Rare to Die! | monitored=False
+- Pray for the Wicked | monitored=False
+- Viva las Vengeance | monitored=False
+- A Fever You Can’t Sweat Out | monitored=False
+- I Write Sins Not Tragedies | monitored=False
+- Lying Is the Most Fun a Girl Can Have Without Taking Her Clothes Off | monitored=False
+- But It’s Better If You Do | monitored=False
+
+[DEBUG] Target album: Viva las Vengeance (ID: 1458)
+
+[INFO] Applying monitoring (per-album)...
+[DEBUG] Update Viva las Vengeance → True | status=202
+
+[DEBUG] ===== AFTER MONITORING =====
+- Death of a Bachelor | monitored=False
+- Pretty. Odd. | monitored=False
+- Vices & Virtues | monitored=False
+- Too Weird to Live, Too Rare to Die! | monitored=False
+- Pray for the Wicked | monitored=False
+- Viva las Vengeance | monitored=True
+- A Fever You Can’t Sweat Out | monitored=False
+- I Write Sins Not Tragedies | monitored=False
+- Lying Is the Most Fun a Girl Can Have Without Taking Her Clothes Off | monitored=False
+- But It’s Better If You Do | monitored=False
+
+[DEBUG] Total monitored albums: 1
+[DEBUG] MONITORED: Viva las Vengeance
+[SUCCESS] Monitoring correctly applied
+[DEBUG] Album search command status: 201
+[DEBUG] Album search command response: {
+  "name": "AlbumSearch",
+  "commandName": "Album Search",
+  "body": {
+    "albumIds": [
+      1458
+    ],
+    "sendUpdatesToClient": true,
+    "updateScheduledTask": true,
+    "requiresDiskAccess": false,
+    "isExclusive": false,
+    "isTypeExclusive": false,
+    "isLongRunning": false,
+    "name
+[INFO] Candidate result:
+{'status': 'success', 'action': 'ACQUIRE_ARTIST', 'artist': 'Panic! at the Disco', 'selected_album': 'Viva las Vengeance', 'reason': 'score 12.00 >= acquire threshold 9', 'album_count': 39}
+
+=== Candidate 7/30 ===
+[INFO] Artist: Post Malone
+[INFO] MBID: b1e26560-60e5-4236-bbdb-9aa5a8d5ee19
+[INFO] Last.fm plays: 6
+[INFO] Partial present: True
+[INFO] Eligible albums: 6
+[INFO] Fully owned: False
+[INFO] In cooldown: False
+[INFO] In recommendation backoff: False
+[INFO] Is suppressed: False
+[INFO] Acquire cap reached — remaining candidates will not be evaluated this run
+
+=== DEEPEN SUMMARY ===
+[INFO] Evaluated: 6
+[INFO] Acquired: 2
+[INFO] Recommended: 4
+[INFO] No action: 0
+[INFO] Skipped pre-filter: 0
+[INFO] Skipped suppressed: 0
+[INFO] Skipped recommendation backoff: 0
+[INFO] Skipped cooldown: 0

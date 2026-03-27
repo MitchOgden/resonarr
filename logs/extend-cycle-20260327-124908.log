@@ -1,0 +1,231 @@
+[INFO] Timestamped log file: logs\extend-cycle-20260327-124908.log
+[INFO] Latest log file: logs\extend-cycle-latest.log
+=== Resonarr Extend Cycle ===
+[INFO] Extend candidates found: 20
+[INFO] Artist: lovelytheband
+[INFO] Best match score: 0.74
+[INFO] Seed count: 1
+[INFO] Seen count: 4
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 34
+[INFO] Source seeds: AJR
+[INFO] Status: new
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: False
+[INFO] Holding candidate until promotion threshold is met
+[INFO] Artist: half•alive
+[INFO] Best match score: 0.72
+[INFO] Seed count: 1
+[INFO] Seen count: 4
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 34
+[INFO] Source seeds: AJR
+[INFO] Status: new
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: False
+[INFO] Holding candidate until promotion threshold is met
+[INFO] Artist: Ryan Mack
+[INFO] Best match score: 0.71
+[INFO] Seed count: 1
+[INFO] Seen count: 4
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 34
+[INFO] Source seeds: AJR
+[INFO] Status: new
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: False
+[INFO] Holding candidate until promotion threshold is met
+[INFO] Artist: GoldLink
+[INFO] Best match score: 0.74
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 56
+[INFO] Source seeds: Aminé
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Broken Bells
+[INFO] Best match score: 0.73
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 41
+[INFO] Source seeds: Foster the People
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Young the Giant
+[INFO] Best match score: 0.73
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 41
+[INFO] Source seeds: Foster the People
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Kanye West
+[INFO] Best match score: 0.72
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 46
+[INFO] Source seeds: Kid Cudi
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Illenium
+[INFO] Best match score: 0.71
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 42
+[INFO] Source seeds: NGHTMRE
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Foals
+[INFO] Best match score: 0.69
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 54
+[INFO] Source seeds: Two Door Cinema Club
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Joywave
+[INFO] Best match score: 0.69
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 54
+[INFO] Source seeds: Two Door Cinema Club
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: JAY-Z & Kanye West
+[INFO] Best match score: 0.67
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 46
+[INFO] Source seeds: Kid Cudi
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Isaiah Rashad
+[INFO] Best match score: 0.67
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 56
+[INFO] Source seeds: Aminé
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Ag Club
+[INFO] Best match score: 0.63
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 56
+[INFO] Source seeds: Aminé
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Bas
+[INFO] Best match score: 0.63
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 0
+[INFO] Seed playcount: 56
+[INFO] Source seeds: Aminé
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: EARTHGANG
+[INFO] Best match score: 0.62
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 1
+[INFO] Seed playcount: 56
+[INFO] Source seeds: Aminé
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Swedish House Mafia
+[INFO] Best match score: 0.61
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 1
+[INFO] Seed playcount: 39
+[INFO] Source seeds: Calvin Harris
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Avicii
+[INFO] Best match score: 0.60
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 1
+[INFO] Seed playcount: 39
+[INFO] Source seeds: Calvin Harris
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Travi$ Scott
+[INFO] Best match score: 0.60
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 1
+[INFO] Seed playcount: 46
+[INFO] Source seeds: Kid Cudi
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: ovrkast.
+[INFO] Best match score: 0.60
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 1
+[INFO] Seed playcount: 56
+[INFO] Source seeds: Aminé
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+[INFO] Artist: Saba
+[INFO] Best match score: 0.59
+[INFO] Seed count: 1
+[INFO] Seen count: 6
+[INFO] Recommendation count: 1
+[INFO] Seed playcount: 56
+[INFO] Source seeds: Aminé
+[INFO] Status: recommended
+[INFO] Is promotable: False
+[INFO] In recommendation backoff: True
+[INFO] Skipping extend promotion due to recommendation backoff
+
+=== EXTEND SUMMARY ===
+[INFO] Candidates processed: 20
+[INFO] Promotable now: 0
+[INFO] Deferred pending more evidence: 3
+[INFO] In recommendation backoff: 17
+[INFO] Existing starter album candidates: 0
