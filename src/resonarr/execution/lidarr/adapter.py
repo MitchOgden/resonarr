@@ -47,7 +47,7 @@ class LidarrAdapter:
             "album_count": result["album_count"]
         }
     
-    def plan_extended_artist_best_release(self, artist_name):
+    def plan_extended_artist_best_release(self, artist_name, is_staged_artist=False):
         print(f"[INFO] Resolving extend artist: {artist_name}")
 
         lookup = self.resolve_artist_by_name(artist_name)
@@ -72,13 +72,22 @@ class LidarrAdapter:
 
         print(f"[INFO] Resolved extend artist '{artist_name}' -> '{resolved_name}' ({mbid})")
 
-        result = self.plan_artist_best_release(mbid, resolved_lookup=lookup)
+        result = self.plan_artist_best_release(
+            mbid,
+            resolved_lookup=lookup,
+            allow_monitored_for_staged=is_staged_artist,
+        )
         result["artist_mbid"] = mbid
         result["resolved_artist_name"] = resolved_name
 
         return result
 
-    def plan_artist_best_release(self, mbid, resolved_lookup=None):
+    def plan_artist_best_release(
+        self,
+        mbid,
+        resolved_lookup=None,
+        allow_monitored_for_staged=False,
+    ):
         print(f"[INFO] Processing artist MBID: {mbid}")
 
         artist = self._get_artist_by_mbid(mbid)
@@ -109,17 +118,19 @@ class LidarrAdapter:
                 "reason": "no albums found"
             }
 
+        staged_context = staged_artist_created or allow_monitored_for_staged
+
         self._debug_album_state(
             albums,
-            "HYDRATED ALBUM STATE" + (" (STAGED ARTIST)" if staged_artist_created else "")
+            "HYDRATED ALBUM STATE" + (" (STAGED ARTIST)" if staged_context else "")
         )
 
         intent = self._decide_artist_action(
             mbid,
             artist,
             albums,
-            allow_monitored_albums=staged_artist_created,
-            staged_artist_created=staged_artist_created,
+            allow_monitored_albums=staged_context,
+            staged_artist_created=staged_context,
         )
 
         print("[INFO] Intent decided:")

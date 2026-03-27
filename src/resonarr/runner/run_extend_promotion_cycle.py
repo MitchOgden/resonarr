@@ -61,9 +61,7 @@ def main():
             continue
 
         if candidate.get("status") == "starter_album_exhausted":
-            skipped_existing += 1
-            print("[INFO] Starter album exhaustion already recorded for this candidate")
-            continue
+            print("[INFO] Re-evaluating previously exhausted candidate under current staged policy")
 
         if candidate["in_recommendation_backoff"]:
             if candidate.get("status") == "promotable":
@@ -78,7 +76,10 @@ def main():
                 continue
 
         try:
-            result = adapter.plan_extended_artist_best_release(artist_name)
+            result = adapter.plan_extended_artist_best_release(
+                artist_name,
+                is_staged_artist=(candidate.get("status") == "staged_artist"),
+            )
         except Exception as exc:
             failed += 1
             print(f"[INFO] Planning failed with exception: {exc}")
