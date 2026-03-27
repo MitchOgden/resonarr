@@ -75,10 +75,16 @@ def main():
                 print("[INFO] Skipping starter album planning due to recommendation backoff")
                 continue
 
+        staged_statuses = {
+            "staged_artist",
+            "starter_album_exhausted",
+            "starter_album_recommendation",
+        }
+
         try:
             result = adapter.plan_extended_artist_best_release(
                 artist_name,
-                is_staged_artist=(candidate.get("status") == "staged_artist"),
+                is_staged_artist=(candidate.get("status") in staged_statuses),
             )
         except Exception as exc:
             failed += 1
