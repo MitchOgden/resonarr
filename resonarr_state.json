@@ -1,6 +1,8 @@
 {
   "artists": {
-    "extend:smino": {},
+    "extend:smino": {
+      "last_recommendation_ts": 1774641809
+    },
     "extend:david guetta": {},
     "extend:briston maroney": {},
     "extend:peekaboo": {},
@@ -91,7 +93,9 @@
     "extend:the kilans": {
       "last_recommendation_ts": 1774610226
     },
-    "extend:andy grammer": {},
+    "extend:andy grammer": {
+      "last_recommendation_ts": 1774641804
+    },
     "a148ffde-581c-4c39-a8f1-bc49dec7fe68": {
       "affinity": 1.0,
       "affinity_reason": "signal_merge(lastfm)",
@@ -191,6 +195,9 @@
       "affinity_reason": "signal_merge(plex,lastfm)",
       "affinity_ts": 1774630265,
       "last_action_ts": 1774630272
+    },
+    "extend:boywithuke": {
+      "last_recommendation_ts": 1774641824
     }
   },
   "extend_candidates": {
@@ -213,7 +220,7 @@
     "andy grammer": {
       "artist_name": "Andy Grammer",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "best_match_score": 0.657836,
       "seed_count": 2,
       "source_seeds": [
@@ -227,18 +234,24 @@
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226,
       "promotable_ts": 1774613678,
-      "staged_artist_ts": 1774632204,
-      "staged_artist_count": 1,
+      "staged_artist_ts": 1774641804,
+      "staged_artist_count": 2,
       "resolved_artist_mbid": "9e60ea29-9607-4f7d-aa96-2092ef41f0d3",
       "resolved_artist_name": "Andy Grammer",
       "starter_album_exhausted_ts": 1774632204,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774641804,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17296,
+      "starter_album_title": "The Good Parts",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "smino": {
       "artist_name": "Smino",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "best_match_score": 1.0,
       "seed_count": 1,
       "source_seeds": [
@@ -251,13 +264,19 @@
       "seen_count": 7,
       "recommendation_count": 0,
       "promotable_ts": 1774613326,
-      "staged_artist_ts": 1774632213,
-      "staged_artist_count": 1,
+      "staged_artist_ts": 1774641809,
+      "staged_artist_count": 2,
       "resolved_artist_mbid": "96800e05-9924-4321-859a-76e0d4750f2f",
       "resolved_artist_name": "Smino",
       "starter_album_exhausted_ts": 1774632213,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774641809,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17323,
+      "starter_album_title": "N\u00d8IR",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "goldlink": {
       "artist_name": "GoldLink",
@@ -511,8 +530,8 @@
       "staged_artist_count": 1,
       "resolved_artist_mbid": "302bd7b9-d012-4360-897a-93b00c855680",
       "resolved_artist_name": "David Guetta",
-      "starter_album_exhausted_ts": 1774634284,
-      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_ts": 1774641818,
+      "starter_album_exhausted_count": 2,
       "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "swedish house mafia": {
@@ -838,7 +857,7 @@
     "boywithuke": {
       "artist_name": "BoyWithUke",
       "first_seen_ts": 1774613678,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "seen_count": 5,
       "recommendation_count": 0,
       "best_match_score": 1.0,
@@ -850,13 +869,19 @@
       "seed_rank": 10,
       "last_seen_ts": 1774632153,
       "promotable_ts": 1774613703,
-      "staged_artist_ts": 1774632162,
-      "staged_artist_count": 1,
+      "staged_artist_ts": 1774641824,
+      "staged_artist_count": 2,
       "resolved_artist_mbid": "a148ffde-581c-4c39-a8f1-bc49dec7fe68",
       "resolved_artist_name": "BoyWithUke",
       "starter_album_exhausted_ts": 1774632162,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774641824,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17343,
+      "starter_album_title": "Fever Dreams",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "american authors": {
       "artist_name": "American Authors",
