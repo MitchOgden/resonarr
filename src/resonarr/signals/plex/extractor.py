@@ -53,20 +53,19 @@ class PlexSignalExtractor:
         artists = self.plex.get_artists()
         match = self._match_artist(artists, artist_name)
 
+        if not match:
+            print(f"[DEBUG] Plex: artist not found: {artist_name}")
+            return None
+
         albums = self.plex.get_albums(match.get("ratingKey"))
 
         owned_album_mbids = set()
 
         for album in albums:
-
             mbid = self._extract_mbid(album)
 
             if mbid:
                 owned_album_mbids.add(mbid)
-
-        if not match:
-            print(f"[DEBUG] Plex: artist not found: {artist_name}")
-            return None
 
         rating = match.get("userRating")
         play_count = match.get("viewCount")

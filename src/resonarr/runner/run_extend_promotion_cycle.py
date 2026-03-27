@@ -65,7 +65,12 @@ def main():
                 print("[INFO] Skipping starter album planning due to recommendation backoff")
                 continue
 
-        result = adapter.plan_extended_artist_best_release(artist_name)
+        try:
+            result = adapter.plan_extended_artist_best_release(artist_name)
+        except Exception as exc:
+            failed += 1
+            print(f"[INFO] Planning failed with exception: {exc}")
+            continue
 
         if result.get("status") != "success":
             failed += 1
