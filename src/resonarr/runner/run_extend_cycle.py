@@ -2,12 +2,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from resonarr.candidates.extend import ExtendCandidateSource
-from resonarr.state.memory_store import MemoryStore
 
 
 def main():
     source = ExtendCandidateSource()
-    memory = MemoryStore()
+    memory = source.memory
 
     print("=== Resonarr Extend Cycle ===")
 
