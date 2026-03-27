@@ -71,13 +71,13 @@ class LidarrAdapter:
 
         print(f"[INFO] Resolved extend artist '{artist_name}' -> '{resolved_name}' ({mbid})")
 
-        result = self.plan_artist_best_release(mbid)
+        result = self.plan_artist_best_release(mbid, resolved_lookup=lookup)
         result["artist_mbid"] = mbid
         result["resolved_artist_name"] = resolved_name
 
         return result
 
-    def plan_artist_best_release(self, mbid):
+    def plan_artist_best_release(self, mbid, resolved_lookup=None):
         print(f"[INFO] Processing artist MBID: {mbid}")
 
         artist = self._get_artist_by_mbid(mbid)
@@ -86,7 +86,7 @@ class LidarrAdapter:
             print("[INFO] Artist already exists")
         else:
             print("[INFO] Adding artist...")
-            self._add_artist(mbid)
+            self._add_artist(mbid, lookup=resolved_lookup)
 
         artist = self._wait_for_artist(mbid)
 
@@ -200,7 +200,11 @@ class LidarrAdapter:
             None
         )
 
-        return exact or matches[0]
+        if exact:
+            return exact
+
+        print(f"[ERROR] No exact MBID match returned for lookup: {mbid}")
+        return None
 
     def resolve_artist_by_name(self, artist_name):
         matches = self._lookup_artist_by_term(artist_name)
@@ -235,11 +239,13 @@ class LidarrAdapter:
         print("[DEBUG] Artist NOT found")
         return None
 
-    def _add_artist(self, mbid):
-        lookup = self._lookup_artist(mbid)
+    def _add_artist(self, mbid, lookup=None):
+        if lookup is None:
+            lookup = self._lookup_artist(mbid)
 
         if not lookup:
             raise Exception("Artist lookup failed")
+
         if lookup.get("foreignArtistId") != mbid:
             raise Exception(
                 f"MBID mismatch — expected {mbid}, got {lookup.get('foreignArtistId')}"

@@ -75,6 +75,52 @@ class ExtendCandidateSource:
         seeds.sort(key=lambda x: (-x["playcount"], x["rank"]))
         return seeds[:EXTEND_MAX_SEEDS]
 
+    def get_persisted_candidates(self):
+        candidates = []
+
+        for persisted in self.memory.list_extend_candidates():
+            candidate = dict(persisted)
+
+            artist_name = candidate.get("artist_name")
+            if not artist_name:
+                continue
+
+            backoff = self._get_extend_backoff_state(artist_name)
+
+            promotable = (
+                candidate.get("seen_count", 0) >= EXTEND_PROMOTION_MIN_SEEN_COUNT and
+                (
+                    candidate.get("seed_count", 0) >= EXTEND_PROMOTION_MIN_SEED_COUNT or
+                    candidate.get("best_match_score", 0.0) >= EXTEND_PROMOTION_MIN_MATCH_SCORE
+                )
+            )
+
+            candidate["is_promotable"] = promotable
+            candidate["in_recommendation_backoff"] = backoff["in_recommendation_backoff"]
+
+            candidates.append(candidate)
+
+        status_rank = {
+            "starter_album_candidate": 0,
+            "promotable": 1,
+            "new": 2,
+            "recommended": 3,
+        }
+
+        candidates.sort(
+            key=lambda x: (
+                x["in_recommendation_backoff"],
+                status_rank.get(x.get("status", "new"), 3),
+                -x.get("seed_count", 0),
+                -x.get("best_match_score", 0.0),
+                -x.get("seed_playcount", 0),
+                x.get("seed_rank", 999999),
+                x.get("artist_name", "").lower(),
+            )
+        )
+
+        return candidates[:EXTEND_MAX_RECOMMENDATIONS]
+
     def get_candidates(self):
         _, lidarr_by_name = self._get_lidarr_artists()
         seeds = self._get_seed_artists()

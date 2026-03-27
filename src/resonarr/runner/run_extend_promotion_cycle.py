@@ -13,7 +13,7 @@ def main():
 
     print("=== Resonarr Extend Promotion Cycle ===")
 
-    candidates = source.get_candidates()
+    candidates = source.get_persisted_candidates()
     promotable_candidates = [
         c for c in candidates
         if c.get("is_promotable", False)
