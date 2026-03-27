@@ -1,0 +1,206 @@
+[INFO] Timestamped log file: logs\operator-approve-extend-20260327-165112.log
+[INFO] Latest log file: logs\operator-approve-extend-latest.log
+=== Resonarr Operator Approve Extend Recommendation ===
+[INFO] Target artist: David Guetta
+[DEBUG] Total artists: 476
+[DEBUG] Found artist match
+
+[DEBUG] ===== BEFORE MONITORING =====
+- Forever Young | monitored=True
+- In Love With Myself | monitored=True
+- Pop Life | monitored=True
+- Just a Little More Love | monitored=True
+- Delirious | monitored=True
+- Nothing But the Beat (Party Mix) | monitored=True
+- The Best Of | monitored=True
+- Guetta Blaster | monitored=True
+- Lovers on the Sun | monitored=True
+- Nothing but the Beat | monitored=True
+
+[DEBUG] Target album: 7 (ID: 17124)
+
+[INFO] Applying monitoring (per-album)...
+[DEBUG] Update Forever Young → False | status=202
+[DEBUG] Update In Love With Myself → False | status=202
+[DEBUG] Update Pop Life → False | status=202
+[DEBUG] Update Just a Little More Love → False | status=202
+[DEBUG] Update Delirious → False | status=202
+[DEBUG] Update Nothing But the Beat (Party Mix) → False | status=202
+[DEBUG] Update The Best Of → False | status=202
+[DEBUG] Update Guetta Blaster → False | status=202
+[DEBUG] Update Lovers on the Sun → False | status=202
+[DEBUG] Update Nothing but the Beat → False | status=202
+[DEBUG] Update David Guetta presents F*** Me I’m Famous! International → False | status=202
+[DEBUG] Update The Alphabeat → False | status=202
+[DEBUG] Update Original Album Series → False | status=202
+[DEBUG] Update GRRRR → False | status=202
+[DEBUG] Update Pelican → False | status=202
+[DEBUG] Update David Guetta presents F*** Me I’m Famous! International, Vol. 2 → False | status=202
+[DEBUG] Update People (Jet Set 2) : Le Son d’Ibiza → False | status=202
+[DEBUG] Update F*** Me I’m Famous! Ibiza Mix 2005 → False | status=202
+[DEBUG] Update Bass Line E.P. → False | status=202
+[DEBUG] Update Get Together → False | status=202
+[DEBUG] Update Family Affair (Dance For Me) → False | status=202
+[DEBUG] Update Best of David Guetta → False | status=202
+[DEBUG] Update New Year’s Eve Party → False | status=202
+[DEBUG] Update Money → False | status=202
+[DEBUG] Update Just a Little More Love → False | status=202
+[DEBUG] Update Memories of Summer → False | status=202
+[DEBUG] Update Sunset → False | status=202
+[DEBUG] Update Best Night of Your Life → False | status=202
+[DEBUG] Update Party Till Sunrise → False | status=202
+[DEBUG] Update Listen → False | status=202
+[DEBUG] Update One Love → False | status=202
+[DEBUG] Update Lights Down, Love Loud → False | status=202
+[DEBUG] Update Locked In (feat. Trippie Redd) → False | status=202
+[DEBUG] Update Gone Gone Gone → False | status=202
+[DEBUG] Update Kill The Vibe → False | status=202
+[DEBUG] Update Love Is Gone → False | status=202
+[DEBUG] Update Tomorrow Can Wait → False | status=202
+[DEBUG] Update Love Don't Let Me Go (Walking Away) → False | status=202
+[DEBUG] Update Who’s That Chick? → False | status=202
+[DEBUG] Update When Love Takes Over → False | status=202
+[DEBUG] Update Up & Away → False | status=202
+[DEBUG] Update Stay → False | status=202
+[DEBUG] Update People Come, People Go → False | status=202
+[DEBUG] Update Love, Don't Let Me Go → False | status=202
+[DEBUG] Update The World Is Mine → False | status=202
+[DEBUG] Update Sexy Bitch → False | status=202
+[DEBUG] Update Little Bad Girl → False | status=202
+[DEBUG] Update Louder Than Words → False | status=202
+[DEBUG] Update Turn Me On → False | status=202
+[DEBUG] Update Without You → False | status=202
+[DEBUG] Update I Wanna Go Crazy → False | status=202
+[DEBUG] Update Titanium → False | status=202
+[DEBUG] Update She Wolf (Falling to Pieces) → False | status=202
+[DEBUG] Update Gettin’ Over You → False | status=202
+[DEBUG] Update Memories → False | status=202
+[DEBUG] Update One Love → False | status=202
+[DEBUG] Update Baby When the Light → False | status=202
+[DEBUG] Update Stay / Money → False | status=202
+[DEBUG] Update F*** Me I’m Famous! Ibiza Mix 2013 → False | status=202
+[DEBUG] Update Metropolis → False | status=202
+[DEBUG] Update Just for One Day (Heroes) → False | status=202
+[DEBUG] Update Shot Me Down → False | status=202
+[DEBUG] Update Play Hard → False | status=202
+[DEBUG] Update Blast Off → False | status=202
+[DEBUG] Update Your Love → False | status=202
+[DEBUG] Update Everytime We Touch → False | status=202
+[DEBUG] Update Bad → False | status=202
+[DEBUG] Update Titanium → False | status=202
+[DEBUG] Update Just One Last Time → False | status=202
+[DEBUG] Update Lovers on the Sun → False | status=202
+[DEBUG] Update Dangerous → False | status=202
+[DEBUG] Update What I Did for Love → False | status=202
+[DEBUG] Update Hey Mama → False | status=202
+[DEBUG] Update Sun Goes Down → False | status=202
+[DEBUG] Update Cuentale → False | status=202
+[DEBUG] Update What I Did for Love → False | status=202
+[DEBUG] Update Clap Your Hands → False | status=202
+[DEBUG] Update Jump → False | status=202
+[DEBUG] Update Bang My Head → False | status=202
+[DEBUG] Update Flames → False | status=202
+[DEBUG] Update Let’s Love → False | status=202
+[DEBUG] Update Beautiful People (Miss Monique remix) → False | status=202
+[DEBUG] Update Beautiful People → False | status=202
+[DEBUG] Update This One’s for You → False | status=202
+[DEBUG] Update Would I Lie to You → False | status=202
+[DEBUG] Update Trampoline → False | status=202
+[DEBUG] Update Light My Body Up → False | status=202
+[DEBUG] Update Where Them Girls At → False | status=202
+[DEBUG] Update Stay (Don’t Go Away) → False | status=202
+[DEBUG] Update Dirty Sexy Money → False | status=202
+[DEBUG] Update Save My Life → False | status=202
+[DEBUG] Update Like I Do → False | status=202
+[DEBUG] Update Say My Name → False | status=202
+[DEBUG] Update 2U → False | status=202
+[DEBUG] Update Better When You’re Gone → False | status=202
+[DEBUG] Update Thing For You → False | status=202
+[DEBUG] Update Alive Again → False | status=202
+[DEBUG] Update Make It to Heaven → False | status=202
+[DEBUG] Update Detroit 3 AM → False | status=202
+[DEBUG] Update Permanence → False | status=202
+[DEBUG] Update Element → False | status=202
+[DEBUG] Update Episode 2 → False | status=202
+[DEBUG] Update Something to Hold on To → False | status=202
+[DEBUG] Update The Future Is Now - The Truth → False | status=202
+[DEBUG] Update New Rave → False | status=202
+[DEBUG] Update Dreams → False | status=202
+[DEBUG] Update This Ain’t Techno → False | status=202
+[DEBUG] Update Never Be Alone → False | status=202
+[DEBUG] Update Memories → False | status=202
+[DEBUG] Update Never Going Home Tonight → False | status=202
+[DEBUG] Update If You Really Love Me (How Will I Know) → False | status=202
+[DEBUG] Update Impossible → False | status=202
+[DEBUG] Update Family → False | status=202
+[DEBUG] Update Get Together (Tuborg Open mix) → False | status=202
+[DEBUG] Update Perfect (Exceeder) → False | status=202
+[DEBUG] Update Silver Screen (Shower Scene) → False | status=202
+[DEBUG] Update Crazy What Love Can Do → False | status=202
+[DEBUG] Update Pa' la cultura → False | status=202
+[DEBUG] Update Lovers On The Sun (Remixes) → False | status=202
+[DEBUG] Update Ain’t a Party → False | status=202
+[DEBUG] Update Satisfaction → False | status=202
+[DEBUG] Update I’m Good (Blue) → False | status=202
+[DEBUG] Update You Can’t Change Me → False | status=202
+[DEBUG] Update The Freaks → False | status=202
+[DEBUG] Update Lost in the Rhythm → False | status=202
+[DEBUG] Update Big FU → False | status=202
+[DEBUG] Update When We Were Young (The Logical Song) → False | status=202
+[DEBUG] Update The Final Countdown 2025 → False | status=202
+[DEBUG] Update I Don’t Wanna Wait → False | status=202
+[DEBUG] Update Kill The Vibe → False | status=202
+[DEBUG] Update Raving → False | status=202
+[DEBUG] Update Man in Finance → False | status=202
+[DEBUG] Update Switch → False | status=202
+[DEBUG] Update If (A Better World) → False | status=202
+[DEBUG] Update Home → False | status=202
+[DEBUG] Update Prayer → False | status=202
+[DEBUG] Update F*** Me I’m Famous! Ibiza Mix 2011 → False | status=202
+[DEBUG] Update Dangerous, Part II → False | status=202
+[DEBUG] Update Night in Detroit → False | status=202
+[DEBUG] Update Together → False | status=202
+[DEBUG] Update Things I Haven’t Told You → False | status=202
+[DEBUG] Update After You → False | status=202
+[DEBUG] Update Gone Gone Gone → False | status=202
+[DEBUG] Update Gone Gone Gone (MK remix) → False | status=202
+[DEBUG] Update Gone Gone Gone (unplugged) → False | status=202
+[DEBUG] Update Don’t Leave Me Alone → False | status=202
+[DEBUG] Update Baby Don’t Hurt Me → False | status=202
+[DEBUG] Update Locked In → False | status=202
+[DEBUG] Update Get Together (TBRG Open mix) → False | status=202
+[DEBUG] Update Walked Away → False | status=202
+
+[DEBUG] ===== AFTER MONITORING =====
+- Forever Young | monitored=False
+- In Love With Myself | monitored=False
+- Pop Life | monitored=False
+- Just a Little More Love | monitored=False
+- Delirious | monitored=False
+- Nothing But the Beat (Party Mix) | monitored=False
+- The Best Of | monitored=False
+- Guetta Blaster | monitored=False
+- Lovers on the Sun | monitored=False
+- Nothing but the Beat | monitored=False
+
+[DEBUG] Total monitored albums: 1
+[DEBUG] MONITORED: 7
+[SUCCESS] Monitoring correctly applied
+[DEBUG] Album search command status: 201
+[DEBUG] Album search command response: {
+  "name": "AlbumSearch",
+  "commandName": "Album Search",
+  "body": {
+    "albumIds": [
+      17124
+    ],
+    "sendUpdatesToClient": true,
+    "updateScheduledTask": true,
+    "requiresDiskAccess": false,
+    "isExclusive": false,
+    "isTypeExclusive": false,
+    "isLongRunning": false,
+    "nam
+[INFO] Starter album recommendation approved
+[INFO] Artist: David Guetta
+[INFO] Album: 7

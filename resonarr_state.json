@@ -140,7 +140,10 @@
     "c37cb509-b7fd-4212-a6fb-163535eba4c1": {
       "affinity": 1.0,
       "affinity_reason": "signal_merge(lastfm)",
-      "affinity_ts": 1774631006
+      "affinity_ts": 1774631006,
+      "suppressed": true,
+      "suppression_reason": "operator_rejected_extend_recommendation",
+      "suppressed_ts": 1774644732
     },
     "77f4b530-5657-4c75-ad4f-92a75f72deb1": {
       "affinity": 1.0,
@@ -479,7 +482,7 @@
     "peekaboo": {
       "artist_name": "Peekaboo",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_recommendation",
+      "status": "starter_album_rejected",
       "best_match_score": 0.899953,
       "seed_count": 1,
       "source_seeds": [
@@ -504,7 +507,9 @@
       "starter_album_id": 17398,
       "starter_album_title": "Eyes Wide Open",
       "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
-      "starter_album_score": 3.0
+      "starter_album_score": 3.0,
+      "starter_album_rejected_ts": 1774644752,
+      "starter_album_rejected_note": "manual_reject"
     },
     "illenium": {
       "artist_name": "Illenium",
@@ -525,7 +530,7 @@
     "david guetta": {
       "artist_name": "David Guetta",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_recommendation",
+      "status": "starter_album_approved",
       "best_match_score": 1.0,
       "seed_count": 1,
       "source_seeds": [
@@ -550,7 +555,9 @@
       "starter_album_id": 17124,
       "starter_album_title": "7",
       "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
-      "starter_album_score": 3.0
+      "starter_album_score": 3.0,
+      "starter_album_approved_ts": 1774644719,
+      "starter_album_approved_note": "manual_approve"
     },
     "swedish house mafia": {
       "artist_name": "Swedish House Mafia",

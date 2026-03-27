@@ -1,0 +1,64 @@
+[INFO] Timestamped log file: logs\operator-review-queue-20260327-165000.log
+[INFO] Latest log file: logs\operator-review-queue-latest.log
+=== Resonarr Operator Review Queue ===
+[INFO] Reviewable outputs found: 6
+
+=== Review Item 1/6 ===
+[INFO] Artist: Andy Grammer
+[INFO] Status: starter_album_recommendation
+[INFO] Resolved artist: Andy Grammer
+[INFO] MBID: 9e60ea29-9607-4f7d-aa96-2092ef41f0d3
+[INFO] Album: The Good Parts
+[INFO] Album ID: 17296
+[INFO] Score: 3.0
+[INFO] Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+
+=== Review Item 2/6 ===
+[INFO] Artist: BoyWithUke
+[INFO] Status: starter_album_recommendation
+[INFO] Resolved artist: BoyWithUke
+[INFO] MBID: a148ffde-581c-4c39-a8f1-bc49dec7fe68
+[INFO] Album: Fever Dreams
+[INFO] Album ID: 17343
+[INFO] Score: 3.0
+[INFO] Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+
+=== Review Item 3/6 ===
+[INFO] Artist: Briston Maroney
+[INFO] Status: starter_album_recommendation
+[INFO] Resolved artist: Briston Maroney
+[INFO] MBID: c0dea069-4f46-4f44-8f44-76831e6abb07
+[INFO] Album: Sunflower
+[INFO] Album ID: 17381
+[INFO] Score: 3.0
+[INFO] Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+
+=== Review Item 4/6 ===
+[INFO] Artist: David Guetta
+[INFO] Status: starter_album_recommendation
+[INFO] Resolved artist: David Guetta
+[INFO] MBID: 302bd7b9-d012-4360-897a-93b00c855680
+[INFO] Album: 7
+[INFO] Album ID: 17124
+[INFO] Score: 3.0
+[INFO] Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+
+=== Review Item 5/6 ===
+[INFO] Artist: Peekaboo
+[INFO] Status: starter_album_recommendation
+[INFO] Resolved artist: PEEKABOO
+[INFO] MBID: c37cb509-b7fd-4212-a6fb-163535eba4c1
+[INFO] Album: Eyes Wide Open
+[INFO] Album ID: 17398
+[INFO] Score: 3.0
+[INFO] Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+
+=== Review Item 6/6 ===
+[INFO] Artist: Smino
+[INFO] Status: starter_album_recommendation
+[INFO] Resolved artist: Smino
+[INFO] MBID: 96800e05-9924-4321-859a-76e0d4750f2f
+[INFO] Album: NØIR
+[INFO] Album ID: 17323
+[INFO] Score: 3.0
+[INFO] Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3

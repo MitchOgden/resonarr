@@ -1,0 +1,9 @@
+[INFO] Timestamped log file: logs\operator-reject-extend-20260327-165212.log
+[INFO] Latest log file: logs\operator-reject-extend-latest.log
+=== Resonarr Operator Reject Extend Recommendation ===
+[INFO] Target artist: Peekaboo
+[DEBUG] Total artists: 476
+[DEBUG] Found artist match
+[INFO] Starter album recommendation rejected
+[INFO] Artist: PEEKABOO
+[INFO] Lidarr removal status: success
