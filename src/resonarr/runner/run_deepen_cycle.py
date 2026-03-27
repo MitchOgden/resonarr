@@ -19,7 +19,7 @@ def main():
 
     candidates = source.get_candidates()
 
-    print(f"[INFO] Candidates found: {len(candidates)}")
+    print(f"[INFO] Candidates found (post-ranking pool): {len(candidates)}")
 
     if not candidates:
         print("[INFO] No deepen candidates available")

@@ -3,6 +3,7 @@ from resonarr.execution.lidarr.client import LidarrClient
 from resonarr.config.settings import (
     DEEPEN_LASTFM_PERIOD,
     DEEPEN_MAX_CANDIDATES,
+    DEEPEN_CANDIDATE_SCAN_LIMIT,
     DEEPEN_MIN_LASTFM_PLAYS,
 )
 
@@ -132,4 +133,4 @@ class DeepenCandidateSource:
             )
         )
 
-        return candidates[:DEEPEN_MAX_CANDIDATES]
+        return candidates[:DEEPEN_CANDIDATE_SCAN_LIMIT]
