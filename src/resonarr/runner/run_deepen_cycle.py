@@ -9,10 +9,12 @@ from resonarr.config.settings import (
     ARTIST_COOLDOWN_HOURS,
     RECOMMENDATION_BACKOFF_HOURS,
 )
+from resonarr.utils.logging import configure_runner_logging
 import time
 
 
 def main():
+    configure_runner_logging("deepen-cycle")
     source = DeepenCandidateSource()
     adapter = LidarrAdapter()
 

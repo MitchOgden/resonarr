@@ -118,22 +118,28 @@ Suggested early docs:
 - `mvp-spec-module-boundary.md`
 - `decided.md`
 - `deferred.md`
-- `open-questions.md`
+- `open-questions.md`014803
 - `roadmap.md`
 
 ## Development workflow notes
 
-During active MVP development, the repository intentionally keeps certain runtime artifacts and excludes others:
+During active MVP development, the repository intentionally keeps runtime artifacts that are useful for debugging and review:
 
 - `resonarr_state.json` is currently tracked because the state model is still evolving and the file is useful for debugging promotion, backoff, starter-album planning, and other decision behavior.
-- `logs/` is intentionally ignored. Runner commands write timestamped log files there for local debugging and review, but those files should not be committed.
+- `logs/` is currently tracked so runner output can be reviewed directly from the repository.
 
 Current runner commands:
 
 - `python -m resonarr.runner.run_extend_cycle`
 - `python -m resonarr.runner.run_extend_promotion_cycle`
 
-These runners print the log file path at startup and write output to both the console and a timestamped file in `logs/`.
+Each runner writes output to:
+
+- the console
+- a timestamped log file in `logs/`
+- a stable `*-latest.log` file in `logs/` that is overwritten on each run
+
+This makes it easy to inspect both the latest run and recent run history directly from the codebase.
 
 ## Non-goals for early versions
 
