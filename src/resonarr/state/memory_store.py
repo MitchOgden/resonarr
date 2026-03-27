@@ -177,6 +177,58 @@ class MemoryStore:
         self.state["extend_candidates"][key] = candidate
         self._save()
 
+    def mark_extend_candidate_staged_artist(
+        self,
+        artist_name,
+        artist_mbid,
+        resolved_artist_name,
+    ):
+        key = artist_name.lower().strip()
+        now = int(time.time())
+
+        candidate = self.state["extend_candidates"].get(key, {})
+        if not candidate:
+            candidate = {
+                "artist_name": artist_name,
+                "first_seen_ts": now,
+            }
+
+        candidate["status"] = "staged_artist"
+        candidate["staged_artist_ts"] = now
+        candidate["staged_artist_count"] = candidate.get("staged_artist_count", 0) + 1
+        candidate["resolved_artist_mbid"] = artist_mbid
+        candidate["resolved_artist_name"] = resolved_artist_name
+
+        self.state["extend_candidates"][key] = candidate
+        self._save()
+
+    def mark_extend_candidate_starter_album_exhausted(
+        self,
+        artist_name,
+        artist_mbid,
+        resolved_artist_name,
+        reason,
+    ):
+        key = artist_name.lower().strip()
+        now = int(time.time())
+
+        candidate = self.state["extend_candidates"].get(key, {})
+        if not candidate:
+            candidate = {
+                "artist_name": artist_name,
+                "first_seen_ts": now,
+            }
+
+        candidate["status"] = "starter_album_exhausted"
+        candidate["starter_album_exhausted_ts"] = now
+        candidate["starter_album_exhausted_count"] = candidate.get("starter_album_exhausted_count", 0) + 1
+        candidate["resolved_artist_mbid"] = artist_mbid
+        candidate["resolved_artist_name"] = resolved_artist_name
+        candidate["starter_album_exhausted_reason"] = reason
+
+        self.state["extend_candidates"][key] = candidate
+        self._save()
+
     def mark_extend_candidate_starter_album_candidate(
         self,
         artist_name,

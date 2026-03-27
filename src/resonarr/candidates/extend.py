@@ -102,9 +102,11 @@ class ExtendCandidateSource:
 
         status_rank = {
             "starter_album_candidate": 0,
-            "promotable": 1,
-            "new": 2,
-            "recommended": 3,
+            "staged_artist": 1,
+            "starter_album_exhausted": 2,
+            "promotable": 3,
+            "new": 4,
+            "recommended": 5,
         }
 
         candidates.sort(
@@ -206,9 +208,11 @@ class ExtendCandidateSource:
 
         status_rank = {
             "starter_album_candidate": 0,
-            "promotable": 1,
-            "new": 2,
-            "recommended": 3,
+            "staged_artist": 1,
+            "starter_album_exhausted": 2,
+            "promotable": 3,
+            "new": 4,
+            "recommended": 5,
         }
 
         candidates.sort(

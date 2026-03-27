@@ -81,12 +81,14 @@ class LidarrAdapter:
         print(f"[INFO] Processing artist MBID: {mbid}")
 
         artist = self._get_artist_by_mbid(mbid)
+        staged_artist_created = False
 
         if artist:
             print("[INFO] Artist already exists")
         else:
             print("[INFO] Adding artist...")
             self._add_artist(mbid, lookup=resolved_lookup)
+            staged_artist_created = True
 
         artist = self._wait_for_artist(mbid)
 
@@ -128,7 +130,8 @@ class LidarrAdapter:
             "album_count": intent.metadata.get("album_count"),
             "intent": intent,
             "artist_payload": artist,
-            "albums_payload": albums
+            "albums_payload": albums,
+            "staged_artist_created": staged_artist_created
         }
 
     # ------------------------

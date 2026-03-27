@@ -55,6 +55,11 @@ def main():
             print("[INFO] Existing starter album acquisition candidate already recorded")
             continue
 
+        if candidate.get("status") == "starter_album_exhausted":
+            skipped_existing += 1
+            print("[INFO] Starter album exhaustion already recorded for this candidate")
+            continue
+
         if candidate["in_recommendation_backoff"]:
             if candidate.get("status") == "promotable":
                 cleared = memory.clear_extend_recommendation_backoff(artist_name)
@@ -74,14 +79,27 @@ def main():
             print(f"[INFO] Planning failed with exception: {exc}")
             continue
 
-        if result.get("status") != "success":
-            failed += 1
-            print(f"[INFO] Planning failed: {result.get('reason')}")
-            continue
+        if result.get("staged_artist_created"):
+            memory.mark_extend_candidate_staged_artist(
+                artist_name=artist_name,
+                artist_mbid=result.get("artist_mbid"),
+                resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
+            )
+            print("[INFO] Extend candidate intentionally staged as unmonitored artist in Lidarr")
 
         if result.get("action") != "ACQUIRE_ARTIST":
             skipped_non_acquire += 1
             print(f"[INFO] No starter album acquisition candidate emitted: {result.get('reason')}")
+
+            if result.get("reason") == "no eligible albums remain after ownership filtering":
+                memory.mark_extend_candidate_starter_album_exhausted(
+                    artist_name=artist_name,
+                    artist_mbid=result.get("artist_mbid"),
+                    resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
+                    reason=result.get("reason"),
+                )
+                print("[INFO] Recorded starter album exhaustion for staged/promoted candidate")
+
             continue
 
         intent = result["intent"]
