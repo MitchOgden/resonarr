@@ -125,7 +125,10 @@
     "9e60ea29-9607-4f7d-aa96-2092ef41f0d3": {
       "affinity": 1.0,
       "affinity_reason": "signal_merge(lastfm)",
-      "affinity_ts": 1774630904
+      "affinity_ts": 1774630904,
+      "suppressed": true,
+      "suppression_reason": "operator_rejected_extend_recommendation",
+      "suppressed_ts": 1774648308
     },
     "96800e05-9924-4321-859a-76e0d4750f2f": {
       "affinity": 1.0,
@@ -238,7 +241,7 @@
     "andy grammer": {
       "artist_name": "Andy Grammer",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_recommendation",
+      "status": "starter_album_rejected",
       "best_match_score": 0.657836,
       "seed_count": 2,
       "source_seeds": [
@@ -264,7 +267,9 @@
       "starter_album_id": 17296,
       "starter_album_title": "The Good Parts",
       "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
-      "starter_album_score": 3.0
+      "starter_album_score": 3.0,
+      "starter_album_rejected_ts": 1774648325,
+      "starter_album_rejected_note": "manual_reject"
     },
     "smino": {
       "artist_name": "Smino",
@@ -667,7 +672,7 @@
     "briston maroney": {
       "artist_name": "Briston Maroney",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_recommendation",
+      "status": "starter_album_approved",
       "best_match_score": 1.0,
       "seed_count": 1,
       "source_seeds": [
@@ -692,7 +697,9 @@
       "starter_album_id": 17381,
       "starter_album_title": "Sunflower",
       "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
-      "starter_album_score": 3.0
+      "starter_album_score": 3.0,
+      "starter_album_approved_ts": 1774648305,
+      "starter_album_approved_note": "manual_approve"
     },
     "flipturn": {
       "artist_name": "Flipturn",

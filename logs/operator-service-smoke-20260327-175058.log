@@ -1,0 +1,80 @@
+[INFO] Timestamped log file: logs\operator-service-smoke-20260327-175058.log
+[INFO] Latest log file: logs\operator-service-smoke-latest.log
+=== Resonarr Operator Service Smoke Test ===
+[INFO] Review queue service result:
+{
+  "status": "success",
+  "count": 7,
+  "items": [
+    {
+      "artist_name": "American Authors",
+      "status": "starter_album_recommendation",
+      "resolved_artist_name": "American Authors",
+      "resolved_artist_mbid": "9ce0515d-cc88-4df6-8a2e-d231c13cb2c2",
+      "starter_album_id": 17435,
+      "starter_album_title": "Seasons",
+      "starter_album_score": 3.0,
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+    },
+    {
+      "artist_name": "Andy Grammer",
+      "status": "starter_album_recommendation",
+      "resolved_artist_name": "Andy Grammer",
+      "resolved_artist_mbid": "9e60ea29-9607-4f7d-aa96-2092ef41f0d3",
+      "starter_album_id": 17296,
+      "starter_album_title": "The Good Parts",
+      "starter_album_score": 3.0,
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+    },
+    {
+      "artist_name": "BoyWithUke",
+      "status": "starter_album_recommendation",
+      "resolved_artist_name": "BoyWithUke",
+      "resolved_artist_mbid": "a148ffde-581c-4c39-a8f1-bc49dec7fe68",
+      "starter_album_id": 17343,
+      "starter_album_title": "Fever Dreams",
+      "starter_album_score": 3.0,
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+    },
+    {
+      "artist_name": "Briston Maroney",
+      "status": "starter_album_recommendation",
+      "resolved_artist_name": "Briston Maroney",
+      "resolved_artist_mbid": "c0dea069-4f46-4f44-8f44-76831e6abb07",
+      "starter_album_id": 17381,
+      "starter_album_title": "Sunflower",
+      "starter_album_score": 3.0,
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+    },
+    {
+      "artist_name": "Em Beihold",
+      "status": "starter_album_recommendation",
+      "resolved_artist_name": "Em Beihold",
+      "resolved_artist_mbid": "7575e3b8-ba04-4acc-a895-9cc528f86525",
+      "starter_album_id": 17483,
+      "starter_album_title": "Egg in the Backseat",
+      "starter_album_score": 3.0,
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+    },
+    {
+      "artist_name": "Smino",
+      "status": "starter_album_recommendation",
+      "resolved_artist_name": "Smino",
+      "resolved_artist_mbid": "96800e05-9924-4321-859a-76e0d4750f2f",
+      "starter_album_id": 17323,
+      "starter_album_title": "NØIR",
+      "starter_album_score": 3.0,
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+    },
+    {
+      "artist_name": "The Astronomers",
+      "status": "starter_album_recommendation",
+      "resolved_artist_name": "The Astronomers",
+      "resolved_artist_mbid": "2119e495-b0be-452d-adf2-ca38923ecca6",
+      "starter_album_id": 17493,
+      "starter_album_title": "The Occasion",
+      "starter_album_score": 3.0,
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+    }
+  ]
+}
