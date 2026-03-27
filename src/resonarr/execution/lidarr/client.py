@@ -29,3 +29,7 @@ class LidarrClient:
     def put(self, path, json=None, params=None):
         url = f"{self.base_url}{path}"
         return self.session.put(url, json=json, params=params)
+
+    def delete(self, path, params=None):
+        url = f"{self.base_url}{path}"
+        return self.session.delete(url, params=params)

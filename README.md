@@ -133,6 +133,19 @@ Current runner commands:
 - `python -m resonarr.runner.run_extend_cycle`
 - `python -m resonarr.runner.run_extend_promotion_cycle`
 
+Operator workflow runners:
+
+- `python -m resonarr.runner.run_operator_review_queue`
+- `python -m resonarr.runner.run_operator_approve_extend "Artist Name"`
+- `python -m resonarr.runner.run_operator_reject_extend "Artist Name"`
+
+Current MVP operator flow:
+
+1. Run extend discovery and extend promotion.
+2. Review `starter_album_recommendation` and `starter_album_candidate` outputs.
+3. Approve a recommendation to monitor and search the selected album in Lidarr.
+4. Reject a recommendation to suppress the artist in Resonarr and remove the staged unmonitored artist from Lidarr.
+
 Each runner writes output to:
 
 - the console

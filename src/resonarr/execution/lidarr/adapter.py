@@ -265,6 +265,12 @@ class LidarrAdapter:
         print("[DEBUG] Artist NOT found")
         return None
 
+    def _get_artist_by_id(self, artist_id):
+        resp = self.client.get(f"/api/v1/artist/{artist_id}")
+        if resp.status_code != 200:
+            return None
+        return resp.json()
+
     def _add_artist(self, mbid, lookup=None):
         if lookup is None:
             lookup = self._lookup_artist(mbid)
@@ -515,6 +521,68 @@ class LidarrAdapter:
             self._search_album(best_album["id"])
 
             self.memory.set_artist_action(intent.artist_mbid)
+
+    def approve_starter_album_recommendation(self, artist_mbid, album_id):
+        artist = self._get_artist_by_mbid(artist_mbid)
+        if not artist:
+            return {
+                "status": "failed",
+                "reason": "artist not found in Lidarr"
+            }
+
+        albums = self._get_albums(artist["id"])
+        if not albums:
+            return {
+                "status": "failed",
+                "reason": "no albums found for artist"
+            }
+
+        target = next((a for a in albums if a.get("id") == album_id), None)
+        if not target:
+            return {
+                "status": "failed",
+                "reason": "target album not found in Lidarr"
+            }
+
+        self._apply_monitoring(artist, target, albums)
+        self._search_album(target["id"])
+        self.memory.set_artist_action(artist_mbid)
+
+        return {
+            "status": "success",
+            "artist_name": artist.get("artistName"),
+            "album_title": target.get("title"),
+            "album_id": target.get("id"),
+        }
+
+    def remove_staged_artist(self, artist_mbid):
+        artist = self._get_artist_by_mbid(artist_mbid)
+        if not artist:
+            return {
+                "status": "success",
+                "reason": "artist already absent from Lidarr"
+            }
+
+        resp = self.client.delete(
+            f"/api/v1/artist/{artist['id']}",
+            params={
+                "deleteFiles": "false",
+                "addImportExclusion": "false",
+            }
+        )
+
+        if resp.status_code not in (200, 202):
+            return {
+                "status": "failed",
+                "reason": f"delete failed ({resp.status_code})",
+                "response_text": resp.text[:300],
+            }
+
+        return {
+            "status": "success",
+            "artist_name": artist.get("artistName"),
+            "artist_id": artist.get("id"),
+        }
 
     # ------------------------
     # Monitoring

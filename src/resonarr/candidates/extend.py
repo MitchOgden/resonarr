@@ -103,11 +103,13 @@ class ExtendCandidateSource:
         status_rank = {
             "starter_album_candidate": 0,
             "starter_album_recommendation": 1,
-            "staged_artist": 2,
-            "starter_album_exhausted": 3,
-            "promotable": 4,
-            "new": 5,
-            "recommended": 6,
+            "starter_album_approved": 2,
+            "starter_album_rejected": 3,
+            "staged_artist": 4,
+            "starter_album_exhausted": 5,
+            "promotable": 6,
+            "new": 7,
+            "recommended": 8,
         }
 
         candidates.sort(
