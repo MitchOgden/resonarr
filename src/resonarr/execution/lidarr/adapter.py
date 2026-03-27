@@ -207,6 +207,19 @@ class LidarrAdapter:
 
         return data
 
+    def _search_album(self, album_id):
+        payload = {
+            "name": "AlbumSearch",
+            "albumIds": [album_id]
+        }
+
+        resp = self.client.post("/api/v1/command", json=payload)
+
+        print(f"[DEBUG] Album search command status: {resp.status_code}")
+        print(f"[DEBUG] Album search command response: {resp.text[:300]}")
+
+        return resp
+
     # ------------------------
     # Decision
     # ------------------------    
@@ -332,6 +345,7 @@ class LidarrAdapter:
             )
 
             self._apply_monitoring(artist, best_album, albums)
+            self._search_album(best_album["id"])
 
             self.memory.set_artist_action(intent.artist_mbid)
 
