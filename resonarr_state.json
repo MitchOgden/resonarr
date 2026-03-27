@@ -207,6 +207,15 @@
     },
     "extend:boywithuke": {
       "last_recommendation_ts": 1774641824
+    },
+    "extend:american authors": {
+      "last_recommendation_ts": 1774646919
+    },
+    "extend:em beihold": {
+      "last_recommendation_ts": 1774646923
+    },
+    "extend:the astronomers": {
+      "last_recommendation_ts": 1774646929
     }
   },
   "extend_candidates": {
@@ -917,7 +926,7 @@
     "american authors": {
       "artist_name": "American Authors",
       "first_seen_ts": 1774613678,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "seen_count": 5,
       "recommendation_count": 0,
       "best_match_score": 0.885058,
@@ -929,18 +938,24 @@
       "seed_rank": 10,
       "last_seen_ts": 1774632153,
       "promotable_ts": 1774613703,
-      "staged_artist_ts": 1774632167,
-      "staged_artist_count": 1,
+      "staged_artist_ts": 1774646919,
+      "staged_artist_count": 2,
       "resolved_artist_mbid": "9ce0515d-cc88-4df6-8a2e-d231c13cb2c2",
       "resolved_artist_name": "American Authors",
       "starter_album_exhausted_ts": 1774632167,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774646919,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17435,
+      "starter_album_title": "Seasons",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "em beihold": {
       "artist_name": "Em Beihold",
       "first_seen_ts": 1774613678,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "seen_count": 5,
       "recommendation_count": 0,
       "best_match_score": 0.865961,
@@ -952,18 +967,24 @@
       "seed_rank": 10,
       "last_seen_ts": 1774632153,
       "promotable_ts": 1774613703,
-      "staged_artist_ts": 1774632173,
-      "staged_artist_count": 1,
+      "staged_artist_ts": 1774646923,
+      "staged_artist_count": 2,
       "resolved_artist_mbid": "7575e3b8-ba04-4acc-a895-9cc528f86525",
       "resolved_artist_name": "Em Beihold",
       "starter_album_exhausted_ts": 1774632173,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774646923,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17483,
+      "starter_album_title": "Egg in the Backseat",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "the astronomers": {
       "artist_name": "The Astronomers",
       "first_seen_ts": 1774613678,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "seen_count": 5,
       "recommendation_count": 0,
       "best_match_score": 0.84901,
@@ -975,13 +996,19 @@
       "seed_rank": 10,
       "last_seen_ts": 1774632153,
       "promotable_ts": 1774613704,
-      "staged_artist_ts": 1774632187,
-      "staged_artist_count": 1,
+      "staged_artist_ts": 1774646929,
+      "staged_artist_count": 2,
       "resolved_artist_mbid": "2119e495-b0be-452d-adf2-ca38923ecca6",
       "resolved_artist_name": "The Astronomers",
       "starter_album_exhausted_ts": 1774632187,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774646929,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17493,
+      "starter_album_title": "The Occasion",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "lovelytheband": {
       "artist_name": "lovelytheband",

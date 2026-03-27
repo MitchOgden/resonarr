@@ -193,3 +193,508 @@
 }
 [DEBUG] Total artists: 476
 [DEBUG] Found artist match
+
+[DEBUG] ===== HYDRATED ALBUM STATE (STAGED ARTIST) =====
+[DEBUG] Album: Believer | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Do My Own Thing | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Good Danny’s 3/15/2014 | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Tumble Down (The Whistle Song) | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Anthropology | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: American Authors | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Oh, What a Life | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Go Big Or Go Home | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: What We Live For | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Deep Water | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Best Day of My Life | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Everything Everything | monitored=True | albumType=Single | secondaryTypes=['Soundtrack']
+[DEBUG] Album: Rich with Love | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: I Wanna Go Out | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Save Tonight | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Microphone | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Counting Down | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Counting Down | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Seasons | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Best Night of My Life | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: good 4 u | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Circles | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Best Night of My Life | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Sweet Caroline | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: My Last Dime | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Daisies | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: In A Big Country | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Bon Voyage | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Come Home to Me | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: We Happy Don’t Worry | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Christmas in Hollis | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Can't Stand the Mourning | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Sleigh Ride | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Favorite Time of the Year | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Brick By Brick | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Stay Around | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Neighborhood | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Luck | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: What We Live For | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: I’m Born to Run | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Call Your Mother | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Trouble | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Right Here Right Now | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Come Too Far | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Blind for Love | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Christmas Karaoke | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: This Christmas Eve | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: We Are American Authors | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: This Little Light of Mine | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Race Car | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Favorite Time of the Year | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Say Amen | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Best I Can | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Nice and Easy | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Move | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Perfectly Imperfect | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Timeless | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Something Amazing | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Champion | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Plex: artist not found: American Authors
+[DEBUG] Last.fm signals:
+  artist=American Authors
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Ignoring monitored flag for staged artist album: Oh, What a Life
+[DEBUG] Ignoring monitored flag for staged artist album: What We Live For
+[DEBUG] Ignoring monitored flag for staged artist album: Seasons
+[DEBUG] Ignoring monitored flag for staged artist album: Best Night of My Life
+[DEBUG] Ignoring monitored flag for staged artist album: Call Your Mother
+
+[DEBUG] Album scoring:
+- Seasons | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- What We Live For | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Best Night of My Life | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Call Your Mother | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Oh, What a Life | monitored=True | score=2.00 (base=2.00) | affinity=1.00 | modern_release(+2), affinity_multiplier(1.00)
+[INFO] Intent decided:
+  Action: RECOMMEND_ONLY
+  Artist: American Authors
+  Album: Seasons
+  Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+  Score: 3.00
+  Thresholds: acquire=9, recommend=4
+[INFO] Extend candidate intentionally staged as unmonitored artist in Lidarr
+[INFO] Starter album recommendation created
+[INFO] Resolved artist: American Authors
+[INFO] MBID: 9ce0515d-cc88-4df6-8a2e-d231c13cb2c2
+[INFO] Album: Seasons
+[INFO] Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+[INFO] Score: 3.00
+
+=== Promotable Candidate 2/12 ===
+[INFO] Artist: Em Beihold
+[INFO] Best match score: 0.87
+[INFO] Seed count: 1
+[INFO] Seen count: 5
+[INFO] Recommendation count: 0
+[INFO] Source seeds: AJR
+[INFO] Status: starter_album_exhausted
+[INFO] In recommendation backoff: False
+[INFO] Re-evaluating previously exhausted candidate under current staged policy
+[INFO] Resolving extend artist: Em Beihold
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Em Beihold' -> 'Em Beihold' (7575e3b8-ba04-4acc-a895-9cc528f86525)
+[INFO] Processing artist MBID: 7575e3b8-ba04-4acc-a895-9cc528f86525
+[DEBUG] Total artists: 476
+[DEBUG] Artist NOT found
+[INFO] Adding artist...
+[DEBUG] Quality profiles status: 200
+[DEBUG] Quality profiles returned: 2
+[DEBUG] Resolved quality profile 'Lossless' -> ID 2
+[DEBUG] Metadata profiles status: 200
+[DEBUG] Metadata profiles returned: 2
+[DEBUG] Resolved metadata profile 'Standard' -> ID 1
+[DEBUG] Add artist status: 201
+[DEBUG] Add artist response: {
+  "status": "continuing",
+  "ended": false,
+  "artistName": "Em Beihold",
+  "foreignArtistId": "7575e3b8-ba04-4acc-a895-9cc528f86525",
+  "tadbId": 0,
+  "discogsId": 0,
+  "overview": "Emily Mahin \"Em\" Beihold is an American singer-songwriter. She released her debut EP Infrared in 2017. After signing to Republic Records in 2021, she released her major-label debut single \"Numb Little Bug\" in 2022, which brought her widespread recognition. The same year, she released her second EP, Egg in the Backseat. Her debut album, Tales of a Failed Shapeshifter, is scheduled to release on February 27, 2026.",
+  "artistType": "Person",
+  "disambiguation": "",
+  "links": [
+    {
+      "url": "https://open.spotify.com/artist/1yUUhz5YKlWiBsqfbhEBTm",
+      "name": "spotify"
+    },
+    {
+      "url": "https://www.instagram.com/itsemmusic/",
+      "name": "instagram"
+    },
+    {
+      "url": "https://www.embeihold.com/",
+      "name": "embeihold"
+    },
+    {
+      "url": "https://open.spotify.com/artist/7o2ZQYM7nTsaVdkXY38UAA",
+      "name": "spotify"
+    },
+    {
+      "url": "https://music.apple.com/fr/artist/1505702878",
+      "name": "apple"
+    },
+    {
+      "url": "https://www.deezer.com/artist/89956372",
+      "name": "deezer"
+    },
+    {
+      "url": "https://www.instagram.com/embeihold/",
+      "name": "instagram"
+    },
+    {
+      "url": "https://www.facebook.com/EmBeihold",
+      "name": "facebook"
+    },
+    {
+      "url": "https://genius.com/artists/Em-beihold",
+      "name": "genius"
+    },
+    {
+      "url": "https://twitter.com/embeihold",
+      "name": "twitter"
+    },
+    {
+      "url": "https://soundcloud.com/embeihold-music",
+      "name": "soundcloud"
+    },
+    {
+      "url": "https://www.linkedin.com/in/emilybeihold",
+      "name": "linkedin"
+    },
+    {
+      "url": "https://www.musixmatch.com/artist/Em-Beihold",
+      "name": "musixmatch"
+    },
+    {
+      "url": "https://www.tiktok.com/@embeihold?lang=fr",
+      "name": "tiktok"
+    },
+    {
+      "url": "https://www.last.fm/music/Em+Beihold",
+      "name": "last"
+    },
+    {
+      "url": "https://music.amazon.com/artists/B086MG49JC",
+      "name": "amazon"
+    },
+    {
+      "url": "https://gb.napster.com/artist/em-beihold",
+      "name": "napster"
+    },
+    {
+      "url": "https://rateyourmusic.com/artist/emily-beihold",
+      "name": "rateyourmusic"
+    },
+    {
+      "url": "https://music.apple.com/us/artist/1505702878",
+      "name": "apple"
+    },
+    {
+      "url": "https://www.discogs.com/artist/11092475",
+      "name": "discogs"
+    },
+    {
+      "url": "https://www.wikidata.org/wiki/Q111333139",
+      "name": "wikidata"
+    },
+    {
+      "url": "https://www.allmusic.com/artist/mn0004186337",
+      "name": "allmusic"
+    },
+    {
+      "url": "https://tidal.com/artist/18904052",
+      "name": "tidal"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCcOIv_VJ7JXC35vg0fG5dUA",
+      "name": "youtube"
+    },
+    {
+      "url": "https://music.apple.com/nz/artist/1505702878",
+      "name": "apple"
+    },
+    {
+      "url": "https://music.apple.com/de/artist/1505702878",
+      "name": "apple"
+    },
+    {
+      "url": "https://music.apple.com/gb/artist/1505702878",
+      "name": "apple"
+    },
+    {
+      "url": "https://imvdb.com/n/em-beihold",
+      "name": "imvdb"
+    }
+  ],
+  "nextAlbum": null,
+  "lastAlbum": null,
+  "images": [
+    {
+      "url": "/MediaCover/515/clearlogo.png",
+      "coverType": "clearlogo",
+      "extension": ".png",
+      "remoteUrl": "https://images.lidarr.audio/cache/https://assets.fanart.tv/fanart/beihold-em-68fcbf643732e.png"
+    },
+    {
+      "url": "/MediaCover/515/poster.jpg",
+      "coverType": "poster",
+      "extension": ".jpg",
+      "remoteUrl": "https://images.lidarr.audio/cache/https://r2.theaudiodb.com/images/media/artist/thumb/5xvr4k1761195556.jpg"
+    },
+    {
+      "url": "/MediaCover/515/fanart.jpg",
+      "coverType": "fanart",
+      "extension": ".jpg",
+      "remoteUrl": "https://images.lidarr.audio/cache/https://r2.theaudiodb.com/images/media/artist/fanart/db0src1651347396.jpg"
+    },
+    {
+      "url": "/MediaCover/515/banner.jpg",
+      "coverType": "banner",
+      "extension": ".jpg",
+      "remoteUrl": "https://images.lidarr.audio/cache/https://r2.theaudiodb.com/images/media/artist/banner/fz6eja1761199055.jpg"
+    }
+  ],
+  "path": "/volume1/music/library/Em Beihold",
+  "qualityProfileId": 2,
+  "metadataProfileId": 1,
+  "monitored": false,
+  "monitorNewItems": "all",
+  "rootFolderPath": "/volume1/music/library",
+  "genres": [
+    "Pop",
+    "Singer-Songwriter",
+    "Teen Pop"
+  ],
+  "cleanName": "embeihold",
+  "sortName": "em beihold",
+  "tags": [],
+  "added": "2026-03-27T21:28:40Z",
+  "addOptions": {
+    "searchForMissingAlbums": false,
+    "monitor": "unknown",
+    "albumsToMonitor": [],
+    "monitored": false
+  },
+  "ratings": {
+    "votes": 1,
+    "value": 10.0
+  },
+  "statistics": {
+    "albumCount": 0,
+    "trackFileCount": 0,
+    "trackCount": 0,
+    "totalTrackCount": 0,
+    "sizeOnDisk": 0,
+    "percentOfTracks": 0
+  },
+  "id": 515
+}
+[DEBUG] Total artists: 477
+[DEBUG] Found artist match
+
+[DEBUG] ===== HYDRATED ALBUM STATE (STAGED ARTIST) =====
+[DEBUG] Album: Maybe Life Is Good | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Too Precious | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Numb Little Bug | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Forgive Yourself | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Painful Truth | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Nobody Else | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: City of Angels | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Egg in the Backseat | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Roller Coasters Make Me Sad | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Pedestal | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Groundhog Day | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Blink of an Eye | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Brutus | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Hot Goblin | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Scared of the Dark | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Tales of a Failed Shapeshifter | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Infrared | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Plex: artist not found: Em Beihold
+[DEBUG] Last.fm signals:
+  artist=Em Beihold
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Ignoring monitored flag for staged artist album: Egg in the Backseat
+[DEBUG] Ignoring monitored flag for staged artist album: Tales of a Failed Shapeshifter
+
+[DEBUG] Album scoring:
+- Egg in the Backseat | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Tales of a Failed Shapeshifter | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+[INFO] Intent decided:
+  Action: RECOMMEND_ONLY
+  Artist: Em Beihold
+  Album: Egg in the Backseat
+  Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+  Score: 3.00
+  Thresholds: acquire=9, recommend=4
+[INFO] Extend candidate intentionally staged as unmonitored artist in Lidarr
+[INFO] Starter album recommendation created
+[INFO] Resolved artist: Em Beihold
+[INFO] MBID: 7575e3b8-ba04-4acc-a895-9cc528f86525
+[INFO] Album: Egg in the Backseat
+[INFO] Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+[INFO] Score: 3.00
+
+=== Promotable Candidate 3/12 ===
+[INFO] Artist: The Astronomers
+[INFO] Best match score: 0.85
+[INFO] Seed count: 1
+[INFO] Seen count: 5
+[INFO] Recommendation count: 0
+[INFO] Source seeds: AJR
+[INFO] Status: starter_album_exhausted
+[INFO] In recommendation backoff: False
+[INFO] Re-evaluating previously exhausted candidate under current staged policy
+[INFO] Resolving extend artist: The Astronomers
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'The Astronomers' -> 'The Astronomers' (2119e495-b0be-452d-adf2-ca38923ecca6)
+[INFO] Processing artist MBID: 2119e495-b0be-452d-adf2-ca38923ecca6
+[DEBUG] Total artists: 477
+[DEBUG] Artist NOT found
+[INFO] Adding artist...
+[DEBUG] Quality profiles status: 200
+[DEBUG] Quality profiles returned: 2
+[DEBUG] Resolved quality profile 'Lossless' -> ID 2
+[DEBUG] Metadata profiles status: 200
+[DEBUG] Metadata profiles returned: 2
+[DEBUG] Resolved metadata profile 'Standard' -> ID 1
+[DEBUG] Add artist status: 201
+[DEBUG] Add artist response: {
+  "status": "continuing",
+  "ended": false,
+  "artistName": "The Astronomers",
+  "foreignArtistId": "2119e495-b0be-452d-adf2-ca38923ecca6",
+  "tadbId": 0,
+  "discogsId": 0,
+  "artistType": "Group",
+  "disambiguation": "A Duo band",
+  "links": [
+    {
+      "url": "https://www.facebook.com/theastronomers.music",
+      "name": "facebook"
+    },
+    {
+      "url": "https://twitter.com/the_astronomers",
+      "name": "twitter"
+    },
+    {
+      "url": "https://open.spotify.com/artist/3jx7HGyoa2APekVbiXZvFh",
+      "name": "spotify"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCQon99Xevcm_Ixi91D6BIxg",
+      "name": "youtube"
+    },
+    {
+      "url": "https://www.deezer.com/artist/65838882",
+      "name": "deezer"
+    },
+    {
+      "url": "https://music.apple.com/gb/artist/1464313788",
+      "name": "apple"
+    },
+    {
+      "url": "https://tidal.com/artist/15802451",
+      "name": "tidal"
+    }
+  ],
+  "nextAlbum": null,
+  "lastAlbum": null,
+  "images": [],
+  "path": "/volume1/music/library/The Astronomers",
+  "qualityProfileId": 2,
+  "metadataProfileId": 1,
+  "monitored": false,
+  "monitorNewItems": "all",
+  "rootFolderPath": "/volume1/music/library",
+  "genres": [],
+  "cleanName": "theastronomers",
+  "sortName": "astronomers",
+  "tags": [],
+  "added": "2026-03-27T21:28:44Z",
+  "addOptions": {
+    "searchForMissingAlbums": false,
+    "monitor": "unknown",
+    "albumsToMonitor": [],
+    "monitored": false
+  },
+  "ratings": {
+    "votes": 0,
+    "value": 0
+  },
+  "statistics": {
+    "albumCount": 0,
+    "trackFileCount": 0,
+    "trackCount": 0,
+    "totalTrackCount": 0,
+    "sizeOnDisk": 0,
+    "percentOfTracks": 0
+  },
+  "id": 516
+}
+[DEBUG] Total artists: 478
+[DEBUG] Found artist match
+
+[DEBUG] ===== HYDRATED ALBUM STATE (STAGED ARTIST) =====
+[DEBUG] Album: The Occasion | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Guess It's Just Life | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Sinking Ships & Story Tales | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Like the Holidays | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Bad Type | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Overthinking | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Not Forever Anymore | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Good Morning World | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Good Night World | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Plex: artist not found: The Astronomers
+[DEBUG] Last.fm signals:
+  artist=The Astronomers
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Ignoring monitored flag for staged artist album: The Occasion
+[DEBUG] Ignoring monitored flag for staged artist album: Guess It's Just Life
+[DEBUG] Ignoring monitored flag for staged artist album: Sinking Ships & Story Tales
+[DEBUG] Ignoring monitored flag for staged artist album: Not Forever Anymore
+[DEBUG] Ignoring monitored flag for staged artist album: Good Morning World
+[DEBUG] Ignoring monitored flag for staged artist album: Good Night World
+
+[DEBUG] Album scoring:
+- The Occasion | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Not Forever Anymore | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Good Morning World | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Good Night World | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Guess It's Just Life | monitored=True | score=0.00 (base=0.00) | affinity=1.00 | affinity_multiplier(1.00)
+[INFO] Intent decided:
+  Action: RECOMMEND_ONLY
+  Artist: The Astronomers
+  Album: The Occasion
+  Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+  Score: 3.00
+  Thresholds: acquire=9, recommend=4
+[INFO] Extend candidate intentionally staged as unmonitored artist in Lidarr
+[INFO] Starter album recommendation created
+[INFO] Resolved artist: The Astronomers
+[INFO] MBID: 2119e495-b0be-452d-adf2-ca38923ecca6
+[INFO] Album: The Occasion
+[INFO] Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+[INFO] Score: 3.00
+
+[INFO] Reached starter album planning cap for this run
+
+=== EXTEND PROMOTION SUMMARY ===
+[INFO] Starter album outputs created: 3
+[INFO] Skipped existing starter album candidate: 0
+[INFO] Skipped recommendation backoff: 0
+[INFO] Skipped below acquire threshold: 0
+[INFO] Failed planning attempts: 0
