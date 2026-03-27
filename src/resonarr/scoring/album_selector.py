@@ -154,7 +154,7 @@ class AlbumSelector:
                         reasons.append("very_old_release(-1)")
                 
             adjusted_score = score * affinity
-            reasons.append(f"affinity_multiplier({affinity})")
+            reasons.append(f"affinity_multiplier({affinity:.2f})")
 
             scored.append({
                 "album": album,
