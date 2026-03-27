@@ -494,7 +494,7 @@
     "david guetta": {
       "artist_name": "David Guetta",
       "first_seen_ts": 1774584858,
-      "status": "promotable",
+      "status": "staged_artist",
       "best_match_score": 1.0,
       "seed_count": 1,
       "source_seeds": [
@@ -506,7 +506,11 @@
       "last_recommended_ts": 1774584858,
       "seen_count": 7,
       "recommendation_count": 0,
-      "promotable_ts": 1774613326
+      "promotable_ts": 1774613326,
+      "staged_artist_ts": 1774633172,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "302bd7b9-d012-4360-897a-93b00c855680",
+      "resolved_artist_name": "David Guetta"
     },
     "swedish house mafia": {
       "artist_name": "Swedish House Mafia",
@@ -631,7 +635,7 @@
     "flipturn": {
       "artist_name": "Flipturn",
       "first_seen_ts": 1774584858,
-      "status": "promotable",
+      "status": "staged_artist",
       "best_match_score": 0.824881,
       "seed_count": 1,
       "source_seeds": [
@@ -643,7 +647,11 @@
       "last_recommended_ts": 1774584858,
       "seen_count": 2,
       "recommendation_count": 0,
-      "promotable_ts": 1774613326
+      "promotable_ts": 1774613326,
+      "staged_artist_ts": 1774633176,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "0c97b403-1aae-4315-93ab-af54fe2169d6",
+      "resolved_artist_name": "flipturn"
     },
     "cardinal bloom": {
       "artist_name": "Cardinal Bloom",
