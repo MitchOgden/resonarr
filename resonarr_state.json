@@ -1,26 +1,12 @@
 {
   "artists": {
-    "extend:smino": {
-      "last_recommendation_ts": 1774584858
-    },
-    "extend:david guetta": {
-      "last_recommendation_ts": 1774584858
-    },
-    "extend:briston maroney": {
-      "last_recommendation_ts": 1774584858
-    },
-    "extend:peekaboo": {
-      "last_recommendation_ts": 1774584858
-    },
-    "extend:flipturn": {
-      "last_recommendation_ts": 1774584858
-    },
-    "extend:cardinal bloom": {
-      "last_recommendation_ts": 1774584858
-    },
-    "extend:capital cities": {
-      "last_recommendation_ts": 1774584858
-    },
+    "extend:smino": {},
+    "extend:david guetta": {},
+    "extend:briston maroney": {},
+    "extend:peekaboo": {},
+    "extend:flipturn": {},
+    "extend:cardinal bloom": {},
+    "extend:capital cities": {},
     "extend:goldlink": {
       "last_recommendation_ts": 1774584858
     },
@@ -105,9 +91,7 @@
     "extend:the kilans": {
       "last_recommendation_ts": 1774610226
     },
-    "extend:andy grammer": {
-      "last_recommendation_ts": 1774610226
-    },
+    "extend:andy grammer": {},
     "a148ffde-581c-4c39-a8f1-bc49dec7fe68": {
       "affinity": 1.0,
       "affinity_reason": "signal_merge(lastfm)",
@@ -219,35 +203,42 @@
       "source_seeds": [
         "Surfaces"
       ],
-      "seed_playcount": 72,
+      "seed_playcount": 73,
       "seed_rank": 2,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
     "andy grammer": {
       "artist_name": "Andy Grammer",
       "first_seen_ts": 1774584858,
-      "status": "promotable",
+      "status": "starter_album_exhausted",
       "best_match_score": 0.657836,
       "seed_count": 2,
       "source_seeds": [
         "AJR",
         "Surfaces"
       ],
-      "seed_playcount": 72,
+      "seed_playcount": 73,
       "seed_rank": 2,
-      "last_seen_ts": 1774630811,
-      "seen_count": 6,
+      "last_seen_ts": 1774632153,
+      "seen_count": 7,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226,
-      "promotable_ts": 1774613678
+      "promotable_ts": 1774613678,
+      "staged_artist_ts": 1774632204,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "9e60ea29-9607-4f7d-aa96-2092ef41f0d3",
+      "resolved_artist_name": "Andy Grammer",
+      "starter_album_exhausted_ts": 1774632204,
+      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "smino": {
       "artist_name": "Smino",
       "first_seen_ts": 1774584858,
-      "status": "promotable",
+      "status": "starter_album_exhausted",
       "best_match_score": 1.0,
       "seed_count": 1,
       "source_seeds": [
@@ -255,11 +246,18 @@
       ],
       "seed_playcount": 56,
       "seed_rank": 3,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 6,
+      "seen_count": 7,
       "recommendation_count": 0,
-      "promotable_ts": 1774613326
+      "promotable_ts": 1774613326,
+      "staged_artist_ts": 1774632213,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "96800e05-9924-4321-859a-76e0d4750f2f",
+      "resolved_artist_name": "Smino",
+      "starter_album_exhausted_ts": 1774632213,
+      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "goldlink": {
       "artist_name": "GoldLink",
@@ -272,9 +270,9 @@
       ],
       "seed_playcount": 56,
       "seed_rank": 3,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "isaiah rashad": {
@@ -288,9 +286,9 @@
       ],
       "seed_playcount": 56,
       "seed_rank": 3,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "ag club": {
@@ -304,9 +302,9 @@
       ],
       "seed_playcount": 56,
       "seed_rank": 3,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "bas": {
@@ -320,9 +318,9 @@
       ],
       "seed_playcount": 56,
       "seed_rank": 3,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "earthgang": {
@@ -336,8 +334,8 @@
       ],
       "seed_playcount": 56,
       "seed_rank": 3,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
@@ -352,8 +350,8 @@
       ],
       "seed_playcount": 56,
       "seed_rank": 3,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
@@ -368,8 +366,8 @@
       ],
       "seed_playcount": 56,
       "seed_rank": 3,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
@@ -384,9 +382,9 @@
       ],
       "seed_playcount": 46,
       "seed_rank": 4,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "jay-z & kanye west": {
@@ -400,9 +398,9 @@
       ],
       "seed_playcount": 46,
       "seed_rank": 4,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "travi$ scott": {
@@ -416,8 +414,8 @@
       ],
       "seed_playcount": 46,
       "seed_rank": 4,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
@@ -432,9 +430,9 @@
       ],
       "seed_playcount": 55,
       "seed_rank": 3,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "joywave": {
@@ -448,15 +446,15 @@
       ],
       "seed_playcount": 55,
       "seed_rank": 3,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "peekaboo": {
       "artist_name": "Peekaboo",
       "first_seen_ts": 1774584858,
-      "status": "promotable",
+      "status": "starter_album_exhausted",
       "best_match_score": 0.899953,
       "seed_count": 1,
       "source_seeds": [
@@ -464,11 +462,18 @@
       ],
       "seed_playcount": 42,
       "seed_rank": 6,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 6,
+      "seen_count": 7,
       "recommendation_count": 0,
-      "promotable_ts": 1774613326
+      "promotable_ts": 1774613326,
+      "staged_artist_ts": 1774632274,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "c37cb509-b7fd-4212-a6fb-163535eba4c1",
+      "resolved_artist_name": "PEEKABOO",
+      "starter_album_exhausted_ts": 1774632274,
+      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "illenium": {
       "artist_name": "Illenium",
@@ -481,9 +486,9 @@
       ],
       "seed_playcount": 42,
       "seed_rank": 6,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "david guetta": {
@@ -497,9 +502,9 @@
       ],
       "seed_playcount": 39,
       "seed_rank": 7,
-      "last_seen_ts": 1774630811,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 6,
+      "seen_count": 7,
       "recommendation_count": 0,
       "promotable_ts": 1774613326
     },
@@ -514,8 +519,8 @@
       ],
       "seed_playcount": 39,
       "seed_rank": 7,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
@@ -530,8 +535,8 @@
       ],
       "seed_playcount": 39,
       "seed_rank": 7,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
@@ -546,8 +551,8 @@
       ],
       "seed_playcount": 39,
       "seed_rank": 7,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
@@ -562,8 +567,8 @@
       ],
       "seed_playcount": 39,
       "seed_rank": 7,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
@@ -578,8 +583,8 @@
       ],
       "seed_playcount": 39,
       "seed_rank": 7,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
@@ -594,15 +599,15 @@
       ],
       "seed_playcount": 39,
       "seed_rank": 7,
-      "last_seen_ts": 1774630811,
-      "seen_count": 7,
+      "last_seen_ts": 1774632153,
+      "seen_count": 8,
       "recommendation_count": 1,
       "last_recommended_ts": 1774610226
     },
     "briston maroney": {
       "artist_name": "Briston Maroney",
       "first_seen_ts": 1774584858,
-      "status": "promotable",
+      "status": "starter_album_exhausted",
       "best_match_score": 1.0,
       "seed_count": 1,
       "source_seeds": [
@@ -614,7 +619,14 @@
       "last_recommended_ts": 1774584858,
       "seen_count": 2,
       "recommendation_count": 0,
-      "promotable_ts": 1774613326
+      "promotable_ts": 1774613326,
+      "staged_artist_ts": 1774632268,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "c0dea069-4f46-4f44-8f44-76831e6abb07",
+      "resolved_artist_name": "Briston Maroney",
+      "starter_album_exhausted_ts": 1774632268,
+      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "flipturn": {
       "artist_name": "Flipturn",
@@ -636,7 +648,7 @@
     "cardinal bloom": {
       "artist_name": "Cardinal Bloom",
       "first_seen_ts": 1774584858,
-      "status": "promotable",
+      "status": "starter_album_exhausted",
       "best_match_score": 0.80219,
       "seed_count": 1,
       "source_seeds": [
@@ -648,7 +660,14 @@
       "last_recommended_ts": 1774584858,
       "seen_count": 2,
       "recommendation_count": 0,
-      "promotable_ts": 1774613326
+      "promotable_ts": 1774613326,
+      "staged_artist_ts": 1774632334,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "77f4b530-5657-4c75-ad4f-92a75f72deb1",
+      "resolved_artist_name": "Cardinal Bloom",
+      "starter_album_exhausted_ts": 1774632334,
+      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "sarah and the sundays": {
       "artist_name": "Sarah and the Sundays",
@@ -749,19 +768,26 @@
     "capital cities": {
       "artist_name": "Capital Cities",
       "first_seen_ts": 1774584858,
-      "status": "promotable",
+      "status": "starter_album_exhausted",
       "best_match_score": 0.780994,
       "seed_count": 1,
       "source_seeds": [
         "Foster the People"
       ],
-      "seed_playcount": 41,
-      "seed_rank": 7,
-      "last_seen_ts": 1774630811,
+      "seed_playcount": 42,
+      "seed_rank": 6,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 6,
+      "seen_count": 7,
       "recommendation_count": 0,
-      "promotable_ts": 1774613326
+      "promotable_ts": 1774613326,
+      "staged_artist_ts": 1774632347,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "119a2c67-e6d6-41cf-a58c-c51b75c80daa",
+      "resolved_artist_name": "Capital Cities",
+      "starter_album_exhausted_ts": 1774632347,
+      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "broken bells": {
       "artist_name": "Broken Bells",
@@ -772,11 +798,11 @@
       "source_seeds": [
         "Foster the People"
       ],
-      "seed_playcount": 41,
-      "seed_rank": 7,
-      "last_seen_ts": 1774630811,
+      "seed_playcount": 42,
+      "seed_rank": 6,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "young the giant": {
@@ -788,121 +814,149 @@
       "source_seeds": [
         "Foster the People"
       ],
-      "seed_playcount": 41,
-      "seed_rank": 7,
-      "last_seen_ts": 1774630811,
+      "seed_playcount": 42,
+      "seed_rank": 6,
+      "last_seen_ts": 1774632153,
       "last_recommended_ts": 1774584858,
-      "seen_count": 7,
+      "seen_count": 8,
       "recommendation_count": 0
     },
     "boywithuke": {
       "artist_name": "BoyWithUke",
       "first_seen_ts": 1774613678,
-      "status": "promotable",
-      "seen_count": 4,
+      "status": "starter_album_exhausted",
+      "seen_count": 5,
       "recommendation_count": 0,
       "best_match_score": 1.0,
       "seed_count": 1,
       "source_seeds": [
         "AJR"
       ],
-      "seed_playcount": 34,
+      "seed_playcount": 35,
       "seed_rank": 10,
-      "last_seen_ts": 1774630811,
-      "promotable_ts": 1774613703
+      "last_seen_ts": 1774632153,
+      "promotable_ts": 1774613703,
+      "staged_artist_ts": 1774632162,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "a148ffde-581c-4c39-a8f1-bc49dec7fe68",
+      "resolved_artist_name": "BoyWithUke",
+      "starter_album_exhausted_ts": 1774632162,
+      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "american authors": {
       "artist_name": "American Authors",
       "first_seen_ts": 1774613678,
-      "status": "promotable",
-      "seen_count": 4,
+      "status": "starter_album_exhausted",
+      "seen_count": 5,
       "recommendation_count": 0,
       "best_match_score": 0.885058,
       "seed_count": 1,
       "source_seeds": [
         "AJR"
       ],
-      "seed_playcount": 34,
+      "seed_playcount": 35,
       "seed_rank": 10,
-      "last_seen_ts": 1774630811,
-      "promotable_ts": 1774613703
+      "last_seen_ts": 1774632153,
+      "promotable_ts": 1774613703,
+      "staged_artist_ts": 1774632167,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "9ce0515d-cc88-4df6-8a2e-d231c13cb2c2",
+      "resolved_artist_name": "American Authors",
+      "starter_album_exhausted_ts": 1774632167,
+      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "em beihold": {
       "artist_name": "Em Beihold",
       "first_seen_ts": 1774613678,
-      "status": "promotable",
-      "seen_count": 4,
+      "status": "starter_album_exhausted",
+      "seen_count": 5,
       "recommendation_count": 0,
       "best_match_score": 0.865961,
       "seed_count": 1,
       "source_seeds": [
         "AJR"
       ],
-      "seed_playcount": 34,
+      "seed_playcount": 35,
       "seed_rank": 10,
-      "last_seen_ts": 1774630811,
-      "promotable_ts": 1774613703
+      "last_seen_ts": 1774632153,
+      "promotable_ts": 1774613703,
+      "staged_artist_ts": 1774632173,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "7575e3b8-ba04-4acc-a895-9cc528f86525",
+      "resolved_artist_name": "Em Beihold",
+      "starter_album_exhausted_ts": 1774632173,
+      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "the astronomers": {
       "artist_name": "The Astronomers",
       "first_seen_ts": 1774613678,
-      "status": "promotable",
-      "seen_count": 4,
+      "status": "starter_album_exhausted",
+      "seen_count": 5,
       "recommendation_count": 0,
       "best_match_score": 0.84901,
       "seed_count": 1,
       "source_seeds": [
         "AJR"
       ],
-      "seed_playcount": 34,
+      "seed_playcount": 35,
       "seed_rank": 10,
-      "last_seen_ts": 1774630811,
-      "promotable_ts": 1774613704
+      "last_seen_ts": 1774632153,
+      "promotable_ts": 1774613704,
+      "staged_artist_ts": 1774632187,
+      "staged_artist_count": 1,
+      "resolved_artist_mbid": "2119e495-b0be-452d-adf2-ca38923ecca6",
+      "resolved_artist_name": "The Astronomers",
+      "starter_album_exhausted_ts": 1774632187,
+      "starter_album_exhausted_count": 1,
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
     },
     "lovelytheband": {
       "artist_name": "lovelytheband",
       "first_seen_ts": 1774613678,
       "status": "new",
-      "seen_count": 5,
+      "seen_count": 6,
       "recommendation_count": 0,
       "best_match_score": 0.739605,
       "seed_count": 1,
       "source_seeds": [
         "AJR"
       ],
-      "seed_playcount": 34,
+      "seed_playcount": 35,
       "seed_rank": 10,
-      "last_seen_ts": 1774630811
+      "last_seen_ts": 1774632153
     },
     "half\u2022alive": {
       "artist_name": "half\u2022alive",
       "first_seen_ts": 1774613678,
       "status": "new",
-      "seen_count": 5,
+      "seen_count": 6,
       "recommendation_count": 0,
       "best_match_score": 0.722134,
       "seed_count": 1,
       "source_seeds": [
         "AJR"
       ],
-      "seed_playcount": 34,
+      "seed_playcount": 35,
       "seed_rank": 10,
-      "last_seen_ts": 1774630811
+      "last_seen_ts": 1774632153
     },
     "ryan mack": {
       "artist_name": "Ryan Mack",
       "first_seen_ts": 1774613678,
       "status": "new",
-      "seen_count": 5,
+      "seen_count": 6,
       "recommendation_count": 0,
       "best_match_score": 0.713199,
       "seed_count": 1,
       "source_seeds": [
         "AJR"
       ],
-      "seed_playcount": 34,
+      "seed_playcount": 35,
       "seed_rank": 10,
-      "last_seen_ts": 1774630811
+      "last_seen_ts": 1774632153
     }
   }
 }
