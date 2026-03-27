@@ -29,6 +29,7 @@ def main():
     acquires = 0
     skipped_prefilter = 0
     skipped_cooldown = 0
+    skipped_suppressed = 0
     recommended = 0
     no_action = 0
 
@@ -49,10 +50,17 @@ def main():
         print(f"[INFO] Eligible albums: {candidate['eligible_album_count']}")
         print(f"[INFO] Fully owned: {candidate['fully_owned']}")
         print(f"[INFO] In cooldown: {candidate['in_cooldown']}")
+        print(f"[INFO] Is suppressed: {candidate['is_suppressed']}")
 
         if candidate["fully_owned"] and not candidate["partial_present"]:
             print("[INFO] Skipping candidate at pre-filter: fully owned and no partials")
             skipped_prefilter += 1
+            continue
+
+        if candidate["is_suppressed"]:
+            reason = candidate.get("suppression_reason") or "unknown"
+            print(f"[INFO] Skipping candidate at pre-filter: suppressed ({reason})")
+            skipped_suppressed += 1
             continue
 
         artist_state = adapter.memory.get_artist_state(mbid)
@@ -95,6 +103,7 @@ def main():
     print(f"[INFO] Recommended: {recommended}")
     print(f"[INFO] No action: {no_action}")
     print(f"[INFO] Skipped pre-filter: {skipped_prefilter}")
+    print(f"[INFO] Skipped suppressed: {skipped_suppressed}")
     print(f"[INFO] Skipped cooldown: {skipped_cooldown}")
 
 

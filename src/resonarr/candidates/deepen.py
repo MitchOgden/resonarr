@@ -138,13 +138,18 @@ class DeepenCandidateSource:
             if not lidarr_artist:
                 continue
 
+            mbid = lidarr_artist.get("foreignArtistId")
             classification = self._classify_artist(lidarr_artist)
-            cooldown = self._get_cooldown_state(lidarr_artist.get("foreignArtistId"))
+            cooldown = self._get_cooldown_state(mbid)
+
+            artist_state = self.memory.get_artist_state(mbid)
+            is_suppressed = artist_state.get("suppressed", False)
+            suppression_reason = artist_state.get("suppression_reason")
 
             candidates.append({
                 "rank": idx,
                 "artist_name": lidarr_artist.get("artistName"),
-                "mbid": lidarr_artist.get("foreignArtistId"),
+                "mbid": mbid,
                 "lastfm_playcount": playcount,
                 "lidarr_artist_id": lidarr_artist.get("id"),
                 "partial_present": classification["partial_present"],
@@ -154,11 +159,14 @@ class DeepenCandidateSource:
                 "fully_owned_album_count": classification["fully_owned_album_count"],
                 "in_cooldown": cooldown["in_cooldown"],
                 "cooldown_remaining_seconds": cooldown["cooldown_remaining_seconds"],
+                "is_suppressed": is_suppressed,
+                "suppression_reason": suppression_reason,
             })
 
         candidates.sort(
             key=lambda x: (
                 not x["partial_present"],
+                x["is_suppressed"],
                 x["in_cooldown"],
                 x["fully_owned"],
                 -x["eligible_album_count"],
