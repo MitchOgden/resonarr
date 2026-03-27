@@ -11,10 +11,18 @@ class MemoryStore:
 
     def _load(self):
         if not os.path.exists(STATE_FILE):
-            return {"artists": {}}
+            return {
+                "artists": {},
+                "extend_candidates": {}
+            }
 
         with open(STATE_FILE, "r") as f:
-            return json.load(f)
+            state = json.load(f)
+
+        state.setdefault("artists", {})
+        state.setdefault("extend_candidates", {})
+
+        return state
 
     def _save(self):
         with open(STATE_FILE, "w") as f:
@@ -91,3 +99,64 @@ class MemoryStore:
 
     def get_artist_state(self, mbid):
         return self.state["artists"].get(mbid, {})
+    
+    def get_extend_candidate(self, artist_name):
+        key = artist_name.lower().strip()
+        return self.state["extend_candidates"].get(key, {})
+
+    def upsert_extend_candidate(
+        self,
+        artist_name,
+        best_match_score,
+        seed_count,
+        source_seeds,
+        seed_playcount,
+        seed_rank,
+    ):
+        key = artist_name.lower().strip()
+        now = int(time.time())
+
+        candidate = self.state["extend_candidates"].get(key, {})
+
+        if not candidate:
+            candidate = {
+                "artist_name": artist_name,
+                "first_seen_ts": now,
+                "status": "new",
+            }
+
+        existing_seeds = set(candidate.get("source_seeds", []))
+        merged_seeds = sorted(existing_seeds.union(set(source_seeds)))
+
+        candidate["artist_name"] = artist_name
+        candidate["best_match_score"] = max(candidate.get("best_match_score", 0.0), best_match_score)
+        candidate["seed_count"] = max(candidate.get("seed_count", 0), seed_count)
+        candidate["source_seeds"] = merged_seeds
+        candidate["seed_playcount"] = max(candidate.get("seed_playcount", 0), seed_playcount)
+        candidate["seed_rank"] = min(candidate.get("seed_rank", seed_rank), seed_rank)
+        candidate["last_seen_ts"] = now
+
+        self.state["extend_candidates"][key] = candidate
+        self._save()
+
+        return candidate
+
+    def mark_extend_candidate_recommended(self, artist_name):
+        key = artist_name.lower().strip()
+        now = int(time.time())
+
+        candidate = self.state["extend_candidates"].get(key, {})
+        if not candidate:
+            candidate = {
+                "artist_name": artist_name,
+                "first_seen_ts": now,
+            }
+
+        candidate["status"] = "recommended"
+        candidate["last_recommended_ts"] = now
+
+        self.state["extend_candidates"][key] = candidate
+        self._save()
+
+    def list_extend_candidates(self):
+        return list(self.state["extend_candidates"].values())

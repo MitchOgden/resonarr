@@ -107,6 +107,8 @@ class ExtendCandidateSource:
                     existing["seed_count"] += 1
                     existing["best_match_score"] = max(existing["best_match_score"], match_score)
                     existing["source_seeds"].append(seed_name)
+                    existing["seed_playcount"] = max(existing["seed_playcount"], seed["playcount"])
+                    existing["seed_rank"] = min(existing["seed_rank"], seed["rank"])
                     continue
 
                 candidates_by_name[normalized] = {
@@ -119,11 +121,28 @@ class ExtendCandidateSource:
                     "in_recommendation_backoff": backoff["in_recommendation_backoff"],
                 }
 
-        candidates = list(candidates_by_name.values())
+        candidates = []
+
+        for candidate in candidates_by_name.values():
+            persisted = self.memory.upsert_extend_candidate(
+                artist_name=candidate["artist_name"],
+                best_match_score=candidate["best_match_score"],
+                seed_count=candidate["seed_count"],
+                source_seeds=candidate["source_seeds"],
+                seed_playcount=candidate["seed_playcount"],
+                seed_rank=candidate["seed_rank"],
+            )
+
+            candidate["status"] = persisted.get("status", "new")
+            candidate["first_seen_ts"] = persisted.get("first_seen_ts")
+            candidate["last_seen_ts"] = persisted.get("last_seen_ts")
+
+            candidates.append(candidate)
 
         candidates.sort(
             key=lambda x: (
                 x["in_recommendation_backoff"],
+                x.get("status") == "recommended",
                 -x["seed_count"],
                 -x["best_match_score"],
                 -x["seed_playcount"],
