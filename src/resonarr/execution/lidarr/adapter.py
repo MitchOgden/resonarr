@@ -323,6 +323,7 @@ class LidarrAdapter:
         if intent.action_type == "RECOMMEND_ONLY":
             print("[INFO] Recommendation only — not executing")
             self.memory.set_artist_action(intent.artist_mbid)
+            self.memory.set_artist_recommendation(intent.artist_mbid)
             return
 
         if intent.action_type == "ACQUIRE_ARTIST":

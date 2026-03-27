@@ -6,7 +6,8 @@ from resonarr.execution.lidarr.adapter import LidarrAdapter
 from resonarr.config.settings import (
     DEEPEN_MAX_EVALUATIONS_PER_RUN,
     DEEPEN_MAX_ACQUIRES_PER_RUN,
-    ARTIST_COOLDOWN_HOURS
+    ARTIST_COOLDOWN_HOURS,
+    RECOMMENDATION_BACKOFF_HOURS,
 )
 import time
 
@@ -30,6 +31,7 @@ def main():
     skipped_prefilter = 0
     skipped_cooldown = 0
     skipped_suppressed = 0
+    skipped_recommendation_backoff = 0
     recommended = 0
     no_action = 0
 
@@ -50,6 +52,7 @@ def main():
         print(f"[INFO] Eligible albums: {candidate['eligible_album_count']}")
         print(f"[INFO] Fully owned: {candidate['fully_owned']}")
         print(f"[INFO] In cooldown: {candidate['in_cooldown']}")
+        print(f"[INFO] In recommendation backoff: {candidate['in_recommendation_backoff']}")
         print(f"[INFO] Is suppressed: {candidate['is_suppressed']}")
 
         if candidate["fully_owned"] and not candidate["partial_present"]:
@@ -61,6 +64,14 @@ def main():
             reason = candidate.get("suppression_reason") or "unknown"
             print(f"[INFO] Skipping candidate at pre-filter: suppressed ({reason})")
             skipped_suppressed += 1
+            continue
+
+        if candidate["in_recommendation_backoff"]:
+            print(
+                f"[INFO] Skipping candidate at pre-filter: recommendation backoff "
+                f"({RECOMMENDATION_BACKOFF_HOURS}h)"
+            )
+            skipped_recommendation_backoff += 1
             continue
 
         artist_state = adapter.memory.get_artist_state(mbid)
@@ -104,6 +115,7 @@ def main():
     print(f"[INFO] No action: {no_action}")
     print(f"[INFO] Skipped pre-filter: {skipped_prefilter}")
     print(f"[INFO] Skipped suppressed: {skipped_suppressed}")
+    print(f"[INFO] Skipped recommendation backoff: {skipped_recommendation_backoff}")
     print(f"[INFO] Skipped cooldown: {skipped_cooldown}")
 
 

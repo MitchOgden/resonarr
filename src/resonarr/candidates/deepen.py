@@ -9,6 +9,7 @@ from resonarr.config.settings import (
     DEEPEN_CANDIDATE_SCAN_LIMIT,
     DEEPEN_MIN_LASTFM_PLAYS,
     ARTIST_COOLDOWN_HOURS,
+    RECOMMENDATION_BACKOFF_HOURS,
 )
 
 
@@ -65,6 +66,22 @@ class DeepenCandidateSource:
             "in_cooldown": False,
             "cooldown_remaining_seconds": 0,
         }    
+
+    def _get_recommendation_backoff_state(self, mbid):
+        artist_state = self.memory.get_artist_state(mbid)
+        last_recommendation_ts = artist_state.get("last_recommendation_ts")
+
+        if not last_recommendation_ts:
+            return {
+                "in_recommendation_backoff": False,
+            }
+
+        backoff_seconds = RECOMMENDATION_BACKOFF_HOURS * 3600
+        elapsed = time.time() - last_recommendation_ts
+
+        return {
+            "in_recommendation_backoff": elapsed < backoff_seconds,
+        }
 
     def _classify_artist(self, lidarr_artist):
         artist_id = lidarr_artist.get("id")
@@ -141,6 +158,7 @@ class DeepenCandidateSource:
             mbid = lidarr_artist.get("foreignArtistId")
             classification = self._classify_artist(lidarr_artist)
             cooldown = self._get_cooldown_state(mbid)
+            recommendation_backoff = self._get_recommendation_backoff_state(mbid)
 
             artist_state = self.memory.get_artist_state(mbid)
             is_suppressed = artist_state.get("suppressed", False)
@@ -159,6 +177,7 @@ class DeepenCandidateSource:
                 "fully_owned_album_count": classification["fully_owned_album_count"],
                 "in_cooldown": cooldown["in_cooldown"],
                 "cooldown_remaining_seconds": cooldown["cooldown_remaining_seconds"],
+                "in_recommendation_backoff": recommendation_backoff["in_recommendation_backoff"],
                 "is_suppressed": is_suppressed,
                 "suppression_reason": suppression_reason,
             })
@@ -168,6 +187,7 @@ class DeepenCandidateSource:
                 not x["partial_present"],
                 x["is_suppressed"],
                 x["in_cooldown"],
+                x["in_recommendation_backoff"],
                 x["fully_owned"],
                 -x["eligible_album_count"],
                 -x["lastfm_playcount"],

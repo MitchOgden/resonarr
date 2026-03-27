@@ -31,6 +31,13 @@ class MemoryStore:
         self.state["artists"][mbid] = artist
         self._save()
         
+    def set_artist_recommendation(self, mbid):
+        artist = self.state["artists"].get(mbid, {})
+
+        artist["last_recommendation_ts"] = int(time.time())
+
+        self.state["artists"][mbid] = artist
+        self._save()
 
     def suppress_artist(self, mbid, reason="manual"):
         artist = self.state["artists"].get(mbid, {})
