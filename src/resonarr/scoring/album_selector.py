@@ -17,7 +17,14 @@ class AlbumSelector:
             .strip()
         )
     
-    def select_best_album(self, albums, affinity, owned_albums=None, album_tracks=None):
+    def select_best_album(
+        self,
+        albums,
+        affinity,
+        owned_albums=None,
+        album_tracks=None,
+        ignore_monitored=False,
+    ):
         deepening = affinity > 1.0
 
         candidates = []
@@ -87,9 +94,12 @@ class AlbumSelector:
                 partial = True
 
             # --- SKIP: already monitored ---
-            if monitored:
+            if monitored and not ignore_monitored:
                 print(f"[DEBUG] Skipping monitored album: {title}")
                 continue
+
+            if monitored and ignore_monitored:
+                print(f"[DEBUG] Ignoring monitored flag for staged artist album: {title}")
 
             a["_partial"] = partial
             a["_partial_track_count"] = has_file_count
@@ -185,7 +195,8 @@ class AlbumSelector:
                 partial_text = f" | completion={partial_count}/{total_count} ({ratio:.2f})"
 
             print(
-                f"- {album['title']} | score={s['score']:.2f} "
+                f"- {album['title']} | monitored={album.get('monitored')} | "
+                f"score={s['score']:.2f} "
                 f"(base={s['base_score']:.2f}) | affinity={affinity:.2f}{partial_text} | "
                 f"{', '.join(s['reasons'])}"
             )

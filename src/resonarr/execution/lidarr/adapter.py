@@ -108,7 +108,17 @@ class LidarrAdapter:
                 "reason": "no albums found"
             }
 
-        intent = self._decide_artist_action(mbid, artist, albums)
+        self._debug_album_state(
+            albums,
+            "HYDRATED ALBUM STATE" + (" (STAGED ARTIST)" if staged_artist_created else "")
+        )
+
+        intent = self._decide_artist_action(
+            mbid,
+            artist,
+            albums,
+            allow_monitored_albums=staged_artist_created
+        )
 
         print("[INFO] Intent decided:")
         print(f"  Action: {intent.action_type}")
@@ -274,17 +284,38 @@ class LidarrAdapter:
         print(f"[DEBUG] Add artist status: {resp.status_code}")
         print(f"[DEBUG] Add artist response: {resp.text}")
 
-    def _wait_for_artist(self, mbid, retries=10, delay=2):
+    def _wait_for_artist(self, mbid, retries=20, delay=3):
         for i in range(retries):
             artist = self._get_artist_by_mbid(mbid)
             if artist:
                 albums = self._get_albums(artist["id"])
                 if albums:
                     return artist
-            print(f"[WAIT] Attempt {i+1}...")
+
+                print(f"[WAIT] Attempt {i+1}... artist found but albums not hydrated yet")
+            else:
+                print(f"[WAIT] Attempt {i+1}... artist not found yet")
             time.sleep(delay)
         return None
 
+
+    def _debug_album_state(self, albums, header):
+        print(f"\n[DEBUG] ===== {header} =====")
+
+        if not albums:
+            print("[DEBUG] No albums returned")
+            return
+
+        for album in albums:
+            title = album.get("title")
+            monitored = album.get("monitored")
+            album_type = album.get("albumType")
+            secondary_types = album.get("secondaryTypes") or []
+
+            print(
+                f"[DEBUG] Album: {title} | monitored={monitored} | "
+                f"albumType={album_type} | secondaryTypes={secondary_types}"
+            )
 
     # ------------------------
     # Albums
@@ -321,7 +352,7 @@ class LidarrAdapter:
     # Decision
     # ------------------------    
 
-    def _decide_artist_action(self, mbid, artist, albums):
+    def _decide_artist_action(self, mbid, artist, albums, allow_monitored_albums=False):
 
         signals = self.signals.apply_artist_signals(
             mbid,
@@ -380,7 +411,8 @@ class LidarrAdapter:
             albums,
             affinity,
             owned_albums=owned,
-            album_tracks=album_tracks
+            album_tracks=album_tracks,
+            ignore_monitored=allow_monitored_albums
         )
 
         if best is None:
