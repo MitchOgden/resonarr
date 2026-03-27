@@ -54,9 +54,16 @@ def main():
             continue
 
         if candidate["in_recommendation_backoff"]:
-            skipped_backoff += 1
-            print("[INFO] Skipping starter album planning due to recommendation backoff")
-            continue
+            if candidate.get("status") == "promotable":
+                cleared = memory.clear_extend_recommendation_backoff(artist_name)
+                if cleared:
+                    print("[INFO] Cleared legacy extend recommendation backoff for promotable candidate")
+                    candidate["in_recommendation_backoff"] = False
+
+            if candidate["in_recommendation_backoff"]:
+                skipped_backoff += 1
+                print("[INFO] Skipping starter album planning due to recommendation backoff")
+                continue
 
         result = adapter.plan_extended_artist_best_release(artist_name)
 

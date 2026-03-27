@@ -210,6 +210,20 @@ class MemoryStore:
         self.state["extend_candidates"][key] = candidate
         self._save()
 
+    def clear_extend_recommendation_backoff(self, artist_name):
+        key = f"extend:{artist_name.lower().strip()}"
+
+        artist = self.state["artists"].get(key)
+        if not artist:
+            return False
+
+        if "last_recommendation_ts" in artist:
+            del artist["last_recommendation_ts"]
+
+        self.state["artists"][key] = artist
+        self._save()
+        return True
+
     def list_extend_candidates(self):
         return list(self.state["extend_candidates"].values())
     
