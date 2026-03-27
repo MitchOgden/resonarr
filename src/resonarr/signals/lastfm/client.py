@@ -33,3 +33,10 @@ class LastfmClient:
             "period": period,
             "limit": 200
         })
+    
+    def get_similar_artists(self, artist_name, limit=10):
+        return self._get({
+            "method": "artist.getSimilar",
+            "artist": artist_name,
+            "limit": limit
+        })
