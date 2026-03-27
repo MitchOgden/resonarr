@@ -3,9 +3,15 @@
     "extend:smino": {
       "last_recommendation_ts": 1774641809
     },
-    "extend:david guetta": {},
-    "extend:briston maroney": {},
-    "extend:peekaboo": {},
+    "extend:david guetta": {
+      "last_recommendation_ts": 1774642132
+    },
+    "extend:briston maroney": {
+      "last_recommendation_ts": 1774642137
+    },
+    "extend:peekaboo": {
+      "last_recommendation_ts": 1774642141
+    },
     "extend:flipturn": {},
     "extend:cardinal bloom": {},
     "extend:capital cities": {},
@@ -473,7 +479,7 @@
     "peekaboo": {
       "artist_name": "Peekaboo",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "best_match_score": 0.899953,
       "seed_count": 1,
       "source_seeds": [
@@ -486,13 +492,19 @@
       "seen_count": 7,
       "recommendation_count": 0,
       "promotable_ts": 1774613326,
-      "staged_artist_ts": 1774632274,
-      "staged_artist_count": 1,
+      "staged_artist_ts": 1774642141,
+      "staged_artist_count": 2,
       "resolved_artist_mbid": "c37cb509-b7fd-4212-a6fb-163535eba4c1",
       "resolved_artist_name": "PEEKABOO",
       "starter_album_exhausted_ts": 1774632274,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774642141,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17398,
+      "starter_album_title": "Eyes Wide Open",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "illenium": {
       "artist_name": "Illenium",
@@ -513,7 +525,7 @@
     "david guetta": {
       "artist_name": "David Guetta",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "best_match_score": 1.0,
       "seed_count": 1,
       "source_seeds": [
@@ -532,7 +544,13 @@
       "resolved_artist_name": "David Guetta",
       "starter_album_exhausted_ts": 1774641818,
       "starter_album_exhausted_count": 2,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774642132,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17124,
+      "starter_album_title": "7",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "swedish house mafia": {
       "artist_name": "Swedish House Mafia",
@@ -633,7 +651,7 @@
     "briston maroney": {
       "artist_name": "Briston Maroney",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "best_match_score": 1.0,
       "seed_count": 1,
       "source_seeds": [
@@ -646,13 +664,19 @@
       "seen_count": 2,
       "recommendation_count": 0,
       "promotable_ts": 1774613326,
-      "staged_artist_ts": 1774632268,
-      "staged_artist_count": 1,
+      "staged_artist_ts": 1774642137,
+      "staged_artist_count": 2,
       "resolved_artist_mbid": "c0dea069-4f46-4f44-8f44-76831e6abb07",
       "resolved_artist_name": "Briston Maroney",
       "starter_album_exhausted_ts": 1774632268,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774642137,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17381,
+      "starter_album_title": "Sunflower",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "flipturn": {
       "artist_name": "Flipturn",
