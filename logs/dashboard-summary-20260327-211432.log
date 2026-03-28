@@ -1,0 +1,43 @@
+[INFO] Timestamped log file: logs\dashboard-summary-20260327-211432.log
+[INFO] Latest log file: logs\dashboard-summary-latest.log
+=== Resonarr Dashboard Summary ===
+[INFO] Extend overview:
+[INFO] Total candidates: 43
+[INFO] Review queue count: 8
+[INFO] Promotable count: 12
+[INFO] Recommendation count: 8
+[INFO] Approved count: 2
+[INFO] Rejected count: 2
+[INFO] Exhausted count: 0
+[INFO] Recommended count: 28
+[INFO] New count: 3
+
+[INFO] Deepen overview:
+[INFO] Candidate count: 30
+[INFO] Partial present count: 18
+[INFO] Suppressed count: 0
+[INFO] Cooldown count: 8
+[INFO] Recommendation backoff count: 4
+
+[INFO] Suppressed artist count: 2
+
+[INFO] Review queue highlights:
+[INFO] American Authors | starter_album_recommendation | Seasons | score=3.0
+[INFO] BoyWithUke | starter_album_recommendation | Fever Dreams | score=3.0
+[INFO] Capital Cities | starter_album_recommendation | Solarize | score=3.0
+[INFO] Cardinal Bloom | starter_album_recommendation | The Only Place I’ve Ever Known | score=3.0
+[INFO] Em Beihold | starter_album_recommendation | Egg in the Backseat | score=3.0
+
+[INFO] Promotable highlights:
+[INFO] Smino | starter_album_recommendation | best_match=1.0
+[INFO] BoyWithUke | starter_album_recommendation | best_match=1.0
+[INFO] American Authors | starter_album_recommendation | best_match=0.885058
+[INFO] Em Beihold | starter_album_recommendation | best_match=0.865961
+[INFO] The Astronomers | starter_album_recommendation | best_match=0.84901
+
+[INFO] Deepen candidate highlights:
+[INFO] Bloodhound Gang | plays=5 | partial_present=True | eligible_albums=5
+[INFO] Passion Pit | plays=11 | partial_present=True | eligible_albums=4
+[INFO] Foster the People | plays=43 | partial_present=True | eligible_albums=3
+[INFO] Cage the Elephant | plays=8 | partial_present=True | eligible_albums=3
+[INFO] Dayglow | plays=8 | partial_present=True | eligible_albums=3

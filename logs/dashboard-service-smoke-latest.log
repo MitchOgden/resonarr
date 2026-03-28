@@ -1,0 +1,986 @@
+[INFO] Timestamped log file: logs\dashboard-service-smoke-20260327-211305.log
+[INFO] Latest log file: logs\dashboard-service-smoke-latest.log
+=== Resonarr Dashboard Service Smoke Test ===
+[INFO] Dashboard service result:
+{
+  "status": "success",
+  "home_summary": {
+    "extend": {
+      "total_candidates": 43,
+      "starter_album_recommendation": 8,
+      "starter_album_approved": 2,
+      "starter_album_rejected": 2,
+      "starter_album_exhausted": 0,
+      "recommended": 28,
+      "new": 3,
+      "promotable_count": 12,
+      "review_queue_count": 8
+    },
+    "deepen": {
+      "candidate_count": 30,
+      "partial_present_count": 18,
+      "suppressed_count": 0,
+      "cooldown_count": 8,
+      "recommendation_backoff_count": 4
+    },
+    "suppressed_artist_count": 2
+  },
+  "sections": {
+    "extend_review_queue": {
+      "status": "success",
+      "count": 8,
+      "items": [
+        {
+          "artist_name": "American Authors",
+          "status": "starter_album_recommendation",
+          "resolved_artist_name": "American Authors",
+          "resolved_artist_mbid": "9ce0515d-cc88-4df6-8a2e-d231c13cb2c2",
+          "starter_album_id": 17435,
+          "starter_album_title": "Seasons",
+          "starter_album_score": 3.0,
+          "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+        },
+        {
+          "artist_name": "BoyWithUke",
+          "status": "starter_album_recommendation",
+          "resolved_artist_name": "BoyWithUke",
+          "resolved_artist_mbid": "a148ffde-581c-4c39-a8f1-bc49dec7fe68",
+          "starter_album_id": 17343,
+          "starter_album_title": "Fever Dreams",
+          "starter_album_score": 3.0,
+          "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+        },
+        {
+          "artist_name": "Capital Cities",
+          "status": "starter_album_recommendation",
+          "resolved_artist_name": "Capital Cities",
+          "resolved_artist_mbid": "119a2c67-e6d6-41cf-a58c-c51b75c80daa",
+          "starter_album_id": 17522,
+          "starter_album_title": "Solarize",
+          "starter_album_score": 3.0,
+          "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+        },
+        {
+          "artist_name": "Cardinal Bloom",
+          "status": "starter_album_recommendation",
+          "resolved_artist_name": "Cardinal Bloom",
+          "resolved_artist_mbid": "77f4b530-5657-4c75-ad4f-92a75f72deb1",
+          "starter_album_id": 17504,
+          "starter_album_title": "The Only Place I’ve Ever Known",
+          "starter_album_score": 3.0,
+          "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+        },
+        {
+          "artist_name": "Em Beihold",
+          "status": "starter_album_recommendation",
+          "resolved_artist_name": "Em Beihold",
+          "resolved_artist_mbid": "7575e3b8-ba04-4acc-a895-9cc528f86525",
+          "starter_album_id": 17483,
+          "starter_album_title": "Egg in the Backseat",
+          "starter_album_score": 3.0,
+          "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+        },
+        {
+          "artist_name": "Flipturn",
+          "status": "starter_album_recommendation",
+          "resolved_artist_name": "flipturn",
+          "resolved_artist_mbid": "0c97b403-1aae-4315-93ab-af54fe2169d6",
+          "starter_album_id": 17272,
+          "starter_album_title": "Shadowglow",
+          "starter_album_score": 3.0,
+          "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+        },
+        {
+          "artist_name": "Smino",
+          "status": "starter_album_recommendation",
+          "resolved_artist_name": "Smino",
+          "resolved_artist_mbid": "96800e05-9924-4321-859a-76e0d4750f2f",
+          "starter_album_id": 17323,
+          "starter_album_title": "NØIR",
+          "starter_album_score": 3.0,
+          "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+        },
+        {
+          "artist_name": "The Astronomers",
+          "status": "starter_album_recommendation",
+          "resolved_artist_name": "The Astronomers",
+          "resolved_artist_mbid": "2119e495-b0be-452d-adf2-ca38923ecca6",
+          "starter_album_id": 17493,
+          "starter_album_title": "The Occasion",
+          "starter_album_score": 3.0,
+          "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+        }
+      ]
+    },
+    "extend_promotable": {
+      "status": "success",
+      "count": 12,
+      "items": [
+        {
+          "artist_name": "Smino",
+          "status": "starter_album_recommendation",
+          "best_match_score": 1.0,
+          "seed_count": 1,
+          "seen_count": 7,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "Aminé"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "BoyWithUke",
+          "status": "starter_album_recommendation",
+          "best_match_score": 1.0,
+          "seed_count": 1,
+          "seen_count": 5,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "AJR"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "American Authors",
+          "status": "starter_album_recommendation",
+          "best_match_score": 0.885058,
+          "seed_count": 1,
+          "seen_count": 5,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "AJR"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "Em Beihold",
+          "status": "starter_album_recommendation",
+          "best_match_score": 0.865961,
+          "seed_count": 1,
+          "seen_count": 5,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "AJR"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "The Astronomers",
+          "status": "starter_album_recommendation",
+          "best_match_score": 0.84901,
+          "seed_count": 1,
+          "seen_count": 5,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "AJR"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "Flipturn",
+          "status": "starter_album_recommendation",
+          "best_match_score": 0.824881,
+          "seed_count": 1,
+          "seen_count": 2,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "The Backseat Lovers"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "Cardinal Bloom",
+          "status": "starter_album_recommendation",
+          "best_match_score": 0.80219,
+          "seed_count": 1,
+          "seen_count": 2,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "The Backseat Lovers"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "Capital Cities",
+          "status": "starter_album_recommendation",
+          "best_match_score": 0.780994,
+          "seed_count": 1,
+          "seen_count": 7,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "Foster the People"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "David Guetta",
+          "status": "starter_album_approved",
+          "best_match_score": 1.0,
+          "seed_count": 1,
+          "seen_count": 7,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "Calvin Harris"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "Briston Maroney",
+          "status": "starter_album_approved",
+          "best_match_score": 1.0,
+          "seed_count": 1,
+          "seen_count": 2,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "The Backseat Lovers"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "Andy Grammer",
+          "status": "starter_album_rejected",
+          "best_match_score": 0.657836,
+          "seed_count": 2,
+          "seen_count": 7,
+          "recommendation_count": 1,
+          "source_seeds": [
+            "AJR",
+            "Surfaces"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "artist_name": "Peekaboo",
+          "status": "starter_album_rejected",
+          "best_match_score": 0.899953,
+          "seed_count": 1,
+          "seen_count": 7,
+          "recommendation_count": 0,
+          "source_seeds": [
+            "NGHTMRE"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        }
+      ]
+    },
+    "deepen_candidates": {
+      "status": "success",
+      "count": 30,
+      "items": [
+        {
+          "artist_name": "Bloodhound Gang",
+          "mbid": "b2dbfc09-b332-408b-a235-1850e41971c5",
+          "lastfm_playcount": 5,
+          "partial_present": true,
+          "eligible_album_count": 5,
+          "fully_owned": false,
+          "total_album_count": 5,
+          "fully_owned_album_count": 0,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 67
+        },
+        {
+          "artist_name": "Passion Pit",
+          "mbid": "daeec599-bf5d-4428-994a-e76ba5f86e2f",
+          "lastfm_playcount": 11,
+          "partial_present": true,
+          "eligible_album_count": 4,
+          "fully_owned": false,
+          "total_album_count": 4,
+          "fully_owned_album_count": 0,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 32
+        },
+        {
+          "artist_name": "Foster the People",
+          "mbid": "e0e1a584-dd0a-4bd1-88d1-c4c62895039d",
+          "lastfm_playcount": 43,
+          "partial_present": true,
+          "eligible_album_count": 3,
+          "fully_owned": false,
+          "total_album_count": 4,
+          "fully_owned_album_count": 1,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 6
+        },
+        {
+          "artist_name": "Cage the Elephant",
+          "mbid": "b41b38d4-ef3e-4f37-8c75-cfe9af999696",
+          "lastfm_playcount": 8,
+          "partial_present": true,
+          "eligible_album_count": 3,
+          "fully_owned": false,
+          "total_album_count": 6,
+          "fully_owned_album_count": 3,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 43
+        },
+        {
+          "artist_name": "Dayglow",
+          "mbid": "2bee95a7-1c0e-4b3c-99a5-4857d9d776dd",
+          "lastfm_playcount": 8,
+          "partial_present": true,
+          "eligible_album_count": 3,
+          "fully_owned": false,
+          "total_album_count": 4,
+          "fully_owned_album_count": 1,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 44
+        },
+        {
+          "artist_name": "Metro Boomin",
+          "mbid": "59db3d82-86ea-451f-881f-dffc8ec387c9",
+          "lastfm_playcount": 5,
+          "partial_present": true,
+          "eligible_album_count": 3,
+          "fully_owned": false,
+          "total_album_count": 4,
+          "fully_owned_album_count": 1,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 76
+        },
+        {
+          "artist_name": "Phoenix",
+          "mbid": "8d455809-96b3-4bb6-8829-ea4beb580d35",
+          "lastfm_playcount": 21,
+          "partial_present": true,
+          "eligible_album_count": 2,
+          "fully_owned": false,
+          "total_album_count": 7,
+          "fully_owned_album_count": 5,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 17
+        },
+        {
+          "artist_name": "Excision",
+          "mbid": "733c6e6f-0306-403e-9243-82b16a4f82d8",
+          "lastfm_playcount": 20,
+          "partial_present": true,
+          "eligible_album_count": 2,
+          "fully_owned": false,
+          "total_album_count": 6,
+          "fully_owned_album_count": 4,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 18
+        },
+        {
+          "artist_name": "NGHTMRE",
+          "mbid": "f72e0c57-94fd-447d-afdb-868e70d356d7",
+          "lastfm_playcount": 42,
+          "partial_present": true,
+          "eligible_album_count": 1,
+          "fully_owned": false,
+          "total_album_count": 2,
+          "fully_owned_album_count": 1,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 7
+        },
+        {
+          "artist_name": "Lil Nas X",
+          "mbid": "0b30341b-b59d-4979-8130-b66c0e475321",
+          "lastfm_playcount": 9,
+          "partial_present": true,
+          "eligible_album_count": 1,
+          "fully_owned": false,
+          "total_album_count": 1,
+          "fully_owned_album_count": 0,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 39
+        },
+        {
+          "artist_name": "Blue October",
+          "mbid": "d6a3eeec-cde0-4c10-89b2-93e0bd5f34e6",
+          "lastfm_playcount": 5,
+          "partial_present": true,
+          "eligible_album_count": 11,
+          "fully_owned": false,
+          "total_album_count": 12,
+          "fully_owned_album_count": 1,
+          "in_cooldown": true,
+          "cooldown_remaining_seconds": 56233,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 68
+        },
+        {
+          "artist_name": "Panic! at the Disco",
+          "mbid": "b9472588-93f3-4922-a1a2-74082cdf9ce8",
+          "lastfm_playcount": 20,
+          "partial_present": true,
+          "eligible_album_count": 5,
+          "fully_owned": false,
+          "total_album_count": 7,
+          "fully_owned_album_count": 1,
+          "in_cooldown": true,
+          "cooldown_remaining_seconds": 56275,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 20
+        },
+        {
+          "artist_name": "Post Malone",
+          "mbid": "b1e26560-60e5-4236-bbdb-9aa5a8d5ee19",
+          "lastfm_playcount": 6,
+          "partial_present": true,
+          "eligible_album_count": 5,
+          "fully_owned": false,
+          "total_album_count": 6,
+          "fully_owned_album_count": 1,
+          "in_cooldown": true,
+          "cooldown_remaining_seconds": 86030,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 62
+        },
+        {
+          "artist_name": "Sleigh Bells",
+          "mbid": "95f7536d-b2f7-4087-8668-a663ec201f5a",
+          "lastfm_playcount": 6,
+          "partial_present": true,
+          "eligible_album_count": 5,
+          "fully_owned": false,
+          "total_album_count": 6,
+          "fully_owned_album_count": 0,
+          "in_cooldown": true,
+          "cooldown_remaining_seconds": 86034,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 64
+        },
+        {
+          "artist_name": "Ye",
+          "mbid": "164f0d73-1234-4e2c-8743-d77bf2191051",
+          "lastfm_playcount": 20,
+          "partial_present": true,
+          "eligible_album_count": 12,
+          "fully_owned": false,
+          "total_album_count": 12,
+          "fully_owned_album_count": 0,
+          "in_cooldown": true,
+          "cooldown_remaining_seconds": 56240,
+          "in_recommendation_backoff": true,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 21
+        },
+        {
+          "artist_name": "Radiohead",
+          "mbid": "a74b1b7f-71a5-4011-9441-d0b5e4122711",
+          "lastfm_playcount": 6,
+          "partial_present": true,
+          "eligible_album_count": 9,
+          "fully_owned": false,
+          "total_album_count": 9,
+          "fully_owned_album_count": 0,
+          "in_cooldown": true,
+          "cooldown_remaining_seconds": 56240,
+          "in_recommendation_backoff": true,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 63
+        },
+        {
+          "artist_name": "Modest Mouse",
+          "mbid": "a96ac800-bfcb-412a-8a63-0a98df600700",
+          "lastfm_playcount": 11,
+          "partial_present": true,
+          "eligible_album_count": 7,
+          "fully_owned": false,
+          "total_album_count": 8,
+          "fully_owned_album_count": 1,
+          "in_cooldown": true,
+          "cooldown_remaining_seconds": 56254,
+          "in_recommendation_backoff": true,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 31
+        },
+        {
+          "artist_name": "Incubus",
+          "mbid": "e3e0abcd-7671-4482-a9d8-462f5acc9be5",
+          "lastfm_playcount": 9,
+          "partial_present": true,
+          "eligible_album_count": 7,
+          "fully_owned": false,
+          "total_album_count": 9,
+          "fully_owned_album_count": 2,
+          "in_cooldown": true,
+          "cooldown_remaining_seconds": 56259,
+          "in_recommendation_backoff": true,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 38
+        },
+        {
+          "artist_name": "Gucci Mane",
+          "mbid": "36494952-f434-45d8-a958-8b4acdbcf8a8",
+          "lastfm_playcount": 5,
+          "partial_present": false,
+          "eligible_album_count": 26,
+          "fully_owned": false,
+          "total_album_count": 27,
+          "fully_owned_album_count": 1,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 73
+        },
+        {
+          "artist_name": "America",
+          "mbid": "34cf95c7-4be9-4efd-a48a-c2ea4a0bb114",
+          "lastfm_playcount": 6,
+          "partial_present": false,
+          "eligible_album_count": 18,
+          "fully_owned": false,
+          "total_album_count": 18,
+          "fully_owned_album_count": 0,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 59
+        },
+        {
+          "artist_name": "Helynt",
+          "mbid": "761854c7-b435-4581-81aa-ddae031795f9",
+          "lastfm_playcount": 20,
+          "partial_present": false,
+          "eligible_album_count": 15,
+          "fully_owned": false,
+          "total_album_count": 22,
+          "fully_owned_album_count": 7,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 19
+        },
+        {
+          "artist_name": "石元丈晴",
+          "mbid": "0e54f9fd-7011-4c77-86f0-59021c5ffddf",
+          "lastfm_playcount": 8,
+          "partial_present": false,
+          "eligible_album_count": 13,
+          "fully_owned": false,
+          "total_album_count": 14,
+          "fully_owned_album_count": 1,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 50
+        },
+        {
+          "artist_name": "Ganja White Night",
+          "mbid": "014abfeb-cdfe-46dc-90fb-e192473ce252",
+          "lastfm_playcount": 7,
+          "partial_present": false,
+          "eligible_album_count": 11,
+          "fully_owned": false,
+          "total_album_count": 12,
+          "fully_owned_album_count": 1,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 53
+        },
+        {
+          "artist_name": "Smash Mouth",
+          "mbid": "944e1036-8a03-4611-8aa0-31515a05c848",
+          "lastfm_playcount": 5,
+          "partial_present": false,
+          "eligible_album_count": 10,
+          "fully_owned": false,
+          "total_album_count": 10,
+          "fully_owned_album_count": 0,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 77
+        },
+        {
+          "artist_name": "Bassnectar",
+          "mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
+          "lastfm_playcount": 75,
+          "partial_present": false,
+          "eligible_album_count": 9,
+          "fully_owned": false,
+          "total_album_count": 14,
+          "fully_owned_album_count": 5,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 2
+        },
+        {
+          "artist_name": "Steve Aoki",
+          "mbid": "a39acc4a-985e-4173-a9ed-f325f2d3bc1c",
+          "lastfm_playcount": 5,
+          "partial_present": false,
+          "eligible_album_count": 9,
+          "fully_owned": false,
+          "total_album_count": 11,
+          "fully_owned_album_count": 2,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 78
+        },
+        {
+          "artist_name": "Hoodie Allen",
+          "mbid": "b28ac005-27fe-4bb9-86a2-dbf55ef21469",
+          "lastfm_playcount": 9,
+          "partial_present": false,
+          "eligible_album_count": 8,
+          "fully_owned": false,
+          "total_album_count": 9,
+          "fully_owned_album_count": 1,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 37
+        },
+        {
+          "artist_name": "Borgore",
+          "mbid": "215e2b5d-06f8-4c68-b33b-8fccec27a077",
+          "lastfm_playcount": 10,
+          "partial_present": false,
+          "eligible_album_count": 5,
+          "fully_owned": false,
+          "total_album_count": 6,
+          "fully_owned_album_count": 1,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 33
+        },
+        {
+          "artist_name": "Tropidelic",
+          "mbid": "6b62d0b0-5925-4ab0-bceb-eca7afbc7c74",
+          "lastfm_playcount": 7,
+          "partial_present": false,
+          "eligible_album_count": 5,
+          "fully_owned": false,
+          "total_album_count": 9,
+          "fully_owned_album_count": 4,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 57
+        },
+        {
+          "artist_name": "Stick Figure",
+          "mbid": "0c124600-18da-4087-be0d-d7fb6a2526c6",
+          "lastfm_playcount": 17,
+          "partial_present": false,
+          "eligible_album_count": 4,
+          "fully_owned": false,
+          "total_album_count": 11,
+          "fully_owned_album_count": 7,
+          "in_cooldown": false,
+          "cooldown_remaining_seconds": 0,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false,
+          "suppression_reason": null,
+          "rank": 25
+        }
+      ]
+    },
+    "suppressed_artists": {
+      "status": "success",
+      "count": 2,
+      "items": [
+        {
+          "artist_key": "9e60ea29-9607-4f7d-aa96-2092ef41f0d3",
+          "suppressed": true,
+          "suppression_reason": "operator_rejected_extend_recommendation",
+          "suppressed_ts": 1774648308
+        },
+        {
+          "artist_key": "c37cb509-b7fd-4212-a6fb-163535eba4c1",
+          "suppressed": true,
+          "suppression_reason": "operator_rejected_extend_recommendation",
+          "suppressed_ts": 1774644732
+        }
+      ]
+    }
+  },
+  "highlights": {
+    "recent_reviewable": [
+      {
+        "artist_name": "American Authors",
+        "status": "starter_album_recommendation",
+        "resolved_artist_name": "American Authors",
+        "resolved_artist_mbid": "9ce0515d-cc88-4df6-8a2e-d231c13cb2c2",
+        "starter_album_id": 17435,
+        "starter_album_title": "Seasons",
+        "starter_album_score": 3.0,
+        "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+      },
+      {
+        "artist_name": "BoyWithUke",
+        "status": "starter_album_recommendation",
+        "resolved_artist_name": "BoyWithUke",
+        "resolved_artist_mbid": "a148ffde-581c-4c39-a8f1-bc49dec7fe68",
+        "starter_album_id": 17343,
+        "starter_album_title": "Fever Dreams",
+        "starter_album_score": 3.0,
+        "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+      },
+      {
+        "artist_name": "Capital Cities",
+        "status": "starter_album_recommendation",
+        "resolved_artist_name": "Capital Cities",
+        "resolved_artist_mbid": "119a2c67-e6d6-41cf-a58c-c51b75c80daa",
+        "starter_album_id": 17522,
+        "starter_album_title": "Solarize",
+        "starter_album_score": 3.0,
+        "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+      },
+      {
+        "artist_name": "Cardinal Bloom",
+        "status": "starter_album_recommendation",
+        "resolved_artist_name": "Cardinal Bloom",
+        "resolved_artist_mbid": "77f4b530-5657-4c75-ad4f-92a75f72deb1",
+        "starter_album_id": 17504,
+        "starter_album_title": "The Only Place I’ve Ever Known",
+        "starter_album_score": 3.0,
+        "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+      },
+      {
+        "artist_name": "Em Beihold",
+        "status": "starter_album_recommendation",
+        "resolved_artist_name": "Em Beihold",
+        "resolved_artist_mbid": "7575e3b8-ba04-4acc-a895-9cc528f86525",
+        "starter_album_id": 17483,
+        "starter_album_title": "Egg in the Backseat",
+        "starter_album_score": 3.0,
+        "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+      }
+    ],
+    "top_promotable": [
+      {
+        "artist_name": "Smino",
+        "status": "starter_album_recommendation",
+        "best_match_score": 1.0,
+        "seed_count": 1,
+        "seen_count": 7,
+        "recommendation_count": 0,
+        "source_seeds": [
+          "Aminé"
+        ],
+        "in_recommendation_backoff": true,
+        "is_promotable": true
+      },
+      {
+        "artist_name": "BoyWithUke",
+        "status": "starter_album_recommendation",
+        "best_match_score": 1.0,
+        "seed_count": 1,
+        "seen_count": 5,
+        "recommendation_count": 0,
+        "source_seeds": [
+          "AJR"
+        ],
+        "in_recommendation_backoff": true,
+        "is_promotable": true
+      },
+      {
+        "artist_name": "American Authors",
+        "status": "starter_album_recommendation",
+        "best_match_score": 0.885058,
+        "seed_count": 1,
+        "seen_count": 5,
+        "recommendation_count": 0,
+        "source_seeds": [
+          "AJR"
+        ],
+        "in_recommendation_backoff": true,
+        "is_promotable": true
+      },
+      {
+        "artist_name": "Em Beihold",
+        "status": "starter_album_recommendation",
+        "best_match_score": 0.865961,
+        "seed_count": 1,
+        "seen_count": 5,
+        "recommendation_count": 0,
+        "source_seeds": [
+          "AJR"
+        ],
+        "in_recommendation_backoff": true,
+        "is_promotable": true
+      },
+      {
+        "artist_name": "The Astronomers",
+        "status": "starter_album_recommendation",
+        "best_match_score": 0.84901,
+        "seed_count": 1,
+        "seen_count": 5,
+        "recommendation_count": 0,
+        "source_seeds": [
+          "AJR"
+        ],
+        "in_recommendation_backoff": true,
+        "is_promotable": true
+      }
+    ],
+    "top_deepen_candidates": [
+      {
+        "artist_name": "Bloodhound Gang",
+        "mbid": "b2dbfc09-b332-408b-a235-1850e41971c5",
+        "lastfm_playcount": 5,
+        "partial_present": true,
+        "eligible_album_count": 5,
+        "fully_owned": false,
+        "total_album_count": 5,
+        "fully_owned_album_count": 0,
+        "in_cooldown": false,
+        "cooldown_remaining_seconds": 0,
+        "in_recommendation_backoff": false,
+        "is_suppressed": false,
+        "suppression_reason": null,
+        "rank": 67
+      },
+      {
+        "artist_name": "Passion Pit",
+        "mbid": "daeec599-bf5d-4428-994a-e76ba5f86e2f",
+        "lastfm_playcount": 11,
+        "partial_present": true,
+        "eligible_album_count": 4,
+        "fully_owned": false,
+        "total_album_count": 4,
+        "fully_owned_album_count": 0,
+        "in_cooldown": false,
+        "cooldown_remaining_seconds": 0,
+        "in_recommendation_backoff": false,
+        "is_suppressed": false,
+        "suppression_reason": null,
+        "rank": 32
+      },
+      {
+        "artist_name": "Foster the People",
+        "mbid": "e0e1a584-dd0a-4bd1-88d1-c4c62895039d",
+        "lastfm_playcount": 43,
+        "partial_present": true,
+        "eligible_album_count": 3,
+        "fully_owned": false,
+        "total_album_count": 4,
+        "fully_owned_album_count": 1,
+        "in_cooldown": false,
+        "cooldown_remaining_seconds": 0,
+        "in_recommendation_backoff": false,
+        "is_suppressed": false,
+        "suppression_reason": null,
+        "rank": 6
+      },
+      {
+        "artist_name": "Cage the Elephant",
+        "mbid": "b41b38d4-ef3e-4f37-8c75-cfe9af999696",
+        "lastfm_playcount": 8,
+        "partial_present": true,
+        "eligible_album_count": 3,
+        "fully_owned": false,
+        "total_album_count": 6,
+        "fully_owned_album_count": 3,
+        "in_cooldown": false,
+        "cooldown_remaining_seconds": 0,
+        "in_recommendation_backoff": false,
+        "is_suppressed": false,
+        "suppression_reason": null,
+        "rank": 43
+      },
+      {
+        "artist_name": "Dayglow",
+        "mbid": "2bee95a7-1c0e-4b3c-99a5-4857d9d776dd",
+        "lastfm_playcount": 8,
+        "partial_present": true,
+        "eligible_album_count": 3,
+        "fully_owned": false,
+        "total_album_count": 4,
+        "fully_owned_album_count": 1,
+        "in_cooldown": false,
+        "cooldown_remaining_seconds": 0,
+        "in_recommendation_backoff": false,
+        "is_suppressed": false,
+        "suppression_reason": null,
+        "rank": 44
+      }
+    ]
+  }
+}
