@@ -135,6 +135,7 @@ class DeepenOperatorService:
         self.memory.suppress_artist(
             mbid,
             reason="operator_rejected_deepen_recommendation",
+            artist_name=candidate.get("artist_name"),
         )
         self.memory.mark_deepen_candidate_rejected(
             mbid=mbid,

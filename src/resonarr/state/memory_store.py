@@ -51,12 +51,15 @@ class MemoryStore:
         self.state["artists"][mbid] = artist
         self._save()
 
-    def suppress_artist(self, mbid, reason="manual"):
+    def suppress_artist(self, mbid, reason="manual", artist_name=None):
         artist = self.state["artists"].get(mbid, {})
 
         artist["suppressed"] = True
         artist["suppression_reason"] = reason
         artist["suppressed_ts"] = int(time.time())
+
+        if artist_name:
+            artist["artist_name"] = artist_name
 
         self.state["artists"][mbid] = artist
         self._save()
