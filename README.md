@@ -145,6 +145,7 @@ Operator workflow runners:
 - `python -m resonarr.runner.run_dashboard_service_smoke`
 - `python -m resonarr.runner.run_dashboard_summary`
 
+Dashboard sections and highlights now emit normalized UI-facing card shapes so future API/UI layers do not have to depend on raw service-specific item structures.
 The query/smoke runners are intended as backend test points for future API/UI work. They expose summary and review data in stable structured shapes before any web transport is added.
 Promotion orchestration now also has a service smoke runner so structured planning results can be validated independently of CLI formatting.
 Deepen orchestration also has a dry-run service smoke runner so candidate evaluation can be previewed in structured form without mutating execution state.

@@ -42,8 +42,8 @@ def main():
         print(
             f"[INFO] {item.get('artist_name')} | "
             f"{item.get('status')} | "
-            f"{item.get('starter_album_title')} | "
-            f"score={item.get('starter_album_score')}"
+            f"{item.get('album_title')} | "
+            f"score={item.get('score')}"
         )
 
     print("\n[INFO] Promotable highlights:")
@@ -51,7 +51,7 @@ def main():
         print(
             f"[INFO] {item.get('artist_name')} | "
             f"{item.get('status')} | "
-            f"best_match={item.get('best_match_score')}"
+            f"score={item.get('score')}"
         )
 
     print("\n[INFO] Deepen candidate highlights:")
