@@ -33,6 +33,16 @@ class ExtendQueryService:
             "source_seeds": candidate.get("source_seeds", []),
         }
 
+    def _resolve_artist_name_from_candidates(self, artist_key):
+        for candidate in self.memory.list_extend_candidates():
+            if candidate.get("resolved_artist_mbid") == artist_key:
+                return (
+                    candidate.get("resolved_artist_name")
+                    or candidate.get("artist_name")
+                )
+
+        return None
+
     def get_extend_status_summary(self):
         candidates = self.memory.list_extend_candidates()
 
@@ -86,6 +96,7 @@ class ExtendQueryService:
 
             items.append({
                 "artist_key": key,
+                "artist_name": self._resolve_artist_name_from_candidates(key),
                 "suppressed": artist_state.get("suppressed", False),
                 "suppression_reason": artist_state.get("suppression_reason"),
                 "suppressed_ts": artist_state.get("suppressed_ts"),
