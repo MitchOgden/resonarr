@@ -4,6 +4,10 @@ from resonarr.config.settings import (
     PRUNE_MAX_CANDIDATES_PER_RUN,
 )
 from resonarr.execution.lidarr.client import LidarrClient
+from resonarr.execution.lidarr.album_matching import (
+    build_lidarr_album_indexes,
+    match_album_to_lidarr,
+)
 from resonarr.policy.prune_policy import PrunePolicy
 from resonarr.signals.plex.prune_extractor import PlexPruneExtractor
 
@@ -14,85 +18,23 @@ class PruneService:
         self.policy = policy or PrunePolicy()
         self.lidarr = lidarr_client or LidarrClient()
 
-    def _normalize(self, value):
-        normalized = (
-            (value or "")
-            .lower()
-            .replace("’", "'")
-            .replace("‘", "'")
-            .replace("‐", "-")
-            .replace("-", "-")
-            .replace("‒", "-")
-            .replace("–", "-")
-            .replace("—", "-")
-            .replace("…", "...")
-            .replace("-", " ")
-            .replace("_", " ")
-            .replace(":", " ")
-            .replace("/", " ")
-            .strip()
-        )
-
-        return " ".join(normalized.split())
-
     def _fetch_lidarr_albums(self):
         resp = self.lidarr.get("/api/v1/album")
         resp.raise_for_status()
         return resp.json()
 
     def _index_lidarr_albums(self, albums):
-        by_mbid = {}
-        by_name = {}
-
-        for album in albums:
-            foreign_album_id = album.get("foreignAlbumId")
-            if foreign_album_id:
-                by_mbid[foreign_album_id] = album
-
-            artist = album.get("artist") or {}
-            artist_name = artist.get("artistName") or ""
-            album_name = album.get("title") or ""
-
-            key = (self._normalize(artist_name), self._normalize(album_name))
-            by_name[key] = album
-
-        return by_mbid, by_name
+        return build_lidarr_album_indexes(albums)
 
     def _match_album(self, prune_signal, by_mbid, by_name):
-        album_mbid = prune_signal.get("album_mbid")
-        artist_name = prune_signal.get("artist_name")
-        album_name = prune_signal.get("album_name")
-
-        diagnostics = {
-            "has_album_mbid": bool(album_mbid),
-            "mbid_match_found": False,
-            "name_match_found": False,
-            "name_match_available_but_disabled": False,
-            "diagnostic_name_match_artist": None,
-            "diagnostic_name_match_album": None,
-        }
-
-        if PRUNE_MATCH_MODE == "mbid" and album_mbid:
-            album = by_mbid.get(album_mbid)
-            if album:
-                diagnostics["mbid_match_found"] = True
-                return album, "mbid", diagnostics
-
-        key = (self._normalize(artist_name), self._normalize(album_name))
-        fallback_album = by_name.get(key)
-
-        if fallback_album:
-            diagnostics["name_match_found"] = True
-            fallback_artist = fallback_album.get("artist") or {}
-            diagnostics["diagnostic_name_match_artist"] = fallback_artist.get("artistName")
-            diagnostics["diagnostic_name_match_album"] = fallback_album.get("title")
-
-            if PRUNE_ALLOW_NAME_FALLBACK:
-                return fallback_album, "name", diagnostics
-
-            diagnostics["name_match_available_but_disabled"] = True
-
-        return None, "unmatched", diagnostics
+        return match_album_to_lidarr(
+            prune_signal=prune_signal,
+            lidarr_album_by_mbid=by_mbid,
+            lidarr_album_by_name=by_name,
+            client=self.lidarr,
+            match_mode=PRUNE_MATCH_MODE,
+            allow_name_fallback=PRUNE_ALLOW_NAME_FALLBACK,
+        )
 
     def list_prune_candidates(self, limit=None):
         if limit is None:
@@ -109,7 +51,11 @@ class PruneService:
             if not intent:
                 continue
 
-            lidarr_album, match_method, diagnostics = self._match_album(signal, by_mbid, by_name)
+            lidarr_album, match_method, diagnostics = self._match_album(
+                signal,
+                by_mbid,
+                by_name,
+            )
 
             item = {
                 "artist_name": intent.artist_name,
@@ -131,6 +77,9 @@ class PruneService:
                 "mbid_match_found": diagnostics.get("mbid_match_found"),
                 "name_match_found": diagnostics.get("name_match_found"),
                 "name_match_available_but_disabled": diagnostics.get("name_match_available_but_disabled"),
+                "name_match_type": diagnostics.get("name_match_type"),
+                "name_candidate_count": diagnostics.get("name_candidate_count"),
+                "verification_reason": diagnostics.get("verification_reason"),
                 "diagnostic_name_match_artist": diagnostics.get("diagnostic_name_match_artist"),
                 "diagnostic_name_match_album": diagnostics.get("diagnostic_name_match_album"),
             }
