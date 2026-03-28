@@ -34,6 +34,7 @@ def main():
         print(f"[INFO] Matched: {item.get('matched')}")
         print(f"[INFO] Has album MBID: {item.get('has_album_mbid')}")
         print(f"[INFO] MBID match found: {item.get('mbid_match_found')}")
+        print(f"[INFO] Plex album MBIDs: {item.get('plex_album_mbids')}")
         print(f"[INFO] Name match found: {item.get('name_match_found')}")
         print(f"[INFO] Name match type: {item.get('name_match_type')}")
         print(f"[INFO] Name candidate count: {item.get('name_candidate_count')}")

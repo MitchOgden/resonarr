@@ -6,51 +6,81 @@ class PlexPruneExtractor:
     def __init__(self, plex_client=None):
         self.plex = plex_client or PlexClient()
 
-    def _extract_mbids(self, item):
-        album_mbid = None
+    def _extract_mbids(self, item, tracks=None):
+        import re
+
+        album_mbids = []
         artist_mbid = None
 
-        guids = item.get("Guid") or []
+        def add_candidate(value):
+            if not value:
+                return
+            value = str(value).strip()
+            if value and value not in album_mbids:
+                album_mbids.append(value)
 
-        for g in guids:
+        def extract_candidates(raw_value):
+            if not raw_value:
+                return []
+
+            raw_value = str(raw_value).strip()
+            lowered = raw_value.lower()
+
+            if "musicbrainz" not in lowered and "mbid" not in lowered:
+                return []
+
+            parts = re.split(r"[:/?#=&]", raw_value)
+            candidates = []
+
+            for part in parts:
+                token = str(part).strip()
+                if not token:
+                    continue
+
+                if re.fullmatch(r"[0-9a-fA-F-]{36}", token):
+                    candidates.append(token)
+
+            return candidates
+
+        guid_strings = []
+
+        for g in item.get("Guid") or []:
             guid = g.get("id")
-            if not guid:
-                continue
+            if guid:
+                guid_strings.append(str(guid))
 
-            if guid.startswith("mbid://"):
-                value = guid.split("mbid://", 1)[1]
-                if not album_mbid:
-                    album_mbid = value
-                continue
+        direct_guid = item.get("guid")
+        if direct_guid:
+            guid_strings.append(str(direct_guid))
 
-            if "musicbrainz" in guid:
-                try:
-                    value = guid.split("://", 1)[1].split("?", 1)[0]
-                    if not album_mbid:
-                        album_mbid = value
-                except Exception:
-                    pass
+        for raw in guid_strings:
+            for candidate in extract_candidates(raw):
+                add_candidate(candidate)
+
+        # Also harvest MBID-like identifiers from tracks, because Plex may expose
+        # useful IDs there even when the album-level GUID chosen here is not the
+        # one Lidarr uses directly.
+        for track in tracks or []:
+            for g in track.get("Guid") or []:
+                guid = g.get("id")
+                if not guid:
+                    continue
+                for candidate in extract_candidates(guid):
+                    add_candidate(candidate)
 
         parent_guids = item.get("parentGuid") or []
         if isinstance(parent_guids, str):
             parent_guids = [parent_guids]
 
-        for guid in parent_guids:
-            if not guid:
-                continue
-
-            if guid.startswith("mbid://"):
-                artist_mbid = guid.split("mbid://", 1)[1]
+        for raw in parent_guids:
+            for candidate in extract_candidates(raw):
+                artist_mbid = candidate
+                break
+            if artist_mbid:
                 break
 
-            if "musicbrainz" in guid:
-                try:
-                    artist_mbid = guid.split("://", 1)[1].split("?", 1)[0]
-                    break
-                except Exception:
-                    pass
-
-        return album_mbid, artist_mbid
+        primary_album_mbid = album_mbids[0] if album_mbids else None
+        return primary_album_mbid, artist_mbid, album_mbids
 
     def _track_is_bad(self, track):
         rating = track.get("userRating")
@@ -79,7 +109,7 @@ class PlexPruneExtractor:
                     continue
 
                 tracks = self.plex.get_album_tracks(album_rating_key)
-                album_mbid, artist_mbid = self._extract_mbids(album)
+                album_mbid, artist_mbid, album_mbids = self._extract_mbids(album, tracks=tracks)
 
                 rated_tracks = 0
                 bad_tracks = 0

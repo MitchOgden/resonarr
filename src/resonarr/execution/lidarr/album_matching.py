@@ -30,22 +30,48 @@ def normalize_name(value) -> str:
     value = " ".join(value.split())
     return value
 
+def collect_lidarr_album_mbids(album: dict) -> List[str]:
+    values: List[str] = []
+
+    def add_value(value):
+        if value is None:
+            return
+        value = str(value).strip().lower()
+        if value and value not in values:
+            values.append(value)
+
+    add_value(album.get("foreignAlbumId"))
+    add_value(album.get("mbid"))
+    add_value(album.get("musicBrainzId"))
+
+    for release in album.get("releases") or []:
+        for key in (
+            "foreignAlbumId",
+            "foreignReleaseId",
+            "releaseId",
+            "albumId",
+            "id",
+            "mbid",
+            "musicBrainzId",
+        ):
+            add_value(release.get(key))
+
+    return values
 
 def build_lidarr_album_indexes(
     albums: List[dict],
-) -> Tuple[Dict[str, dict], Dict[Tuple[str, str], List[dict]]]:
-    by_mbid: Dict[str, dict] = {}
+) -> Tuple[Dict[str, List[dict]], Dict[Tuple[str, str], List[dict]]]:
+    by_mbid: Dict[str, List[dict]] = {}
     by_name: Dict[Tuple[str, str], List[dict]] = {}
 
     for album in albums:
-        foreign_album_id = album.get("foreignAlbumId")
         title = normalize_name(album.get("title", ""))
 
         artist = album.get("artist") or {}
         artist_name = normalize_name(artist.get("artistName", ""))
 
-        if foreign_album_id:
-            by_mbid[str(foreign_album_id).lower()] = album
+        for mbid in collect_lidarr_album_mbids(album):
+            by_mbid.setdefault(mbid, []).append(album)
 
         if artist_name and title:
             key = (artist_name, title)
@@ -59,6 +85,10 @@ def fetch_lidarr_album(client, album_id: int) -> dict:
     resp.raise_for_status()
     return resp.json()
 
+def album_mbid_intersection(plex_album_mbids: List[str], lidarr_album_obj: dict) -> List[str]:
+    plex_ids = {str(x).strip().lower() for x in plex_album_mbids or [] if x}
+    lidarr_ids = set(collect_lidarr_album_mbids(lidarr_album_obj))
+    return sorted(plex_ids.intersection(lidarr_ids))
 
 def lidarr_album_track_count_candidates(album_obj: dict) -> List[int]:
     counts: List[int] = []
@@ -119,6 +149,12 @@ def verify_lidarr_album_candidate(prune_signal: dict, candidate: dict, client) -
         return False, "missing-album-id", candidate
 
     fresh = fetch_lidarr_album(client, album_id)
+
+    plex_album_mbids = prune_signal.get("album_mbids") or []
+    matching_mbids = album_mbid_intersection(plex_album_mbids, fresh)
+    if matching_mbids:
+        # Strongest possible signal: actual ID intersection between Plex and Lidarr.
+        return True, f"verified-mbid-intersection {matching_mbids}", fresh
 
     plex_track_count = prune_signal.get("total_tracks_seen") or 0
     lidarr_track_counts = lidarr_album_track_count_candidates(fresh)
