@@ -34,12 +34,20 @@ class ExtendQueryService:
         }
 
     def _resolve_artist_name_from_candidates(self, artist_key):
+        artist_state = self.memory.get_artist_state(artist_key)
+        if artist_state.get("artist_name"):
+            return artist_state.get("artist_name")
+
         for candidate in self.memory.list_extend_candidates():
             if candidate.get("resolved_artist_mbid") == artist_key:
                 return (
                     candidate.get("resolved_artist_name")
                     or candidate.get("artist_name")
                 )
+
+        for candidate in self.memory.list_deepen_candidates():
+            if candidate.get("mbid") == artist_key:
+                return candidate.get("artist_name")
 
         return None
 
