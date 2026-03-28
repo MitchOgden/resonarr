@@ -69,3 +69,7 @@ class PlexClient:
                 full_albums.append(album)  # fallback
 
         return full_albums
+    
+    def get_album_tracks(self, album_rating_key):
+        data = self._get(f"/library/metadata/{album_rating_key}/children")
+        return data.get("MediaContainer", {}).get("Metadata", [])

@@ -1,0 +1,306 @@
+[INFO] Timestamped log file: logs\prune-cycle-20260327-225137.log
+[INFO] Latest log file: logs\prune-cycle-latest.log
+=== Resonarr Prune Cycle ===
+[INFO] Prune candidates found: 20
+[INFO] Matched to Lidarr: 0
+[INFO] Unmatched in Lidarr: 20
+
+=== Prune Candidate 1/20 ===
+[INFO] Artist: Various Artists
+[INFO] Album: Brit Awards 2017
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 1
+[INFO] Bad ratio: 1.00
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 2/20 ===
+[INFO] Artist: Smash Mouth
+[INFO] Album: All Star Smash Hits
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 3
+[INFO] Bad ratio: 0.33
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 3/20 ===
+[INFO] Artist: Pusha T
+[INFO] Album: My Name Is My Name
+[INFO] Rated tracks: 2
+[INFO] Bad tracks: 2
+[INFO] Total tracks seen: 12
+[INFO] Bad ratio: 0.17
+[INFO] Reason: small album full reject: 2/2 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 4/20 ===
+[INFO] Artist: Metro Boomin
+[INFO] Album: HEROES & VILLAINS
+[INFO] Rated tracks: 2
+[INFO] Bad tracks: 2
+[INFO] Total tracks seen: 15
+[INFO] Bad ratio: 0.13
+[INFO] Reason: small album full reject: 2/2 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 5/20 ===
+[INFO] Artist: Arizona Zervas
+[INFO] Album: FAST DREAMS
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 9
+[INFO] Bad ratio: 0.11
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 6/20 ===
+[INFO] Artist: Kid Cudi
+[INFO] Album: Satellite Flight: The Journey to Mother Moon
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 10
+[INFO] Bad ratio: 0.10
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 7/20 ===
+[INFO] Artist: Childish Gambino
+[INFO] Album: Atavista
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 11
+[INFO] Bad ratio: 0.09
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 8/20 ===
+[INFO] Artist: Big Boi
+[INFO] Album: Boomiverse
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 12
+[INFO] Bad ratio: 0.08
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 9/20 ===
+[INFO] Artist: Major Lazer
+[INFO] Album: Music Is the Weapon
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 12
+[INFO] Bad ratio: 0.08
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 10/20 ===
+[INFO] Artist: KYLE
+[INFO] Album: SMYLE AGAIN
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 13
+[INFO] Bad ratio: 0.08
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 11/20 ===
+[INFO] Artist: Various Artists
+[INFO] Album: Spider‐Man: Into the Spider‐Verse (Soundtrack From & Inspired by the Motion Picture)
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 13
+[INFO] Bad ratio: 0.08
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 12/20 ===
+[INFO] Artist: Hardwell
+[INFO] Album: United We Are
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 14
+[INFO] Bad ratio: 0.07
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 13/20 ===
+[INFO] Artist: Kendrick Lamar
+[INFO] Album: DAMN.
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 14
+[INFO] Bad ratio: 0.07
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 14/20 ===
+[INFO] Artist: Pretty Lights
+[INFO] Album: Taking Up Your Precious Time
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 15
+[INFO] Bad ratio: 0.07
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 15/20 ===
+[INFO] Artist: JAY‐Z
+[INFO] Album: Vol. 3… Life and Times of S. Carter
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 16
+[INFO] Bad ratio: 0.06
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 16/20 ===
+[INFO] Artist: AJR
+[INFO] Album: The Click
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 17
+[INFO] Bad ratio: 0.06
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 17/20 ===
+[INFO] Artist: Big Boi
+[INFO] Album: Vicious Lies and Dangerous Rumors
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 17
+[INFO] Bad ratio: 0.06
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 18/20 ===
+[INFO] Artist: Travis Scott
+[INFO] Album: ASTROWORLD
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 17
+[INFO] Bad ratio: 0.06
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 19/20 ===
+[INFO] Artist: Steve Aoki
+[INFO] Album: Paragon
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 18
+[INFO] Bad ratio: 0.06
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
+
+=== Prune Candidate 20/20 ===
+[INFO] Artist: FERG
+[INFO] Album: Always Strive and Prosper
+[INFO] Rated tracks: 1
+[INFO] Bad tracks: 1
+[INFO] Total tracks seen: 20
+[INFO] Bad ratio: 0.05
+[INFO] Reason: small album full reject: 1/1 rated tracks at or below 4.0
+[INFO] Match method: unmatched
+[INFO] Matched: False
+[INFO] Lidarr album id: None
+[INFO] Lidarr artist id: None
+[INFO] Lidarr has files: None
+[INFO] Proposed action: RECOMMEND_PRUNE_ALBUM
