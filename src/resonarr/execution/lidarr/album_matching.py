@@ -63,14 +63,31 @@ def fetch_lidarr_album(client, album_id: int) -> dict:
 def lidarr_album_track_count_candidates(album_obj: dict) -> List[int]:
     counts: List[int] = []
 
-    direct_track_count = album_obj.get("trackCount")
-    if isinstance(direct_track_count, int) and direct_track_count > 0:
-        counts.append(direct_track_count)
+    statistics = album_obj.get("statistics") or {}
+    stats_track_file_count = statistics.get("trackFileCount")
+    if isinstance(stats_track_file_count, int) and stats_track_file_count >= 0:
+        counts.append(stats_track_file_count)
 
-    for release in album_obj.get("releases") or []:
-        track_count = release.get("trackCount")
-        if isinstance(track_count, int) and track_count > 0:
-            counts.append(track_count)
+    direct_track_file_count = album_obj.get("trackFileCount")
+    if isinstance(direct_track_file_count, int) and direct_track_file_count >= 0:
+        counts.append(direct_track_file_count)
+
+    tracks = album_obj.get("tracks") or []
+    if tracks:
+        file_backed_tracks = 0
+
+        for track in tracks:
+            has_file = track.get("hasFile")
+            track_file_id = track.get("trackFileId")
+
+            if has_file is True:
+                file_backed_tracks += 1
+                continue
+
+            if isinstance(track_file_id, int) and track_file_id > 0:
+                file_backed_tracks += 1
+
+        counts.append(file_backed_tracks)
 
     return sorted(set(counts))
 
@@ -106,7 +123,11 @@ def verify_lidarr_album_candidate(prune_signal: dict, candidate: dict, client) -
     plex_track_count = prune_signal.get("total_tracks_seen") or 0
     lidarr_track_counts = lidarr_album_track_count_candidates(fresh)
     if plex_track_count not in lidarr_track_counts:
-        return False, f"track-count-mismatch plex={plex_track_count} lidarr={lidarr_track_counts}", fresh
+        return (
+            False,
+            f"file-track-count-mismatch plex={plex_track_count} lidarr_file_counts={lidarr_track_counts}",
+            fresh,
+        )
 
     if not lidarr_album_has_registered_files(fresh):
         return False, "no-registered-files", fresh
