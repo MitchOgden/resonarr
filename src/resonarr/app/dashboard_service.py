@@ -2,6 +2,7 @@ from resonarr.app.extend_query_service import ExtendQueryService
 from resonarr.app.extend_operator_service import ExtendOperatorService
 from resonarr.app.extend_promotion_service import ExtendPromotionService
 from resonarr.app.deepen_service import DeepenService
+from resonarr.app.deepen_operator_service import DeepenOperatorService
 from resonarr.app.prune_query_service import PruneQueryService
 from resonarr.app.prune_operator_service import PruneOperatorService
 from resonarr.app.view_models import (
@@ -20,6 +21,7 @@ class DashboardService:
         extend_operator_service=None,
         extend_promotion_service=None,
         deepen_service=None,
+        deepen_operator_service=None,
         prune_query_service=None,
         prune_operator_service=None,
     ):
@@ -27,6 +29,7 @@ class DashboardService:
         self.extend_operator_service = extend_operator_service or ExtendOperatorService()
         self.extend_promotion_service = extend_promotion_service or ExtendPromotionService()
         self.deepen_service = deepen_service or DeepenService()
+        self.deepen_operator_service = deepen_operator_service or DeepenOperatorService()
         self.prune_query_service = prune_query_service or PruneQueryService()
         self.prune_operator_service = prune_operator_service or PruneOperatorService()
 
@@ -50,6 +53,7 @@ class DashboardService:
         extend_review_queue = self.extend_operator_service.list_review_queue()
         extend_promotable = self.extend_promotion_service.list_promotable_candidates()
         deepen_candidates = self.deepen_service.list_candidates()
+        deepen_review_queue = self.deepen_operator_service.list_review_queue()
         suppressed = self.extend_query_service.list_suppressed_artists()
         prune_summary = self.prune_query_service.get_prune_summary()
         prune_reviewable = self.prune_operator_service.list_review_queue()
@@ -59,6 +63,7 @@ class DashboardService:
 
         deepen_summary = {
             "candidate_count": deepen_candidates["count"],
+            "review_queue_count": deepen_review_queue["count"],
             "partial_present_count": sum(1 for item in deepen_items if item.get("partial_present")),
             "suppressed_count": sum(1 for item in deepen_items if item.get("is_suppressed")),
             "cooldown_count": sum(1 for item in deepen_items if item.get("in_cooldown")),
@@ -70,12 +75,13 @@ class DashboardService:
         extend_review_cards = self._build_extend_review_cards(extend_review_queue["items"])
         extend_promotable_cards = self._build_extend_promotable_cards(extend_promotable["items"])
         deepen_candidate_cards = self._build_deepen_candidate_cards(deepen_items)
+        deepen_review_cards = self._build_deepen_candidate_cards(deepen_review_queue["items"])
         suppressed_artist_cards = self._build_suppressed_artist_cards(suppressed["items"])
         prune_candidate_cards = self._build_prune_candidate_cards(prune_reviewable["items"])
 
         recent_reviewable = extend_review_cards[:5]
         top_promotable = extend_promotable_cards[:5]
-        top_deepen = deepen_candidate_cards[:5]
+        top_deepen = deepen_review_cards[:5]
         top_prune = prune_candidate_cards[:5]
 
         return {
@@ -122,6 +128,11 @@ class DashboardService:
                     "status": deepen_candidates["status"],
                     "count": deepen_candidates["count"],
                     "items": deepen_candidate_cards,
+                },
+                "deepen_review_queue": {
+                    "status": deepen_review_queue["status"],
+                    "count": deepen_review_queue["count"],
+                    "items": deepen_review_cards,
                 },
                 "suppressed_artists": {
                     "status": suppressed["status"],

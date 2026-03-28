@@ -14,7 +14,8 @@ class MemoryStore:
             return {
                 "artists": {},
                 "extend_candidates": {},
-                "prune_candidates": {}
+                "prune_candidates": {},
+                "deepen_candidates": {}
             }
 
         with open(STATE_FILE, "r") as f:
@@ -23,6 +24,7 @@ class MemoryStore:
         state.setdefault("artists", {})
         state.setdefault("extend_candidates", {})
         state.setdefault("prune_candidates", {})
+        state.setdefault("deepen_candidates", {})
 
         return state
 
@@ -355,7 +357,110 @@ class MemoryStore:
 
     def list_extend_candidates(self):
         return list(self.state["extend_candidates"].values())
-    
+
+    def _deepen_candidate_key(self, mbid, artist_name=None):
+        if mbid:
+            return f"mbid:{str(mbid).lower().strip()}"
+
+        return f"name:{(artist_name or '').lower().strip()}"
+
+    def upsert_deepen_candidate(self, item):
+        key = self._deepen_candidate_key(
+            mbid=item.get("mbid"),
+            artist_name=item.get("artist_name"),
+        )
+        now = int(time.time())
+
+        candidate = self.state["deepen_candidates"].get(key, {})
+        existing_status = candidate.get("status")
+
+        candidate["key"] = key
+        candidate["artist_name"] = item.get("artist_name")
+        candidate["mbid"] = item.get("mbid")
+        candidate["lastfm_playcount"] = item.get("lastfm_playcount")
+        candidate["partial_present"] = item.get("partial_present")
+        candidate["eligible_album_count"] = item.get("eligible_album_count")
+        candidate["fully_owned"] = item.get("fully_owned")
+        candidate["total_album_count"] = item.get("total_album_count")
+        candidate["fully_owned_album_count"] = item.get("fully_owned_album_count")
+        candidate["in_cooldown"] = item.get("in_cooldown")
+        candidate["cooldown_remaining_seconds"] = item.get("cooldown_remaining_seconds")
+        candidate["in_recommendation_backoff"] = item.get("in_recommendation_backoff")
+        candidate["is_suppressed"] = item.get("is_suppressed")
+        candidate["suppression_reason"] = item.get("suppression_reason")
+        candidate["rank"] = item.get("rank")
+        candidate["last_seen_ts"] = now
+        candidate.setdefault("first_seen_ts", now)
+
+        if existing_status in {"deepen_rejected", "deepen_executed"}:
+            candidate["status"] = existing_status
+        else:
+            candidate["status"] = "deepen_recommendation"
+
+        self.state["deepen_candidates"][key] = candidate
+        self._save()
+        return candidate
+
+    def get_deepen_candidate(self, mbid=None, artist_name=None):
+        key = self._deepen_candidate_key(mbid=mbid, artist_name=artist_name)
+        return self.state["deepen_candidates"].get(key, {})
+
+    def list_deepen_candidates(self):
+        return list(self.state["deepen_candidates"].values())
+
+    def list_deepen_candidates_by_status(self, statuses):
+        wanted = set(statuses)
+        return [
+            candidate
+            for candidate in self.state["deepen_candidates"].values()
+            if candidate.get("status") in wanted
+        ]
+
+    def mark_deepen_candidate_approved(self, mbid=None, artist_name=None, note="manual_approve"):
+        key = self._deepen_candidate_key(mbid=mbid, artist_name=artist_name)
+        now = int(time.time())
+
+        candidate = self.state["deepen_candidates"].get(key)
+        if not candidate:
+            return
+
+        candidate["status"] = "deepen_approved"
+        candidate["deepen_approved_ts"] = now
+        candidate["deepen_approved_note"] = note
+
+        self.state["deepen_candidates"][key] = candidate
+        self._save()
+
+    def mark_deepen_candidate_executed(self, mbid=None, artist_name=None, note="executed"):
+        key = self._deepen_candidate_key(mbid=mbid, artist_name=artist_name)
+        now = int(time.time())
+
+        candidate = self.state["deepen_candidates"].get(key)
+        if not candidate:
+            return
+
+        candidate["status"] = "deepen_executed"
+        candidate["deepen_executed_ts"] = now
+        candidate["deepen_executed_note"] = note
+
+        self.state["deepen_candidates"][key] = candidate
+        self._save()
+
+    def mark_deepen_candidate_rejected(self, mbid=None, artist_name=None, note="manual_reject"):
+        key = self._deepen_candidate_key(mbid=mbid, artist_name=artist_name)
+        now = int(time.time())
+
+        candidate = self.state["deepen_candidates"].get(key)
+        if not candidate:
+            return
+
+        candidate["status"] = "deepen_rejected"
+        candidate["deepen_rejected_ts"] = now
+        candidate["deepen_rejected_note"] = note
+
+        self.state["deepen_candidates"][key] = candidate
+        self._save()
+
     def _prune_candidate_key(self, artist_name, album_name, album_mbid=None, lidarr_album_id=None):
         if album_mbid:
             return f"mbid:{str(album_mbid).lower().strip()}"
