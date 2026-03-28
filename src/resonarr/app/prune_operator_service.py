@@ -48,12 +48,14 @@ class PruneOperatorService:
                 "album_mbid": persisted.get("album_mbid"),
                 "lidarr_album_id": persisted.get("lidarr_album_id"),
                 "lidarr_artist_id": persisted.get("lidarr_artist_id"),
+                "lidarr_has_files": persisted.get("lidarr_has_files"),
                 "bad_ratio": persisted.get("bad_ratio"),
                 "rated_tracks": persisted.get("rated_tracks"),
                 "bad_tracks": persisted.get("bad_tracks"),
                 "total_tracks_seen": persisted.get("total_tracks_seen"),
                 "reason": persisted.get("reason"),
                 "match_method": persisted.get("match_method"),
+                "matched": persisted.get("matched"),
                 "status": persisted.get("status"),
             })
 
