@@ -66,3 +66,21 @@ def build_suppressed_artist_card(item):
         "reason": item.get("suppression_reason"),
         "suppressed_ts": item.get("suppressed_ts"),
     }
+
+def build_prune_candidate_card(item):
+    return {
+        "kind": "prune_candidate",
+        "artist_name": item.get("artist_name"),
+        "artist_mbid": item.get("artist_mbid"),
+        "status": "reviewable" if item.get("matched") else "unmatched",
+        "album_title": item.get("album_name"),
+        "album_id": item.get("lidarr_album_id"),
+        "score": item.get("bad_ratio"),
+        "reason": item.get("reason"),
+        "rated_tracks": item.get("rated_tracks"),
+        "bad_tracks": item.get("bad_tracks"),
+        "total_tracks_seen": item.get("total_tracks_seen"),
+        "match_method": item.get("match_method"),
+        "matched": item.get("matched"),
+        "lidarr_has_files": item.get("lidarr_has_files"),
+    }

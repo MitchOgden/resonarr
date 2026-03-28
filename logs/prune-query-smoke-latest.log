@@ -1,0 +1,181 @@
+[INFO] Timestamped log file: logs\prune-query-smoke-20260328-005056.log
+[INFO] Latest log file: logs\prune-query-smoke-latest.log
+=== Resonarr Prune Query Service Smoke Test ===
+[INFO] Prune query service result:
+{
+  "summary": {
+    "status": "success",
+    "candidate_count": 2,
+    "matched_count": 2,
+    "fallback_eligible_count": 0,
+    "strictly_unmatched_count": 0,
+    "items": [
+      {
+        "artist_name": "Various Artists",
+        "artist_mbid": null,
+        "album_name": "Brit Awards 2017",
+        "album_mbid": "86c72dee-81ac-41dc-b94a-ac343c5b4898",
+        "rated_tracks": 1,
+        "bad_tracks": 1,
+        "total_tracks_seen": 1,
+        "bad_ratio": 1.0,
+        "reason": "small album full reject: 1/1 rated tracks at or below 4.0 on album with 1 total tracks",
+        "match_method": "mbid+verified",
+        "lidarr_album_id": 437,
+        "lidarr_artist_id": 280,
+        "lidarr_has_files": true,
+        "matched": true,
+        "action": "RECOMMEND_PRUNE_ALBUM",
+        "has_album_mbid": true,
+        "album_mbids": [
+          "86c72dee-81ac-41dc-b94a-ac343c5b4898"
+        ],
+        "mbid_match_found": true,
+        "plex_album_mbids": [
+          "86c72dee-81ac-41dc-b94a-ac343c5b4898"
+        ],
+        "name_match_found": false,
+        "name_match_available_but_disabled": false,
+        "name_match_type": null,
+        "name_candidate_count": 0,
+        "verification_reason": "verified",
+        "verification_failures": [
+          {
+            "album_id": 437,
+            "artist_name": "Various Artists",
+            "album_name": "Brit Awards 2017",
+            "reason": "verified-mbid-intersection ['86c72dee-81ac-41dc-b94a-ac343c5b4898']"
+          }
+        ],
+        "diagnostic_name_match_artist": null,
+        "diagnostic_name_match_album": null
+      },
+      {
+        "artist_name": "Smash Mouth",
+        "artist_mbid": null,
+        "album_name": "All Star Smash Hits",
+        "album_mbid": "90f2861a-56e3-4ea5-8c87-d67fdc9759dc",
+        "rated_tracks": 1,
+        "bad_tracks": 1,
+        "total_tracks_seen": 3,
+        "bad_ratio": 0.3333333333333333,
+        "reason": "small album full reject: 1/1 rated tracks at or below 4.0 on album with 3 total tracks",
+        "match_method": "mbid+verified",
+        "lidarr_album_id": 376,
+        "lidarr_artist_id": 237,
+        "lidarr_has_files": true,
+        "matched": true,
+        "action": "RECOMMEND_PRUNE_ALBUM",
+        "has_album_mbid": true,
+        "album_mbids": [
+          "90f2861a-56e3-4ea5-8c87-d67fdc9759dc"
+        ],
+        "mbid_match_found": true,
+        "plex_album_mbids": [
+          "90f2861a-56e3-4ea5-8c87-d67fdc9759dc"
+        ],
+        "name_match_found": false,
+        "name_match_available_but_disabled": false,
+        "name_match_type": null,
+        "name_candidate_count": 0,
+        "verification_reason": "verified",
+        "verification_failures": [
+          {
+            "album_id": 376,
+            "artist_name": "Smash Mouth",
+            "album_name": "All Star Smash Hits",
+            "reason": "verified-mbid-intersection ['90f2861a-56e3-4ea5-8c87-d67fdc9759dc']"
+          }
+        ],
+        "diagnostic_name_match_artist": null,
+        "diagnostic_name_match_album": null
+      }
+    ]
+  },
+  "reviewable": {
+    "status": "success",
+    "count": 2,
+    "items": [
+      {
+        "artist_name": "Various Artists",
+        "artist_mbid": null,
+        "album_name": "Brit Awards 2017",
+        "album_mbid": "86c72dee-81ac-41dc-b94a-ac343c5b4898",
+        "rated_tracks": 1,
+        "bad_tracks": 1,
+        "total_tracks_seen": 1,
+        "bad_ratio": 1.0,
+        "reason": "small album full reject: 1/1 rated tracks at or below 4.0 on album with 1 total tracks",
+        "match_method": "mbid+verified",
+        "lidarr_album_id": 437,
+        "lidarr_artist_id": 280,
+        "lidarr_has_files": true,
+        "matched": true,
+        "action": "RECOMMEND_PRUNE_ALBUM",
+        "has_album_mbid": true,
+        "album_mbids": [
+          "86c72dee-81ac-41dc-b94a-ac343c5b4898"
+        ],
+        "mbid_match_found": true,
+        "plex_album_mbids": [
+          "86c72dee-81ac-41dc-b94a-ac343c5b4898"
+        ],
+        "name_match_found": false,
+        "name_match_available_but_disabled": false,
+        "name_match_type": null,
+        "name_candidate_count": 0,
+        "verification_reason": "verified",
+        "verification_failures": [
+          {
+            "album_id": 437,
+            "artist_name": "Various Artists",
+            "album_name": "Brit Awards 2017",
+            "reason": "verified-mbid-intersection ['86c72dee-81ac-41dc-b94a-ac343c5b4898']"
+          }
+        ],
+        "diagnostic_name_match_artist": null,
+        "diagnostic_name_match_album": null
+      },
+      {
+        "artist_name": "Smash Mouth",
+        "artist_mbid": null,
+        "album_name": "All Star Smash Hits",
+        "album_mbid": "90f2861a-56e3-4ea5-8c87-d67fdc9759dc",
+        "rated_tracks": 1,
+        "bad_tracks": 1,
+        "total_tracks_seen": 3,
+        "bad_ratio": 0.3333333333333333,
+        "reason": "small album full reject: 1/1 rated tracks at or below 4.0 on album with 3 total tracks",
+        "match_method": "mbid+verified",
+        "lidarr_album_id": 376,
+        "lidarr_artist_id": 237,
+        "lidarr_has_files": true,
+        "matched": true,
+        "action": "RECOMMEND_PRUNE_ALBUM",
+        "has_album_mbid": true,
+        "album_mbids": [
+          "90f2861a-56e3-4ea5-8c87-d67fdc9759dc"
+        ],
+        "mbid_match_found": true,
+        "plex_album_mbids": [
+          "90f2861a-56e3-4ea5-8c87-d67fdc9759dc"
+        ],
+        "name_match_found": false,
+        "name_match_available_but_disabled": false,
+        "name_match_type": null,
+        "name_candidate_count": 0,
+        "verification_reason": "verified",
+        "verification_failures": [
+          {
+            "album_id": 376,
+            "artist_name": "Smash Mouth",
+            "album_name": "All Star Smash Hits",
+            "reason": "verified-mbid-intersection ['90f2861a-56e3-4ea5-8c87-d67fdc9759dc']"
+          }
+        ],
+        "diagnostic_name_match_artist": null,
+        "diagnostic_name_match_album": null
+      }
+    ]
+  }
+}

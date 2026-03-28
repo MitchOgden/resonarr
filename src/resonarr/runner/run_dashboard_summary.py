@@ -16,6 +16,7 @@ def main():
 
     extend = summary["extend"]
     deepen = summary["deepen"]
+    prune = summary["prune"]    
 
     print("[INFO] Extend overview:")
     print(f"[INFO] Total candidates: {extend['total_candidates']}")
@@ -28,12 +29,21 @@ def main():
     print(f"[INFO] Recommended count: {extend['recommended']}")
     print(f"[INFO] New count: {extend['new']}")
 
+
     print("\n[INFO] Deepen overview:")
     print(f"[INFO] Candidate count: {deepen['candidate_count']}")
     print(f"[INFO] Partial present count: {deepen['partial_present_count']}")
     print(f"[INFO] Suppressed count: {deepen['suppressed_count']}")
     print(f"[INFO] Cooldown count: {deepen['cooldown_count']}")
     print(f"[INFO] Recommendation backoff count: {deepen['recommendation_backoff_count']}")
+
+
+    print("\n[INFO] Prune overview:")
+    print(f"[INFO] Candidate count: {prune['candidate_count']}")
+    print(f"[INFO] Matched count: {prune['matched_count']}")
+    print(f"[INFO] Fallback eligible count: {prune['fallback_eligible_count']}")
+    print(f"[INFO] Strictly unmatched count: {prune['strictly_unmatched_count']}")
+    print(f"[INFO] Reviewable count: {prune['reviewable_count']}")    
 
     print(f"\n[INFO] Suppressed artist count: {summary['suppressed_artist_count']}")
 
@@ -63,6 +73,14 @@ def main():
             f"eligible_albums={item.get('eligible_album_count')}"
         )
 
+    print("\n[INFO] Prune candidate highlights:")
+    for item in payload["highlights"]["top_prune_candidates"]:
+        print(
+            f"[INFO] {item.get('artist_name')} | "
+            f"{item.get('album_title')} | "
+            f"bad_ratio={item.get('score'):.2f} | "
+            f"match={item.get('match_method')}"
+        )    
 
 if __name__ == "__main__":
     main()

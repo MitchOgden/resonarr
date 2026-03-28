@@ -146,7 +146,10 @@ Operator workflow runners:
 - `python -m resonarr.runner.run_dashboard_summary`
 - `python -m resonarr.runner.run_prune_service_smoke`
 - `python -m resonarr.runner.run_prune_cycle`
+- `python -m resonarr.runner.run_prune_query_smoke`
+- `python -m resonarr.runner.run_prune_status_summary`
 
+Prune now has a query/read layer so candidate summaries and reviewable prune recommendations can be consumed as structured backend data before operator execution is added.
 Prune now has an initial backend slice with Plex signal extraction, pure policy evaluation, Lidarr matching, and dry-run candidate generation before any destructive execution is introduced.
 Dashboard sections and highlights now emit normalized UI-facing card shapes so future API/UI layers do not have to depend on raw service-specific item structures.
 The query/smoke runners are intended as backend test points for future API/UI work. They expose summary and review data in stable structured shapes before any web transport is added.

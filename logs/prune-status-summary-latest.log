@@ -1,0 +1,11 @@
+[INFO] Timestamped log file: logs\prune-status-summary-20260328-005201.log
+[INFO] Latest log file: logs\prune-status-summary-latest.log
+=== Resonarr Prune Status Summary ===
+[INFO] Candidate count: 2
+[INFO] Matched count: 2
+[INFO] Fallback eligible count: 0
+[INFO] Strictly unmatched count: 0
+
+[INFO] Reviewable prune candidates: 2
+[INFO] Various Artists | Brit Awards 2017 | bad_ratio=1.00 | match=mbid+verified
+[INFO] Smash Mouth | All Star Smash Hits | bad_ratio=0.33 | match=mbid+verified
