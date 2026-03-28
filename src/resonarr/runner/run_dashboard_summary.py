@@ -39,11 +39,16 @@ def main():
 
 
     print("\n[INFO] Prune overview:")
-    print(f"[INFO] Candidate count: {prune['candidate_count']}")
+    print(f"[INFO] Live candidate count: {prune['live_candidate_count']}")
     print(f"[INFO] Matched count: {prune['matched_count']}")
     print(f"[INFO] Fallback eligible count: {prune['fallback_eligible_count']}")
     print(f"[INFO] Strictly unmatched count: {prune['strictly_unmatched_count']}")
-    print(f"[INFO] Reviewable count: {prune['reviewable_count']}")    
+    print(f"[INFO] History count: {prune['history_count']}")
+    print(f"[INFO] Recommendation count: {prune['prune_recommendation_count']}")
+    print(f"[INFO] Approved count: {prune['prune_approved_count']}")
+    print(f"[INFO] Executed count: {prune['prune_executed_count']}")
+    print(f"[INFO] Rejected count: {prune['prune_rejected_count']}")
+    print(f"[INFO] Reviewable count: {prune['reviewable_count']}") 
 
     print(f"\n[INFO] Suppressed artist count: {summary['suppressed_artist_count']}")
 

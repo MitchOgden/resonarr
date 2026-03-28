@@ -1117,7 +1117,7 @@
       "match_method": "mbid+verified",
       "matched": true,
       "action": "RECOMMEND_PRUNE_ALBUM",
-      "last_seen_ts": 1774698777,
+      "last_seen_ts": 1774699685,
       "first_seen_ts": 1774675497,
       "status": "prune_recommendation"
     },

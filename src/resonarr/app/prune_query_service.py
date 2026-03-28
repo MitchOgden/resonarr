@@ -49,14 +49,26 @@ class PruneQueryService:
             "items": items,
         }
 
-    def get_prune_summary(self, limit=None):
-        result = self.list_prune_candidates(limit=limit)
-        items = result["items"]
+    def list_prune_history(self):
+        items = self.memory.list_prune_candidates()
 
-        matched_count = sum(1 for item in items if item.get("matched"))
+        return {
+            "status": "success",
+            "count": len(items),
+            "items": items,
+        }
+
+    def get_prune_summary(self, limit=None):
+        live_result = self.list_prune_candidates(limit=limit)
+        live_items = live_result["items"]
+
+        history_result = self.list_prune_history()
+        history_items = history_result["items"]
+
+        matched_count = sum(1 for item in live_items if item.get("matched"))
         fallback_eligible_count = sum(
             1
-            for item in items
+            for item in live_items
             if (
                 not item.get("matched")
                 and item.get("name_match_found")
@@ -65,7 +77,7 @@ class PruneQueryService:
         )
         strictly_unmatched_count = sum(
             1
-            for item in items
+            for item in live_items
             if (
                 not item.get("matched")
                 and not (
@@ -76,29 +88,31 @@ class PruneQueryService:
         )
 
         recommendation_count = sum(
-            1 for item in items if item.get("status") == "prune_recommendation"
+            1 for item in history_items if item.get("status") == "prune_recommendation"
         )
         approved_count = sum(
-            1 for item in items if item.get("status") == "prune_approved"
+            1 for item in history_items if item.get("status") == "prune_approved"
         )
         executed_count = sum(
-            1 for item in items if item.get("status") == "prune_executed"
+            1 for item in history_items if item.get("status") == "prune_executed"
         )
         rejected_count = sum(
-            1 for item in items if item.get("status") == "prune_rejected"
+            1 for item in history_items if item.get("status") == "prune_rejected"
         )
 
         return {
             "status": "success",
-            "candidate_count": len(items),
+            "live_candidate_count": len(live_items),
             "matched_count": matched_count,
             "fallback_eligible_count": fallback_eligible_count,
             "strictly_unmatched_count": strictly_unmatched_count,
+            "history_count": len(history_items),
             "prune_recommendation_count": recommendation_count,
             "prune_approved_count": approved_count,
             "prune_executed_count": executed_count,
             "prune_rejected_count": rejected_count,
-            "items": items,
+            "items": live_items,
+            "history_items": history_items,
         }
 
     def list_reviewable_prune_candidates(self, limit=None):

@@ -13,10 +13,15 @@ def main():
 
     summary = service.get_prune_summary()
 
-    print(f"[INFO] Candidate count: {summary['candidate_count']}")
+    print(f"[INFO] Live candidate count: {summary['live_candidate_count']}")
     print(f"[INFO] Matched count: {summary['matched_count']}")
     print(f"[INFO] Fallback eligible count: {summary['fallback_eligible_count']}")
     print(f"[INFO] Strictly unmatched count: {summary['strictly_unmatched_count']}")
+    print(f"[INFO] History count: {summary['history_count']}")
+    print(f"[INFO] Recommendation count: {summary['prune_recommendation_count']}")
+    print(f"[INFO] Approved count: {summary['prune_approved_count']}")
+    print(f"[INFO] Executed count: {summary['prune_executed_count']}")
+    print(f"[INFO] Rejected count: {summary['prune_rejected_count']}")
 
     reviewable = service.list_reviewable_prune_candidates()
     print(f"\n[INFO] Reviewable prune candidates: {reviewable['count']}")
