@@ -1,0 +1,12 @@
+[INFO] Timestamped log file: logs\operator-reject-deepen-20260328-092118.log
+[INFO] Latest log file: logs\operator-reject-deepen-latest.log
+=== Resonarr Reject Deepen Recommendation ===
+[INFO] Artist: Smash Mouth
+[INFO] Result:
+{
+  "status": "success",
+  "artist_name": "Smash Mouth",
+  "candidate_status": "deepen_rejected",
+  "suppressed": true,
+  "suppression_reason": "operator_rejected_deepen_recommendation"
+}

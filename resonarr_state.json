@@ -237,6 +237,11 @@
       "affinity_reason": "signal_merge(plex,lastfm)",
       "affinity_ts": 1774660041,
       "last_action_ts": 1774660044
+    },
+    "944e1036-8a03-4611-8aa0-31515a05c848": {
+      "suppressed": true,
+      "suppression_reason": "operator_rejected_deepen_recommendation",
+      "suppressed_ts": 1774704106
     }
   },
   "extend_candidates": {
@@ -1166,7 +1171,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 68,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1186,7 +1191,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 33,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1206,7 +1211,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 6,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1226,7 +1231,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 37,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1246,7 +1251,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 44,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1266,7 +1271,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 45,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1286,7 +1291,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 77,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1306,7 +1311,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 17,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1326,7 +1331,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 18,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1346,7 +1351,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 7,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1366,7 +1371,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 40,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1386,7 +1391,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 74,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1406,7 +1411,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 60,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1426,7 +1431,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 19,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1446,7 +1451,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 51,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1466,7 +1471,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 54,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1486,9 +1491,11 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 78,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704106,
       "first_seen_ts": 1774703762,
-      "status": "deepen_recommendation"
+      "status": "deepen_rejected",
+      "deepen_rejected_ts": 1774704106,
+      "deepen_rejected_note": "manual_reject"
     },
     "mbid:5d7c4cfc-29e7-4c83-8893-ae02679fc9f4": {
       "key": "mbid:5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
@@ -1506,7 +1513,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 2,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1526,7 +1533,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 79,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1546,7 +1553,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 31,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1566,7 +1573,7 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 34,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
       "status": "deepen_recommendation"
     },
@@ -1586,8 +1593,28 @@
       "is_suppressed": false,
       "suppression_reason": null,
       "rank": 58,
-      "last_seen_ts": 1774703942,
+      "last_seen_ts": 1774704246,
       "first_seen_ts": 1774703762,
+      "status": "deepen_recommendation"
+    },
+    "mbid:0c124600-18da-4087-be0d-d7fb6a2526c6": {
+      "key": "mbid:0c124600-18da-4087-be0d-d7fb6a2526c6",
+      "artist_name": "Stick Figure",
+      "mbid": "0c124600-18da-4087-be0d-d7fb6a2526c6",
+      "lastfm_playcount": 17,
+      "partial_present": false,
+      "eligible_album_count": 4,
+      "fully_owned": false,
+      "total_album_count": 11,
+      "fully_owned_album_count": 7,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 25,
+      "last_seen_ts": 1774704246,
+      "first_seen_ts": 1774704193,
       "status": "deepen_recommendation"
     }
   }
