@@ -42,7 +42,7 @@ class ExtendPromotionService:
             "items": items,
         }
 
-    def run_promotion_cycle(self, limit=None):
+    def run_promotion_cycle(self, limit=None, dry_run=False):
         if limit is None:
             limit = EXTEND_PROMOTION_MAX_PLANS_PER_RUN
 
@@ -140,7 +140,7 @@ class ExtendPromotionService:
             item["resolved_artist_mbid"] = result.get("artist_mbid")
             item["staged_artist_created"] = result.get("staged_artist_created", False)
 
-            if result.get("staged_artist_created"):
+            if result.get("staged_artist_created") and not dry_run:
                 self.memory.mark_extend_candidate_staged_artist(
                     artist_name=artist_name,
                     artist_mbid=result.get("artist_mbid"),
@@ -157,21 +157,26 @@ class ExtendPromotionService:
                     results.append(item)
                     continue
 
-                self.memory.mark_extend_candidate_starter_album_recommendation(
-                    artist_name=artist_name,
-                    artist_mbid=result.get("artist_mbid"),
-                    resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
-                    album_id=intent.target_album_id,
-                    album_title=intent.target_album_title,
-                    reason=intent.reason,
-                    score=intent.score,
-                )
+                if not dry_run:
+                    self.memory.mark_extend_candidate_starter_album_recommendation(
+                        artist_name=artist_name,
+                        artist_mbid=result.get("artist_mbid"),
+                        resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
+                        album_id=intent.target_album_id,
+                        album_title=intent.target_album_title,
+                        reason=intent.reason,
+                        score=intent.score,
+                    )
 
-                self.memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
+                    self.memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
 
                 planned += 1
                 item["result_type"] = "starter_album_recommendation"
-                item["message"] = "Starter album recommendation created"
+                item["message"] = (
+                    "Starter album recommendation would be created"
+                    if dry_run else
+                    "Starter album recommendation created"
+                )
                 item["starter_album_id"] = intent.target_album_id
                 item["starter_album_title"] = intent.target_album_title
                 item["starter_album_score"] = intent.score
@@ -184,14 +189,19 @@ class ExtendPromotionService:
                 item["result_type"] = "non_acquire"
 
                 if result.get("reason") == "no eligible albums remain after ownership filtering":
-                    self.memory.mark_extend_candidate_starter_album_exhausted(
-                        artist_name=artist_name,
-                        artist_mbid=result.get("artist_mbid"),
-                        resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
-                        reason=result.get("reason"),
-                    )
+                    if not dry_run:
+                        self.memory.mark_extend_candidate_starter_album_exhausted(
+                            artist_name=artist_name,
+                            artist_mbid=result.get("artist_mbid"),
+                            resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
+                            reason=result.get("reason"),
+                        )
                     item["result_type"] = "starter_album_exhausted"
-                    item["message"] = "Recorded starter album exhaustion for staged/promoted candidate"
+                    item["message"] = (
+                        "Would record starter album exhaustion for staged/promoted candidate"
+                        if dry_run else
+                        "Recorded starter album exhaustion for staged/promoted candidate"
+                    )
                 else:
                     item["message"] = result.get("reason")
 
@@ -207,21 +217,26 @@ class ExtendPromotionService:
                 results.append(item)
                 continue
 
-            self.memory.mark_extend_candidate_starter_album_candidate(
-                artist_name=artist_name,
-                artist_mbid=result.get("artist_mbid"),
-                resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
-                album_id=intent.target_album_id,
-                album_title=intent.target_album_title,
-                reason=intent.reason,
-                score=intent.score,
-            )
+            if not dry_run:
+                self.memory.mark_extend_candidate_starter_album_candidate(
+                    artist_name=artist_name,
+                    artist_mbid=result.get("artist_mbid"),
+                    resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
+                    album_id=intent.target_album_id,
+                    album_title=intent.target_album_title,
+                    reason=intent.reason,
+                    score=intent.score,
+                )
 
-            self.memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
+                self.memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
 
             planned += 1
             item["result_type"] = "starter_album_candidate"
-            item["message"] = "Starter album acquisition candidate created"
+            item["message"] = (
+                "Starter album acquisition candidate would be created"
+                if dry_run else
+                "Starter album acquisition candidate created"
+            )
             item["starter_album_id"] = intent.target_album_id
             item["starter_album_title"] = intent.target_album_title
             item["starter_album_score"] = intent.score
@@ -237,5 +252,6 @@ class ExtendPromotionService:
             "skipped_non_acquire": skipped_non_acquire,
             "failed": failed,
             "limit": limit,
+            "dry_run": dry_run,
             "results": results,
         }

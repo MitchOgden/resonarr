@@ -17,8 +17,8 @@ def main():
     print("[INFO] Promotable candidate view:")
     print(json.dumps(promotable, indent=2, ensure_ascii=False))
 
-    cycle_result = service.run_promotion_cycle(limit=3)
-    print("[INFO] Promotion cycle result:")
+    cycle_result = service.run_promotion_cycle(limit=3, dry_run=True)
+    print("[INFO] Promotion cycle result (dry run):")
     print(json.dumps(cycle_result, indent=2, ensure_ascii=False))
 
 
