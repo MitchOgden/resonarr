@@ -80,6 +80,7 @@ class PruneService:
                 "name_match_type": diagnostics.get("name_match_type"),
                 "name_candidate_count": diagnostics.get("name_candidate_count"),
                 "verification_reason": diagnostics.get("verification_reason"),
+                "verification_failures": diagnostics.get("verification_failures", []),
                 "diagnostic_name_match_artist": diagnostics.get("diagnostic_name_match_artist"),
                 "diagnostic_name_match_album": diagnostics.get("diagnostic_name_match_album"),
             }

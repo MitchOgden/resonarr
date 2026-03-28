@@ -38,6 +38,7 @@ def main():
         print(f"[INFO] Name match type: {item.get('name_match_type')}")
         print(f"[INFO] Name candidate count: {item.get('name_candidate_count')}")
         print(f"[INFO] Verification reason: {item.get('verification_reason')}")
+        print(f"[INFO] Verification failures: {item.get('verification_failures')}")
         print(f"[INFO] Name match available but disabled: {item.get('name_match_available_but_disabled')}")
         print(f"[INFO] Diagnostic name match artist: {item.get('diagnostic_name_match_artist')}")
         print(f"[INFO] Diagnostic name match album: {item.get('diagnostic_name_match_album')}")

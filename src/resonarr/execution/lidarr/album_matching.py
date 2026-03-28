@@ -127,6 +127,7 @@ def choose_best_name_fallback_candidate(
         "diagnostic_name_match_album": None,
         "name_candidate_count": len(candidates),
         "verification_reason": None,
+        "verification_failures": [],
     }
 
     if not candidates:
@@ -137,7 +138,16 @@ def choose_best_name_fallback_candidate(
 
     for candidate in candidates:
         ok, reason, fresh = verify_lidarr_album_candidate(prune_signal, candidate, client)
-        diagnostics["verification_reason"] = reason
+
+        candidate_artist = (candidate.get("artist") or {}).get("artistName")
+        candidate_album = candidate.get("title")
+
+        diagnostics["verification_failures"].append({
+            "album_id": candidate.get("id"),
+            "artist_name": candidate_artist,
+            "album_name": candidate_album,
+            "reason": reason,
+        })
 
         if ok:
             verified_matches.append(fresh)
@@ -156,7 +166,18 @@ def choose_best_name_fallback_candidate(
         diagnostics["verification_reason"] = "ambiguous-verified-candidates"
         return None, "ambiguous-verified-candidates", diagnostics
 
-    diagnostics["verification_reason"] = "no-verified-candidates"
+    if len(diagnostics["verification_failures"]) == 1:
+        diagnostics["verification_reason"] = diagnostics["verification_failures"][0]["reason"]
+    else:
+        failure_reasons = sorted({
+            item["reason"] for item in diagnostics["verification_failures"] if item.get("reason")
+        })
+        diagnostics["verification_reason"] = (
+            "multiple-failures: " + "; ".join(failure_reasons)
+            if failure_reasons else
+            "no-verified-candidates"
+        )
+
     return None, "no-verified-candidates", diagnostics
 
 
