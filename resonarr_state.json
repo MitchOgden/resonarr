@@ -1117,9 +1117,11 @@
       "match_method": "mbid+verified",
       "matched": true,
       "action": "RECOMMEND_PRUNE_ALBUM",
-      "last_seen_ts": 1774699685,
+      "last_seen_ts": 1774699976,
       "first_seen_ts": 1774675497,
-      "status": "prune_recommendation"
+      "status": "prune_rejected",
+      "prune_rejected_ts": 1774699976,
+      "prune_rejected_note": "manual_reject"
     },
     "mbid:90f2861a-56e3-4ea5-8c87-d67fdc9759dc": {
       "key": "mbid:90f2861a-56e3-4ea5-8c87-d67fdc9759dc",

@@ -1,0 +1,12 @@
+[INFO] Timestamped log file: logs\operator-reject-prune-20260328-081225.log
+[INFO] Latest log file: logs\operator-reject-prune-latest.log
+=== Resonarr Reject Prune Recommendation ===
+[INFO] Artist: Various Artists
+[INFO] Album: Brit Awards 2017
+[INFO] Result:
+{
+  "status": "success",
+  "artist_name": "Various Artists",
+  "album_name": "Brit Awards 2017",
+  "candidate_status": "prune_rejected"
+}
