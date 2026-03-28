@@ -41,7 +41,13 @@ class PruneQueryService:
 
     def list_prune_candidates(self, limit=None):
         result = self.prune_service.list_prune_candidates(limit=limit)
-        items = [self._merge_with_state(item) for item in result["items"]]
+        merged_items = [self._merge_with_state(item) for item in result["items"]]
+
+        items = [
+            item
+            for item in merged_items
+            if item.get("status") not in self.NON_REVIEWABLE_FINAL_STATUSES
+        ]
 
         return {
             "status": "success",
