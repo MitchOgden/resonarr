@@ -225,6 +225,18 @@
     },
     "extend:the astronomers": {
       "last_recommendation_ts": 1774646929
+    },
+    "b1e26560-60e5-4236-bbdb-9aa5a8d5ee19": {
+      "affinity": 1.7999999999999998,
+      "affinity_reason": "signal_merge(plex,lastfm)",
+      "affinity_ts": 1774660033,
+      "last_action_ts": 1774660039
+    },
+    "95f7536d-b2f7-4087-8668-a663ec201f5a": {
+      "affinity": 1.7999999999999998,
+      "affinity_reason": "signal_merge(plex,lastfm)",
+      "affinity_ts": 1774660041,
+      "last_action_ts": 1774660044
     }
   },
   "extend_candidates": {

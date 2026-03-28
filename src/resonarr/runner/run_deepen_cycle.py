@@ -1,124 +1,89 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from resonarr.candidates.deepen import DeepenCandidateSource
-from resonarr.execution.lidarr.adapter import LidarrAdapter
+from resonarr.app.deepen_service import DeepenService
 from resonarr.config.settings import (
     DEEPEN_MAX_EVALUATIONS_PER_RUN,
     DEEPEN_MAX_ACQUIRES_PER_RUN,
-    ARTIST_COOLDOWN_HOURS,
-    RECOMMENDATION_BACKOFF_HOURS,
 )
 from resonarr.utils.logging import configure_runner_logging
-import time
 
 
 def main():
     configure_runner_logging("deepen-cycle")
-    source = DeepenCandidateSource()
-    adapter = LidarrAdapter()
+    service = DeepenService()
 
     print("=== Resonarr Deepen Cycle ===")
 
-    candidates = source.get_candidates()
+    candidates = service.list_candidates()
+    print(f"[INFO] Candidates found (post-ranking pool): {candidates['count']}")
 
-    print(f"[INFO] Candidates found (post-ranking pool): {len(candidates)}")
-
-    if not candidates:
+    if not candidates["items"]:
         print("[INFO] No deepen candidates available")
         return
 
-    evaluations = 0
-    acquires = 0
-    skipped_prefilter = 0
-    skipped_cooldown = 0
-    skipped_suppressed = 0
-    skipped_recommendation_backoff = 0
-    recommended = 0
-    no_action = 0
+    result = service.run_cycle(
+        limit_evaluations=DEEPEN_MAX_EVALUATIONS_PER_RUN,
+        limit_acquires=DEEPEN_MAX_ACQUIRES_PER_RUN,
+        dry_run=False,
+    )
 
-    for idx, candidate in enumerate(candidates, start=1):
-        if evaluations >= DEEPEN_MAX_EVALUATIONS_PER_RUN:
-            print("\n[INFO] Reached evaluation cap for this run")
-            break
+    for idx, item in enumerate(result["results"], start=1):
+        print(f"\n=== Candidate {idx}/{result['candidate_count']} ===")
+        print(f"[INFO] Artist: {item.get('artist_name')}")
+        print(f"[INFO] MBID: {item.get('mbid')}")
+        print(f"[INFO] Last.fm plays: {item.get('lastfm_playcount')}")
+        print(f"[INFO] Partial present: {item.get('partial_present')}")
+        print(f"[INFO] Eligible albums: {item.get('eligible_album_count')}")
+        print(f"[INFO] Fully owned: {item.get('fully_owned')}")
+        print(f"[INFO] In cooldown: {item.get('in_cooldown')}")
+        print(f"[INFO] In recommendation backoff: {item.get('in_recommendation_backoff')}")
+        print(f"[INFO] Is suppressed: {item.get('is_suppressed')}")
 
-        artist_name = candidate["artist_name"]
-        mbid = candidate["mbid"]
-        plays = candidate["lastfm_playcount"]
+        rt = item.get("result_type")
 
-        print(f"\n=== Candidate {idx}/{len(candidates)} ===")
-        print(f"[INFO] Artist: {artist_name}")
-        print(f"[INFO] MBID: {mbid}")
-        print(f"[INFO] Last.fm plays: {plays}")
-        print(f"[INFO] Partial present: {candidate['partial_present']}")
-        print(f"[INFO] Eligible albums: {candidate['eligible_album_count']}")
-        print(f"[INFO] Fully owned: {candidate['fully_owned']}")
-        print(f"[INFO] In cooldown: {candidate['in_cooldown']}")
-        print(f"[INFO] In recommendation backoff: {candidate['in_recommendation_backoff']}")
-        print(f"[INFO] Is suppressed: {candidate['is_suppressed']}")
-
-        if candidate["fully_owned"] and not candidate["partial_present"]:
+        if rt == "skipped_prefilter_fully_owned":
             print("[INFO] Skipping candidate at pre-filter: fully owned and no partials")
-            skipped_prefilter += 1
             continue
 
-        if candidate["is_suppressed"]:
-            reason = candidate.get("suppression_reason") or "unknown"
-            print(f"[INFO] Skipping candidate at pre-filter: suppressed ({reason})")
-            skipped_suppressed += 1
+        if rt == "skipped_suppressed":
+            print(f"[INFO] Skipping candidate at pre-filter: {item.get('message')}")
             continue
 
-        if candidate["in_recommendation_backoff"]:
-            print(
-                f"[INFO] Skipping candidate at pre-filter: recommendation backoff "
-                f"({RECOMMENDATION_BACKOFF_HOURS}h)"
-            )
-            skipped_recommendation_backoff += 1
+        if rt == "skipped_recommendation_backoff":
+            print(f"[INFO] Skipping candidate at pre-filter: {item.get('message')}")
             continue
 
-        artist_state = adapter.memory.get_artist_state(mbid)
-        last_action_ts = artist_state.get("last_action_ts")
-        cooldown_seconds = ARTIST_COOLDOWN_HOURS * 3600
+        if rt == "skipped_cooldown":
+            print(f"[INFO] Skipping candidate at pre-filter: {item.get('message')}")
+            continue
 
-        if last_action_ts:
-            elapsed = time.time() - last_action_ts
-            if elapsed < cooldown_seconds:
-                print(
-                    f"[INFO] Skipping candidate at pre-filter: cooldown "
-                    f"({int(elapsed)}s elapsed, {ARTIST_COOLDOWN_HOURS}h cooldown)"
-                )
-                skipped_cooldown += 1
-                continue
-
-        if acquires >= DEEPEN_MAX_ACQUIRES_PER_RUN:
+        if rt == "stopped_acquire_cap":
             print("[INFO] Acquire cap reached — remaining candidates will not be evaluated this run")
-            break
-
-        evaluations += 1
-
-        result = adapter.acquire_artist_best_release(mbid)
+            continue
 
         print("[INFO] Candidate result:")
-        print(result)
+        print({
+            "status": item.get("planner_status"),
+            "action": item.get("planner_action"),
+            "artist": item.get("artist_name"),
+            "selected_album": item.get("selected_album"),
+            "reason": item.get("planner_reason"),
+            "album_count": item.get("album_count"),
+        })
 
-        action = result.get("action")
-
-        if action == "ACQUIRE_ARTIST":
-            acquires += 1
-        elif action == "RECOMMEND_ONLY":
-            recommended += 1
-        elif action == "NO_ACTION":
-            no_action += 1
+    if result["evaluated"] >= result["limit_evaluations"] and result["candidate_count"] > result["evaluated"]:
+        print("\n[INFO] Reached evaluation cap for this run")
 
     print("\n=== DEEPEN SUMMARY ===")
-    print(f"[INFO] Evaluated: {evaluations}")
-    print(f"[INFO] Acquired: {acquires}")
-    print(f"[INFO] Recommended: {recommended}")
-    print(f"[INFO] No action: {no_action}")
-    print(f"[INFO] Skipped pre-filter: {skipped_prefilter}")
-    print(f"[INFO] Skipped suppressed: {skipped_suppressed}")
-    print(f"[INFO] Skipped recommendation backoff: {skipped_recommendation_backoff}")
-    print(f"[INFO] Skipped cooldown: {skipped_cooldown}")
+    print(f"[INFO] Evaluated: {result['evaluated']}")
+    print(f"[INFO] Acquired: {result['acquired']}")
+    print(f"[INFO] Recommended: {result['recommended']}")
+    print(f"[INFO] No action: {result['no_action']}")
+    print(f"[INFO] Skipped pre-filter: {result['skipped_prefilter']}")
+    print(f"[INFO] Skipped suppressed: {result['skipped_suppressed']}")
+    print(f"[INFO] Skipped recommendation backoff: {result['skipped_recommendation_backoff']}")
+    print(f"[INFO] Skipped cooldown: {result['skipped_cooldown']}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,688 @@
+[INFO] Timestamped log file: logs\deepen-service-smoke-20260327-210538.log
+[INFO] Latest log file: logs\deepen-service-smoke-latest.log
+=== Resonarr Deepen Service Smoke Test ===
+[INFO] Deepen candidate view:
+{
+  "status": "success",
+  "count": 30,
+  "items": [
+    {
+      "artist_name": "Post Malone",
+      "mbid": "b1e26560-60e5-4236-bbdb-9aa5a8d5ee19",
+      "lastfm_playcount": 6,
+      "partial_present": true,
+      "eligible_album_count": 6,
+      "fully_owned": false,
+      "total_album_count": 6,
+      "fully_owned_album_count": 0,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 62
+    },
+    {
+      "artist_name": "Sleigh Bells",
+      "mbid": "95f7536d-b2f7-4087-8668-a663ec201f5a",
+      "lastfm_playcount": 6,
+      "partial_present": true,
+      "eligible_album_count": 6,
+      "fully_owned": false,
+      "total_album_count": 6,
+      "fully_owned_album_count": 0,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 64
+    },
+    {
+      "artist_name": "Bloodhound Gang",
+      "mbid": "b2dbfc09-b332-408b-a235-1850e41971c5",
+      "lastfm_playcount": 5,
+      "partial_present": true,
+      "eligible_album_count": 5,
+      "fully_owned": false,
+      "total_album_count": 5,
+      "fully_owned_album_count": 0,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 67
+    },
+    {
+      "artist_name": "Passion Pit",
+      "mbid": "daeec599-bf5d-4428-994a-e76ba5f86e2f",
+      "lastfm_playcount": 11,
+      "partial_present": true,
+      "eligible_album_count": 4,
+      "fully_owned": false,
+      "total_album_count": 4,
+      "fully_owned_album_count": 0,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 32
+    },
+    {
+      "artist_name": "Foster the People",
+      "mbid": "e0e1a584-dd0a-4bd1-88d1-c4c62895039d",
+      "lastfm_playcount": 43,
+      "partial_present": true,
+      "eligible_album_count": 3,
+      "fully_owned": false,
+      "total_album_count": 4,
+      "fully_owned_album_count": 1,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 6
+    },
+    {
+      "artist_name": "Cage the Elephant",
+      "mbid": "b41b38d4-ef3e-4f37-8c75-cfe9af999696",
+      "lastfm_playcount": 8,
+      "partial_present": true,
+      "eligible_album_count": 3,
+      "fully_owned": false,
+      "total_album_count": 6,
+      "fully_owned_album_count": 3,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 43
+    },
+    {
+      "artist_name": "Dayglow",
+      "mbid": "2bee95a7-1c0e-4b3c-99a5-4857d9d776dd",
+      "lastfm_playcount": 8,
+      "partial_present": true,
+      "eligible_album_count": 3,
+      "fully_owned": false,
+      "total_album_count": 4,
+      "fully_owned_album_count": 1,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 44
+    },
+    {
+      "artist_name": "Metro Boomin",
+      "mbid": "59db3d82-86ea-451f-881f-dffc8ec387c9",
+      "lastfm_playcount": 5,
+      "partial_present": true,
+      "eligible_album_count": 3,
+      "fully_owned": false,
+      "total_album_count": 4,
+      "fully_owned_album_count": 1,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 76
+    },
+    {
+      "artist_name": "Phoenix",
+      "mbid": "8d455809-96b3-4bb6-8829-ea4beb580d35",
+      "lastfm_playcount": 21,
+      "partial_present": true,
+      "eligible_album_count": 2,
+      "fully_owned": false,
+      "total_album_count": 7,
+      "fully_owned_album_count": 5,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 17
+    },
+    {
+      "artist_name": "Excision",
+      "mbid": "733c6e6f-0306-403e-9243-82b16a4f82d8",
+      "lastfm_playcount": 20,
+      "partial_present": true,
+      "eligible_album_count": 2,
+      "fully_owned": false,
+      "total_album_count": 6,
+      "fully_owned_album_count": 4,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 18
+    },
+    {
+      "artist_name": "NGHTMRE",
+      "mbid": "f72e0c57-94fd-447d-afdb-868e70d356d7",
+      "lastfm_playcount": 42,
+      "partial_present": true,
+      "eligible_album_count": 1,
+      "fully_owned": false,
+      "total_album_count": 2,
+      "fully_owned_album_count": 1,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 7
+    },
+    {
+      "artist_name": "Lil Nas X",
+      "mbid": "0b30341b-b59d-4979-8130-b66c0e475321",
+      "lastfm_playcount": 9,
+      "partial_present": true,
+      "eligible_album_count": 1,
+      "fully_owned": false,
+      "total_album_count": 1,
+      "fully_owned_album_count": 0,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 39
+    },
+    {
+      "artist_name": "Blue October",
+      "mbid": "d6a3eeec-cde0-4c10-89b2-93e0bd5f34e6",
+      "lastfm_playcount": 5,
+      "partial_present": true,
+      "eligible_album_count": 11,
+      "fully_owned": false,
+      "total_album_count": 12,
+      "fully_owned_album_count": 1,
+      "in_cooldown": true,
+      "cooldown_remaining_seconds": 56679,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 68
+    },
+    {
+      "artist_name": "Panic! at the Disco",
+      "mbid": "b9472588-93f3-4922-a1a2-74082cdf9ce8",
+      "lastfm_playcount": 20,
+      "partial_present": true,
+      "eligible_album_count": 5,
+      "fully_owned": false,
+      "total_album_count": 7,
+      "fully_owned_album_count": 1,
+      "in_cooldown": true,
+      "cooldown_remaining_seconds": 56721,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 20
+    },
+    {
+      "artist_name": "Ye",
+      "mbid": "164f0d73-1234-4e2c-8743-d77bf2191051",
+      "lastfm_playcount": 20,
+      "partial_present": true,
+      "eligible_album_count": 12,
+      "fully_owned": false,
+      "total_album_count": 12,
+      "fully_owned_album_count": 0,
+      "in_cooldown": true,
+      "cooldown_remaining_seconds": 56686,
+      "in_recommendation_backoff": true,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 21
+    },
+    {
+      "artist_name": "Radiohead",
+      "mbid": "a74b1b7f-71a5-4011-9441-d0b5e4122711",
+      "lastfm_playcount": 6,
+      "partial_present": true,
+      "eligible_album_count": 9,
+      "fully_owned": false,
+      "total_album_count": 9,
+      "fully_owned_album_count": 0,
+      "in_cooldown": true,
+      "cooldown_remaining_seconds": 56686,
+      "in_recommendation_backoff": true,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 63
+    },
+    {
+      "artist_name": "Modest Mouse",
+      "mbid": "a96ac800-bfcb-412a-8a63-0a98df600700",
+      "lastfm_playcount": 11,
+      "partial_present": true,
+      "eligible_album_count": 7,
+      "fully_owned": false,
+      "total_album_count": 8,
+      "fully_owned_album_count": 1,
+      "in_cooldown": true,
+      "cooldown_remaining_seconds": 56700,
+      "in_recommendation_backoff": true,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 31
+    },
+    {
+      "artist_name": "Incubus",
+      "mbid": "e3e0abcd-7671-4482-a9d8-462f5acc9be5",
+      "lastfm_playcount": 9,
+      "partial_present": true,
+      "eligible_album_count": 7,
+      "fully_owned": false,
+      "total_album_count": 9,
+      "fully_owned_album_count": 2,
+      "in_cooldown": true,
+      "cooldown_remaining_seconds": 56706,
+      "in_recommendation_backoff": true,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 38
+    },
+    {
+      "artist_name": "Gucci Mane",
+      "mbid": "36494952-f434-45d8-a958-8b4acdbcf8a8",
+      "lastfm_playcount": 5,
+      "partial_present": false,
+      "eligible_album_count": 26,
+      "fully_owned": false,
+      "total_album_count": 27,
+      "fully_owned_album_count": 1,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 73
+    },
+    {
+      "artist_name": "America",
+      "mbid": "34cf95c7-4be9-4efd-a48a-c2ea4a0bb114",
+      "lastfm_playcount": 6,
+      "partial_present": false,
+      "eligible_album_count": 18,
+      "fully_owned": false,
+      "total_album_count": 18,
+      "fully_owned_album_count": 0,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 59
+    },
+    {
+      "artist_name": "Helynt",
+      "mbid": "761854c7-b435-4581-81aa-ddae031795f9",
+      "lastfm_playcount": 20,
+      "partial_present": false,
+      "eligible_album_count": 15,
+      "fully_owned": false,
+      "total_album_count": 22,
+      "fully_owned_album_count": 7,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 19
+    },
+    {
+      "artist_name": "石元丈晴",
+      "mbid": "0e54f9fd-7011-4c77-86f0-59021c5ffddf",
+      "lastfm_playcount": 8,
+      "partial_present": false,
+      "eligible_album_count": 13,
+      "fully_owned": false,
+      "total_album_count": 14,
+      "fully_owned_album_count": 1,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 50
+    },
+    {
+      "artist_name": "Ganja White Night",
+      "mbid": "014abfeb-cdfe-46dc-90fb-e192473ce252",
+      "lastfm_playcount": 7,
+      "partial_present": false,
+      "eligible_album_count": 11,
+      "fully_owned": false,
+      "total_album_count": 12,
+      "fully_owned_album_count": 1,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 53
+    },
+    {
+      "artist_name": "Smash Mouth",
+      "mbid": "944e1036-8a03-4611-8aa0-31515a05c848",
+      "lastfm_playcount": 5,
+      "partial_present": false,
+      "eligible_album_count": 10,
+      "fully_owned": false,
+      "total_album_count": 10,
+      "fully_owned_album_count": 0,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 77
+    },
+    {
+      "artist_name": "Bassnectar",
+      "mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
+      "lastfm_playcount": 75,
+      "partial_present": false,
+      "eligible_album_count": 9,
+      "fully_owned": false,
+      "total_album_count": 14,
+      "fully_owned_album_count": 5,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 2
+    },
+    {
+      "artist_name": "Steve Aoki",
+      "mbid": "a39acc4a-985e-4173-a9ed-f325f2d3bc1c",
+      "lastfm_playcount": 5,
+      "partial_present": false,
+      "eligible_album_count": 9,
+      "fully_owned": false,
+      "total_album_count": 11,
+      "fully_owned_album_count": 2,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 78
+    },
+    {
+      "artist_name": "Hoodie Allen",
+      "mbid": "b28ac005-27fe-4bb9-86a2-dbf55ef21469",
+      "lastfm_playcount": 9,
+      "partial_present": false,
+      "eligible_album_count": 8,
+      "fully_owned": false,
+      "total_album_count": 9,
+      "fully_owned_album_count": 1,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 37
+    },
+    {
+      "artist_name": "Borgore",
+      "mbid": "215e2b5d-06f8-4c68-b33b-8fccec27a077",
+      "lastfm_playcount": 10,
+      "partial_present": false,
+      "eligible_album_count": 5,
+      "fully_owned": false,
+      "total_album_count": 6,
+      "fully_owned_album_count": 1,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 33
+    },
+    {
+      "artist_name": "Tropidelic",
+      "mbid": "6b62d0b0-5925-4ab0-bceb-eca7afbc7c74",
+      "lastfm_playcount": 7,
+      "partial_present": false,
+      "eligible_album_count": 5,
+      "fully_owned": false,
+      "total_album_count": 9,
+      "fully_owned_album_count": 4,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 57
+    },
+    {
+      "artist_name": "Stick Figure",
+      "mbid": "0c124600-18da-4087-be0d-d7fb6a2526c6",
+      "lastfm_playcount": 17,
+      "partial_present": false,
+      "eligible_album_count": 4,
+      "fully_owned": false,
+      "total_album_count": 11,
+      "fully_owned_album_count": 7,
+      "in_cooldown": false,
+      "cooldown_remaining_seconds": 0,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "rank": 25
+    }
+  ]
+}
+[INFO] Processing artist MBID: b1e26560-60e5-4236-bbdb-9aa5a8d5ee19
+[DEBUG] Total artists: 479
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 479
+[DEBUG] Found artist match
+
+[DEBUG] ===== HYDRATED ALBUM STATE =====
+[DEBUG] Album: Cooped Up | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: AUSTIN | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: beerbongs & bentleys | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Mourning | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Twelve Carat Toothache | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Hollywood’s Bleeding | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Stoney | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: F-1 Trillion | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: White Iverson | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Go Flex | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Candy Paint | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Wow. | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Better Now | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Circles | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: I Fall Apart | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Only Wanna Be With You (Pokémon 25 version) | monitored=False | albumType=Single | secondaryTypes=['Soundtrack']
+[DEBUG] Album: Motley Crew | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: What's Up | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Magic | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: #Mood | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Murda | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Chemical | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: The Diamond Collection | monitored=False | albumType=Album | secondaryTypes=['Compilation']
+[DEBUG] Album: Overdrive | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Saint‐Tropez | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: I'm Gonna Miss Her (Amazon Music original) | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Deja Vu | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Congratulations | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: rockstar | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: I Like You (A Happier Song) | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Psycho | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Sunflower (Spider‐Man: Into the Spider‐Verse) | monitored=False | albumType=Single | secondaryTypes=['Soundtrack']
+[DEBUG] Album: Goodbyes | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: One Right Now | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Cooped Up / Return of the Mack | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: I Had Some Help | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Pour Me a Drink | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Guy For That | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Plex signals:
+  artist=Post Malone
+  rating=None
+  play_count=6
+[DEBUG] Last.fm signals:
+  artist=Post Malone
+  play_count=6
+  ratio=0.004
+[DEBUG] Merged signals: affinity=1.80 confidence=1.00 sources=['plex', 'lastfm']
+[DEBUG] Partial album detected: AUSTIN (2/17)
+[DEBUG] Plex-owned but incomplete: AUSTIN
+[DEBUG] Partial album detected: beerbongs & bentleys (3/18)
+[DEBUG] Plex-owned but incomplete: beerbongs & bentleys
+[DEBUG] Partial album detected: Twelve Carat Toothache (1/14)
+[DEBUG] Plex-owned but incomplete: Twelve Carat Toothache
+
+[DEBUG] Album scoring:
+- beerbongs & bentleys | monitored=False | score=9.61 (base=5.34) | affinity=1.80 | completion=3/18 (0.17) | partial_completion_boost(+2.34), strong_catalog(+3), affinity_multiplier(1.80)
+- Hollywood’s Bleeding | monitored=False | score=9.00 (base=5.00) | affinity=1.80 | core_catalog_peak(+5), affinity_multiplier(1.80)
+- Twelve Carat Toothache | monitored=False | score=9.00 (base=5.00) | affinity=1.80 | completion=1/14 (0.07) | partial_below_min_ratio(0.07), core_catalog_peak(+5), affinity_multiplier(1.80)
+- Stoney | monitored=False | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+- AUSTIN | monitored=False | score=0.00 (base=0.00) | affinity=1.80 | completion=2/17 (0.12) | partial_below_min_ratio(0.12), very_recent_penalty(0), affinity_multiplier(1.80)
+[INFO] Intent decided:
+  Action: ACQUIRE_ARTIST
+  Artist: Post Malone
+  Album: beerbongs & bentleys
+  Reason: score 9.61 >= acquire threshold 9
+  Score: 9.61
+  Thresholds: acquire=9, recommend=4
+[INFO] Processing artist MBID: 95f7536d-b2f7-4087-8668-a663ec201f5a
+[DEBUG] Total artists: 479
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 479
+[DEBUG] Found artist match
+
+[DEBUG] ===== HYDRATED ALBUM STATE =====
+[DEBUG] Album: Treats | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Reign of Terror | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Bitter Rivals | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Jessica Rabbit | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Texis | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Bunky Becky Birthday Boy | monitored=False | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Sleigh Bells | monitored=False | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Infinity Guitars | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Riot Rhythm | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Comeback Kid | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: That Did It | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Champions of Unrestricted Beauty | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Rule Number One | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Hyper Dark | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Kid Kruschev | monitored=False | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Bunky Pop | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Where Did You Sleep Last Night | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Holly | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Wanna Start a Band? | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: This Summer | monitored=False | albumType=Single | secondaryTypes=[]
+[DEBUG] Plex signals:
+  artist=Sleigh Bells
+  rating=None
+  play_count=7
+[DEBUG] Last.fm signals:
+  artist=Sleigh Bells
+  play_count=6
+  ratio=0.004
+[DEBUG] Merged signals: affinity=1.80 confidence=1.00 sources=['plex', 'lastfm']
+[DEBUG] Partial album detected: Treats (3/11)
+[DEBUG] Plex-owned but incomplete: Treats
+
+[DEBUG] Album scoring:
+- Treats | monitored=False | score=10.28 (base=5.71) | affinity=1.80 | completion=3/11 (0.27) | partial_completion_boost(+2.71), strong_catalog(+3), affinity_multiplier(1.80)
+- Texis | monitored=False | score=9.00 (base=5.00) | affinity=1.80 | core_catalog_peak(+5), affinity_multiplier(1.80)
+- Jessica Rabbit | monitored=False | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+- Bitter Rivals | monitored=False | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+- Reign of Terror | monitored=False | score=5.40 (base=3.00) | affinity=1.80 | strong_catalog(+3), affinity_multiplier(1.80)
+[INFO] Intent decided:
+  Action: ACQUIRE_ARTIST
+  Artist: Sleigh Bells
+  Album: Treats
+  Reason: score 10.28 >= acquire threshold 9
+  Score: 10.28
+  Thresholds: acquire=9, recommend=4
+[INFO] Deepen cycle result (dry run):
+{
+  "status": "success",
+  "candidate_count": 30,
+  "evaluated": 2,
+  "acquired": 2,
+  "recommended": 0,
+  "no_action": 0,
+  "skipped_prefilter": 0,
+  "skipped_suppressed": 0,
+  "skipped_recommendation_backoff": 0,
+  "skipped_cooldown": 0,
+  "limit_evaluations": 5,
+  "limit_acquires": 2,
+  "dry_run": true,
+  "results": [
+    {
+      "artist_name": "Post Malone",
+      "mbid": "b1e26560-60e5-4236-bbdb-9aa5a8d5ee19",
+      "lastfm_playcount": 6,
+      "partial_present": true,
+      "eligible_album_count": 6,
+      "fully_owned": false,
+      "in_cooldown": false,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "result_type": "acquire_artist",
+      "message": "would acquire artist best release",
+      "planner_status": "success",
+      "planner_action": "ACQUIRE_ARTIST",
+      "planner_reason": "score 9.61 >= acquire threshold 9",
+      "selected_album": "beerbongs & bentleys",
+      "album_count": 38
+    },
+    {
+      "artist_name": "Sleigh Bells",
+      "mbid": "95f7536d-b2f7-4087-8668-a663ec201f5a",
+      "lastfm_playcount": 6,
+      "partial_present": true,
+      "eligible_album_count": 6,
+      "fully_owned": false,
+      "in_cooldown": false,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "result_type": "acquire_artist",
+      "message": "would acquire artist best release",
+      "planner_status": "success",
+      "planner_action": "ACQUIRE_ARTIST",
+      "planner_reason": "score 10.28 >= acquire threshold 9",
+      "selected_album": "Treats",
+      "album_count": 20
+    },
+    {
+      "artist_name": "Bloodhound Gang",
+      "mbid": "b2dbfc09-b332-408b-a235-1850e41971c5",
+      "lastfm_playcount": 5,
+      "partial_present": true,
+      "eligible_album_count": 5,
+      "fully_owned": false,
+      "in_cooldown": false,
+      "in_recommendation_backoff": false,
+      "is_suppressed": false,
+      "suppression_reason": null,
+      "result_type": "stopped_acquire_cap",
+      "message": "acquire cap reached"
+    }
+  ]
+}

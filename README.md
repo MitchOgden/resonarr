@@ -141,9 +141,11 @@ Operator workflow runners:
 - `python -m resonarr.runner.run_extend_query_smoke`
 - `python -m resonarr.runner.run_extend_status_summary`
 - `python -m resonarr.runner.run_extend_promotion_service_smoke`
+- `python -m resonarr.runner.run_deepen_service_smoke`
 
 The query/smoke runners are intended as backend test points for future API/UI work. They expose summary and review data in stable structured shapes before any web transport is added.
 Promotion orchestration now also has a service smoke runner so structured planning results can be validated independently of CLI formatting.
+Deepen orchestration also has a dry-run service smoke runner so candidate evaluation can be previewed in structured form without mutating execution state.
 
 Current MVP operator flow:
 
