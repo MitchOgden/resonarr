@@ -27,6 +27,8 @@ class ExtendPromotionService:
             items.append({
                 "artist_name": candidate.get("artist_name"),
                 "status": candidate.get("status", "new"),
+                "resolved_artist_name": candidate.get("resolved_artist_name"),
+                "resolved_artist_mbid": candidate.get("resolved_artist_mbid"),
                 "best_match_score": candidate.get("best_match_score"),
                 "seed_count": candidate.get("seed_count"),
                 "seen_count": candidate.get("seen_count", 1),

@@ -31,6 +31,10 @@ class ExtendOperatorService:
                 "starter_album_title": candidate.get("starter_album_title"),
                 "starter_album_score": candidate.get("starter_album_score"),
                 "starter_album_reason": candidate.get("starter_album_reason"),
+                "seed_count": candidate.get("seed_count"),
+                "seen_count": candidate.get("seen_count"),
+                "best_match_score": candidate.get("best_match_score"),
+                "source_seeds": candidate.get("source_seeds", []),
             })
 
         return {
