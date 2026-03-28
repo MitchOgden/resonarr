@@ -12,9 +12,15 @@
     "extend:peekaboo": {
       "last_recommendation_ts": 1774642141
     },
-    "extend:flipturn": {},
-    "extend:cardinal bloom": {},
-    "extend:capital cities": {},
+    "extend:flipturn": {
+      "last_recommendation_ts": 1774658559
+    },
+    "extend:cardinal bloom": {
+      "last_recommendation_ts": 1774658566
+    },
+    "extend:capital cities": {
+      "last_recommendation_ts": 1774658570
+    },
     "extend:goldlink": {
       "last_recommendation_ts": 1774584858
     },
@@ -704,7 +710,7 @@
     "flipturn": {
       "artist_name": "Flipturn",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "best_match_score": 0.824881,
       "seed_count": 1,
       "source_seeds": [
@@ -723,12 +729,18 @@
       "resolved_artist_name": "flipturn",
       "starter_album_exhausted_ts": 1774634287,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774658559,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17272,
+      "starter_album_title": "Shadowglow",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "cardinal bloom": {
       "artist_name": "Cardinal Bloom",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "best_match_score": 0.80219,
       "seed_count": 1,
       "source_seeds": [
@@ -741,13 +753,19 @@
       "seen_count": 2,
       "recommendation_count": 0,
       "promotable_ts": 1774613326,
-      "staged_artist_ts": 1774632334,
-      "staged_artist_count": 1,
+      "staged_artist_ts": 1774658566,
+      "staged_artist_count": 2,
       "resolved_artist_mbid": "77f4b530-5657-4c75-ad4f-92a75f72deb1",
       "resolved_artist_name": "Cardinal Bloom",
       "starter_album_exhausted_ts": 1774632334,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774658566,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17504,
+      "starter_album_title": "The Only Place I\u2019ve Ever Known",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "sarah and the sundays": {
       "artist_name": "Sarah and the Sundays",
@@ -848,7 +866,7 @@
     "capital cities": {
       "artist_name": "Capital Cities",
       "first_seen_ts": 1774584858,
-      "status": "starter_album_exhausted",
+      "status": "starter_album_recommendation",
       "best_match_score": 0.780994,
       "seed_count": 1,
       "source_seeds": [
@@ -861,13 +879,19 @@
       "seen_count": 7,
       "recommendation_count": 0,
       "promotable_ts": 1774613326,
-      "staged_artist_ts": 1774632347,
-      "staged_artist_count": 1,
+      "staged_artist_ts": 1774658570,
+      "staged_artist_count": 2,
       "resolved_artist_mbid": "119a2c67-e6d6-41cf-a58c-c51b75c80daa",
       "resolved_artist_name": "Capital Cities",
       "starter_album_exhausted_ts": 1774632347,
       "starter_album_exhausted_count": 1,
-      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering"
+      "starter_album_exhausted_reason": "no eligible albums remain after ownership filtering",
+      "starter_album_recommendation_ts": 1774658570,
+      "starter_album_recommendation_count": 1,
+      "starter_album_id": 17522,
+      "starter_album_title": "Solarize",
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "starter_album_score": 3.0
     },
     "broken bells": {
       "artist_name": "Broken Bells",

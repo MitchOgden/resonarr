@@ -1,0 +1,733 @@
+[INFO] Timestamped log file: logs\extend-promotion-service-smoke-20260327-204234.log
+[INFO] Latest log file: logs\extend-promotion-service-smoke-latest.log
+=== Resonarr Extend Promotion Service Smoke Test ===
+[INFO] Promotable candidate view:
+{
+  "status": "success",
+  "count": 12,
+  "items": [
+    {
+      "artist_name": "Flipturn",
+      "status": "starter_album_exhausted",
+      "best_match_score": 0.824881,
+      "seed_count": 1,
+      "seen_count": 2,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "The Backseat Lovers"
+      ],
+      "in_recommendation_backoff": false,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "Cardinal Bloom",
+      "status": "starter_album_exhausted",
+      "best_match_score": 0.80219,
+      "seed_count": 1,
+      "seen_count": 2,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "The Backseat Lovers"
+      ],
+      "in_recommendation_backoff": false,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "Capital Cities",
+      "status": "starter_album_exhausted",
+      "best_match_score": 0.780994,
+      "seed_count": 1,
+      "seen_count": 7,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "Foster the People"
+      ],
+      "in_recommendation_backoff": false,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "Smino",
+      "status": "starter_album_recommendation",
+      "best_match_score": 1.0,
+      "seed_count": 1,
+      "seen_count": 7,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "Aminé"
+      ],
+      "in_recommendation_backoff": true,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "BoyWithUke",
+      "status": "starter_album_recommendation",
+      "best_match_score": 1.0,
+      "seed_count": 1,
+      "seen_count": 5,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "AJR"
+      ],
+      "in_recommendation_backoff": true,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "American Authors",
+      "status": "starter_album_recommendation",
+      "best_match_score": 0.885058,
+      "seed_count": 1,
+      "seen_count": 5,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "AJR"
+      ],
+      "in_recommendation_backoff": true,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "Em Beihold",
+      "status": "starter_album_recommendation",
+      "best_match_score": 0.865961,
+      "seed_count": 1,
+      "seen_count": 5,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "AJR"
+      ],
+      "in_recommendation_backoff": true,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "The Astronomers",
+      "status": "starter_album_recommendation",
+      "best_match_score": 0.84901,
+      "seed_count": 1,
+      "seen_count": 5,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "AJR"
+      ],
+      "in_recommendation_backoff": true,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "David Guetta",
+      "status": "starter_album_approved",
+      "best_match_score": 1.0,
+      "seed_count": 1,
+      "seen_count": 7,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "Calvin Harris"
+      ],
+      "in_recommendation_backoff": true,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "Briston Maroney",
+      "status": "starter_album_approved",
+      "best_match_score": 1.0,
+      "seed_count": 1,
+      "seen_count": 2,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "The Backseat Lovers"
+      ],
+      "in_recommendation_backoff": true,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "Andy Grammer",
+      "status": "starter_album_rejected",
+      "best_match_score": 0.657836,
+      "seed_count": 2,
+      "seen_count": 7,
+      "recommendation_count": 1,
+      "source_seeds": [
+        "AJR",
+        "Surfaces"
+      ],
+      "in_recommendation_backoff": true,
+      "is_promotable": true
+    },
+    {
+      "artist_name": "Peekaboo",
+      "status": "starter_album_rejected",
+      "best_match_score": 0.899953,
+      "seed_count": 1,
+      "seen_count": 7,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "NGHTMRE"
+      ],
+      "in_recommendation_backoff": true,
+      "is_promotable": true
+    }
+  ]
+}
+[INFO] Resolving extend artist: Flipturn
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Flipturn' -> 'flipturn' (0c97b403-1aae-4315-93ab-af54fe2169d6)
+[INFO] Processing artist MBID: 0c97b403-1aae-4315-93ab-af54fe2169d6
+[DEBUG] Total artists: 477
+[DEBUG] Found artist match
+[INFO] Artist already exists
+[DEBUG] Total artists: 477
+[DEBUG] Found artist match
+
+[DEBUG] ===== HYDRATED ALBUM STATE (STAGED ARTIST) =====
+[DEBUG] Album: Where’d All My Friends Go? | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Live from Orlando | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Burnout Days (Reimagined) | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Heavy Colors | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Something You Needed | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: August (Acoustic) | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Citrona | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: flipturn | monitored=True | albumType=Album | secondaryTypes=['Compilation']
+[DEBUG] Album: Cartoon Head | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Darling | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Eleanor | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Churches | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Burnout Days | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Shadowglow | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Everybody Wants To Rule The World | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Right? (reimagined) | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Plex: artist not found: flipturn
+[DEBUG] Last.fm signals:
+  artist=flipturn
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Ignoring monitored flag for staged artist album: Live from Orlando
+[DEBUG] Ignoring monitored flag for staged artist album: Burnout Days (Reimagined)
+[DEBUG] Ignoring monitored flag for staged artist album: Burnout Days
+[DEBUG] Ignoring monitored flag for staged artist album: Shadowglow
+
+[DEBUG] Album scoring:
+- Shadowglow | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Live from Orlando | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Burnout Days | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- Burnout Days (Reimagined) | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+[INFO] Intent decided:
+  Action: RECOMMEND_ONLY
+  Artist: flipturn
+  Album: Shadowglow
+  Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+  Score: 3.00
+  Thresholds: acquire=9, recommend=4
+[INFO] Resolving extend artist: Cardinal Bloom
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Cardinal Bloom' -> 'Cardinal Bloom' (77f4b530-5657-4c75-ad4f-92a75f72deb1)
+[INFO] Processing artist MBID: 77f4b530-5657-4c75-ad4f-92a75f72deb1
+[DEBUG] Total artists: 477
+[DEBUG] Artist NOT found
+[INFO] Adding artist...
+[DEBUG] Quality profiles status: 200
+[DEBUG] Quality profiles returned: 2
+[DEBUG] Resolved quality profile 'Lossless' -> ID 2
+[DEBUG] Metadata profiles status: 200
+[DEBUG] Metadata profiles returned: 2
+[DEBUG] Resolved metadata profile 'Standard' -> ID 1
+[DEBUG] Add artist status: 201
+[DEBUG] Add artist response: {
+  "status": "continuing",
+  "ended": false,
+  "artistName": "Cardinal Bloom",
+  "foreignArtistId": "77f4b530-5657-4c75-ad4f-92a75f72deb1",
+  "tadbId": 0,
+  "discogsId": 0,
+  "artistType": "Group",
+  "disambiguation": "",
+  "links": [
+    {
+      "url": "https://open.spotify.com/artist/1kL35cnfsVSfKJ6xLk0K9f",
+      "name": "spotify"
+    },
+    {
+      "url": "https://www.deezer.com/artist/67718332",
+      "name": "deezer"
+    }
+  ],
+  "nextAlbum": null,
+  "lastAlbum": null,
+  "images": [],
+  "path": "/volume1/music/library/Cardinal Bloom",
+  "qualityProfileId": 2,
+  "metadataProfileId": 1,
+  "monitored": false,
+  "monitorNewItems": "all",
+  "rootFolderPath": "/volume1/music/library",
+  "genres": [],
+  "cleanName": "cardinalbloom",
+  "sortName": "cardinal bloom",
+  "tags": [],
+  "added": "2026-03-28T00:42:40Z",
+  "addOptions": {
+    "searchForMissingAlbums": false,
+    "monitor": "unknown",
+    "albumsToMonitor": [],
+    "monitored": false
+  },
+  "ratings": {
+    "votes": 0,
+    "value": 0
+  },
+  "statistics": {
+    "albumCount": 0,
+    "trackFileCount": 0,
+    "trackCount": 0,
+    "totalTrackCount": 0,
+    "sizeOnDisk": 0,
+    "percentOfTracks": 0
+  },
+  "id": 517
+}
+[DEBUG] Total artists: 478
+[DEBUG] Found artist match
+
+[DEBUG] ===== HYDRATED ALBUM STATE (STAGED ARTIST) =====
+[DEBUG] Album: Glow | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: To Love Someone | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: The Only Place I’ve Ever Known | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: Under the Oak Tree | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Plex: artist not found: Cardinal Bloom
+[DEBUG] Last.fm signals:
+  artist=Cardinal Bloom
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Ignoring monitored flag for staged artist album: The Only Place I’ve Ever Known
+
+[DEBUG] Album scoring:
+- The Only Place I’ve Ever Known | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+[INFO] Intent decided:
+  Action: RECOMMEND_ONLY
+  Artist: Cardinal Bloom
+  Album: The Only Place I’ve Ever Known
+  Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+  Score: 3.00
+  Thresholds: acquire=9, recommend=4
+[INFO] Resolving extend artist: Capital Cities
+[DEBUG] Lookup status: 200
+[INFO] Resolved extend artist 'Capital Cities' -> 'Capital Cities' (119a2c67-e6d6-41cf-a58c-c51b75c80daa)
+[INFO] Processing artist MBID: 119a2c67-e6d6-41cf-a58c-c51b75c80daa
+[DEBUG] Total artists: 478
+[DEBUG] Artist NOT found
+[INFO] Adding artist...
+[DEBUG] Quality profiles status: 200
+[DEBUG] Quality profiles returned: 2
+[DEBUG] Resolved quality profile 'Lossless' -> ID 2
+[DEBUG] Metadata profiles status: 200
+[DEBUG] Metadata profiles returned: 2
+[DEBUG] Resolved metadata profile 'Standard' -> ID 1
+[DEBUG] Add artist status: 201
+[DEBUG] Add artist response: {
+  "status": "continuing",
+  "ended": false,
+  "artistName": "Capital Cities",
+  "foreignArtistId": "119a2c67-e6d6-41cf-a58c-c51b75c80daa",
+  "tadbId": 0,
+  "discogsId": 0,
+  "overview": "Capital Cities is an American pop duo from Los Angeles, California, formed in 2008 by Ryan Merchant and Sebu Simonian. Their debut EP was released on June 7, 2011, with lead single \"Safe and Sound\" which became their only top ten hit single.",
+  "artistType": "Group",
+  "disambiguation": "",
+  "links": [
+    {
+      "url": "http://capitalcitiesmusic.com/",
+      "name": "capitalcitiesmusic"
+    },
+    {
+      "url": "https://capitalcities.bandcamp.com/",
+      "name": "bandcamp"
+    },
+    {
+      "url": "https://www.discogs.com/artist/2899046",
+      "name": "discogs"
+    },
+    {
+      "url": "https://www.allmusic.com/artist/mn0002977610",
+      "name": "allmusic"
+    },
+    {
+      "url": "https://rateyourmusic.com/artist/capital_cities",
+      "name": "rateyourmusic"
+    },
+    {
+      "url": "https://soundcloud.com/capital-cities",
+      "name": "soundcloud"
+    },
+    {
+      "url": "https://www.bbc.co.uk/music/artists/119a2c67-e6d6-41cf-a58c-c51b75c80daa",
+      "name": "bbc"
+    },
+    {
+      "url": "http://www.purevolume.com/CapitalCities",
+      "name": "purevolume"
+    },
+    {
+      "url": "https://www.facebook.com/capitalcities",
+      "name": "facebook"
+    },
+    {
+      "url": "http://capitalcities.tumblr.com/",
+      "name": "tumblr"
+    },
+    {
+      "url": "https://twitter.com/capitalcities",
+      "name": "twitter"
+    },
+    {
+      "url": "https://www.youtube.com/user/capitalcitiesmusic",
+      "name": "youtube"
+    },
+    {
+      "url": "https://www.last.fm/music/Capital+Cities",
+      "name": "last"
+    },
+    {
+      "url": "https://www.imdb.com/name/nm5706927/",
+      "name": "imdb"
+    },
+    {
+      "url": "https://myspace.com/capitalcities",
+      "name": "myspace"
+    },
+    {
+      "url": "http://viaf.org/viaf/302625419",
+      "name": "viaf"
+    },
+    {
+      "url": "https://www.wikidata.org/wiki/Q5035696",
+      "name": "wikidata"
+    },
+    {
+      "url": "http://muzikum.eu/en/122-13763/capital-cities/lyrics.html",
+      "name": "muzikum"
+    },
+    {
+      "url": "https://www.instagram.com/capitalcities/",
+      "name": "instagram"
+    },
+    {
+      "url": "https://open.spotify.com/artist/4gwpcMTbLWtBUlOijbVpuu",
+      "name": "spotify"
+    },
+    {
+      "url": "https://www.songkick.com/artists/3216791",
+      "name": "songkick"
+    },
+    {
+      "url": "https://plus.google.com/110132950869028634141",
+      "name": "google"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UCQraIhcLCFjoI4B1B9KcmRQ",
+      "name": "youtube"
+    },
+    {
+      "url": "https://www.bandsintown.com/a/987422",
+      "name": "bandsintown"
+    },
+    {
+      "url": "https://play.google.com/store/music/artist?id=Aggnjgtp7n23sl5fwrambg7odd4",
+      "name": "google"
+    },
+    {
+      "url": "https://www.deezer.com/artist/432247",
+      "name": "deezer"
+    },
+    {
+      "url": "https://genius.com/artists/Capital-cities",
+      "name": "genius"
+    },
+    {
+      "url": "https://imvdb.com/n/capital-cities",
+      "name": "imvdb"
+    },
+    {
+      "url": "https://secondhandsongs.com/artist/75139",
+      "name": "secondhandsongs"
+    },
+    {
+      "url": "https://www.setlist.fm/setlists/capital-cities-bd2452e.html",
+      "name": "setlist"
+    },
+    {
+      "url": "https://www.whosampled.com/Capital-Cities/",
+      "name": "whosampled"
+    },
+    {
+      "url": "https://www.musik-sammler.de/artist/capital-cities/",
+      "name": "musik-sammler"
+    },
+    {
+      "url": "https://www.beatport.com/artist/capital-cities/278754",
+      "name": "beatport"
+    },
+    {
+      "url": "https://www.7digital.com/artist/capital-cities",
+      "name": "7digital"
+    },
+    {
+      "url": "https://www.onkyomusic.com/artist/capital-cities",
+      "name": "onkyomusic"
+    },
+    {
+      "url": "https://mora.jp/artist/336824/",
+      "name": "mora"
+    },
+    {
+      "url": "https://tidal.com/artist/4677757",
+      "name": "tidal"
+    },
+    {
+      "url": "https://music.apple.com/us/artist/398949430",
+      "name": "apple"
+    },
+    {
+      "url": "https://music.apple.com/us/artist/398949430",
+      "name": "apple"
+    },
+    {
+      "url": "https://www.musixmatch.com/artist/Capital-Cities",
+      "name": "musixmatch"
+    },
+    {
+      "url": "https://www.muziekweb.nl/Link/M00000416443/POPULAR/",
+      "name": "muziekweb"
+    },
+    {
+      "url": "https://muzikum.eu/en/capital-cities/lyrics",
+      "name": "muzikum"
+    },
+    {
+      "url": "https://www.qobuz.com/gb-en/interpreter/capital-cities/866189",
+      "name": "qobuz"
+    },
+    {
+      "url": "https://www.qobuz.com/gb-en/interpreter/capital-cities/866189",
+      "name": "qobuz"
+    },
+    {
+      "url": "https://music.youtube.com/channel/UClxuMOFeLBJXk8nt-SolPvw",
+      "name": "youtube"
+    },
+    {
+      "url": "https://www.ticketmaster.com/artist/1611146",
+      "name": "ticketmaster"
+    },
+    {
+      "url": "https://music.amazon.com/artists/B0047O4OQQ",
+      "name": "amazon"
+    },
+    {
+      "url": "https://music.apple.com/gb/artist/398949430",
+      "name": "apple"
+    }
+  ],
+  "nextAlbum": null,
+  "lastAlbum": null,
+  "images": [
+    {
+      "url": "/MediaCover/518/fanart.jpg",
+      "coverType": "fanart",
+      "extension": ".jpg",
+      "remoteUrl": "https://images.lidarr.audio/cache/https://r2.theaudiodb.com/images/media/artist/fanart/rqqpyy1371874382.jpg"
+    },
+    {
+      "url": "/MediaCover/518/banner.jpg",
+      "coverType": "banner",
+      "extension": ".jpg",
+      "remoteUrl": "https://images.lidarr.audio/cache/https://r2.theaudiodb.com/images/media/artist/banner/strxru1408084416.jpg"
+    },
+    {
+      "url": "/MediaCover/518/clearlogo.png",
+      "coverType": "clearlogo",
+      "extension": ".png",
+      "remoteUrl": "https://images.lidarr.audio/cache/https://r2.theaudiodb.com/images/media/artist/logo/xqsvwq1371872561.png"
+    },
+    {
+      "url": "/MediaCover/518/poster.jpg",
+      "coverType": "poster",
+      "extension": ".jpg",
+      "remoteUrl": "https://images.lidarr.audio/cache/https://r2.theaudiodb.com/images/media/artist/thumb/rvqtqv1371872455.jpg"
+    }
+  ],
+  "path": "/volume1/music/library/Capital Cities",
+  "qualityProfileId": 2,
+  "metadataProfileId": 1,
+  "monitored": false,
+  "monitorNewItems": "all",
+  "rootFolderPath": "/volume1/music/library",
+  "genres": [
+    "Electronic",
+    "Indie Pop",
+    "Indie Rock",
+    "Instrumental",
+    "Instrumental Rock",
+    "Pop",
+    "Synth-Pop"
+  ],
+  "cleanName": "capitalcities",
+  "sortName": "capital cities",
+  "tags": [],
+  "added": "2026-03-28T00:42:47Z",
+  "addOptions": {
+    "searchForMissingAlbums": false,
+    "monitor": "unknown",
+    "albumsToMonitor": [],
+    "monitored": false
+  },
+  "ratings": {
+    "votes": 1,
+    "value": 10.0
+  },
+  "statistics": {
+    "albumCount": 0,
+    "trackFileCount": 0,
+    "trackCount": 0,
+    "totalTrackCount": 0,
+    "sizeOnDisk": 0,
+    "percentOfTracks": 0
+  },
+  "id": 518
+}
+[DEBUG] Total artists: 479
+[DEBUG] Found artist match
+
+[DEBUG] ===== HYDRATED ALBUM STATE (STAGED ARTIST) =====
+[DEBUG] Album: TOGETHER | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Capital Cities | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Kangaroo Court | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Swimming Pool Summer | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Holiday | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: In a Tidal Wave of Mystery | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: One Minute More | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Beginnings | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Nothing Compares 2 U | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Breathe | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Vowels | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: My Name Is Mars | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Venus & River | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Levitate | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Just Say When | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Space | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Solarize | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: One Minute More (Remix) | monitored=True | albumType=EP | secondaryTypes=[]
+[DEBUG] Album: Safe and Sound | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: I Sold My Bed, But Not My Stereo | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Skeleton Man | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Betcha Can't Wait / New Town Crier | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: She Flows Like H20 / The Monster in My Closet | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Love Away (Predux) | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: F*k It | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Late for School | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: A Hurricane of Frowns | monitored=True | albumType=Album | secondaryTypes=[]
+[DEBUG] Album: So Be So Mine | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Album: Tell Me How to Live (Redux) | monitored=True | albumType=Single | secondaryTypes=[]
+[DEBUG] Plex: artist not found: Capital Cities
+[DEBUG] Last.fm signals:
+  artist=Capital Cities
+  play_count=0
+  ratio=0
+[DEBUG] Merged signals: affinity=1.00 confidence=0.40 sources=['lastfm']
+[DEBUG] Ignoring monitored flag for staged artist album: In a Tidal Wave of Mystery
+[DEBUG] Ignoring monitored flag for staged artist album: Solarize
+[DEBUG] Ignoring monitored flag for staged artist album: A Hurricane of Frowns
+
+[DEBUG] Album scoring:
+- Solarize | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- A Hurricane of Frowns | monitored=True | score=3.00 (base=3.00) | affinity=1.00 | recent_release(+3), affinity_multiplier(1.00)
+- In a Tidal Wave of Mystery | monitored=True | score=2.00 (base=2.00) | affinity=1.00 | modern_release(+2), affinity_multiplier(1.00)
+[INFO] Intent decided:
+  Action: RECOMMEND_ONLY
+  Artist: Capital Cities
+  Album: Solarize
+  Reason: score 3.00 below acquire threshold 9 but >= staged recommend threshold 3
+  Score: 3.00
+  Thresholds: acquire=9, recommend=4
+[INFO] Promotion cycle result:
+{
+  "status": "success",
+  "promotable_count": 12,
+  "planned_count": 3,
+  "skipped_existing": 0,
+  "skipped_backoff": 0,
+  "skipped_non_acquire": 0,
+  "failed": 0,
+  "limit": 3,
+  "results": [
+    {
+      "artist_name": "Flipturn",
+      "candidate_status": "starter_album_exhausted",
+      "best_match_score": 0.824881,
+      "seed_count": 1,
+      "seen_count": 2,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "The Backseat Lovers"
+      ],
+      "in_recommendation_backoff": false,
+      "result_type": "starter_album_recommendation",
+      "message": "Starter album recommendation created",
+      "planner_status": "success",
+      "planner_action": "RECOMMEND_ONLY",
+      "planner_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "resolved_artist_name": "flipturn",
+      "resolved_artist_mbid": "0c97b403-1aae-4315-93ab-af54fe2169d6",
+      "staged_artist_created": false,
+      "starter_album_id": 17272,
+      "starter_album_title": "Shadowglow",
+      "starter_album_score": 3.0,
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+    },
+    {
+      "artist_name": "Cardinal Bloom",
+      "candidate_status": "starter_album_exhausted",
+      "best_match_score": 0.80219,
+      "seed_count": 1,
+      "seen_count": 2,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "The Backseat Lovers"
+      ],
+      "in_recommendation_backoff": false,
+      "result_type": "starter_album_recommendation",
+      "message": "Starter album recommendation created",
+      "planner_status": "success",
+      "planner_action": "RECOMMEND_ONLY",
+      "planner_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "resolved_artist_name": "Cardinal Bloom",
+      "resolved_artist_mbid": "77f4b530-5657-4c75-ad4f-92a75f72deb1",
+      "staged_artist_created": true,
+      "starter_album_id": 17504,
+      "starter_album_title": "The Only Place I’ve Ever Known",
+      "starter_album_score": 3.0,
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+    },
+    {
+      "artist_name": "Capital Cities",
+      "candidate_status": "starter_album_exhausted",
+      "best_match_score": 0.780994,
+      "seed_count": 1,
+      "seen_count": 7,
+      "recommendation_count": 0,
+      "source_seeds": [
+        "Foster the People"
+      ],
+      "in_recommendation_backoff": false,
+      "result_type": "starter_album_recommendation",
+      "message": "Starter album recommendation created",
+      "planner_status": "success",
+      "planner_action": "RECOMMEND_ONLY",
+      "planner_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+      "resolved_artist_name": "Capital Cities",
+      "resolved_artist_mbid": "119a2c67-e6d6-41cf-a58c-c51b75c80daa",
+      "staged_artist_created": true,
+      "starter_album_id": 17522,
+      "starter_album_title": "Solarize",
+      "starter_album_score": 3.0,
+      "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3"
+    }
+  ]
+}

@@ -1,194 +1,123 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from resonarr.candidates.extend import ExtendCandidateSource
-from resonarr.execution.lidarr.adapter import LidarrAdapter
+from resonarr.app.extend_promotion_service import ExtendPromotionService
 from resonarr.config.settings import EXTEND_PROMOTION_MAX_PLANS_PER_RUN
 from resonarr.utils.logging import configure_runner_logging
 
 
 def main():
     configure_runner_logging("extend-promotion-cycle")
-    source = ExtendCandidateSource()
-    adapter = LidarrAdapter()
-    memory = source.memory
+    service = ExtendPromotionService()
 
     print("=== Resonarr Extend Promotion Cycle ===")
 
-    candidates = source.get_persisted_candidates()
-    promotable_candidates = [
-        c for c in candidates
-        if c.get("is_promotable", False)
-    ]
+    promotable = service.list_promotable_candidates()
+    print(f"[INFO] Promotable candidates found: {promotable['count']}")
 
-    print(f"[INFO] Promotable candidates found: {len(promotable_candidates)}")
-
-    if not promotable_candidates:
+    if not promotable["items"]:
         print("[INFO] No promotable extend candidates available")
         return
 
-    planned = 0
-    skipped_backoff = 0
-    skipped_existing = 0
-    skipped_non_acquire = 0
-    failed = 0
+    result = service.run_promotion_cycle(limit=EXTEND_PROMOTION_MAX_PLANS_PER_RUN)
 
-    for idx, candidate in enumerate(promotable_candidates, start=1):
-        if planned >= EXTEND_PROMOTION_MAX_PLANS_PER_RUN:
-            print("\n[INFO] Reached starter album planning cap for this run")
-            break
+    for idx, item in enumerate(result["results"], start=1):
+        print(f"\n=== Promotable Candidate {idx}/{result['promotable_count']} ===")
+        print(f"[INFO] Artist: {item.get('artist_name')}")
+        print(f"[INFO] Best match score: {item.get('best_match_score', 0):.2f}")
+        print(f"[INFO] Seed count: {item.get('seed_count')}")
+        print(f"[INFO] Seen count: {item.get('seen_count')}")
+        print(f"[INFO] Recommendation count: {item.get('recommendation_count')}")
+        print(f"[INFO] Source seeds: {', '.join(item.get('source_seeds', []))}")
+        print(f"[INFO] Status: {item.get('candidate_status')}")
+        print(f"[INFO] In recommendation backoff: {item.get('in_recommendation_backoff')}")
 
-        artist_name = candidate["artist_name"]
-
-        print(f"\n=== Promotable Candidate {idx}/{len(promotable_candidates)} ===")
-        print(f"[INFO] Artist: {artist_name}")
-        print(f"[INFO] Best match score: {candidate['best_match_score']:.2f}")
-        print(f"[INFO] Seed count: {candidate['seed_count']}")
-        print(f"[INFO] Seen count: {candidate.get('seen_count', 1)}")
-        print(f"[INFO] Recommendation count: {candidate.get('recommendation_count', 0)}")
-        print(f"[INFO] Source seeds: {', '.join(candidate['source_seeds'])}")
-        print(f"[INFO] Status: {candidate.get('status', 'new')}")
-        print(f"[INFO] In recommendation backoff: {candidate['in_recommendation_backoff']}")
-
-        if candidate.get("status") == "starter_album_candidate":
-            skipped_existing += 1
-            print("[INFO] Existing starter album acquisition candidate already recorded")
-            continue
-
-        if candidate.get("status") == "starter_album_recommendation":
-            skipped_existing += 1
-            print("[INFO] Existing starter album recommendation already recorded")
-            continue
-
-        if candidate.get("status") == "staged_artist":
+        if item.get("candidate_status") == "staged_artist":
             print("[INFO] Evaluating existing staged artist in Lidarr")
 
-        if candidate.get("status") == "starter_album_exhausted":
+        if item.get("candidate_status") == "starter_album_exhausted":
             print("[INFO] Re-evaluating previously exhausted candidate under current staged policy")
 
-        if candidate["in_recommendation_backoff"]:
-            if candidate.get("status") == "promotable":
-                cleared = memory.clear_extend_recommendation_backoff(artist_name)
-                if cleared:
-                    print("[INFO] Cleared legacy extend recommendation backoff for promotable candidate")
-                    candidate["in_recommendation_backoff"] = False
+        if item.get("legacy_backoff_cleared"):
+            print("[INFO] Cleared legacy extend recommendation backoff for promotable candidate")
 
-            if candidate["in_recommendation_backoff"]:
-                skipped_backoff += 1
-                print("[INFO] Skipping starter album planning due to recommendation backoff")
-                continue
-
-        staged_statuses = {
-            "staged_artist",
-            "starter_album_exhausted",
-            "starter_album_recommendation",
-        }
-
-        try:
-            result = adapter.plan_extended_artist_best_release(
-                artist_name,
-                is_staged_artist=(candidate.get("status") in staged_statuses),
-            )
-        except Exception as exc:
-            failed += 1
-            print(f"[INFO] Planning failed with exception: {exc}")
-            continue
-
-        if result.get("staged_artist_created"):
-            memory.mark_extend_candidate_staged_artist(
-                artist_name=artist_name,
-                artist_mbid=result.get("artist_mbid"),
-                resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
-            )
+        if item.get("staged_artist_created"):
             print("[INFO] Extend candidate intentionally staged as unmonitored artist in Lidarr")
-        elif candidate.get("status") in {
+        elif item.get("candidate_status") in {
             "staged_artist",
             "starter_album_exhausted",
             "starter_album_recommendation",
         }:
             print("[INFO] Re-using existing staged artist in Lidarr")
 
-        if result.get("action") == "RECOMMEND_ONLY":
-            intent = result["intent"]
+        if item.get("result_type") in {
+            "skipped_existing_candidate",
+            "skipped_existing_approved",
+            "skipped_existing_rejected",
+            "skipped_existing_recommendation",
+            "skipped_backoff",
+        }:
+            print(f"[INFO] {item.get('message')}")
+            continue
 
-            if not intent.target_album_id or not intent.target_album_title:
-                failed += 1
-                print("[INFO] Planning failed: missing target album details for recommendation")
-                continue
+        if item.get("result_type") == "failed_exception":
+            print(f"[INFO] Planning failed with exception: {item.get('message')}")
+            continue
 
-            score_text = f"{intent.score:.2f}" if intent.score is not None else "None"
+        if item.get("result_type") == "failed_missing_target_for_recommendation":
+            print(f"[INFO] Planning failed: {item.get('message')}")
+            continue
 
-            print("[INFO] Starter album recommendation created")
-            print(f"[INFO] Resolved artist: {result.get('resolved_artist_name') or intent.artist_name}")
-            print(f"[INFO] MBID: {result.get('artist_mbid')}")
-            print(f"[INFO] Album: {intent.target_album_title}")
-            print(f"[INFO] Reason: {intent.reason}")
-            print(f"[INFO] Score: {score_text}")
+        if item.get("result_type") == "failed_missing_target":
+            print(f"[INFO] Planning failed: {item.get('message')}")
+            continue
 
-            memory.mark_extend_candidate_starter_album_recommendation(
-                artist_name=artist_name,
-                artist_mbid=result.get("artist_mbid"),
-                resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
-                album_id=intent.target_album_id,
-                album_title=intent.target_album_title,
-                reason=intent.reason,
-                score=intent.score,
+        if item.get("result_type") == "starter_album_recommendation":
+            score_text = (
+                f"{item.get('starter_album_score'):.2f}"
+                if item.get("starter_album_score") is not None
+                else "None"
             )
-
-            memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
-            planned += 1
+            print("[INFO] Starter album recommendation created")
+            print(f"[INFO] Resolved artist: {item.get('resolved_artist_name')}")
+            print(f"[INFO] MBID: {item.get('resolved_artist_mbid')}")
+            print(f"[INFO] Album: {item.get('starter_album_title')}")
+            print(f"[INFO] Reason: {item.get('starter_album_reason')}")
+            print(f"[INFO] Score: {score_text}")
             continue
 
-        if result.get("action") != "ACQUIRE_ARTIST":
-            skipped_non_acquire += 1
-            print(f"[INFO] No starter album acquisition candidate emitted: {result.get('reason')}")
-
-            if result.get("reason") == "no eligible albums remain after ownership filtering":
-                memory.mark_extend_candidate_starter_album_exhausted(
-                    artist_name=artist_name,
-                    artist_mbid=result.get("artist_mbid"),
-                    resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
-                    reason=result.get("reason"),
-                )
-                print("[INFO] Recorded starter album exhaustion for staged/promoted candidate")
-
+        if item.get("result_type") == "starter_album_candidate":
+            score_text = (
+                f"{item.get('starter_album_score'):.2f}"
+                if item.get("starter_album_score") is not None
+                else "None"
+            )
+            print("[INFO] Starter album acquisition candidate created")
+            print(f"[INFO] Resolved artist: {item.get('resolved_artist_name')}")
+            print(f"[INFO] MBID: {item.get('resolved_artist_mbid')}")
+            print(f"[INFO] Album: {item.get('starter_album_title')}")
+            print(f"[INFO] Reason: {item.get('starter_album_reason')}")
+            print(f"[INFO] Score: {score_text}")
             continue
 
-        intent = result["intent"]
-
-        if not intent.target_album_id or not intent.target_album_title:
-            failed += 1
-            print("[INFO] Planning failed: missing target album details")
+        if item.get("result_type") == "starter_album_exhausted":
+            print("[INFO] No starter album acquisition candidate emitted: no eligible albums remain after ownership filtering")
+            print("[INFO] Recorded starter album exhaustion for staged/promoted candidate")
             continue
 
-        score_text = f"{intent.score:.2f}" if intent.score is not None else "None"
+        if item.get("result_type") == "non_acquire":
+            print(f"[INFO] No starter album acquisition candidate emitted: {item.get('planner_reason')}")
+            continue
 
-        print("[INFO] Starter album acquisition candidate created")
-        print(f"[INFO] Resolved artist: {result.get('resolved_artist_name') or intent.artist_name}")
-        print(f"[INFO] MBID: {result.get('artist_mbid')}")
-        print(f"[INFO] Album: {intent.target_album_title}")
-        print(f"[INFO] Reason: {intent.reason}")
-        print(f"[INFO] Score: {score_text}")
-
-        memory.mark_extend_candidate_starter_album_candidate(
-            artist_name=artist_name,
-            artist_mbid=result.get("artist_mbid"),
-            resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
-            album_id=intent.target_album_id,
-            album_title=intent.target_album_title,
-            reason=intent.reason,
-            score=intent.score,
-        )
-
-        memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
-        planned += 1
+    if result["planned_count"] >= result["limit"] and result["promotable_count"] > result["planned_count"]:
+        print("\n[INFO] Reached starter album planning cap for this run")
 
     print("\n=== EXTEND PROMOTION SUMMARY ===")
-    print(f"[INFO] Starter album outputs created: {planned}")
-    print(f"[INFO] Skipped existing starter album candidate: {skipped_existing}")
-    print(f"[INFO] Skipped recommendation backoff: {skipped_backoff}")
-    print(f"[INFO] Skipped below acquire threshold: {skipped_non_acquire}")
-    print(f"[INFO] Failed planning attempts: {failed}")
+    print(f"[INFO] Starter album outputs created: {result['planned_count']}")
+    print(f"[INFO] Skipped existing starter album candidate: {result['skipped_existing']}")
+    print(f"[INFO] Skipped recommendation backoff: {result['skipped_backoff']}")
+    print(f"[INFO] Skipped below acquire threshold: {result['skipped_non_acquire']}")
+    print(f"[INFO] Failed planning attempts: {result['failed']}")
 
 
 if __name__ == "__main__":
