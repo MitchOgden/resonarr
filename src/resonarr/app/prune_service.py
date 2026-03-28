@@ -15,14 +15,25 @@ class PruneService:
         self.lidarr = lidarr_client or LidarrClient()
 
     def _normalize(self, value):
-        return (
+        normalized = (
             (value or "")
             .lower()
             .replace("’", "'")
+            .replace("‘", "'")
+            .replace("‐", "-")
+            .replace("-", "-")
+            .replace("‒", "-")
+            .replace("–", "-")
+            .replace("—", "-")
+            .replace("…", "...")
             .replace("-", " ")
             .replace("_", " ")
+            .replace(":", " ")
+            .replace("/", " ")
             .strip()
         )
+
+        return " ".join(normalized.split())
 
     def _fetch_lidarr_albums(self):
         resp = self.lidarr.get("/api/v1/album")
@@ -52,18 +63,36 @@ class PruneService:
         artist_name = prune_signal.get("artist_name")
         album_name = prune_signal.get("album_name")
 
+        diagnostics = {
+            "has_album_mbid": bool(album_mbid),
+            "mbid_match_found": False,
+            "name_match_found": False,
+            "name_match_available_but_disabled": False,
+            "diagnostic_name_match_artist": None,
+            "diagnostic_name_match_album": None,
+        }
+
         if PRUNE_MATCH_MODE == "mbid" and album_mbid:
             album = by_mbid.get(album_mbid)
             if album:
-                return album, "mbid"
+                diagnostics["mbid_match_found"] = True
+                return album, "mbid", diagnostics
 
-        if PRUNE_ALLOW_NAME_FALLBACK:
-            key = (self._normalize(artist_name), self._normalize(album_name))
-            album = by_name.get(key)
-            if album:
-                return album, "name"
+        key = (self._normalize(artist_name), self._normalize(album_name))
+        fallback_album = by_name.get(key)
 
-        return None, "unmatched"
+        if fallback_album:
+            diagnostics["name_match_found"] = True
+            fallback_artist = fallback_album.get("artist") or {}
+            diagnostics["diagnostic_name_match_artist"] = fallback_artist.get("artistName")
+            diagnostics["diagnostic_name_match_album"] = fallback_album.get("title")
+
+            if PRUNE_ALLOW_NAME_FALLBACK:
+                return fallback_album, "name", diagnostics
+
+            diagnostics["name_match_available_but_disabled"] = True
+
+        return None, "unmatched", diagnostics
 
     def list_prune_candidates(self, limit=None):
         if limit is None:
@@ -80,7 +109,7 @@ class PruneService:
             if not intent:
                 continue
 
-            lidarr_album, match_method = self._match_album(signal, by_mbid, by_name)
+            lidarr_album, match_method, diagnostics = self._match_album(signal, by_mbid, by_name)
 
             item = {
                 "artist_name": intent.artist_name,
@@ -98,6 +127,12 @@ class PruneService:
                 "lidarr_has_files": None,
                 "matched": False,
                 "action": intent.action,
+                "has_album_mbid": diagnostics.get("has_album_mbid"),
+                "mbid_match_found": diagnostics.get("mbid_match_found"),
+                "name_match_found": diagnostics.get("name_match_found"),
+                "name_match_available_but_disabled": diagnostics.get("name_match_available_but_disabled"),
+                "diagnostic_name_match_artist": diagnostics.get("diagnostic_name_match_artist"),
+                "diagnostic_name_match_album": diagnostics.get("diagnostic_name_match_album"),
             }
 
             if lidarr_album:

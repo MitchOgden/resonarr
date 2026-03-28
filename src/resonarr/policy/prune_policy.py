@@ -35,11 +35,18 @@ class PrunePolicy:
                     f"with {rated_tracks} rated tracks"
                 )
         else:
-            if PRUNE_ALLOW_SMALL_ALBUM_FULL_REJECT and rated_tracks >= 1 and bad_tracks == rated_tracks:
+            if (
+                PRUNE_ALLOW_SMALL_ALBUM_FULL_REJECT
+                and total_tracks_seen > 0
+                and total_tracks_seen <= PRUNE_MIN_TRACKS_RATED
+                and rated_tracks >= 1
+                and bad_tracks == rated_tracks
+            ):
                 should_prune = True
                 reason = (
                     f"small album full reject: {bad_tracks}/{rated_tracks} rated tracks "
-                    f"at or below {PRUNE_TRACK_BAD_MAX_RATING}"
+                    f"at or below {PRUNE_TRACK_BAD_MAX_RATING} on album with "
+                    f"{total_tracks_seen} total tracks"
                 )
 
         if not should_prune:
