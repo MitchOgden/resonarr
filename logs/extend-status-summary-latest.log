@@ -1,0 +1,27 @@
+[INFO] Timestamped log file: logs\extend-status-summary-20260327-203140.log
+[INFO] Latest log file: logs\extend-status-summary-latest.log
+=== Resonarr Extend Status Summary ===
+[INFO] Total extend candidates: 43
+[INFO] starter_album_candidate: 0
+[INFO] starter_album_recommendation: 5
+[INFO] starter_album_approved: 2
+[INFO] starter_album_rejected: 2
+[INFO] staged_artist: 0
+[INFO] starter_album_exhausted: 3
+[INFO] promotable: 0
+[INFO] new: 3
+[INFO] recommended: 28
+[INFO] unknown: 0
+
+[INFO] Reviewable recommendations:
+[INFO] Count: 5
+[INFO] BoyWithUke | starter_album_recommendation | Fever Dreams | score=3.0
+[INFO] Smino | starter_album_recommendation | NØIR | score=3.0
+[INFO] American Authors | starter_album_recommendation | Seasons | score=3.0
+[INFO] Em Beihold | starter_album_recommendation | Egg in the Backseat | score=3.0
+[INFO] The Astronomers | starter_album_recommendation | The Occasion | score=3.0
+
+[INFO] Suppressed artists:
+[INFO] Count: 2
+[INFO] 9e60ea29-9607-4f7d-aa96-2092ef41f0d3 | reason=operator_rejected_extend_recommendation | ts=1774648308
+[INFO] c37cb509-b7fd-4212-a6fb-163535eba4c1 | reason=operator_rejected_extend_recommendation | ts=1774644732

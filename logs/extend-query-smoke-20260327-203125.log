@@ -1,0 +1,126 @@
+[INFO] Timestamped log file: logs\extend-query-smoke-20260327-203125.log
+[INFO] Latest log file: logs\extend-query-smoke-latest.log
+=== Resonarr Extend Query Service Smoke Test ===
+[INFO] Extend query service result:
+{
+  "summary": {
+    "status": "success",
+    "total_candidates": 43,
+    "counts": {
+      "starter_album_candidate": 0,
+      "starter_album_recommendation": 5,
+      "starter_album_approved": 2,
+      "starter_album_rejected": 2,
+      "staged_artist": 0,
+      "starter_album_exhausted": 3,
+      "promotable": 0,
+      "new": 3,
+      "recommended": 28,
+      "unknown": 0
+    }
+  },
+  "reviewable": {
+    "status": "success",
+    "count": 5,
+    "items": [
+      {
+        "artist_name": "BoyWithUke",
+        "status": "starter_album_recommendation",
+        "resolved_artist_name": "BoyWithUke",
+        "resolved_artist_mbid": "a148ffde-581c-4c39-a8f1-bc49dec7fe68",
+        "starter_album_id": 17343,
+        "starter_album_title": "Fever Dreams",
+        "starter_album_score": 3.0,
+        "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "seed_count": 1,
+        "seen_count": 5,
+        "best_match_score": 1.0,
+        "source_seeds": [
+          "AJR"
+        ]
+      },
+      {
+        "artist_name": "Smino",
+        "status": "starter_album_recommendation",
+        "resolved_artist_name": "Smino",
+        "resolved_artist_mbid": "96800e05-9924-4321-859a-76e0d4750f2f",
+        "starter_album_id": 17323,
+        "starter_album_title": "NØIR",
+        "starter_album_score": 3.0,
+        "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "seed_count": 1,
+        "seen_count": 7,
+        "best_match_score": 1.0,
+        "source_seeds": [
+          "Aminé"
+        ]
+      },
+      {
+        "artist_name": "American Authors",
+        "status": "starter_album_recommendation",
+        "resolved_artist_name": "American Authors",
+        "resolved_artist_mbid": "9ce0515d-cc88-4df6-8a2e-d231c13cb2c2",
+        "starter_album_id": 17435,
+        "starter_album_title": "Seasons",
+        "starter_album_score": 3.0,
+        "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "seed_count": 1,
+        "seen_count": 5,
+        "best_match_score": 0.885058,
+        "source_seeds": [
+          "AJR"
+        ]
+      },
+      {
+        "artist_name": "Em Beihold",
+        "status": "starter_album_recommendation",
+        "resolved_artist_name": "Em Beihold",
+        "resolved_artist_mbid": "7575e3b8-ba04-4acc-a895-9cc528f86525",
+        "starter_album_id": 17483,
+        "starter_album_title": "Egg in the Backseat",
+        "starter_album_score": 3.0,
+        "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "seed_count": 1,
+        "seen_count": 5,
+        "best_match_score": 0.865961,
+        "source_seeds": [
+          "AJR"
+        ]
+      },
+      {
+        "artist_name": "The Astronomers",
+        "status": "starter_album_recommendation",
+        "resolved_artist_name": "The Astronomers",
+        "resolved_artist_mbid": "2119e495-b0be-452d-adf2-ca38923ecca6",
+        "starter_album_id": 17493,
+        "starter_album_title": "The Occasion",
+        "starter_album_score": 3.0,
+        "starter_album_reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "seed_count": 1,
+        "seen_count": 5,
+        "best_match_score": 0.84901,
+        "source_seeds": [
+          "AJR"
+        ]
+      }
+    ]
+  },
+  "suppressed": {
+    "status": "success",
+    "count": 2,
+    "items": [
+      {
+        "artist_key": "9e60ea29-9607-4f7d-aa96-2092ef41f0d3",
+        "suppressed": true,
+        "suppression_reason": "operator_rejected_extend_recommendation",
+        "suppressed_ts": 1774648308
+      },
+      {
+        "artist_key": "c37cb509-b7fd-4212-a6fb-163535eba4c1",
+        "suppressed": true,
+        "suppression_reason": "operator_rejected_extend_recommendation",
+        "suppressed_ts": 1774644732
+      }
+    ]
+  }
+}

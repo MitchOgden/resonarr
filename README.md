@@ -138,6 +138,10 @@ Operator workflow runners:
 - `python -m resonarr.runner.run_operator_review_queue`
 - `python -m resonarr.runner.run_operator_approve_extend "Artist Name"`
 - `python -m resonarr.runner.run_operator_reject_extend "Artist Name"`
+- `python -m resonarr.runner.run_extend_query_smoke`
+- `python -m resonarr.runner.run_extend_status_summary`
+
+The query/smoke runners are intended as backend test points for future API/UI work. They expose summary and review data in stable structured shapes before any web transport is added.
 
 Current MVP operator flow:
 
