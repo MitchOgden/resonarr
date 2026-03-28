@@ -260,17 +260,54 @@ def match_album_to_lidarr(
         "diagnostic_name_match_album": None,
         "name_candidate_count": 0,
         "verification_reason": None,
+        "verification_failures": [],
     }
 
     if match_mode == "mbid":
-        if album_mbid:
-            match = lidarr_album_by_mbid.get(str(album_mbid).lower())
-            if match:
-                ok, reason, fresh = verify_lidarr_album_candidate(prune_signal, match, client)
-                diagnostics["mbid_match_found"] = True
-                diagnostics["verification_reason"] = reason
+        plex_album_mbids = prune_signal.get("album_mbids") or []
+        if not plex_album_mbids and album_mbid:
+            plex_album_mbids = [album_mbid]
+
+        mbid_candidates: List[dict] = []
+
+        for mbid in plex_album_mbids:
+            matches = lidarr_album_by_mbid.get(str(mbid).lower(), [])
+            for candidate in matches:
+                if candidate not in mbid_candidates:
+                    mbid_candidates.append(candidate)
+
+        if mbid_candidates:
+            diagnostics["mbid_match_found"] = True
+
+            verified_mbid_matches: List[dict] = []
+            mbid_failures = []
+
+            for candidate in mbid_candidates:
+                ok, reason, fresh = verify_lidarr_album_candidate(prune_signal, candidate, client)
+                mbid_failures.append({
+                    "album_id": candidate.get("id"),
+                    "artist_name": (candidate.get("artist") or {}).get("artistName"),
+                    "album_name": candidate.get("title"),
+                    "reason": reason,
+                })
+
                 if ok:
-                    return fresh, "mbid+verified", diagnostics
+                    verified_mbid_matches.append(fresh)
+
+            diagnostics["verification_failures"] = mbid_failures
+
+            if len(verified_mbid_matches) == 1:
+                diagnostics["verification_reason"] = "verified"
+                return verified_mbid_matches[0], "mbid+verified", diagnostics
+
+            if len(verified_mbid_matches) > 1:
+                diagnostics["verification_reason"] = "ambiguous-verified-mbid-candidates"
+                return None, "ambiguous-verified-mbid-candidates", diagnostics
+
+            if len(mbid_failures) == 1:
+                diagnostics["verification_reason"] = mbid_failures[0]["reason"]
+            else:
+                diagnostics["verification_reason"] = "no-verified-mbid-candidates"
 
         key = (normalize_name(artist_name), normalize_name(album_name))
         candidates = lidarr_album_by_name.get(key, [])

@@ -123,12 +123,12 @@ class PlexPruneExtractor:
                         rated_tracks += 1
                         if self._track_is_bad(track):
                             bad_tracks += 1
-
                 results.append({
                     "artist_name": artist_name,
                     "album_name": album_name,
                     "album_rating_key": album_rating_key,
                     "album_mbid": album_mbid,
+                    "album_mbids": album_mbids,
                     "artist_mbid": artist_mbid,
                     "rated_tracks": rated_tracks,
                     "bad_tracks": bad_tracks,
