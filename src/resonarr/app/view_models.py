@@ -72,7 +72,7 @@ def build_prune_candidate_card(item):
         "kind": "prune_candidate",
         "artist_name": item.get("artist_name"),
         "artist_mbid": item.get("artist_mbid"),
-        "status": "reviewable" if item.get("matched") else "unmatched",
+        "status": item.get("status") or ("reviewable" if item.get("matched") else "unmatched"),
         "album_title": item.get("album_name"),
         "album_id": item.get("lidarr_album_id"),
         "score": item.get("bad_ratio"),

@@ -13,7 +13,8 @@ class MemoryStore:
         if not os.path.exists(STATE_FILE):
             return {
                 "artists": {},
-                "extend_candidates": {}
+                "extend_candidates": {},
+                "prune_candidates": {}
             }
 
         with open(STATE_FILE, "r") as f:
@@ -21,6 +22,7 @@ class MemoryStore:
 
         state.setdefault("artists", {})
         state.setdefault("extend_candidates", {})
+        state.setdefault("prune_candidates", {})
 
         return state
 
@@ -353,4 +355,135 @@ class MemoryStore:
 
     def list_extend_candidates(self):
         return list(self.state["extend_candidates"].values())
+    
+    def _prune_candidate_key(self, artist_name, album_name, album_mbid=None, lidarr_album_id=None):
+        if album_mbid:
+            return f"mbid:{str(album_mbid).lower().strip()}"
+
+        if lidarr_album_id is not None:
+            return f"lidarr:{lidarr_album_id}"
+
+        artist_key = (artist_name or "").lower().strip()
+        album_key = (album_name or "").lower().strip()
+        return f"name:{artist_key}::{album_key}"
+
+    def upsert_prune_candidate(self, item):
+        key = self._prune_candidate_key(
+            artist_name=item.get("artist_name"),
+            album_name=item.get("album_name"),
+            album_mbid=item.get("album_mbid"),
+            lidarr_album_id=item.get("lidarr_album_id"),
+        )
+        now = int(time.time())
+
+        candidate = self.state["prune_candidates"].get(key, {})
+        existing_status = candidate.get("status")
+
+        candidate["key"] = key
+        candidate["artist_name"] = item.get("artist_name")
+        candidate["artist_mbid"] = item.get("artist_mbid")
+        candidate["album_name"] = item.get("album_name")
+        candidate["album_mbid"] = item.get("album_mbid")
+        candidate["lidarr_album_id"] = item.get("lidarr_album_id")
+        candidate["lidarr_artist_id"] = item.get("lidarr_artist_id")
+        candidate["lidarr_has_files"] = item.get("lidarr_has_files")
+        candidate["bad_ratio"] = item.get("bad_ratio")
+        candidate["rated_tracks"] = item.get("rated_tracks")
+        candidate["bad_tracks"] = item.get("bad_tracks")
+        candidate["total_tracks_seen"] = item.get("total_tracks_seen")
+        candidate["reason"] = item.get("reason")
+        candidate["match_method"] = item.get("match_method")
+        candidate["matched"] = item.get("matched", False)
+        candidate["action"] = item.get("action")
+        candidate["last_seen_ts"] = now
+        candidate.setdefault("first_seen_ts", now)
+
+        if existing_status in {"prune_rejected", "prune_executed"}:
+            candidate["status"] = existing_status
+        else:
+            candidate["status"] = "prune_recommendation"
+
+        self.state["prune_candidates"][key] = candidate
+        self._save()
+        return candidate
+
+    def get_prune_candidate(self, artist_name, album_name, album_mbid=None, lidarr_album_id=None):
+        key = self._prune_candidate_key(
+            artist_name=artist_name,
+            album_name=album_name,
+            album_mbid=album_mbid,
+            lidarr_album_id=lidarr_album_id,
+        )
+        return self.state["prune_candidates"].get(key, {})
+
+    def list_prune_candidates(self):
+        return list(self.state["prune_candidates"].values())
+
+    def list_prune_candidates_by_status(self, statuses):
+        wanted = set(statuses)
+        return [
+            candidate
+            for candidate in self.state["prune_candidates"].values()
+            if candidate.get("status") in wanted
+        ]
+
+    def mark_prune_candidate_approved(self, artist_name, album_name, album_mbid=None, lidarr_album_id=None, note="manual_approve"):
+        key = self._prune_candidate_key(
+            artist_name=artist_name,
+            album_name=album_name,
+            album_mbid=album_mbid,
+            lidarr_album_id=lidarr_album_id,
+        )
+        now = int(time.time())
+
+        candidate = self.state["prune_candidates"].get(key)
+        if not candidate:
+            return
+
+        candidate["status"] = "prune_approved"
+        candidate["prune_approved_ts"] = now
+        candidate["prune_approved_note"] = note
+
+        self.state["prune_candidates"][key] = candidate
+        self._save()
+
+    def mark_prune_candidate_executed(self, artist_name, album_name, album_mbid=None, lidarr_album_id=None, note="executed"):
+        key = self._prune_candidate_key(
+            artist_name=artist_name,
+            album_name=album_name,
+            album_mbid=album_mbid,
+            lidarr_album_id=lidarr_album_id,
+        )
+        now = int(time.time())
+
+        candidate = self.state["prune_candidates"].get(key)
+        if not candidate:
+            return
+
+        candidate["status"] = "prune_executed"
+        candidate["prune_executed_ts"] = now
+        candidate["prune_executed_note"] = note
+
+        self.state["prune_candidates"][key] = candidate
+        self._save()
+
+    def mark_prune_candidate_rejected(self, artist_name, album_name, album_mbid=None, lidarr_album_id=None, note="manual_reject"):
+        key = self._prune_candidate_key(
+            artist_name=artist_name,
+            album_name=album_name,
+            album_mbid=album_mbid,
+            lidarr_album_id=lidarr_album_id,
+        )
+        now = int(time.time())
+
+        candidate = self.state["prune_candidates"].get(key)
+        if not candidate:
+            return
+
+        candidate["status"] = "prune_rejected"
+        candidate["prune_rejected_ts"] = now
+        candidate["prune_rejected_note"] = note
+
+        self.state["prune_candidates"][key] = candidate
+        self._save()
     

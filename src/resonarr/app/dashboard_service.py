@@ -3,6 +3,7 @@ from resonarr.app.extend_operator_service import ExtendOperatorService
 from resonarr.app.extend_promotion_service import ExtendPromotionService
 from resonarr.app.deepen_service import DeepenService
 from resonarr.app.prune_query_service import PruneQueryService
+from resonarr.app.prune_operator_service import PruneOperatorService
 from resonarr.app.view_models import (
     build_extend_review_card,
     build_extend_promotable_card,
@@ -20,12 +21,14 @@ class DashboardService:
         extend_promotion_service=None,
         deepen_service=None,
         prune_query_service=None,
+        prune_operator_service=None,
     ):
         self.extend_query_service = extend_query_service or ExtendQueryService()
         self.extend_operator_service = extend_operator_service or ExtendOperatorService()
         self.extend_promotion_service = extend_promotion_service or ExtendPromotionService()
         self.deepen_service = deepen_service or DeepenService()
         self.prune_query_service = prune_query_service or PruneQueryService()
+        self.prune_operator_service = prune_operator_service or PruneOperatorService()
 
     def _build_extend_review_cards(self, items):
         return [build_extend_review_card(item) for item in items]
@@ -49,7 +52,7 @@ class DashboardService:
         deepen_candidates = self.deepen_service.list_candidates()
         suppressed = self.extend_query_service.list_suppressed_artists()
         prune_summary = self.prune_query_service.get_prune_summary()
-        prune_reviewable = self.prune_query_service.list_reviewable_prune_candidates()
+        prune_reviewable = self.prune_operator_service.list_review_queue()
 
         extend_counts = extend_summary["counts"]
         deepen_items = deepen_candidates["items"]

@@ -1,0 +1,15 @@
+[INFO] Timestamped log file: logs\operator-approve-prune-20260328-012812.log
+[INFO] Latest log file: logs\operator-approve-prune-latest.log
+=== Resonarr Approve Prune Recommendation ===
+[INFO] Artist: Smash Mouth
+[INFO] Album: All Star Smash Hits
+[INFO] Result:
+{
+  "status": "success",
+  "artist_name": "Smash Mouth",
+  "album_name": "All Star Smash Hits",
+  "album_id": 376,
+  "candidate_status": "prune_executed",
+  "artist_cleanup_status": "skipped",
+  "plex_scan_status": "success"
+}

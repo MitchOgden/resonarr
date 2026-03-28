@@ -73,3 +73,29 @@ class PlexClient:
     def get_album_tracks(self, album_rating_key):
         data = self._get(f"/library/metadata/{album_rating_key}/children")
         return data.get("MediaContainer", {}).get("Metadata", [])
+    
+    def scan_music_library_files(self):
+        section_id = self.get_music_library_section_id()
+        if not section_id:
+            return {
+                "status": "failed",
+                "reason": "music library section not found",
+            }
+
+        url = f"{self.base_url}/library/sections/{section_id}/refresh"
+        params = {"X-Plex-Token": self.token}
+        headers = {"Accept": "application/json"}
+
+        r = requests.get(url, params=params, headers=headers)
+        if r.status_code not in (200, 202):
+            return {
+                "status": "failed",
+                "reason": f"plex scan failed ({r.status_code})",
+                "response_text": r.text[:300],
+            }
+
+        return {
+            "status": "success",
+            "section_id": section_id,
+            "status_code": r.status_code,
+        }

@@ -13,7 +13,8 @@ from resonarr.config.settings import (
     ACQUIRE_SCORE_THRESHOLD,
     RECOMMEND_SCORE_THRESHOLD,
     STAGED_RECOMMEND_SCORE_THRESHOLD,
-    ARTIST_COOLDOWN_HOURS
+    ARTIST_COOLDOWN_HOURS,
+    PRUNE_ADD_IMPORT_LIST_EXCLUSION,
 )
 
 class LidarrAdapter:
@@ -582,6 +583,113 @@ class LidarrAdapter:
             "status": "success",
             "artist_name": artist.get("artistName"),
             "artist_id": artist.get("id"),
+        }
+
+    def get_album_by_id(self, album_id):
+        resp = self.client.get(f"/api/v1/album/{album_id}")
+        if resp.status_code != 200:
+            return None
+        return resp.json()
+
+    def unmonitor_album(self, album_id):
+        album = self.get_album_by_id(album_id)
+        if not album:
+            return {
+                "status": "failed",
+                "reason": "album not found in Lidarr",
+            }
+
+        if album.get("monitored") is False:
+            return {
+                "status": "success",
+                "album_title": album.get("title"),
+                "album_id": album.get("id"),
+                "already_unmonitored": True,
+            }
+
+        album["monitored"] = False
+        resp = self.client.put(f"/api/v1/album/{album_id}", json=album)
+
+        if resp.status_code not in (200, 202):
+            return {
+                "status": "failed",
+                "reason": f"album unmonitor failed ({resp.status_code})",
+                "response_text": resp.text[:300],
+            }
+
+        return {
+            "status": "success",
+            "album_title": album.get("title"),
+            "album_id": album.get("id"),
+            "already_unmonitored": False,
+        }
+
+    def delete_album(self, album_id, delete_files=True, add_import_list_exclusion=None):
+        if add_import_list_exclusion is None:
+            add_import_list_exclusion = PRUNE_ADD_IMPORT_LIST_EXCLUSION
+
+        resp = self.client.delete(
+            f"/api/v1/album/{album_id}",
+            params={
+                "deleteFiles": str(delete_files).lower(),
+                "addImportListExclusion": str(add_import_list_exclusion).lower(),
+            },
+        )
+
+        if resp.status_code not in (200, 202):
+            return {
+                "status": "failed",
+                "reason": f"album delete failed ({resp.status_code})",
+                "response_text": resp.text[:300],
+            }
+
+        return {
+            "status": "success",
+            "album_id": album_id,
+        }
+
+    def prune_album(self, album_id, artist_id=None, prune_artist_if_empty=False):
+        unmonitor = self.unmonitor_album(album_id)
+        if unmonitor.get("status") != "success":
+            return unmonitor
+
+        delete_result = self.delete_album(album_id, delete_files=True)
+        if delete_result.get("status") != "success":
+            return delete_result
+
+        artist_cleanup = {"status": "skipped", "reason": "artist cleanup disabled or not applicable"}
+
+        if prune_artist_if_empty and artist_id is not None:
+            albums = self._get_albums(artist_id)
+            if not albums:
+                artist = self._get_artist_by_id(artist_id)
+                if artist:
+                    resp = self.client.delete(
+                        f"/api/v1/artist/{artist_id}",
+                        params={
+                            "deleteFiles": "false",
+                            "addImportExclusion": "false",
+                        },
+                    )
+
+                    if resp.status_code in (200, 202):
+                        artist_cleanup = {
+                            "status": "success",
+                            "artist_id": artist_id,
+                            "artist_name": artist.get("artistName"),
+                        }
+                    else:
+                        artist_cleanup = {
+                            "status": "failed",
+                            "reason": f"artist delete failed ({resp.status_code})",
+                            "response_text": resp.text[:300],
+                        }
+
+        return {
+            "status": "success",
+            "album_id": album_id,
+            "album_title": unmonitor.get("album_title"),
+            "artist_cleanup": artist_cleanup,
         }
 
     # ------------------------
