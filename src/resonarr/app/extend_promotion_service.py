@@ -36,6 +36,10 @@ class ExtendPromotionService:
                 "source_seeds": candidate.get("source_seeds", []),
                 "in_recommendation_backoff": candidate.get("in_recommendation_backoff", False),
                 "is_promotable": candidate.get("is_promotable", False),
+                "starter_album_id": candidate.get("starter_album_id"),
+                "starter_album_title": candidate.get("starter_album_title"),
+                "starter_album_score": candidate.get("starter_album_score"),
+                "starter_album_reason": candidate.get("starter_album_reason"),
             })
 
         return {
