@@ -93,6 +93,16 @@ class CatalogQueryService:
             "event_ts": None,
             "raw": item,
         }
+    
+    def _build_deepen_review_mbid_set(self, deepen_review_items):
+        mbids = set()
+
+        for item in deepen_review_items:
+            mbid = (item.get("mbid") or "").strip().lower()
+            if mbid:
+                mbids.add(mbid)
+
+        return mbids
 
     def _normalize_prune_live(self, item):
         return {
@@ -164,11 +174,17 @@ class CatalogQueryService:
         for item in extend_promotable["items"]:
             records.append(self._normalize_extend_promotable(item))
 
+        deepen_review = self.deepen_operator_service.list_review_queue()
+        deepen_review_mbids = self._build_deepen_review_mbid_set(deepen_review["items"])
+
         deepen_candidates = self.deepen_service.list_candidates()
         for item in deepen_candidates["items"]:
+            mbid = (item.get("mbid") or "").strip().lower()
+            if mbid and mbid in deepen_review_mbids:
+                continue
+
             records.append(self._normalize_deepen_candidate(item))
 
-        deepen_review = self.deepen_operator_service.list_review_queue()
         for item in deepen_review["items"]:
             records.append(self._normalize_deepen_review(item))
 
@@ -254,10 +270,8 @@ class CatalogQueryService:
         artist_mbid=None,
         live_only=False,
         historical_only=False,
-        records=None,
     ):
-        if records is None:
-            records = self._collect_records()
+        records = self._collect_records()
         items = self._apply_filters(
             records,
             kind=kind,
