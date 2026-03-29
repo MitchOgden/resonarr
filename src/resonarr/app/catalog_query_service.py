@@ -73,10 +73,17 @@ class CatalogQueryService:
         return keys
 
     def _normalize_deepen_candidate(self, item):
+        if item.get("in_cooldown"):
+            status = "deepen_in_cooldown"
+        elif item.get("in_recommendation_backoff"):
+            status = "deepen_in_recommendation_backoff"
+        else:
+            status = item.get("status") or "candidate"
+
         return {
             "kind": "deepen_candidate",
             "source": "deepen",
-            "status": item.get("status") or "candidate",
+            "status": status,
             "live": True,
             "historical": False,
             "artist_name": item.get("artist_name"),
