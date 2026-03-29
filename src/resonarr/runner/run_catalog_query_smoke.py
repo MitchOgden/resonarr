@@ -46,6 +46,15 @@ def main():
         sort_direction="desc",
     )
 
+    print("[INFO] Building historical-records filtered by recent event timestamp range...")
+    historical_records_recent_range = service.query_records(
+        records=records,
+        historical_only=True,
+        event_ts_min=1774670000,
+        sort_by="event_ts",
+        sort_direction="desc",
+    )
+
     payload = {
         "all_records": all_records,
         "live_records": live_records,
@@ -66,6 +75,14 @@ def main():
             "counts_by_source": historical_records_sorted_by_event_ts_desc["counts_by_source"],
             "counts_by_status": historical_records_sorted_by_event_ts_desc["counts_by_status"],
             "top_items": historical_records_sorted_by_event_ts_desc["items"][:10],
+        },
+        "historical_records_recent_range": {
+            "status": historical_records_recent_range["status"],
+            "count": historical_records_recent_range["count"],
+            "counts_by_kind": historical_records_recent_range["counts_by_kind"],
+            "counts_by_source": historical_records_recent_range["counts_by_source"],
+            "counts_by_status": historical_records_recent_range["counts_by_status"],
+            "top_items": historical_records_recent_range["items"][:10],
         },
     }
 

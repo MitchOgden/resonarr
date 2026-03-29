@@ -245,6 +245,8 @@ class CatalogQueryService:
         artist_mbid=None,
         live_only=False,
         historical_only=False,
+        event_ts_min=None,
+        event_ts_max=None,
     ):
         items = list(records)
 
@@ -289,6 +291,20 @@ class CatalogQueryService:
 
         if historical_only:
             items = [item for item in items if item.get("historical")]
+
+        if event_ts_min is not None:
+            items = [
+                item
+                for item in items
+                if item.get("event_ts") is not None and item.get("event_ts") >= event_ts_min
+            ]
+
+        if event_ts_max is not None:
+            items = [
+                item
+                for item in items
+                if item.get("event_ts") is not None and item.get("event_ts") <= event_ts_max
+            ]
 
         return items
 
@@ -335,6 +351,8 @@ class CatalogQueryService:
         artist_mbid=None,
         live_only=False,
         historical_only=False,
+        event_ts_min=None,
+        event_ts_max=None,
         sort_by="source",
         sort_direction="asc",
         records=None,
@@ -351,6 +369,8 @@ class CatalogQueryService:
             artist_mbid=artist_mbid,
             live_only=live_only,
             historical_only=historical_only,
+            event_ts_min=event_ts_min,
+            event_ts_max=event_ts_max,
         )
 
         items = self._sort_records(
