@@ -60,6 +60,18 @@ class CatalogQueryService:
             "raw": item,
         }
 
+    def _build_extend_review_key_set(self, extend_review_items):
+        keys = set()
+
+        for item in extend_review_items:
+            artist_mbid = (item.get("resolved_artist_mbid") or "").strip().lower()
+            album_id = item.get("starter_album_id")
+
+            if artist_mbid and album_id is not None:
+                keys.add((artist_mbid, album_id))
+
+        return keys
+
     def _normalize_deepen_candidate(self, item):
         return {
             "kind": "deepen_candidate",
@@ -167,12 +179,20 @@ class CatalogQueryService:
         records = []
 
         extend_review = self.extend_operator_service.list_review_queue()
-        for item in extend_review["items"]:
-            records.append(self._normalize_extend_review(item))
+        extend_review_keys = self._build_extend_review_key_set(extend_review["items"])
 
         extend_promotable = self.extend_promotion_service.list_promotable_candidates()
         for item in extend_promotable["items"]:
+            artist_mbid = (item.get("resolved_artist_mbid") or "").strip().lower()
+            album_id = item.get("starter_album_id")
+
+            if artist_mbid and album_id is not None and (artist_mbid, album_id) in extend_review_keys:
+                continue
+
             records.append(self._normalize_extend_promotable(item))
+
+        for item in extend_review["items"]:
+            records.append(self._normalize_extend_review(item))
 
         deepen_review = self.deepen_operator_service.list_review_queue()
         deepen_review_mbids = self._build_deepen_review_mbid_set(deepen_review["items"])
