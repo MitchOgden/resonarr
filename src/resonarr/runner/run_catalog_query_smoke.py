@@ -12,12 +12,28 @@ def main():
     service = CatalogQueryService()
 
     print("=== Resonarr Catalog Query Smoke Test ===")
+    print("[INFO] Collecting normalized catalog records...")
+
+    records = service._collect_records()
+
+    print(f"[INFO] Collected {len(records)} normalized records.")
+    print("[INFO] Building all-records view...")
+    all_records = service.query_records(records=records)
+
+    print("[INFO] Building live-records view...")
+    live_records = service.query_records(records=records, live_only=True)
+
+    print("[INFO] Building historical-records view...")
+    historical_records = service.query_records(records=records, historical_only=True)
+
+    print("[INFO] Building suppressed-records view...")
+    suppressed_records = service.query_records(records=records, source=["suppression"])
 
     payload = {
-        "all_records": service.query_records(),
-        "live_records": service.query_records(live_only=True),
-        "historical_records": service.query_records(historical_only=True),
-        "suppressed_records": service.query_records(source=["suppression"]),
+        "all_records": all_records,
+        "live_records": live_records,
+        "historical_records": historical_records,
+        "suppressed_records": suppressed_records,
     }
 
     print("[INFO] Catalog query result:")
