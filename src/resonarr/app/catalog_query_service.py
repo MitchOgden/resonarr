@@ -44,10 +44,15 @@ class CatalogQueryService:
         }
 
     def _normalize_extend_promotable(self, item):
+        if item.get("in_recommendation_backoff"):
+            status = "extend_in_recommendation_backoff"
+        else:
+            status = item.get("status")
+
         return {
             "kind": "extend_promotable",
             "source": "extend",
-            "status": item.get("status"),
+            "status": status,
             "live": True,
             "historical": False,
             "artist_name": item.get("artist_name"),
@@ -287,6 +292,39 @@ class CatalogQueryService:
 
         return items
 
+    def _sort_records(self, items, sort_by="source", sort_direction="asc"):
+        reverse = (sort_direction or "asc").lower() == "desc"
+
+        def sortable_value(item):
+            if sort_by == "artist_name":
+                return (item.get("artist_name") or "").lower()
+
+            if sort_by == "album_title":
+                return (item.get("album_title") or "").lower()
+
+            if sort_by == "status":
+                return (item.get("status") or "").lower()
+
+            if sort_by == "score":
+                value = item.get("score")
+                return value if value is not None else float("-inf")
+
+            if sort_by == "event_ts":
+                value = item.get("event_ts")
+                return value if value is not None else -1
+
+            if sort_by == "kind":
+                return (item.get("kind") or "").lower()
+
+            return (
+                (item.get("source") or "").lower(),
+                (item.get("kind") or "").lower(),
+                (item.get("artist_name") or "").lower(),
+                (item.get("album_title") or "").lower(),
+            )
+
+        return sorted(items, key=sortable_value, reverse=reverse)
+
     def query_records(
         self,
         kind=None,
@@ -297,6 +335,8 @@ class CatalogQueryService:
         artist_mbid=None,
         live_only=False,
         historical_only=False,
+        sort_by="source",
+        sort_direction="asc",
         records=None,
     ):
         if records is None:
@@ -313,13 +353,10 @@ class CatalogQueryService:
             historical_only=historical_only,
         )
 
-        items.sort(
-            key=lambda item: (
-                item.get("source") or "",
-                item.get("kind") or "",
-                (item.get("artist_name") or "").lower(),
-                (item.get("album_title") or "").lower(),
-            )
+        items = self._sort_records(
+            items,
+            sort_by=sort_by,
+            sort_direction=sort_direction,
         )
 
         counts_by_kind = {}
