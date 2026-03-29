@@ -355,6 +355,8 @@ class CatalogQueryService:
         event_ts_max=None,
         sort_by="source",
         sort_direction="asc",
+        limit=None,
+        offset=0,
         records=None,
     ):
         if records is None:
@@ -379,20 +381,39 @@ class CatalogQueryService:
             sort_direction=sort_direction,
         )
 
+        total_count = len(items)
+
+        if offset is None:
+            offset = 0
+
+        if offset < 0:
+            offset = 0
+
+        if limit is not None and limit < 0:
+            limit = 0
+
+        if limit is None:
+            paged_items = items[offset:]
+        else:
+            paged_items = items[offset:offset + limit]
+
         counts_by_kind = {}
         counts_by_source = {}
         counts_by_status = {}
 
-        for item in items:
+        for item in paged_items:
             counts_by_kind[item["kind"]] = counts_by_kind.get(item["kind"], 0) + 1
             counts_by_source[item["source"]] = counts_by_source.get(item["source"], 0) + 1
             counts_by_status[item["status"]] = counts_by_status.get(item["status"], 0) + 1
 
         return {
             "status": "success",
-            "count": len(items),
+            "count": len(paged_items),
+            "total_count": total_count,
+            "offset": offset,
+            "limit": limit,
             "counts_by_kind": counts_by_kind,
             "counts_by_source": counts_by_source,
             "counts_by_status": counts_by_status,
-            "items": items,
+            "items": paged_items,
         }

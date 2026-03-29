@@ -38,6 +38,16 @@ def main():
         sort_direction="desc",
     )
 
+    print("[INFO] Building live-records sorted by score descending with pagination...")
+    live_records_sorted_by_score_desc_page_1 = service.query_records(
+        records=records,
+        live_only=True,
+        sort_by="score",
+        sort_direction="desc",
+        limit=5,
+        offset=0,
+    )    
+
     print("[INFO] Building historical-records sorted by event timestamp descending...")
     historical_records_sorted_by_event_ts_desc = service.query_records(
         records=records,
@@ -63,14 +73,31 @@ def main():
         "live_records_sorted_by_score_desc": {
             "status": live_records_sorted_by_score_desc["status"],
             "count": live_records_sorted_by_score_desc["count"],
+            "total_count": live_records_sorted_by_score_desc["total_count"],
+            "offset": live_records_sorted_by_score_desc["offset"],
+            "limit": live_records_sorted_by_score_desc["limit"],
             "counts_by_kind": live_records_sorted_by_score_desc["counts_by_kind"],
             "counts_by_source": live_records_sorted_by_score_desc["counts_by_source"],
             "counts_by_status": live_records_sorted_by_score_desc["counts_by_status"],
             "top_items": live_records_sorted_by_score_desc["items"][:10],
         },
+        "live_records_sorted_by_score_desc_page_1": {
+            "status": live_records_sorted_by_score_desc_page_1["status"],
+            "count": live_records_sorted_by_score_desc_page_1["count"],
+            "total_count": live_records_sorted_by_score_desc_page_1["total_count"],
+            "offset": live_records_sorted_by_score_desc_page_1["offset"],
+            "limit": live_records_sorted_by_score_desc_page_1["limit"],
+            "counts_by_kind": live_records_sorted_by_score_desc_page_1["counts_by_kind"],
+            "counts_by_source": live_records_sorted_by_score_desc_page_1["counts_by_source"],
+            "counts_by_status": live_records_sorted_by_score_desc_page_1["counts_by_status"],
+            "items": live_records_sorted_by_score_desc_page_1["items"],
+        },
         "historical_records_sorted_by_event_ts_desc": {
             "status": historical_records_sorted_by_event_ts_desc["status"],
             "count": historical_records_sorted_by_event_ts_desc["count"],
+            "total_count": historical_records_sorted_by_event_ts_desc["total_count"],
+            "offset": historical_records_sorted_by_event_ts_desc["offset"],
+            "limit": historical_records_sorted_by_event_ts_desc["limit"],
             "counts_by_kind": historical_records_sorted_by_event_ts_desc["counts_by_kind"],
             "counts_by_source": historical_records_sorted_by_event_ts_desc["counts_by_source"],
             "counts_by_status": historical_records_sorted_by_event_ts_desc["counts_by_status"],
@@ -79,6 +106,9 @@ def main():
         "historical_records_recent_range": {
             "status": historical_records_recent_range["status"],
             "count": historical_records_recent_range["count"],
+            "total_count": historical_records_recent_range["total_count"],
+            "offset": historical_records_recent_range["offset"],
+            "limit": historical_records_recent_range["limit"],
             "counts_by_kind": historical_records_recent_range["counts_by_kind"],
             "counts_by_source": historical_records_recent_range["counts_by_source"],
             "counts_by_status": historical_records_recent_range["counts_by_status"],
