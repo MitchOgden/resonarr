@@ -270,8 +270,10 @@ class CatalogQueryService:
         artist_mbid=None,
         live_only=False,
         historical_only=False,
+        records=None,
     ):
-        records = self._collect_records()
+        if records is None:
+            records = self._collect_records()
         items = self._apply_filters(
             records,
             kind=kind,
