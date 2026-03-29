@@ -65,6 +65,53 @@ def main():
         sort_direction="desc",
     )
 
+    print("[INFO] Building deepen-review-only filtered view...")
+    deepen_review_only = service.query_records(
+        records=records,
+        source=["deepen"],
+        kind=["deepen_review"],
+        status=["deepen_recommendation"],
+        sort_by="score",
+        sort_direction="desc",
+        limit=10,
+        offset=0,
+    )
+
+    print("[INFO] Building extend-review-only filtered view...")
+    extend_review_only = service.query_records(
+        records=records,
+        source=["extend"],
+        kind=["extend_review"],
+        status=["starter_album_recommendation"],
+        sort_by="artist_name",
+        sort_direction="asc",
+        limit=10,
+        offset=0,
+    )
+
+    print("[INFO] Building historical-suppression-only filtered view...")
+    historical_suppression_only = service.query_records(
+        records=records,
+        historical_only=True,
+        source=["suppression"],
+        kind=["suppressed_artist"],
+        status=["suppressed"],
+        sort_by="event_ts",
+        sort_direction="desc",
+        limit=10,
+        offset=0,
+    )
+
+    print("[INFO] Building artist-name filtered view for Smash...")
+    artist_name_filtered_smash = service.query_records(
+        records=records,
+        artist_name_contains="Smash",
+        sort_by="event_ts",
+        sort_direction="desc",
+        limit=10,
+        offset=0,
+    )
+
     payload = {
         "all_records": all_records,
         "live_records": live_records,
@@ -113,6 +160,50 @@ def main():
             "counts_by_source": historical_records_recent_range["counts_by_source"],
             "counts_by_status": historical_records_recent_range["counts_by_status"],
             "top_items": historical_records_recent_range["items"][:10],
+        },
+        "deepen_review_only": {
+            "status": deepen_review_only["status"],
+            "count": deepen_review_only["count"],
+            "total_count": deepen_review_only["total_count"],
+            "offset": deepen_review_only["offset"],
+            "limit": deepen_review_only["limit"],
+            "counts_by_kind": deepen_review_only["counts_by_kind"],
+            "counts_by_source": deepen_review_only["counts_by_source"],
+            "counts_by_status": deepen_review_only["counts_by_status"],
+            "items": deepen_review_only["items"],
+        },
+        "extend_review_only": {
+            "status": extend_review_only["status"],
+            "count": extend_review_only["count"],
+            "total_count": extend_review_only["total_count"],
+            "offset": extend_review_only["offset"],
+            "limit": extend_review_only["limit"],
+            "counts_by_kind": extend_review_only["counts_by_kind"],
+            "counts_by_source": extend_review_only["counts_by_source"],
+            "counts_by_status": extend_review_only["counts_by_status"],
+            "items": extend_review_only["items"],
+        },
+        "historical_suppression_only": {
+            "status": historical_suppression_only["status"],
+            "count": historical_suppression_only["count"],
+            "total_count": historical_suppression_only["total_count"],
+            "offset": historical_suppression_only["offset"],
+            "limit": historical_suppression_only["limit"],
+            "counts_by_kind": historical_suppression_only["counts_by_kind"],
+            "counts_by_source": historical_suppression_only["counts_by_source"],
+            "counts_by_status": historical_suppression_only["counts_by_status"],
+            "items": historical_suppression_only["items"],
+        },
+        "artist_name_filtered_smash": {
+            "status": artist_name_filtered_smash["status"],
+            "count": artist_name_filtered_smash["count"],
+            "total_count": artist_name_filtered_smash["total_count"],
+            "offset": artist_name_filtered_smash["offset"],
+            "limit": artist_name_filtered_smash["limit"],
+            "counts_by_kind": artist_name_filtered_smash["counts_by_kind"],
+            "counts_by_source": artist_name_filtered_smash["counts_by_source"],
+            "counts_by_status": artist_name_filtered_smash["counts_by_status"],
+            "items": artist_name_filtered_smash["items"],
         },
     }
 
