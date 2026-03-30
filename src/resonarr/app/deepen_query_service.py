@@ -1,13 +1,10 @@
-from resonarr.app.deepen_service import DeepenService
 from resonarr.state.memory_store import MemoryStore
 
 
 class DeepenQueryService:
     REVIEWABLE_STATUSES = {"deepen_recommendation"}
-    TERMINAL_STATUSES = {"deepen_rejected", "deepen_executed"}
 
-    def __init__(self, deepen_service=None, memory=None):
-        self.deepen_service = deepen_service or DeepenService()
+    def __init__(self, memory=None):
         self.memory = memory or MemoryStore()
 
     def _is_reviewable_live_candidate(self, item):
