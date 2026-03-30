@@ -395,7 +395,7 @@ class MemoryStore:
         candidate["last_seen_ts"] = now
         candidate.setdefault("first_seen_ts", now)
 
-        if existing_status in {"deepen_rejected", "deepen_executed"}:
+        if existing_status in {"deepen_approved", "deepen_rejected", "deepen_executed"}:
             candidate["status"] = existing_status
         else:
             candidate["status"] = "deepen_recommendation"

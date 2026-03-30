@@ -5,6 +5,7 @@ from resonarr.app.deepen_operator_service import DeepenOperatorService
 from resonarr.app.deepen_service import DeepenService
 from resonarr.app.prune_operator_service import PruneOperatorService
 from resonarr.app.prune_query_service import PruneQueryService
+from resonarr.app.deepen_query_service import DeepenQueryService
 
 
 class CatalogQueryService:
@@ -17,6 +18,7 @@ class CatalogQueryService:
         deepen_operator_service=None,
         prune_query_service=None,
         prune_operator_service=None,
+        deepen_query_service=None,
     ):
         self.extend_query_service = extend_query_service or ExtendQueryService()
         self.extend_operator_service = extend_operator_service or ExtendOperatorService()
@@ -25,6 +27,7 @@ class CatalogQueryService:
         self.deepen_operator_service = deepen_operator_service or DeepenOperatorService()
         self.prune_query_service = prune_query_service or PruneQueryService()
         self.prune_operator_service = prune_operator_service or PruneOperatorService()
+        self.deepen_query_service = deepen_query_service or DeepenQueryService()
 
     def _normalize_extend_review(self, item):
         return {
@@ -206,7 +209,7 @@ class CatalogQueryService:
         for item in extend_review["items"]:
             records.append(self._normalize_extend_review(item))
 
-        deepen_review = self.deepen_operator_service.list_review_queue()
+        deepen_review = self.deepen_query_service.list_review_queue()
         deepen_review_mbids = self._build_deepen_review_mbid_set(deepen_review["items"])
 
         deepen_candidates = self.deepen_service.list_candidates()

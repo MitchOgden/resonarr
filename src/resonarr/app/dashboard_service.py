@@ -5,6 +5,7 @@ from resonarr.app.deepen_service import DeepenService
 from resonarr.app.deepen_operator_service import DeepenOperatorService
 from resonarr.app.prune_query_service import PruneQueryService
 from resonarr.app.prune_operator_service import PruneOperatorService
+from resonarr.app.deepen_query_service import DeepenQueryService
 from resonarr.app.view_models import (
     build_extend_review_card,
     build_extend_promotable_card,
@@ -12,7 +13,6 @@ from resonarr.app.view_models import (
     build_suppressed_artist_card,
     build_prune_candidate_card,
 )
-
 
 class DashboardService:
     def __init__(
@@ -24,6 +24,7 @@ class DashboardService:
         deepen_operator_service=None,
         prune_query_service=None,
         prune_operator_service=None,
+        deepen_query_service=None,
     ):
         self.extend_query_service = extend_query_service or ExtendQueryService()
         self.extend_operator_service = extend_operator_service or ExtendOperatorService()
@@ -32,6 +33,7 @@ class DashboardService:
         self.deepen_operator_service = deepen_operator_service or DeepenOperatorService()
         self.prune_query_service = prune_query_service or PruneQueryService()
         self.prune_operator_service = prune_operator_service or PruneOperatorService()
+        self.deepen_query_service = deepen_query_service or DeepenQueryService()
 
     def _build_extend_review_cards(self, items):
         return [build_extend_review_card(item) for item in items]
@@ -53,7 +55,7 @@ class DashboardService:
         extend_review_queue = self.extend_operator_service.list_review_queue()
         extend_promotable = self.extend_promotion_service.list_promotable_candidates()
         deepen_candidates = self.deepen_service.list_candidates()
-        deepen_review_queue = self.deepen_operator_service.list_review_queue()
+        deepen_review_queue = self.deepen_query_service.list_review_queue()
         suppressed = self.extend_query_service.list_suppressed_artists()
         prune_summary = self.prune_query_service.get_prune_summary()
         prune_reviewable = self.prune_operator_service.list_review_queue()
