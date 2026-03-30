@@ -1,7 +1,6 @@
 from resonarr.app.extend_operator_service import ExtendOperatorService
 from resonarr.app.extend_promotion_service import ExtendPromotionService
 from resonarr.app.extend_query_service import ExtendQueryService
-from resonarr.app.deepen_operator_service import DeepenOperatorService
 from resonarr.app.deepen_service import DeepenService
 from resonarr.app.prune_operator_service import PruneOperatorService
 from resonarr.app.prune_query_service import PruneQueryService
@@ -15,7 +14,6 @@ class CatalogQueryService:
         extend_operator_service=None,
         extend_promotion_service=None,
         deepen_service=None,
-        deepen_operator_service=None,
         prune_query_service=None,
         prune_operator_service=None,
         deepen_query_service=None,
@@ -24,7 +22,6 @@ class CatalogQueryService:
         self.extend_operator_service = extend_operator_service or ExtendOperatorService()
         self.extend_promotion_service = extend_promotion_service or ExtendPromotionService()
         self.deepen_service = deepen_service or DeepenService()
-        self.deepen_operator_service = deepen_operator_service or DeepenOperatorService()
         self.prune_query_service = prune_query_service or PruneQueryService()
         self.prune_operator_service = prune_operator_service or PruneOperatorService()
         self.deepen_query_service = deepen_query_service or DeepenQueryService()
