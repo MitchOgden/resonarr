@@ -71,6 +71,111 @@ class ExtendPromotionService:
 
         return {"skipped": False, "cleared": cleared}
 
+    def _decorate_item_from_planner_result(self, item, result):
+        item["planner_status"] = result.get("status")
+        item["planner_action"] = result.get("action")
+        item["planner_reason"] = result.get("reason")
+        item["resolved_artist_name"] = result.get("resolved_artist_name") or result.get("artist")
+        item["resolved_artist_mbid"] = result.get("artist_mbid")
+        item["staged_artist_created"] = result.get("staged_artist_created", False)
+
+    def _apply_staged_artist_side_effect(self, artist_name, result, dry_run):
+        if result.get("staged_artist_created") and not dry_run:
+            self.memory.mark_extend_candidate_staged_artist(
+                artist_name=artist_name,
+                artist_mbid=result.get("artist_mbid"),
+                resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
+            )
+
+    def _handle_recommend_only_result(self, artist_name, result, item, dry_run):
+        intent = result["intent"]
+
+        if not intent.target_album_id or not intent.target_album_title:
+            item["result_type"] = "failed_missing_target_for_recommendation"
+            item["message"] = "missing target album details for recommendation"
+            return "failed"
+
+        if not dry_run:
+            self.memory.mark_extend_candidate_starter_album_recommendation(
+                artist_name=artist_name,
+                artist_mbid=result.get("artist_mbid"),
+                resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
+                album_id=intent.target_album_id,
+                album_title=intent.target_album_title,
+                reason=intent.reason,
+                score=intent.score,
+            )
+
+            self.memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
+
+        item["result_type"] = "starter_album_recommendation"
+        item["message"] = (
+            "Starter album recommendation would be created"
+            if dry_run else
+            "Starter album recommendation created"
+        )
+        item["starter_album_id"] = intent.target_album_id
+        item["starter_album_title"] = intent.target_album_title
+        item["starter_album_score"] = intent.score
+        item["starter_album_reason"] = intent.reason
+        return "planned"
+
+    def _handle_non_acquire_result(self, artist_name, result, item, dry_run):
+        item["result_type"] = "non_acquire"
+
+        if result.get("reason") == "no eligible albums remain after ownership filtering":
+            if not dry_run:
+                self.memory.mark_extend_candidate_starter_album_exhausted(
+                    artist_name=artist_name,
+                    artist_mbid=result.get("artist_mbid"),
+                    resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
+                    reason=result.get("reason"),
+                )
+
+            item["result_type"] = "starter_album_exhausted"
+            item["message"] = (
+                "Would record starter album exhaustion for staged/promoted candidate"
+                if dry_run else
+                "Recorded starter album exhaustion for staged/promoted candidate"
+            )
+        else:
+            item["message"] = result.get("reason")
+
+        return "skipped_non_acquire"
+
+    def _handle_acquire_result(self, artist_name, result, item, dry_run):
+        intent = result["intent"]
+
+        if not intent.target_album_id or not intent.target_album_title:
+            item["result_type"] = "failed_missing_target"
+            item["message"] = "missing target album details"
+            return "failed"
+
+        if not dry_run:
+            self.memory.mark_extend_candidate_starter_album_candidate(
+                artist_name=artist_name,
+                artist_mbid=result.get("artist_mbid"),
+                resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
+                album_id=intent.target_album_id,
+                album_title=intent.target_album_title,
+                reason=intent.reason,
+                score=intent.score,
+            )
+
+            self.memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
+
+        item["result_type"] = "starter_album_candidate"
+        item["message"] = (
+            "Starter album acquisition candidate would be created"
+            if dry_run else
+            "Starter album acquisition candidate created"
+        )
+        item["starter_album_id"] = intent.target_album_id
+        item["starter_album_title"] = intent.target_album_title
+        item["starter_album_score"] = intent.score
+        item["starter_album_reason"] = intent.reason
+        return "planned"
+
     def list_promotable_candidates(self):
         candidates = self.source.get_persisted_candidates()
         promotable = [
@@ -153,114 +258,51 @@ class ExtendPromotionService:
                 results.append(item)
                 continue
 
-            item["planner_status"] = result.get("status")
-            item["planner_action"] = result.get("action")
-            item["planner_reason"] = result.get("reason")
-            item["resolved_artist_name"] = result.get("resolved_artist_name") or result.get("artist")
-            item["resolved_artist_mbid"] = result.get("artist_mbid")
-            item["staged_artist_created"] = result.get("staged_artist_created", False)
-
-            if result.get("staged_artist_created") and not dry_run:
-                self.memory.mark_extend_candidate_staged_artist(
-                    artist_name=artist_name,
-                    artist_mbid=result.get("artist_mbid"),
-                    resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
-                )
+            self._decorate_item_from_planner_result(item, result)
+            self._apply_staged_artist_side_effect(artist_name, result, dry_run)
 
             if result.get("action") == "RECOMMEND_ONLY":
-                intent = result["intent"]
-
-                if not intent.target_album_id or not intent.target_album_title:
-                    failed += 1
-                    item["result_type"] = "failed_missing_target_for_recommendation"
-                    item["message"] = "missing target album details for recommendation"
-                    results.append(item)
-                    continue
-
-                if not dry_run:
-                    self.memory.mark_extend_candidate_starter_album_recommendation(
-                        artist_name=artist_name,
-                        artist_mbid=result.get("artist_mbid"),
-                        resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
-                        album_id=intent.target_album_id,
-                        album_title=intent.target_album_title,
-                        reason=intent.reason,
-                        score=intent.score,
-                    )
-
-                    self.memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
-
-                planned += 1
-                item["result_type"] = "starter_album_recommendation"
-                item["message"] = (
-                    "Starter album recommendation would be created"
-                    if dry_run else
-                    "Starter album recommendation created"
+                outcome = self._handle_recommend_only_result(
+                    artist_name=artist_name,
+                    result=result,
+                    item=item,
+                    dry_run=dry_run,
                 )
-                item["starter_album_id"] = intent.target_album_id
-                item["starter_album_title"] = intent.target_album_title
-                item["starter_album_score"] = intent.score
-                item["starter_album_reason"] = intent.reason
+
+                if outcome == "failed":
+                    failed += 1
+                elif outcome == "planned":
+                    planned += 1
+
                 results.append(item)
                 continue
 
             if result.get("action") != "ACQUIRE_ARTIST":
-                skipped_non_acquire += 1
-                item["result_type"] = "non_acquire"
-
-                if result.get("reason") == "no eligible albums remain after ownership filtering":
-                    if not dry_run:
-                        self.memory.mark_extend_candidate_starter_album_exhausted(
-                            artist_name=artist_name,
-                            artist_mbid=result.get("artist_mbid"),
-                            resolved_artist_name=result.get("resolved_artist_name") or result.get("artist"),
-                            reason=result.get("reason"),
-                        )
-                    item["result_type"] = "starter_album_exhausted"
-                    item["message"] = (
-                        "Would record starter album exhaustion for staged/promoted candidate"
-                        if dry_run else
-                        "Recorded starter album exhaustion for staged/promoted candidate"
-                    )
-                else:
-                    item["message"] = result.get("reason")
-
-                results.append(item)
-                continue
-
-            intent = result["intent"]
-
-            if not intent.target_album_id or not intent.target_album_title:
-                failed += 1
-                item["result_type"] = "failed_missing_target"
-                item["message"] = "missing target album details"
-                results.append(item)
-                continue
-
-            if not dry_run:
-                self.memory.mark_extend_candidate_starter_album_candidate(
+                outcome = self._handle_non_acquire_result(
                     artist_name=artist_name,
-                    artist_mbid=result.get("artist_mbid"),
-                    resolved_artist_name=result.get("resolved_artist_name") or intent.artist_name,
-                    album_id=intent.target_album_id,
-                    album_title=intent.target_album_title,
-                    reason=intent.reason,
-                    score=intent.score,
+                    result=result,
+                    item=item,
+                    dry_run=dry_run,
                 )
 
-                self.memory.set_artist_recommendation(f"extend:{artist_name.lower().strip()}")
+                if outcome == "skipped_non_acquire":
+                    skipped_non_acquire += 1
 
-            planned += 1
-            item["result_type"] = "starter_album_candidate"
-            item["message"] = (
-                "Starter album acquisition candidate would be created"
-                if dry_run else
-                "Starter album acquisition candidate created"
+                results.append(item)
+                continue
+
+            outcome = self._handle_acquire_result(
+                artist_name=artist_name,
+                result=result,
+                item=item,
+                dry_run=dry_run,
             )
-            item["starter_album_id"] = intent.target_album_id
-            item["starter_album_title"] = intent.target_album_title
-            item["starter_album_score"] = intent.score
-            item["starter_album_reason"] = intent.reason
+
+            if outcome == "failed":
+                failed += 1
+            elif outcome == "planned":
+                planned += 1
+
             results.append(item)
 
         return {
