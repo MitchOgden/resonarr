@@ -1,0 +1,37 @@
+[INFO] Timestamped log file: logs\dashboard-service-smoke-20260331-150641.log
+[INFO] Latest log file: logs\dashboard-service-smoke-latest.log
+[INFO] Starting: Initialize dashboard service
+[INFO] Step completed in 0.01s: Initialize dashboard service
+[PROGRESS] [1/3] [######--------------] 33% Dashboard service initialized
+[INFO] Starting: Build dashboard summary
+[PERF][dashboard] extend_status_summary: 0.00s
+[PERF][dashboard] extend_review_queue: 0.00s
+[PERF][dashboard] extend_promotable: 0.00s
+[INFO] Step completed in 4.18s: Build dashboard summary
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\mitch\Documents\Github\resonarr\src\resonarr\runner\run_dashboard_service_smoke.py", line 36, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mitch\Documents\Github\resonarr\src\resonarr\runner\run_dashboard_service_smoke.py", line 23, in main
+    payload = service.get_home_summary()
+  File "C:\Users\mitch\Documents\Github\resonarr\src\resonarr\app\dashboard_service.py", line 72, in get_home_summary
+    deepen_candidates = self.deepen_service.list_candidates()
+  File "C:\Users\mitch\Documents\Github\resonarr\src\resonarr\app\deepen_service.py", line 18, in list_candidates
+    candidates = self.source.get_candidates()
+  File "C:\Users\mitch\Documents\Github\resonarr\src\resonarr\candidates\deepen.py", line 174, in get_candidates
+    data = self.lastfm.get_top_artists(period=DEEPEN_LASTFM_PERIOD)
+  File "C:\Users\mitch\Documents\Github\resonarr\src\resonarr\signals\lastfm\client.py", line 22, in get_top_artists
+    return self._get({
+           ~~~~~~~~~^^
+        "method": "user.getTopArtists",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        "limit": 100
+        ^^^^^^^^^^^^
+    })
+    ^^
+  File "C:\Users\mitch\Documents\Github\resonarr\src\resonarr\signals\lastfm\client.py", line 17, in _get
+    raise Exception(f"Last.fm API error: {r.status_code}")
+Exception: Last.fm API error: 500
