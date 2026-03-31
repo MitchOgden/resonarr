@@ -1,3 +1,5 @@
+import time
+
 from resonarr.app.extend_query_service import ExtendQueryService
 from resonarr.app.extend_operator_service import ExtendOperatorService
 from resonarr.app.extend_promotion_service import ExtendPromotionService
@@ -43,30 +45,60 @@ class DashboardService:
 
     def _build_suppressed_artist_cards(self, items):
         return [build_suppressed_artist_card(item) for item in items]
-    
+
     def _build_prune_candidate_cards(self, items):
-        return [build_prune_candidate_card(item) for item in items]    
+        return [build_prune_candidate_card(item) for item in items]
+
+    def _log_phase_elapsed(self, label, started_at):
+        elapsed = time.perf_counter() - started_at
+        print(f"[PERF][dashboard] {label}: {elapsed:.2f}s")
 
     def get_home_summary(self):
-        extend_summary = self.extend_query_service.get_extend_status_summary()
-        extend_review_queue = self.extend_operator_service.list_review_queue()
-        extend_promotable = self.extend_promotion_service.list_promotable_candidates()
+        total_started_at = time.perf_counter()
 
+        phase_started_at = time.perf_counter()
+        extend_summary = self.extend_query_service.get_extend_status_summary()
+        self._log_phase_elapsed("extend_status_summary", phase_started_at)
+
+        phase_started_at = time.perf_counter()
+        extend_review_queue = self.extend_operator_service.list_review_queue()
+        self._log_phase_elapsed("extend_review_queue", phase_started_at)
+
+        phase_started_at = time.perf_counter()
+        extend_promotable = self.extend_promotion_service.list_promotable_candidates()
+        self._log_phase_elapsed("extend_promotable", phase_started_at)
+
+        phase_started_at = time.perf_counter()
         deepen_candidates = self.deepen_service.list_candidates()
+        self._log_phase_elapsed("deepen_candidates", phase_started_at)
+
+        phase_started_at = time.perf_counter()
         deepen_review_queue = self.deepen_query_service.list_review_queue_from_live_items(
             deepen_candidates["items"]
         )
+        self._log_phase_elapsed("deepen_review_queue", phase_started_at)
 
+        phase_started_at = time.perf_counter()
         suppressed = self.extend_query_service.list_suppressed_artists()
+        self._log_phase_elapsed("suppressed_artists", phase_started_at)
 
+        phase_started_at = time.perf_counter()
         prune_live = self.prune_query_service.list_prune_candidates()
+        self._log_phase_elapsed("prune_live_candidates", phase_started_at)
+
+        phase_started_at = time.perf_counter()
         prune_summary = self.prune_query_service.build_prune_summary_from_live_items(
             prune_live["items"]
         )
+        self._log_phase_elapsed("prune_summary", phase_started_at)
+
+        phase_started_at = time.perf_counter()
         prune_reviewable = self.prune_query_service.list_reviewable_prune_candidates_from_live_items(
             prune_live["items"]
         )
+        self._log_phase_elapsed("prune_reviewable", phase_started_at)
 
+        phase_started_at = time.perf_counter()
         extend_counts = extend_summary["counts"]
         deepen_items = deepen_candidates["items"]
 
@@ -80,20 +112,24 @@ class DashboardService:
                 1 for item in deepen_items if item.get("in_recommendation_backoff")
             ),
         }
+        self._log_phase_elapsed("build_summary_counts", phase_started_at)
 
+        phase_started_at = time.perf_counter()
         extend_review_cards = self._build_extend_review_cards(extend_review_queue["items"])
         extend_promotable_cards = self._build_extend_promotable_cards(extend_promotable["items"])
         deepen_candidate_cards = self._build_deepen_candidate_cards(deepen_items)
         deepen_review_cards = self._build_deepen_candidate_cards(deepen_review_queue["items"])
         suppressed_artist_cards = self._build_suppressed_artist_cards(suppressed["items"])
         prune_candidate_cards = self._build_prune_candidate_cards(prune_reviewable["items"])
+        self._log_phase_elapsed("build_view_cards", phase_started_at)
 
+        phase_started_at = time.perf_counter()
         recent_reviewable = extend_review_cards[:5]
         top_promotable = extend_promotable_cards[:5]
         top_deepen = deepen_review_cards[:5]
         top_prune = prune_candidate_cards[:5]
 
-        return {
+        payload = {
             "status": "success",
             "home_summary": {
                 "extend": {
@@ -161,3 +197,7 @@ class DashboardService:
                 "top_prune_candidates": top_prune,
             },
         }
+        self._log_phase_elapsed("assemble_payload", phase_started_at)
+
+        self._log_phase_elapsed("total_get_home_summary", total_started_at)
+        return payload
