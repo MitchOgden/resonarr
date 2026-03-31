@@ -1,3 +1,5 @@
+import time
+
 from resonarr.config.settings import PRUNE_TRACK_BAD_MAX_RATING
 from resonarr.signals.plex.client import PlexClient
 
@@ -88,10 +90,23 @@ class PlexPruneExtractor:
             return False
         return rating <= PRUNE_TRACK_BAD_MAX_RATING
 
-    def extract_album_signals(self):
-        artists = self.plex.get_artists()
-        results = []
+    def _log_phase_elapsed(self, label, started_at):
+        elapsed = time.perf_counter() - started_at
+        print(f"[PERF][plex_prune] {label}: {elapsed:.2f}s")
 
+    def extract_album_signals(self):
+        total_started_at = time.perf_counter()
+
+        phase_started_at = time.perf_counter()
+        artists = self.plex.get_artists()
+        self._log_phase_elapsed("fetch_artists", phase_started_at)
+
+        results = []
+        total_tracks_considered = 0
+        album_buckets_created = 0
+        aggregation_elapsed = 0.0
+
+        phase_started_at = time.perf_counter()
         for artist in artists:
             artist_name = artist.get("title")
             artist_rating_key = artist.get("ratingKey")
@@ -109,6 +124,8 @@ class PlexPruneExtractor:
                     continue
 
                 tracks = self.plex.get_album_tracks(album_rating_key)
+
+                aggregation_started_at = time.perf_counter()
                 album_mbid, artist_mbid, album_mbids = self._extract_mbids(album, tracks=tracks)
 
                 rated_tracks = 0
@@ -123,6 +140,9 @@ class PlexPruneExtractor:
                         rated_tracks += 1
                         if self._track_is_bad(track):
                             bad_tracks += 1
+                aggregation_elapsed += time.perf_counter() - aggregation_started_at
+                total_tracks_considered += total_tracks_seen
+                album_buckets_created += 1
                 results.append({
                     "artist_name": artist_name,
                     "album_name": album_name,
@@ -134,5 +154,17 @@ class PlexPruneExtractor:
                     "bad_tracks": bad_tracks,
                     "total_tracks_seen": total_tracks_seen,
                 })
+        self._log_phase_elapsed("track_album_iteration", phase_started_at)
+
+        aggregation_phase_started_at = time.perf_counter()
+        self._log_phase_elapsed("aggregation_grouping", aggregation_phase_started_at - aggregation_elapsed)
+
+        phase_started_at = time.perf_counter()
+        print(
+            f"[PERF][plex_prune] counts: source_tracks={total_tracks_considered} "
+            f"album_buckets={album_buckets_created} returned_album_signals={len(results)}"
+        )
+        self._log_phase_elapsed("final_shape_return", phase_started_at)
+        self._log_phase_elapsed("total_extract_album_signals", total_started_at)
 
         return results
