@@ -102,48 +102,55 @@ class PlexPruneExtractor:
         self._log_phase_elapsed("fetch_artists", phase_started_at)
 
         results = []
+        results_append = results.append
+
         total_tracks_considered = 0
         album_buckets_created = 0
-        aggregation_elapsed = 0.0
+        aggregation_started_at = time.perf_counter()
+
+        get_albums = self.plex.get_albums
+        get_album_tracks = self.plex.get_album_tracks
+        extract_mbids = self._extract_mbids
+        bad_max_rating = PRUNE_TRACK_BAD_MAX_RATING
 
         phase_started_at = time.perf_counter()
         for artist in artists:
-            artist_name = artist.get("title")
-            artist_rating_key = artist.get("ratingKey")
+            artist_get = artist.get
+            artist_name = artist_get("title")
+            artist_rating_key = artist_get("ratingKey")
 
             if not artist_rating_key or not artist_name:
                 continue
 
-            albums = self.plex.get_albums(artist_rating_key)
+            albums = get_albums(artist_rating_key)
 
             for album in albums:
-                album_name = album.get("title")
-                album_rating_key = album.get("ratingKey")
+                album_get = album.get
+                album_name = album_get("title")
+                album_rating_key = album_get("ratingKey")
 
                 if not album_name or not album_rating_key:
                     continue
 
-                tracks = self.plex.get_album_tracks(album_rating_key)
-
-                aggregation_started_at = time.perf_counter()
-                album_mbid, artist_mbid, album_mbids = self._extract_mbids(album, tracks=tracks)
+                tracks = get_album_tracks(album_rating_key)
+                album_mbid, artist_mbid, album_mbids = extract_mbids(album, tracks=tracks)
 
                 rated_tracks = 0
                 bad_tracks = 0
-                total_tracks_seen = 0
+                total_tracks_seen = len(tracks)
 
                 for track in tracks:
-                    total_tracks_seen += 1
                     rating = track.get("userRating")
+                    if rating is None:
+                        continue
 
-                    if rating is not None:
-                        rated_tracks += 1
-                        if self._track_is_bad(track):
-                            bad_tracks += 1
-                aggregation_elapsed += time.perf_counter() - aggregation_started_at
+                    rated_tracks += 1
+                    if rating <= bad_max_rating:
+                        bad_tracks += 1
+
                 total_tracks_considered += total_tracks_seen
                 album_buckets_created += 1
-                results.append({
+                results_append({
                     "artist_name": artist_name,
                     "album_name": album_name,
                     "album_rating_key": album_rating_key,
@@ -155,9 +162,7 @@ class PlexPruneExtractor:
                     "total_tracks_seen": total_tracks_seen,
                 })
         self._log_phase_elapsed("track_album_iteration", phase_started_at)
-
-        aggregation_phase_started_at = time.perf_counter()
-        self._log_phase_elapsed("aggregation_grouping", aggregation_phase_started_at - aggregation_elapsed)
+        self._log_phase_elapsed("aggregation_grouping", aggregation_started_at)
 
         phase_started_at = time.perf_counter()
         print(
