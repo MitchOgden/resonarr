@@ -1,3 +1,5 @@
+import time
+
 import requests
 from resonarr.config.settings import PLEX_BASE_URL, PLEX_TOKEN
 from resonarr.utils.api_resilience import request_with_retry
@@ -7,6 +9,10 @@ class PlexClient:
     def __init__(self):
         self.base_url = PLEX_BASE_URL
         self.token = PLEX_TOKEN
+
+    def _log_phase_elapsed(self, label, started_at):
+        elapsed = time.perf_counter() - started_at
+        print(f"[PERF][plex_client] {label}: {elapsed:.2f}s")
 
     def _get(self, path):
         url = f"{self.base_url}{path}"
@@ -79,21 +85,33 @@ class PlexClient:
         individual albums when the child payload does not already expose GUID
         metadata needed by downstream MBID extraction.
         """
-        data = self._get(f"/library/metadata/{artist_rating_key}/children")
-        albums = data.get("MediaContainer", {}).get("Metadata", [])
+        total_started_at = time.perf_counter()
 
+        phase_started_at = time.perf_counter()
+        data = self._get(f"/library/metadata/{artist_rating_key}/children")
+        self._log_phase_elapsed("get_albums.children_fetch", phase_started_at)
+
+        albums = data.get("MediaContainer", {}).get("Metadata", [])
         resolved_albums = []
 
+        fast_path_count = 0
+        fallback_full_metadata_count = 0
+        missing_rating_key_count = 0
+
+        phase_started_at = time.perf_counter()
         for album in albums:
             rating_key = album.get("ratingKey")
 
             if not rating_key:
+                missing_rating_key_count += 1
                 continue
 
             if not self._album_needs_full_metadata(album):
+                fast_path_count += 1
                 resolved_albums.append(album)
                 continue
 
+            fallback_full_metadata_count += 1
             full = self._get(f"/library/metadata/{rating_key}")
             meta = full.get("MediaContainer", {}).get("Metadata", [])
 
@@ -101,6 +119,17 @@ class PlexClient:
                 resolved_albums.append(meta[0])
             else:
                 resolved_albums.append(album)
+        self._log_phase_elapsed("get_albums.resolve_loop", phase_started_at)
+
+        print(
+            f"[PERF][plex_client] get_albums.counts: "
+            f"artist_rating_key={artist_rating_key} "
+            f"albums={len(albums)} "
+            f"fast_path_count={fast_path_count} "
+            f"fallback_full_metadata_count={fallback_full_metadata_count} "
+            f"missing_rating_key_count={missing_rating_key_count}"
+        )
+        self._log_phase_elapsed("get_albums.total", total_started_at)
 
         return resolved_albums
     
