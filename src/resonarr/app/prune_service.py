@@ -1,3 +1,5 @@
+import time
+
 from resonarr.config.settings import (
     PRUNE_MATCH_MODE,
     PRUNE_ALLOW_NAME_FALLBACK,
@@ -36,20 +38,40 @@ class PruneService:
             allow_name_fallback=PRUNE_ALLOW_NAME_FALLBACK,
         )
 
+    def _log_phase_elapsed(self, label, started_at):
+        elapsed = time.perf_counter() - started_at
+        print(f"[PERF][prune] {label}: {elapsed:.2f}s")
+
     def list_prune_candidates(self, limit=None):
+        total_started_at = time.perf_counter()
+
         if limit is None:
             limit = PRUNE_MAX_CANDIDATES_PER_RUN
 
+        phase_started_at = time.perf_counter()
         album_signals = self.extractor.extract_album_signals()
+        self._log_phase_elapsed("extract_album_signals", phase_started_at)
+
+        phase_started_at = time.perf_counter()
         lidarr_albums = self._fetch_lidarr_albums()
+        self._log_phase_elapsed("fetch_lidarr_albums", phase_started_at)
+
+        phase_started_at = time.perf_counter()
         by_mbid, by_name = self._index_lidarr_albums(lidarr_albums)
+        self._log_phase_elapsed("index_lidarr_albums", phase_started_at)
 
         items = []
+        policy_hits = 0
+        match_attempts = 0
 
+        phase_started_at = time.perf_counter()
         for signal in album_signals:
             intent = self.policy.score_album(signal)
             if not intent:
                 continue
+
+            policy_hits += 1
+            match_attempts += 1
 
             lidarr_album, match_method, diagnostics = self._match_album(
                 signal,
@@ -95,7 +117,9 @@ class PruneService:
                 item["matched"] = True
 
             items.append(item)
+        self._log_phase_elapsed("policy_and_match_loop", phase_started_at)
 
+        phase_started_at = time.perf_counter()
         items.sort(
             key=lambda x: (
                 not x["matched"],
@@ -105,14 +129,21 @@ class PruneService:
                 x["album_name"].lower(),
             )
         )
-
         items = items[:limit]
-
-        return {
+        payload = {
             "status": "success",
             "count": len(items),
             "items": items,
         }
+        self._log_phase_elapsed("sort_limit_payload", phase_started_at)
+
+        print(
+            f"[PERF][prune] counts: album_signals={len(album_signals)} "
+            f"policy_hits={policy_hits} match_attempts={match_attempts} returned_items={len(items)}"
+        )
+        self._log_phase_elapsed("total_list_prune_candidates", total_started_at)
+
+        return payload
 
     def get_prune_summary(self, limit=None):
         result = self.list_prune_candidates(limit=limit)
