@@ -1,6 +1,6 @@
 import requests
 from resonarr.config.settings import PLEX_BASE_URL, PLEX_TOKEN
-from resonarr.utils.api_resilience import request_json_with_retry
+from resonarr.utils.api_resilience import request_with_retry
 
 
 class PlexClient:
@@ -15,7 +15,7 @@ class PlexClient:
             "Accept": "application/json"
         }
 
-        return request_json_with_retry(
+        response = request_with_retry(
             source="plex",
             operation=path,
             request_func=requests.get,
@@ -24,6 +24,7 @@ class PlexClient:
             headers=headers,
             context={"path": path},
         )
+        return response.json()
 
     def search(self, query):
         return self._get(f"/hubs/search?query={query}")

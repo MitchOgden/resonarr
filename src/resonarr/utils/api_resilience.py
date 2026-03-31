@@ -65,7 +65,7 @@ def append_api_error_event(
         handle.write(json.dumps(event, ensure_ascii=False) + "\n")
 
 
-def request_json_with_retry(
+def request_with_retry(
     *,
     source,
     operation,
@@ -118,7 +118,7 @@ def request_json_with_retry(
                 )
 
             response.raise_for_status()
-            return response.json()
+            return response
 
         except requests.exceptions.RequestException as exc:
             last_error = exc
@@ -157,3 +157,31 @@ def request_json_with_retry(
         attempts=attempts,
         cause=last_error,
     )
+
+
+def request_json_with_retry(
+    *,
+    source,
+    operation,
+    request_func,
+    url,
+    params=None,
+    headers=None,
+    attempts=DEFAULT_RETRY_ATTEMPTS,
+    retry_delay_seconds=DEFAULT_RETRY_DELAY_SECONDS,
+    timeout_seconds=DEFAULT_TIMEOUT_SECONDS,
+    context=None,
+):
+    response = request_with_retry(
+        source=source,
+        operation=operation,
+        request_func=request_func,
+        url=url,
+        params=params,
+        headers=headers,
+        attempts=attempts,
+        retry_delay_seconds=retry_delay_seconds,
+        timeout_seconds=timeout_seconds,
+        context=context,
+    )
+    return response.json()
