@@ -53,11 +53,23 @@ class PlexClient:
         guid_entries = album.get("Guid") or []
         direct_guid = album.get("guid")
 
-        if guid_entries:
-            return False
+        guid_values = []
+
+        for entry in guid_entries:
+            if isinstance(entry, dict):
+                value = entry.get("id")
+                if value:
+                    guid_values.append(str(value))
+            elif entry:
+                guid_values.append(str(entry))
 
         if direct_guid:
-            return False
+            guid_values.append(str(direct_guid))
+
+        for value in guid_values:
+            lowered = value.lower()
+            if "musicbrainz" in lowered or "mbid" in lowered:
+                return False
 
         return True
 
