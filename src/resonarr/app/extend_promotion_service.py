@@ -176,32 +176,36 @@ class ExtendPromotionService:
         item["starter_album_reason"] = intent.reason
         return "planned"
 
-    def list_promotable_candidates(self):
+    def _list_promotable_candidates(self):
         candidates = self.source.get_persisted_candidates()
-        promotable = [
-            c for c in candidates
-            if c.get("is_promotable", False)
+        return [
+            candidate
+            for candidate in candidates
+            if candidate.get("is_promotable", False)
         ]
 
-        items = []
-        for candidate in promotable:
-            items.append({
-                "artist_name": candidate.get("artist_name"),
-                "status": candidate.get("status", "new"),
-                "resolved_artist_name": candidate.get("resolved_artist_name"),
-                "resolved_artist_mbid": candidate.get("resolved_artist_mbid"),
-                "best_match_score": candidate.get("best_match_score"),
-                "seed_count": candidate.get("seed_count"),
-                "seen_count": candidate.get("seen_count", 1),
-                "recommendation_count": candidate.get("recommendation_count", 0),
-                "source_seeds": candidate.get("source_seeds", []),
-                "in_recommendation_backoff": candidate.get("in_recommendation_backoff", False),
-                "is_promotable": candidate.get("is_promotable", False),
-                "starter_album_id": candidate.get("starter_album_id"),
-                "starter_album_title": candidate.get("starter_album_title"),
-                "starter_album_score": candidate.get("starter_album_score"),
-                "starter_album_reason": candidate.get("starter_album_reason"),
-            })
+    def _build_promotable_candidate_view(self, candidate):
+        return {
+            "artist_name": candidate.get("artist_name"),
+            "status": candidate.get("status", "new"),
+            "resolved_artist_name": candidate.get("resolved_artist_name"),
+            "resolved_artist_mbid": candidate.get("resolved_artist_mbid"),
+            "best_match_score": candidate.get("best_match_score"),
+            "seed_count": candidate.get("seed_count"),
+            "seen_count": candidate.get("seen_count", 1),
+            "recommendation_count": candidate.get("recommendation_count", 0),
+            "source_seeds": candidate.get("source_seeds", []),
+            "in_recommendation_backoff": candidate.get("in_recommendation_backoff", False),
+            "is_promotable": candidate.get("is_promotable", False),
+            "starter_album_id": candidate.get("starter_album_id"),
+            "starter_album_title": candidate.get("starter_album_title"),
+            "starter_album_score": candidate.get("starter_album_score"),
+            "starter_album_reason": candidate.get("starter_album_reason"),
+        }
+
+    def list_promotable_candidates(self):
+        promotable = self._list_promotable_candidates()
+        items = [self._build_promotable_candidate_view(candidate) for candidate in promotable]
 
         return {
             "status": "success",
@@ -213,11 +217,7 @@ class ExtendPromotionService:
         if limit is None:
             limit = EXTEND_PROMOTION_MAX_PLANS_PER_RUN
 
-        candidates = self.source.get_persisted_candidates()
-        promotable_candidates = [
-            c for c in candidates
-            if c.get("is_promotable", False)
-        ]
+        promotable_candidates = self._list_promotable_candidates()
 
         results = []
         planned = 0
