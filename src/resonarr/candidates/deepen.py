@@ -88,22 +88,25 @@ class DeepenCandidateSource:
 
         if not isinstance(track_count, int) or not isinstance(track_file_count, int):
             return {
-                "known": False,
+                "can_skip_track_fetch": False,
                 "fully_owned": False,
-                "partial_present": False,
             }
 
         if track_count <= 0:
             return {
-                "known": False,
+                "can_skip_track_fetch": False,
                 "fully_owned": False,
-                "partial_present": False,
+            }
+
+        if track_file_count == track_count and track_count > 0:
+            return {
+                "can_skip_track_fetch": True,
+                "fully_owned": True,
             }
 
         return {
-            "known": True,
-            "fully_owned": track_file_count == track_count,
-            "partial_present": track_file_count > 0 and track_file_count < track_count,
+            "can_skip_track_fetch": False,
+            "fully_owned": False,
         }
 
     def _classify_artist(self, lidarr_artist):
@@ -133,17 +136,8 @@ class DeepenCandidateSource:
 
             ownership = self._classify_album_ownership_from_album_stats(album)
 
-            if ownership["known"]:
-                if ownership["fully_owned"]:
-                    fully_owned_album_count += 1
-                    continue
-
-                if ownership["partial_present"]:
-                    partial_present = True
-
-                if not album.get("monitored", False):
-                    eligible_album_count += 1
-
+            if ownership["can_skip_track_fetch"] and ownership["fully_owned"]:
+                fully_owned_album_count += 1
                 continue
 
             tracks = self._get_tracks(album.get("id"))
