@@ -82,28 +82,6 @@ class DeepenCandidateSource:
         }
 
     def _classify_album_ownership_from_album_stats(self, album):
-        stats = album.get("statistics") or {}
-        track_count = stats.get("trackCount")
-        track_file_count = stats.get("trackFileCount")
-
-        if not isinstance(track_count, int) or not isinstance(track_file_count, int):
-            return {
-                "can_skip_track_fetch": False,
-                "fully_owned": False,
-            }
-
-        if track_count <= 0:
-            return {
-                "can_skip_track_fetch": False,
-                "fully_owned": False,
-            }
-
-        if track_file_count == track_count and track_count > 0:
-            return {
-                "can_skip_track_fetch": True,
-                "fully_owned": True,
-            }
-
         return {
             "can_skip_track_fetch": False,
             "fully_owned": False,
@@ -133,12 +111,6 @@ class DeepenCandidateSource:
                 continue
 
             total_album_count += 1
-
-            ownership = self._classify_album_ownership_from_album_stats(album)
-
-            if ownership["can_skip_track_fetch"] and ownership["fully_owned"]:
-                fully_owned_album_count += 1
-                continue
 
             tracks = self._get_tracks(album.get("id"))
             total_tracks = len(tracks)
