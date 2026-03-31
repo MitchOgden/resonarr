@@ -106,7 +106,8 @@ class PlexPruneExtractor:
 
         total_tracks_considered = 0
         album_buckets_created = 0
-        aggregation_started_at = time.perf_counter()
+        get_albums_calls = 0
+        get_album_tracks_calls = 0
 
         get_albums = self.plex.get_albums
         get_album_tracks = self.plex.get_album_tracks
@@ -122,6 +123,7 @@ class PlexPruneExtractor:
             if not artist_rating_key or not artist_name:
                 continue
 
+            get_albums_calls += 1
             albums = get_albums(artist_rating_key)
 
             for album in albums:
@@ -132,6 +134,7 @@ class PlexPruneExtractor:
                 if not album_name or not album_rating_key:
                     continue
 
+                get_album_tracks_calls += 1
                 tracks = get_album_tracks(album_rating_key)
                 album_mbid, artist_mbid, album_mbids = extract_mbids(album, tracks=tracks)
 
@@ -162,12 +165,15 @@ class PlexPruneExtractor:
                     "total_tracks_seen": total_tracks_seen,
                 })
         self._log_phase_elapsed("track_album_iteration", phase_started_at)
-        self._log_phase_elapsed("aggregation_grouping", aggregation_started_at)
+
+        phase_started_at = time.perf_counter()
+        self._log_phase_elapsed("aggregation_grouping", phase_started_at)
 
         phase_started_at = time.perf_counter()
         print(
             f"[PERF][plex_prune] counts: source_tracks={total_tracks_considered} "
-            f"album_buckets={album_buckets_created} returned_album_signals={len(results)}"
+            f"album_buckets={album_buckets_created} returned_album_signals={len(results)} "
+            f"get_albums_calls={get_albums_calls} get_album_tracks_calls={get_album_tracks_calls}"
         )
         self._log_phase_elapsed("final_shape_return", phase_started_at)
         self._log_phase_elapsed("total_extract_album_signals", total_started_at)
