@@ -2,7 +2,7 @@
 
 import os
 import requests
-from resonarr.utils.api_resilience import request_json_with_retry
+from resonarr.utils.api_resilience import request_with_retry
 
 
 class LidarrClient:
@@ -21,7 +21,7 @@ class LidarrClient:
 
     def get(self, path, params=None):
         url = f"{self.base_url}{path}"
-        return request_json_with_retry(
+        return request_with_retry(
             source="lidarr",
             operation=path,
             request_func=self.session.get,
