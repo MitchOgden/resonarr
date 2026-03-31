@@ -42,8 +42,7 @@ class DeepenCandidateSource:
         resp = self.lidarr.get(f"/api/v1/track?albumId={album_id}")
         return resp.json()
     
-    def _get_cooldown_state(self, mbid):
-        artist_state = self.memory.get_artist_state(mbid)
+    def _get_cooldown_state_from_artist_state(self, artist_state):
         last_action_ts = artist_state.get("last_action_ts")
 
         if not last_action_ts:
@@ -65,10 +64,9 @@ class DeepenCandidateSource:
         return {
             "in_cooldown": False,
             "cooldown_remaining_seconds": 0,
-        }    
+        }
 
-    def _get_recommendation_backoff_state(self, mbid):
-        artist_state = self.memory.get_artist_state(mbid)
+    def _get_recommendation_backoff_state_from_artist_state(self, artist_state):
         last_recommendation_ts = artist_state.get("last_recommendation_ts")
 
         if not last_recommendation_ts:
@@ -81,6 +79,31 @@ class DeepenCandidateSource:
 
         return {
             "in_recommendation_backoff": elapsed < backoff_seconds,
+        }
+
+    def _classify_album_ownership_from_album_stats(self, album):
+        stats = album.get("statistics") or {}
+        track_count = stats.get("trackCount")
+        track_file_count = stats.get("trackFileCount")
+
+        if not isinstance(track_count, int) or not isinstance(track_file_count, int):
+            return {
+                "known": False,
+                "fully_owned": False,
+                "partial_present": False,
+            }
+
+        if track_count <= 0:
+            return {
+                "known": False,
+                "fully_owned": False,
+                "partial_present": False,
+            }
+
+        return {
+            "known": True,
+            "fully_owned": track_file_count == track_count,
+            "partial_present": track_file_count > 0 and track_file_count < track_count,
         }
 
     def _classify_artist(self, lidarr_artist):
@@ -107,6 +130,21 @@ class DeepenCandidateSource:
                 continue
 
             total_album_count += 1
+
+            ownership = self._classify_album_ownership_from_album_stats(album)
+
+            if ownership["known"]:
+                if ownership["fully_owned"]:
+                    fully_owned_album_count += 1
+                    continue
+
+                if ownership["partial_present"]:
+                    partial_present = True
+
+                if not album.get("monitored", False):
+                    eligible_album_count += 1
+
+                continue
 
             tracks = self._get_tracks(album.get("id"))
             total_tracks = len(tracks)
@@ -157,10 +195,11 @@ class DeepenCandidateSource:
 
             mbid = lidarr_artist.get("foreignArtistId")
             classification = self._classify_artist(lidarr_artist)
-            cooldown = self._get_cooldown_state(mbid)
-            recommendation_backoff = self._get_recommendation_backoff_state(mbid)
 
             artist_state = self.memory.get_artist_state(mbid)
+            cooldown = self._get_cooldown_state_from_artist_state(artist_state)
+            recommendation_backoff = self._get_recommendation_backoff_state_from_artist_state(artist_state)
+
             is_suppressed = artist_state.get("suppressed", False)
             suppression_reason = artist_state.get("suppression_reason")
 
