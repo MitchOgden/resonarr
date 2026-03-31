@@ -11,6 +11,7 @@ class PlexClient:
         self.base_url = PLEX_BASE_URL
         self.token = PLEX_TOKEN
         self.metadata_cache = metadata_cache or PlexMetadataCache()
+        self._artist_tracks_cache = {}
 
     def _log_phase_elapsed(self, label, started_at):
         elapsed = time.perf_counter() - started_at
@@ -166,8 +167,16 @@ class PlexClient:
         return resolved_albums
     
     def get_artist_tracks(self, artist_rating_key):
+        cache_key = str(artist_rating_key)
+
+        cached_tracks = self._artist_tracks_cache.get(cache_key)
+        if cached_tracks is not None:
+            return cached_tracks
+
         data = self._get(f"/library/metadata/{artist_rating_key}/allLeaves")
-        return data.get("MediaContainer", {}).get("Metadata", [])
+        tracks = data.get("MediaContainer", {}).get("Metadata", [])
+        self._artist_tracks_cache[cache_key] = tracks
+        return tracks
 
     def get_album_tracks(self, album_rating_key):
         data = self._get(f"/library/metadata/{album_rating_key}/children")
