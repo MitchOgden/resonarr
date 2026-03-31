@@ -13,7 +13,12 @@ class TeeStream:
 
     def write(self, data):
         for stream in self.streams:
-            stream.write(data)
+            try:
+                stream.write(data)
+            except UnicodeEncodeError:
+                encoding = getattr(stream, "encoding", None) or "utf-8"
+                safe_data = data.encode(encoding, errors="replace").decode(encoding, errors="replace")
+                stream.write(safe_data)
             stream.flush()
 
     def flush(self):
