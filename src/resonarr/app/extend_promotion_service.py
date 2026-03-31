@@ -15,6 +15,62 @@ class ExtendPromotionService:
         self.adapter = adapter or LidarrAdapter()
         self.memory = self.source.memory
 
+    def _build_result_item(self, candidate):
+        return {
+            "artist_name": candidate["artist_name"],
+            "candidate_status": candidate.get("status", "new"),
+            "best_match_score": candidate.get("best_match_score"),
+            "seed_count": candidate.get("seed_count"),
+            "seen_count": candidate.get("seen_count", 1),
+            "recommendation_count": candidate.get("recommendation_count", 0),
+            "source_seeds": candidate.get("source_seeds", []),
+            "in_recommendation_backoff": candidate.get("in_recommendation_backoff", False),
+            "result_type": None,
+            "message": None,
+        }
+
+    def _apply_existing_status_skip(self, candidate_status, item):
+        if candidate_status == "starter_album_candidate":
+            item["result_type"] = "skipped_existing_candidate"
+            item["message"] = "Existing starter album acquisition candidate already recorded"
+            return True
+
+        if candidate_status == "starter_album_approved":
+            item["result_type"] = "skipped_existing_approved"
+            item["message"] = "Existing approved starter album already recorded"
+            return True
+
+        if candidate_status == "starter_album_rejected":
+            item["result_type"] = "skipped_existing_rejected"
+            item["message"] = "Existing rejected starter album already recorded"
+            return True
+
+        if candidate_status == "starter_album_recommendation":
+            item["result_type"] = "skipped_existing_recommendation"
+            item["message"] = "Existing starter album recommendation already recorded"
+            return True
+
+        return False
+
+    def _handle_recommendation_backoff(self, candidate, candidate_status, item):
+        if not candidate["in_recommendation_backoff"]:
+            return {"skipped": False, "cleared": False}
+
+        cleared = False
+        if candidate_status == "promotable":
+            cleared = self.memory.clear_extend_recommendation_backoff(candidate["artist_name"])
+            if cleared:
+                candidate["in_recommendation_backoff"] = False
+                item["legacy_backoff_cleared"] = True
+                item["in_recommendation_backoff"] = False
+
+        if candidate["in_recommendation_backoff"]:
+            item["result_type"] = "skipped_backoff"
+            item["message"] = "Skipping starter album planning due to recommendation backoff"
+            return {"skipped": True, "cleared": cleared}
+
+        return {"skipped": False, "cleared": cleared}
+
     def list_promotable_candidates(self):
         candidates = self.source.get_persisted_candidates()
         promotable = [
@@ -72,60 +128,18 @@ class ExtendPromotionService:
             artist_name = candidate["artist_name"]
             candidate_status = candidate.get("status", "new")
 
-            item = {
-                "artist_name": artist_name,
-                "candidate_status": candidate_status,
-                "best_match_score": candidate.get("best_match_score"),
-                "seed_count": candidate.get("seed_count"),
-                "seen_count": candidate.get("seen_count", 1),
-                "recommendation_count": candidate.get("recommendation_count", 0),
-                "source_seeds": candidate.get("source_seeds", []),
-                "in_recommendation_backoff": candidate.get("in_recommendation_backoff", False),
-                "result_type": None,
-                "message": None,
-            }
+            item = self._build_result_item(candidate)
 
-            if candidate_status == "starter_album_candidate":
+            if self._apply_existing_status_skip(candidate_status, item):
                 skipped_existing += 1
-                item["result_type"] = "skipped_existing_candidate"
-                item["message"] = "Existing starter album acquisition candidate already recorded"
                 results.append(item)
                 continue
 
-            if candidate_status == "starter_album_approved":
-                skipped_existing += 1
-                item["result_type"] = "skipped_existing_approved"
-                item["message"] = "Existing approved starter album already recorded"
+            backoff_result = self._handle_recommendation_backoff(candidate, candidate_status, item)
+            if backoff_result["skipped"]:
+                skipped_backoff += 1
                 results.append(item)
                 continue
-
-            if candidate_status == "starter_album_rejected":
-                skipped_existing += 1
-                item["result_type"] = "skipped_existing_rejected"
-                item["message"] = "Existing rejected starter album already recorded"
-                results.append(item)
-                continue
-
-            if candidate_status == "starter_album_recommendation":
-                skipped_existing += 1
-                item["result_type"] = "skipped_existing_recommendation"
-                item["message"] = "Existing starter album recommendation already recorded"
-                results.append(item)
-                continue
-
-            if candidate["in_recommendation_backoff"]:
-                if candidate_status == "promotable":
-                    cleared = self.memory.clear_extend_recommendation_backoff(artist_name)
-                    if cleared:
-                        candidate["in_recommendation_backoff"] = False
-                        item["legacy_backoff_cleared"] = True
-
-                if candidate["in_recommendation_backoff"]:
-                    skipped_backoff += 1
-                    item["result_type"] = "skipped_backoff"
-                    item["message"] = "Skipping starter album planning due to recommendation backoff"
-                    results.append(item)
-                    continue
 
             try:
                 result = self.adapter.plan_extended_artist_best_release(
