@@ -1,5 +1,6 @@
 import requests
 from resonarr.config.settings import LASTFM_API_KEY, LASTFM_USERNAME
+from resonarr.utils.api_resilience import request_json_with_retry
 
 
 class LastfmClient:
@@ -11,12 +12,15 @@ class LastfmClient:
             "format": "json"
         })
 
-        r = requests.get(self.BASE_URL, params=params)
-
-        if r.status_code != 200:
-            raise Exception(f"Last.fm API error: {r.status_code}")
-
-        return r.json()
+        return request_json_with_retry(
+            source="lastfm",
+            operation=params.get("method", "_get"),
+            request_func=requests.get,
+            url=self.BASE_URL,
+            params=params,
+            headers=None,
+            context={"params": params},
+        )
 
     def get_top_artists(self, period="1month"):
         return self._get({
