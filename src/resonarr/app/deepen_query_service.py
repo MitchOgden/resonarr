@@ -33,16 +33,33 @@ class DeepenQueryService:
             "rank": item.get("rank"),
         }
 
+    def _candidate_lookup_key(self, item):
+        mbid = (item.get("mbid") or "").strip().lower()
+        if mbid:
+            return ("mbid", mbid)
+
+        artist_name = (item.get("artist_name") or "").strip().lower()
+        if artist_name:
+            return ("name", artist_name)
+
+        return None
+
     def sync_reviewable_candidates(self):
         live = self.deepen_service.list_candidates()
 
         synced = []
+        reviewable_keys = set()
+
         for item in live["items"]:
             if not self._is_reviewable_live_candidate(item):
                 continue
 
             persisted = self.memory.upsert_deepen_candidate(item)
             synced.append(self._candidate_view(persisted))
+
+            lookup_key = self._candidate_lookup_key(persisted)
+            if lookup_key:
+                reviewable_keys.add(lookup_key)
 
         synced.sort(
             key=lambda c: (
@@ -57,16 +74,24 @@ class DeepenQueryService:
             "status": "success",
             "count": len(synced),
             "items": synced,
+            "reviewable_keys": reviewable_keys,
         }
 
     def list_review_queue(self, sync_live=True):
-        if sync_live:
-            self.sync_reviewable_candidates()
+        reviewable_keys = None
 
-        items = [
-            self._candidate_view(candidate)
-            for candidate in self.memory.list_deepen_candidates_by_status(self.REVIEWABLE_STATUSES)
-        ]
+        if sync_live:
+            sync_result = self.sync_reviewable_candidates()
+            reviewable_keys = sync_result.get("reviewable_keys", set())
+
+        items = []
+        for candidate in self.memory.list_deepen_candidates_by_status(self.REVIEWABLE_STATUSES):
+            if reviewable_keys is not None:
+                lookup_key = self._candidate_lookup_key(candidate)
+                if lookup_key not in reviewable_keys:
+                    continue
+
+            items.append(self._candidate_view(candidate))
 
         items.sort(
             key=lambda c: (
