@@ -87,6 +87,15 @@ class DeepenCandidateSource:
             "fully_owned": False,
         }
 
+    def _album_counts_as_partial_present(self, total_tracks, has_file_count):
+        if total_tracks <= 0:
+            return False
+
+        if has_file_count >= total_tracks:
+            return False
+
+        return has_file_count >= 2
+
     def _classify_artist(self, lidarr_artist):
         artist_id = lidarr_artist.get("id")
         albums = self._get_albums(artist_id)
@@ -120,7 +129,7 @@ class DeepenCandidateSource:
                 fully_owned_album_count += 1
                 continue
 
-            if has_file_count > 0:
+            if self._album_counts_as_partial_present(total_tracks, has_file_count):
                 partial_present = True
 
             if not album.get("monitored", False):
