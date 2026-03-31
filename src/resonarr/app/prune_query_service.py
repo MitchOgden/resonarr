@@ -64,10 +64,7 @@ class PruneQueryService:
             "items": items,
         }
 
-    def get_prune_summary(self, limit=None):
-        live_result = self.list_prune_candidates(limit=limit)
-        live_items = live_result["items"]
-
+    def build_prune_summary_from_live_items(self, live_items):
         history_result = self.list_prune_history()
         history_items = history_result["items"]
 
@@ -121,12 +118,10 @@ class PruneQueryService:
             "history_items": history_items,
         }
 
-    def list_reviewable_prune_candidates(self, limit=None):
-        result = self.list_prune_candidates(limit=limit)
-
+    def list_reviewable_prune_candidates_from_live_items(self, live_items):
         items = [
             item
-            for item in result["items"]
+            for item in live_items
             if (
                 item.get("matched")
                 and item.get("status") not in self.NON_REVIEWABLE_FINAL_STATUSES
@@ -138,3 +133,11 @@ class PruneQueryService:
             "count": len(items),
             "items": items,
         }
+
+    def get_prune_summary(self, limit=None):
+        live_result = self.list_prune_candidates(limit=limit)
+        return self.build_prune_summary_from_live_items(live_result["items"])
+
+    def list_reviewable_prune_candidates(self, limit=None):
+        result = self.list_prune_candidates(limit=limit)
+        return self.list_reviewable_prune_candidates_from_live_items(result["items"])

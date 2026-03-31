@@ -51,11 +51,21 @@ class DashboardService:
         extend_summary = self.extend_query_service.get_extend_status_summary()
         extend_review_queue = self.extend_operator_service.list_review_queue()
         extend_promotable = self.extend_promotion_service.list_promotable_candidates()
+
         deepen_candidates = self.deepen_service.list_candidates()
-        deepen_review_queue = self.deepen_query_service.list_review_queue()
+        deepen_review_queue = self.deepen_query_service.list_review_queue_from_live_items(
+            deepen_candidates["items"]
+        )
+
         suppressed = self.extend_query_service.list_suppressed_artists()
-        prune_summary = self.prune_query_service.get_prune_summary()
-        prune_reviewable = self.prune_operator_service.list_review_queue()
+
+        prune_live = self.prune_query_service.list_prune_candidates()
+        prune_summary = self.prune_query_service.build_prune_summary_from_live_items(
+            prune_live["items"]
+        )
+        prune_reviewable = self.prune_query_service.list_reviewable_prune_candidates_from_live_items(
+            prune_live["items"]
+        )
 
         extend_counts = extend_summary["counts"]
         deepen_items = deepen_candidates["items"]

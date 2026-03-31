@@ -44,13 +44,11 @@ class DeepenQueryService:
 
         return None
 
-    def sync_reviewable_candidates(self):
-        live = self.deepen_service.list_candidates()
-
+    def _sync_reviewable_candidates_from_live_items(self, live_items):
         synced = []
         reviewable_keys = set()
 
-        for item in live["items"]:
+        for item in live_items:
             if not self._is_reviewable_live_candidate(item):
                 continue
 
@@ -77,13 +75,11 @@ class DeepenQueryService:
             "reviewable_keys": reviewable_keys,
         }
 
-    def list_review_queue(self, sync_live=True):
-        reviewable_keys = None
+    def sync_reviewable_candidates(self):
+        live = self.deepen_service.list_candidates()
+        return self._sync_reviewable_candidates_from_live_items(live["items"])
 
-        if sync_live:
-            sync_result = self.sync_reviewable_candidates()
-            reviewable_keys = sync_result.get("reviewable_keys", set())
-
+    def _build_review_queue_from_reviewable_keys(self, reviewable_keys=None):
         items = []
         for candidate in self.memory.list_deepen_candidates_by_status(self.REVIEWABLE_STATUSES):
             if reviewable_keys is not None:
@@ -107,6 +103,21 @@ class DeepenQueryService:
             "count": len(items),
             "items": items,
         }
+
+    def list_review_queue(self, sync_live=True):
+        reviewable_keys = None
+
+        if sync_live:
+            sync_result = self.sync_reviewable_candidates()
+            reviewable_keys = sync_result.get("reviewable_keys", set())
+
+        return self._build_review_queue_from_reviewable_keys(reviewable_keys=reviewable_keys)
+
+    def list_review_queue_from_live_items(self, live_items):
+        sync_result = self._sync_reviewable_candidates_from_live_items(live_items)
+        return self._build_review_queue_from_reviewable_keys(
+            reviewable_keys=sync_result.get("reviewable_keys", set())
+        )
 
     def get_review_candidate(self, mbid=None, artist_name=None, sync_live=True):
         if sync_live:
