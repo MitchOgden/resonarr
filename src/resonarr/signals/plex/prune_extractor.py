@@ -176,6 +176,10 @@ class PlexPruneExtractor:
             f"get_albums_calls={get_albums_calls} get_album_tracks_calls={get_album_tracks_calls}"
         )
         self._log_phase_elapsed("final_shape_return", phase_started_at)
+
+        if hasattr(self.plex, "flush_caches"):
+            self.plex.flush_caches()
+
         self._log_phase_elapsed("total_extract_album_signals", total_started_at)
 
         return results

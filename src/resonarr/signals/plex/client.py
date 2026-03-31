@@ -2,13 +2,15 @@ import time
 
 import requests
 from resonarr.config.settings import PLEX_BASE_URL, PLEX_TOKEN
+from resonarr.state.plex_metadata_cache import PlexMetadataCache
 from resonarr.utils.api_resilience import request_with_retry
 
 
 class PlexClient:
-    def __init__(self):
+    def __init__(self, metadata_cache=None):
         self.base_url = PLEX_BASE_URL
         self.token = PLEX_TOKEN
+        self.metadata_cache = metadata_cache or PlexMetadataCache()
 
     def _log_phase_elapsed(self, label, started_at):
         elapsed = time.perf_counter() - started_at
@@ -79,11 +81,31 @@ class PlexClient:
 
         return True
 
+    def _merge_cached_album_metadata(self, album, cached_album):
+        merged = dict(album)
+
+        if cached_album.get("guid") is not None:
+            merged["guid"] = cached_album.get("guid")
+
+        if cached_album.get("Guid") is not None:
+            merged["Guid"] = cached_album.get("Guid")
+
+        if cached_album.get("parentGuid") is not None:
+            merged["parentGuid"] = cached_album.get("parentGuid")
+
+        return merged
+
+    def flush_caches(self):
+        self.metadata_cache.flush()
+
     def get_albums(self, artist_rating_key):
         """
-        Fetch album list from the artist children endpoint and only expand
-        individual albums when the child payload does not already expose GUID
-        metadata needed by downstream MBID extraction.
+        Fetch album list from the artist children endpoint.
+
+        Resolution order:
+        1) use child payload directly when it already contains usable MBID data
+        2) use persisted cached album metadata when available
+        3) fetch full album metadata from Plex and persist the stable GUID fields
         """
         total_started_at = time.perf_counter()
 
@@ -94,7 +116,8 @@ class PlexClient:
         albums = data.get("MediaContainer", {}).get("Metadata", [])
         resolved_albums = []
 
-        fast_path_count = 0
+        child_payload_fast_path_count = 0
+        metadata_cache_hit_count = 0
         fallback_full_metadata_count = 0
         missing_rating_key_count = 0
 
@@ -107,8 +130,14 @@ class PlexClient:
                 continue
 
             if not self._album_needs_full_metadata(album):
-                fast_path_count += 1
+                child_payload_fast_path_count += 1
                 resolved_albums.append(album)
+                continue
+
+            cached_album = self.metadata_cache.get_album_metadata(rating_key)
+            if cached_album and not self._album_needs_full_metadata(cached_album):
+                metadata_cache_hit_count += 1
+                resolved_albums.append(self._merge_cached_album_metadata(album, cached_album))
                 continue
 
             fallback_full_metadata_count += 1
@@ -116,7 +145,9 @@ class PlexClient:
             meta = full.get("MediaContainer", {}).get("Metadata", [])
 
             if meta:
-                resolved_albums.append(meta[0])
+                resolved_album = meta[0]
+                self.metadata_cache.put_album_metadata(resolved_album)
+                resolved_albums.append(resolved_album)
             else:
                 resolved_albums.append(album)
         self._log_phase_elapsed("get_albums.resolve_loop", phase_started_at)
@@ -125,7 +156,8 @@ class PlexClient:
             f"[PERF][plex_client] get_albums.counts: "
             f"artist_rating_key={artist_rating_key} "
             f"albums={len(albums)} "
-            f"fast_path_count={fast_path_count} "
+            f"child_payload_fast_path_count={child_payload_fast_path_count} "
+            f"metadata_cache_hit_count={metadata_cache_hit_count} "
             f"fallback_full_metadata_count={fallback_full_metadata_count} "
             f"missing_rating_key_count={missing_rating_key_count}"
         )
