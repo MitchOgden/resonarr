@@ -48,17 +48,49 @@ class PlexClient:
         data = self._get(f"/library/sections/{section_id}/all")
 
         return data.get("MediaContainer", {}).get("Metadata", [])
-    
+
+    def _album_needs_full_metadata(self, album):
+        guid_entries = album.get("Guid") or []
+        direct_guid = album.get("guid")
+
+        if guid_entries:
+            return False
+
+        if direct_guid:
+            return False
+
+        return True
+
     def get_albums(self, artist_rating_key):
         """
-        Fetch album list directly from the artist children endpoint.
-
-        This intentionally skips the per-album metadata expansion call so we can
-        measure whether the extra request per album is actually necessary for the
-        prune extraction path.
+        Fetch album list from the artist children endpoint and only expand
+        individual albums when the child payload does not already expose GUID
+        metadata needed by downstream MBID extraction.
         """
         data = self._get(f"/library/metadata/{artist_rating_key}/children")
-        return data.get("MediaContainer", {}).get("Metadata", [])
+        albums = data.get("MediaContainer", {}).get("Metadata", [])
+
+        resolved_albums = []
+
+        for album in albums:
+            rating_key = album.get("ratingKey")
+
+            if not rating_key:
+                continue
+
+            if not self._album_needs_full_metadata(album):
+                resolved_albums.append(album)
+                continue
+
+            full = self._get(f"/library/metadata/{rating_key}")
+            meta = full.get("MediaContainer", {}).get("Metadata", [])
+
+            if meta:
+                resolved_albums.append(meta[0])
+            else:
+                resolved_albums.append(album)
+
+        return resolved_albums
     
     def get_album_tracks(self, album_rating_key):
         data = self._get(f"/library/metadata/{album_rating_key}/children")
