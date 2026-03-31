@@ -1,4 +1,5 @@
 import time
+from collections import defaultdict
 
 from resonarr.config.settings import PRUNE_TRACK_BAD_MAX_RATING
 from resonarr.signals.plex.client import PlexClient
@@ -107,10 +108,10 @@ class PlexPruneExtractor:
         total_tracks_considered = 0
         album_buckets_created = 0
         get_albums_calls = 0
-        get_album_tracks_calls = 0
+        get_artist_tracks_calls = 0
 
         get_albums = self.plex.get_albums
-        get_album_tracks = self.plex.get_album_tracks
+        get_artist_tracks = self.plex.get_artist_tracks
         extract_mbids = self._extract_mbids
         bad_max_rating = PRUNE_TRACK_BAD_MAX_RATING
 
@@ -126,6 +127,16 @@ class PlexPruneExtractor:
             get_albums_calls += 1
             albums = get_albums(artist_rating_key)
 
+            get_artist_tracks_calls += 1
+            artist_tracks = get_artist_tracks(artist_rating_key)
+
+            tracks_by_album_rating_key = defaultdict(list)
+            for track in artist_tracks:
+                parent_rating_key = track.get("parentRatingKey")
+                if not parent_rating_key:
+                    continue
+                tracks_by_album_rating_key[str(parent_rating_key)].append(track)
+
             for album in albums:
                 album_get = album.get
                 album_name = album_get("title")
@@ -134,8 +145,7 @@ class PlexPruneExtractor:
                 if not album_name or not album_rating_key:
                     continue
 
-                get_album_tracks_calls += 1
-                tracks = get_album_tracks(album_rating_key)
+                tracks = tracks_by_album_rating_key.get(str(album_rating_key), [])
                 album_mbid, artist_mbid, album_mbids = extract_mbids(album, tracks=tracks)
 
                 rated_tracks = 0
@@ -173,7 +183,7 @@ class PlexPruneExtractor:
         print(
             f"[PERF][plex_prune] counts: source_tracks={total_tracks_considered} "
             f"album_buckets={album_buckets_created} returned_album_signals={len(results)} "
-            f"get_albums_calls={get_albums_calls} get_album_tracks_calls={get_album_tracks_calls}"
+            f"get_albums_calls={get_albums_calls} get_artist_tracks_calls={get_artist_tracks_calls}"
         )
         self._log_phase_elapsed("final_shape_return", phase_started_at)
 

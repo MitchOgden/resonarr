@@ -165,6 +165,10 @@ class PlexClient:
 
         return resolved_albums
     
+    def get_artist_tracks(self, artist_rating_key):
+        data = self._get(f"/library/metadata/{artist_rating_key}/allLeaves")
+        return data.get("MediaContainer", {}).get("Metadata", [])
+
     def get_album_tracks(self, album_rating_key):
         data = self._get(f"/library/metadata/{album_rating_key}/children")
         return data.get("MediaContainer", {}).get("Metadata", [])
