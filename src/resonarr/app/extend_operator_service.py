@@ -11,7 +11,11 @@ class ExtendOperatorService:
 
     def _invalidate_dashboard_snapshot(self):
         self.memory.clear_dashboard_snapshot("home_summary")
-        print("[PERF][dashboard] snapshot_invalidate: source=extend_operator")
+        self.memory.clear_catalog_snapshot("catalog_records")
+        print(
+            "[PERF][read_models] snapshot_invalidate: "
+            "source=extend_operator targets=home_summary,catalog_records"
+        )
 
     def list_review_queue(self):
         reviewable = self.memory.list_extend_candidates_by_status(self.REVIEWABLE_STATUSES)

@@ -1,5 +1,6 @@
 import time
 
+from resonarr.app.catalog_query_service import CatalogQueryService
 from resonarr.app.extend_query_service import ExtendQueryService
 from resonarr.utils.api_resilience import ExternalApiError, append_api_error_event
 from resonarr.app.extend_operator_service import ExtendOperatorService
@@ -28,8 +29,10 @@ class DashboardService:
         prune_query_service=None,
         prune_operator_service=None,
         deepen_query_service=None,
+        catalog_query_service=None,
         memory=None,
     ):
+        self.memory = memory or MemoryStore()
         self.extend_query_service = extend_query_service or ExtendQueryService()
         self.extend_operator_service = extend_operator_service or ExtendOperatorService()
         self.extend_promotion_service = extend_promotion_service or ExtendPromotionService()
@@ -37,7 +40,16 @@ class DashboardService:
         self.prune_query_service = prune_query_service or PruneQueryService()
         self.prune_operator_service = prune_operator_service or PruneOperatorService()
         self.deepen_query_service = deepen_query_service or DeepenQueryService()
-        self.memory = memory or MemoryStore()
+        self.catalog_query_service = catalog_query_service or CatalogQueryService(
+            extend_query_service=self.extend_query_service,
+            extend_operator_service=self.extend_operator_service,
+            extend_promotion_service=self.extend_promotion_service,
+            deepen_service=self.deepen_service,
+            prune_query_service=self.prune_query_service,
+            prune_operator_service=self.prune_operator_service,
+            deepen_query_service=self.deepen_query_service,
+            memory=self.memory,
+        )
 
     def _build_extend_review_cards(self, items):
         return [build_extend_review_card(item) for item in items]
@@ -91,6 +103,9 @@ class DashboardService:
             f"[PERF][dashboard] snapshot_store: "
             f"ttl_seconds={DASHBOARD_SNAPSHOT_TTL_SECONDS}"
         )
+
+    def _persist_catalog_snapshot(self, records):
+        self.catalog_query_service.persist_snapshot(records)
 
     def _record_dashboard_error(self, errors, section, exc):
         message = str(exc)
@@ -226,6 +241,28 @@ class DashboardService:
             self._record_dashboard_error(errors, "prune_reviewable", exc)
         self._log_phase_elapsed("prune_reviewable", phase_started_at)
 
+        catalog_records = []
+        phase_started_at = time.perf_counter()
+        try:
+            catalog_records = self.catalog_query_service.build_records_from_results(
+                extend_review_items=extend_review_queue.get("items", []),
+                extend_promotable_items=extend_promotable.get("items", []),
+                deepen_candidate_items=deepen_candidates.get("items", []),
+                deepen_review_items=deepen_review_queue.get("items", []),
+                prune_live_items=prune_live.get("items", []),
+                prune_review_items=prune_reviewable.get("items", []),
+                prune_history_items=prune_summary.get("history_items", []),
+                suppressed_artist_items=suppressed.get("items", []),
+            )
+
+            if not errors:
+                self._persist_catalog_snapshot(catalog_records)
+            else:
+                print("[PERF][catalog] snapshot_store_skipped: reason=errors_present")
+        except Exception as exc:
+            self._record_dashboard_error(errors, "catalog_snapshot_refresh", exc)
+        self._log_phase_elapsed("catalog_snapshot_refresh", phase_started_at)
+
         phase_started_at = time.perf_counter()
         extend_counts = extend_summary.get("counts", {})
         deepen_items = deepen_candidates.get("items", [])
@@ -243,12 +280,39 @@ class DashboardService:
         self._log_phase_elapsed("build_summary_counts", phase_started_at)
 
         phase_started_at = time.perf_counter()
-        extend_review_cards = self._build_extend_review_cards(extend_review_queue.get("items", []))
-        extend_promotable_cards = self._build_extend_promotable_cards(extend_promotable.get("items", []))
-        deepen_candidate_cards = self._build_deepen_candidate_cards(deepen_items)
-        deepen_review_cards = self._build_deepen_candidate_cards(deepen_review_queue.get("items", []))
-        suppressed_artist_cards = self._build_suppressed_artist_cards(suppressed.get("items", []))
-        prune_candidate_cards = self._build_prune_candidate_cards(prune_reviewable.get("items", []))
+        if catalog_records:
+            extend_review_records = [
+                item for item in catalog_records if item.get("kind") == "extend_review"
+            ]
+            extend_promotable_records = [
+                item for item in catalog_records if item.get("kind") == "extend_promotable"
+            ]
+            deepen_candidate_records = [
+                item for item in catalog_records if item.get("kind") == "deepen_candidate"
+            ]
+            deepen_review_records = [
+                item for item in catalog_records if item.get("kind") == "deepen_review"
+            ]
+            suppressed_artist_records = [
+                item for item in catalog_records if item.get("kind") == "suppressed_artist"
+            ]
+            prune_review_records = [
+                item for item in catalog_records if item.get("kind") == "prune_review"
+            ]
+
+            extend_review_cards = self._build_extend_review_cards(extend_review_records)
+            extend_promotable_cards = self._build_extend_promotable_cards(extend_promotable_records)
+            deepen_candidate_cards = self._build_deepen_candidate_cards(deepen_candidate_records)
+            deepen_review_cards = self._build_deepen_candidate_cards(deepen_review_records)
+            suppressed_artist_cards = self._build_suppressed_artist_cards(suppressed_artist_records)
+            prune_candidate_cards = self._build_prune_candidate_cards(prune_review_records)
+        else:
+            extend_review_cards = self._build_extend_review_cards(extend_review_queue.get("items", []))
+            extend_promotable_cards = self._build_extend_promotable_cards(extend_promotable.get("items", []))
+            deepen_candidate_cards = self._build_deepen_candidate_cards(deepen_items)
+            deepen_review_cards = self._build_deepen_candidate_cards(deepen_review_queue.get("items", []))
+            suppressed_artist_cards = self._build_suppressed_artist_cards(suppressed.get("items", []))
+            prune_candidate_cards = self._build_prune_candidate_cards(prune_reviewable.get("items", []))
         self._log_phase_elapsed("build_view_cards", phase_started_at)
 
         phase_started_at = time.perf_counter()

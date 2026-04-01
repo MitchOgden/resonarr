@@ -18,7 +18,11 @@ class DeepenOperatorService:
 
     def _invalidate_dashboard_snapshot(self):
         self.memory.clear_dashboard_snapshot("home_summary")
-        print("[PERF][dashboard] snapshot_invalidate: source=deepen_operator")
+        self.memory.clear_catalog_snapshot("catalog_records")
+        print(
+            "[PERF][read_models] snapshot_invalidate: "
+            "source=deepen_operator targets=home_summary,catalog_records"
+        )
 
 
     def _find_live_candidate(self, artist_name=None, mbid=None):

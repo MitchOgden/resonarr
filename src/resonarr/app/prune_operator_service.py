@@ -19,7 +19,11 @@ class PruneOperatorService:
 
     def _invalidate_dashboard_snapshot(self):
         self.memory.clear_dashboard_snapshot("home_summary")
-        print("[PERF][dashboard] snapshot_invalidate: source=prune_operator")
+        self.memory.clear_catalog_snapshot("catalog_records")
+        print(
+            "[PERF][read_models] snapshot_invalidate: "
+            "source=prune_operator targets=home_summary,catalog_records"
+        )
 
     def _find_live_reviewable_item(self, artist_name, album_name):
         reviewable = self.prune_query_service.list_reviewable_prune_candidates()

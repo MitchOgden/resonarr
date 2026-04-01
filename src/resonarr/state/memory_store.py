@@ -17,6 +17,7 @@ class MemoryStore:
                 "prune_candidates": {},
                 "deepen_candidates": {},
                 "dashboard_snapshots": {},
+                "catalog_snapshots": {},
             }
 
         with open(STATE_FILE, "r") as f:
@@ -27,6 +28,7 @@ class MemoryStore:
         state.setdefault("prune_candidates", {})
         state.setdefault("deepen_candidates", {})
         state.setdefault("dashboard_snapshots", {})
+        state.setdefault("catalog_snapshots", {})
 
         return state
 
@@ -49,6 +51,24 @@ class MemoryStore:
             self.state["dashboard_snapshots"] = {}
         else:
             self.state["dashboard_snapshots"].pop(name, None)
+
+        self._save()
+
+    def get_catalog_snapshot(self, name):
+        return self.state["catalog_snapshots"].get(name, {})
+
+    def set_catalog_snapshot(self, name, payload):
+        self.state["catalog_snapshots"][name] = {
+            "payload": payload,
+            "updated_ts": int(time.time()),
+        }
+        self._save()
+
+    def clear_catalog_snapshot(self, name=None):
+        if name is None:
+            self.state["catalog_snapshots"] = {}
+        else:
+            self.state["catalog_snapshots"].pop(name, None)
 
         self._save()
 
