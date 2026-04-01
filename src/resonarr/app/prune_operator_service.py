@@ -17,6 +17,10 @@ class PruneOperatorService:
         self.prune_query_service = prune_query_service or PruneQueryService()
         self.plex = plex_client or PlexClient()
 
+    def _invalidate_dashboard_snapshot(self):
+        self.memory.clear_dashboard_snapshot("home_summary")
+        print("[PERF][dashboard] snapshot_invalidate: source=prune_operator")
+
     def _find_live_reviewable_item(self, artist_name, album_name):
         reviewable = self.prune_query_service.list_reviewable_prune_candidates()
         target_artist = (artist_name or "").lower().strip()
@@ -105,6 +109,7 @@ class PruneOperatorService:
             album_mbid=item.get("album_mbid"),
             lidarr_album_id=album_id,
         )
+        self._invalidate_dashboard_snapshot()
 
         execution = self.adapter.prune_album(
             album_id=album_id,
@@ -127,6 +132,7 @@ class PruneOperatorService:
             album_mbid=item.get("album_mbid"),
             lidarr_album_id=album_id,
         )
+        self._invalidate_dashboard_snapshot()
 
         plex_scan = {"status": "skipped", "reason": "plex rescan disabled"}
         if rescan_plex:
@@ -167,6 +173,7 @@ class PruneOperatorService:
             lidarr_album_id=item.get("lidarr_album_id"),
             note=note,
         )
+        self._invalidate_dashboard_snapshot()
 
         refreshed = self.memory.get_prune_candidate(
             artist_name=artist_name,

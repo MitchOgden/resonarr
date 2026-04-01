@@ -16,6 +16,10 @@ class DeepenOperatorService:
         )
         self.adapter = adapter or LidarrAdapter()
 
+    def _invalidate_dashboard_snapshot(self):
+        self.memory.clear_dashboard_snapshot("home_summary")
+        print("[PERF][dashboard] snapshot_invalidate: source=deepen_operator")
+
 
     def _find_live_candidate(self, artist_name=None, mbid=None):
         target_name = (artist_name or "").lower().strip()
@@ -81,6 +85,7 @@ class DeepenOperatorService:
             }
 
         self.memory.mark_deepen_candidate_approved(mbid=mbid, artist_name=artist_name)
+        self._invalidate_dashboard_snapshot()
 
         result = self.adapter.acquire_artist_best_release(mbid)
 
@@ -93,6 +98,7 @@ class DeepenOperatorService:
             }
 
         self.memory.mark_deepen_candidate_executed(mbid=mbid, artist_name=artist_name)
+        self._invalidate_dashboard_snapshot()
 
         refreshed = self.memory.get_deepen_candidate(mbid=mbid, artist_name=artist_name)
 
@@ -147,6 +153,7 @@ class DeepenOperatorService:
             artist_name=artist_name,
             note=note,
         )
+        self._invalidate_dashboard_snapshot()
 
         refreshed = self.memory.get_deepen_candidate(mbid=mbid, artist_name=artist_name)
         artist_state = self.memory.get_artist_state(mbid)

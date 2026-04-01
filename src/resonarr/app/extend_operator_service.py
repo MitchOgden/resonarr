@@ -9,6 +9,10 @@ class ExtendOperatorService:
         self.memory = memory or MemoryStore()
         self.adapter = adapter or LidarrAdapter()
 
+    def _invalidate_dashboard_snapshot(self):
+        self.memory.clear_dashboard_snapshot("home_summary")
+        print("[PERF][dashboard] snapshot_invalidate: source=extend_operator")
+
     def list_review_queue(self):
         reviewable = self.memory.list_extend_candidates_by_status(self.REVIEWABLE_STATUSES)
 
@@ -82,6 +86,7 @@ class ExtendOperatorService:
             }
 
         self.memory.mark_extend_candidate_approved(artist_name)
+        self._invalidate_dashboard_snapshot()
 
         refreshed = self.memory.find_extend_candidate_by_artist_name(artist_name) or {}
 
@@ -120,6 +125,7 @@ class ExtendOperatorService:
             removal = self.adapter.remove_staged_artist(artist_mbid)
 
         self.memory.mark_extend_candidate_rejected(artist_name)
+        self._invalidate_dashboard_snapshot()
 
         refreshed = self.memory.find_extend_candidate_by_artist_name(artist_name) or {}
         artist_state = self.memory.get_artist_state(artist_mbid)
