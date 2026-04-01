@@ -17,3 +17,7 @@
 [PERF][catalog] snapshot_cache_miss: reason=expired age_seconds=643 ttl_seconds=300
 [32mINFO[0m:     127.0.0.1:58907 - "[1mGET /api/v1/catalog/records?source=deepen&sort_by=score&sort_direction=desc&limit=5 HTTP/1.1[0m" [91m503 Service Unavailable[0m
 [32mINFO[0m:     127.0.0.1:58908 - "[1mGET /api/v1/dashboard/home HTTP/1.1[0m" [91m503 Service Unavailable[0m
+[32mINFO[0m:     Shutting down
+[32mINFO[0m:     Waiting for application shutdown.
+[32mINFO[0m:     Application shutdown complete.
+[32mINFO[0m:     Finished server process [[36m44912[0m]
