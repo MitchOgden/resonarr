@@ -1,0 +1,62 @@
+[INFO] Timestamped log file: logs\read-api-server-20260401-114505.log
+[INFO] Latest log file: logs\read-api-server-latest.log
+=== Resonarr Read API Server ===
+[INFO] Listening on http://127.0.0.1:8787
+[INFO] Routes:
+[INFO]   GET /healthz
+[INFO]   GET /api/v1/catalog/records
+[INFO]   GET /api/v1/dashboard/home
+[INFO] This transport is snapshot-backed only.
+[INFO] No refresh or mutation endpoints are exposed.
+Traceback (most recent call last):
+  File "C:\Users\mitch\AppData\Local\Python\pythoncore-3.14-64\Lib\logging\config.py", line 583, in configure
+    formatters[name] = self.configure_formatter(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^
+                                        formatters[name])
+                                        ^^^^^^^^^^^^^^^^^
+  File "C:\Users\mitch\AppData\Local\Python\pythoncore-3.14-64\Lib\logging\config.py", line 693, in configure_formatter
+    result = self.configure_custom(config)
+  File "C:\Users\mitch\AppData\Local\Python\pythoncore-3.14-64\Lib\logging\config.py", line 487, in configure_custom
+    result = c(**kwargs)
+  File "C:\Users\mitch\Documents\Github\resonarr\.venv\Lib\site-packages\uvicorn\logging.py", line 42, in __init__
+    self.use_colors = sys.stdout.isatty()
+                      ^^^^^^^^^^^^^^^^^
+AttributeError: 'TeeStream' object has no attribute 'isatty'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\mitch\Documents\Github\resonarr\src\resonarr\runner\run_read_api_server.py", line 32, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\mitch\Documents\Github\resonarr\src\resonarr\runner\run_read_api_server.py", line 23, in main
+    uvicorn.run(
+    ~~~~~~~~~~~^
+        create_app(),
+        ^^^^^^^^^^^^^
+    ...<2 lines>...
+        log_level="info",
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mitch\Documents\Github\resonarr\.venv\Lib\site-packages\uvicorn\main.py", line 541, in run
+    config = Config(
+        app,
+    ...<46 lines>...
+        h11_max_incomplete_event_size=h11_max_incomplete_event_size,
+    )
+  File "C:\Users\mitch\Documents\Github\resonarr\.venv\Lib\site-packages\uvicorn\config.py", line 280, in __init__
+    self.configure_logging()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mitch\Documents\Github\resonarr\.venv\Lib\site-packages\uvicorn\config.py", line 372, in configure_logging
+    logging.config.dictConfig(self.log_config)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\mitch\AppData\Local\Python\pythoncore-3.14-64\Lib\logging\config.py", line 946, in dictConfig
+    dictConfigClass(config).configure()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mitch\AppData\Local\Python\pythoncore-3.14-64\Lib\logging\config.py", line 586, in configure
+    raise ValueError('Unable to configure '
+                     'formatter %r' % name) from e
+ValueError: Unable to configure formatter 'default'

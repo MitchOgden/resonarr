@@ -2561,12 +2561,33 @@
                 "artist_mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
                 "album_title": null,
                 "album_id": null,
+                "score": 12,
+                "reason": null,
+                "event_ts": null,
+                "lastfm_playcount": 12,
+                "partial_present": true,
+                "eligible_album_count": 3,
+                "fully_owned": false,
+                "in_cooldown": false,
+                "in_recommendation_backoff": false,
+                "is_suppressed": false
+              },
+              {
+                "kind": "deepen_review",
+                "source": "deepen",
+                "status": "deepen_recommendation",
+                "live": true,
+                "historical": false,
+                "artist_name": "CAKE",
+                "artist_mbid": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+                "album_title": null,
+                "album_id": null,
                 "score": 10,
                 "reason": null,
                 "event_ts": null,
                 "lastfm_playcount": 10,
                 "partial_present": true,
-                "eligible_album_count": 3,
+                "eligible_album_count": 6,
                 "fully_owned": false,
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
@@ -2588,27 +2609,6 @@
                 "lastfm_playcount": 10,
                 "partial_present": true,
                 "eligible_album_count": 1,
-                "fully_owned": false,
-                "in_cooldown": false,
-                "in_recommendation_backoff": false,
-                "is_suppressed": false
-              },
-              {
-                "kind": "deepen_review",
-                "source": "deepen",
-                "status": "deepen_recommendation",
-                "live": true,
-                "historical": false,
-                "artist_name": "CAKE",
-                "artist_mbid": "fa7b9055-3703-473a-8a09-adf2fe031a24",
-                "album_title": null,
-                "album_id": null,
-                "score": 9,
-                "reason": null,
-                "event_ts": null,
-                "lastfm_playcount": 9,
-                "partial_present": true,
-                "eligible_album_count": 6,
                 "fully_owned": false,
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
@@ -2813,10 +2813,10 @@
                 "artist_mbid": "b28ac005-27fe-4bb9-86a2-dbf55ef21469",
                 "album_title": null,
                 "album_id": null,
-                "score": 11,
+                "score": 12,
                 "reason": null,
                 "event_ts": null,
-                "lastfm_playcount": 11,
+                "lastfm_playcount": 12,
                 "partial_present": false,
                 "eligible_album_count": 8,
                 "fully_owned": false,
@@ -3394,7 +3394,7 @@
           "top_prune_candidates": []
         }
       },
-      "updated_ts": 1775015079
+      "updated_ts": 1775058298
     }
   },
   "catalog_snapshots": {
@@ -3801,7 +3801,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 15
+              "rank": 17
             }
           },
           {
@@ -3829,7 +3829,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 21
+              "rank": 22
             }
           },
           {
@@ -3857,7 +3857,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 25
+              "rank": 26
             }
           },
           {
@@ -3885,7 +3885,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 34
+              "rank": 35
             }
           },
           {
@@ -3913,7 +3913,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 41
+              "rank": 42
             }
           },
           {
@@ -3941,7 +3941,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 39
+              "rank": 40
             }
           },
           {
@@ -3954,14 +3954,14 @@
             "artist_mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
             "album_title": null,
             "album_id": null,
-            "score": 10,
+            "score": 12,
             "reason": null,
             "event_ts": null,
             "raw": {
               "artist_name": "Yung Gravy",
               "mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
               "status": "deepen_recommendation",
-              "lastfm_playcount": 10,
+              "lastfm_playcount": 12,
               "partial_present": true,
               "eligible_album_count": 3,
               "fully_owned": false,
@@ -3969,7 +3969,35 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 49
+              "rank": 43
+            }
+          },
+          {
+            "kind": "deepen_review",
+            "source": "deepen",
+            "status": "deepen_recommendation",
+            "live": true,
+            "historical": false,
+            "artist_name": "CAKE",
+            "artist_mbid": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+            "album_title": null,
+            "album_id": null,
+            "score": 10,
+            "reason": null,
+            "event_ts": null,
+            "raw": {
+              "artist_name": "CAKE",
+              "mbid": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+              "status": "deepen_recommendation",
+              "lastfm_playcount": 10,
+              "partial_present": true,
+              "eligible_album_count": 6,
+              "fully_owned": false,
+              "in_cooldown": false,
+              "in_recommendation_backoff": false,
+              "is_suppressed": false,
+              "suppression_reason": null,
+              "rank": 47
             }
           },
           {
@@ -3997,35 +4025,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 47
-            }
-          },
-          {
-            "kind": "deepen_review",
-            "source": "deepen",
-            "status": "deepen_recommendation",
-            "live": true,
-            "historical": false,
-            "artist_name": "CAKE",
-            "artist_mbid": "fa7b9055-3703-473a-8a09-adf2fe031a24",
-            "album_title": null,
-            "album_id": null,
-            "score": 9,
-            "reason": null,
-            "event_ts": null,
-            "raw": {
-              "artist_name": "CAKE",
-              "mbid": "fa7b9055-3703-473a-8a09-adf2fe031a24",
-              "status": "deepen_recommendation",
-              "lastfm_playcount": 9,
-              "partial_present": true,
-              "eligible_album_count": 6,
-              "fully_owned": false,
-              "in_cooldown": false,
-              "in_recommendation_backoff": false,
-              "is_suppressed": false,
-              "suppression_reason": null,
-              "rank": 50
+              "rank": 49
             }
           },
           {
@@ -4081,7 +4081,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 56
+              "rank": 57
             }
           },
           {
@@ -4277,7 +4277,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 23
+              "rank": 24
             }
           },
           {
@@ -4290,14 +4290,14 @@
             "artist_mbid": "b28ac005-27fe-4bb9-86a2-dbf55ef21469",
             "album_title": null,
             "album_id": null,
-            "score": 11,
+            "score": 12,
             "reason": null,
             "event_ts": null,
             "raw": {
               "artist_name": "Hoodie Allen",
               "mbid": "b28ac005-27fe-4bb9-86a2-dbf55ef21469",
               "status": "deepen_recommendation",
-              "lastfm_playcount": 11,
+              "lastfm_playcount": 12,
               "partial_present": false,
               "eligible_album_count": 8,
               "fully_owned": false,
@@ -4305,7 +4305,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 43
+              "rank": 39
             }
           },
           {
@@ -4794,7 +4794,7 @@
           }
         ]
       },
-      "updated_ts": 1775015079
+      "updated_ts": 1775058298
     }
   }
 }
