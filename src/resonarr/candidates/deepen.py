@@ -210,16 +210,6 @@ class DeepenCandidateSource:
                 "fast_path_reason": "fully_owned",
             }
 
-        if track_file_count == 0:
-            return {
-                "can_skip_track_fetch": True,
-                "fully_owned": False,
-                "partial_present": False,
-                "track_count": track_count,
-                "track_file_count": track_file_count,
-                "fast_path_reason": "zero_file",
-            }
-
         return {
             "can_skip_track_fetch": False,
             "fully_owned": False,
