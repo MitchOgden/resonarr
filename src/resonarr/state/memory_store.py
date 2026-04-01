@@ -15,7 +15,8 @@ class MemoryStore:
                 "artists": {},
                 "extend_candidates": {},
                 "prune_candidates": {},
-                "deepen_candidates": {}
+                "deepen_candidates": {},
+                "dashboard_snapshots": {},
             }
 
         with open(STATE_FILE, "r") as f:
@@ -25,12 +26,31 @@ class MemoryStore:
         state.setdefault("extend_candidates", {})
         state.setdefault("prune_candidates", {})
         state.setdefault("deepen_candidates", {})
+        state.setdefault("dashboard_snapshots", {})
 
         return state
 
     def _save(self):
         with open(STATE_FILE, "w") as f:
             json.dump(self.state, f, indent=2)
+
+    def get_dashboard_snapshot(self, name):
+        return self.state["dashboard_snapshots"].get(name, {})
+
+    def set_dashboard_snapshot(self, name, payload):
+        self.state["dashboard_snapshots"][name] = {
+            "payload": payload,
+            "updated_ts": int(time.time()),
+        }
+        self._save()
+
+    def clear_dashboard_snapshot(self, name=None):
+        if name is None:
+            self.state["dashboard_snapshots"] = {}
+        else:
+            self.state["dashboard_snapshots"].pop(name, None)
+
+        self._save()
 
     def get_artist_last_action(self, mbid):
         return self.state["artists"].get(mbid)

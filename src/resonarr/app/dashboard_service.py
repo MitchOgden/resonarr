@@ -8,6 +8,8 @@ from resonarr.app.deepen_service import DeepenService
 from resonarr.app.prune_query_service import PruneQueryService
 from resonarr.app.prune_operator_service import PruneOperatorService
 from resonarr.app.deepen_query_service import DeepenQueryService
+from resonarr.config.settings import DASHBOARD_SNAPSHOT_TTL_SECONDS
+from resonarr.state.memory_store import MemoryStore
 from resonarr.app.view_models import (
     build_extend_review_card,
     build_extend_promotable_card,
@@ -26,6 +28,7 @@ class DashboardService:
         prune_query_service=None,
         prune_operator_service=None,
         deepen_query_service=None,
+        memory=None,
     ):
         self.extend_query_service = extend_query_service or ExtendQueryService()
         self.extend_operator_service = extend_operator_service or ExtendOperatorService()
@@ -34,6 +37,7 @@ class DashboardService:
         self.prune_query_service = prune_query_service or PruneQueryService()
         self.prune_operator_service = prune_operator_service or PruneOperatorService()
         self.deepen_query_service = deepen_query_service or DeepenQueryService()
+        self.memory = memory or MemoryStore()
 
     def _build_extend_review_cards(self, items):
         return [build_extend_review_card(item) for item in items]
@@ -53,6 +57,40 @@ class DashboardService:
     def _log_phase_elapsed(self, label, started_at):
         elapsed = time.perf_counter() - started_at
         print(f"[PERF][dashboard] {label}: {elapsed:.2f}s")
+
+    def _get_cached_home_summary(self):
+        snapshot = self.memory.get_dashboard_snapshot("home_summary") or {}
+        payload = snapshot.get("payload")
+        updated_ts = snapshot.get("updated_ts")
+
+        if not payload or not updated_ts:
+            print("[PERF][dashboard] snapshot_cache_miss: reason=missing")
+            return None
+
+        age_seconds = int(time.time()) - int(updated_ts)
+        if age_seconds < 0:
+            age_seconds = 0
+
+        if age_seconds > DASHBOARD_SNAPSHOT_TTL_SECONDS:
+            print(
+                f"[PERF][dashboard] snapshot_cache_miss: "
+                f"reason=expired age_seconds={age_seconds} "
+                f"ttl_seconds={DASHBOARD_SNAPSHOT_TTL_SECONDS}"
+            )
+            return None
+
+        print(
+            f"[PERF][dashboard] snapshot_cache_hit: "
+            f"age_seconds={age_seconds} ttl_seconds={DASHBOARD_SNAPSHOT_TTL_SECONDS}"
+        )
+        return payload
+
+    def _persist_home_summary_snapshot(self, payload):
+        self.memory.set_dashboard_snapshot("home_summary", payload)
+        print(
+            f"[PERF][dashboard] snapshot_store: "
+            f"ttl_seconds={DASHBOARD_SNAPSHOT_TTL_SECONDS}"
+        )
 
     def _record_dashboard_error(self, errors, section, exc):
         message = str(exc)
@@ -81,8 +119,15 @@ class DashboardService:
                 cause=exc,
             ) from exc
 
-    def get_home_summary(self):
+    def get_home_summary(self, force_refresh=False):
         total_started_at = time.perf_counter()
+
+        if not force_refresh:
+            cached_payload = self._get_cached_home_summary()
+            if cached_payload is not None:
+                self._log_phase_elapsed("total_get_home_summary", total_started_at)
+                return cached_payload
+
         errors = []
 
         extend_summary = {
@@ -282,6 +327,11 @@ class DashboardService:
             },
         }
         self._log_phase_elapsed("assemble_payload", phase_started_at)
+
+        if not errors:
+            self._persist_home_summary_snapshot(payload)
+        else:
+            print("[PERF][dashboard] snapshot_store_skipped: reason=errors_present")
 
         self._log_phase_elapsed("total_get_home_summary", total_started_at)
         return payload
