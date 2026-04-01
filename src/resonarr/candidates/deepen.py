@@ -1,4 +1,5 @@
 import time
+from collections import defaultdict
 
 from resonarr.signals.lastfm.client import LastfmClient
 from resonarr.execution.lidarr.client import LidarrClient
@@ -24,6 +25,7 @@ class DeepenCandidateSource:
         self._perf = {
             "get_lidarr_artists_calls": 0,
             "get_albums_calls": 0,
+            "get_track_files_calls": 0,
             "get_tracks_calls": 0,
             "classify_artist_calls": 0,
             "lastfm_top_artists_seen": 0,
@@ -36,11 +38,14 @@ class DeepenCandidateSource:
             "albums_fetched_total": 0,
             "albums_total_raw": 0,
             "albums_kept_after_filters": 0,
+            "artist_trackfile_batch_count": 0,
             "album_stats_fast_path_count": 0,
             "album_stats_fully_owned_fast_path_count": 0,
             "album_stats_zero_file_fast_path_count": 0,
             "album_track_fallback_count": 0,
             "albums_missing_or_invalid_stats_count": 0,
+            "albums_using_batched_trackfile_counts": 0,
+            "track_files_examined_total": 0,
             "fully_owned_album_skips": 0,
             "partial_album_hits": 0,
             "eligible_album_hits": 0,
@@ -67,6 +72,7 @@ class DeepenCandidateSource:
             f"[PERF][deepen] counts: "
             f"get_lidarr_artists_calls={self._perf['get_lidarr_artists_calls']} "
             f"get_albums_calls={self._perf['get_albums_calls']} "
+            f"get_track_files_calls={self._perf['get_track_files_calls']} "
             f"get_tracks_calls={self._perf['get_tracks_calls']} "
             f"classify_artist_calls={self._perf['classify_artist_calls']} "
             f"lastfm_top_artists_seen={self._perf['lastfm_top_artists_seen']} "
@@ -79,11 +85,14 @@ class DeepenCandidateSource:
             f"albums_fetched_total={self._perf['albums_fetched_total']} "
             f"albums_total_raw={self._perf['albums_total_raw']} "
             f"albums_kept_after_filters={self._perf['albums_kept_after_filters']} "
+            f"artist_trackfile_batch_count={self._perf['artist_trackfile_batch_count']} "
             f"album_stats_fast_path_count={self._perf['album_stats_fast_path_count']} "
             f"album_stats_fully_owned_fast_path_count={self._perf['album_stats_fully_owned_fast_path_count']} "
             f"album_stats_zero_file_fast_path_count={self._perf['album_stats_zero_file_fast_path_count']} "
             f"album_track_fallback_count={self._perf['album_track_fallback_count']} "
             f"albums_missing_or_invalid_stats_count={self._perf['albums_missing_or_invalid_stats_count']} "
+            f"albums_using_batched_trackfile_counts={self._perf['albums_using_batched_trackfile_counts']} "
+            f"track_files_examined_total={self._perf['track_files_examined_total']} "
             f"fully_owned_album_skips={self._perf['fully_owned_album_skips']} "
             f"partial_album_hits={self._perf['partial_album_hits']} "
             f"eligible_album_hits={self._perf['eligible_album_hits']} "
@@ -124,6 +133,13 @@ class DeepenCandidateSource:
         albums = resp.json()
         self._inc_perf("albums_fetched_total", len(albums))
         return albums
+
+    def _get_track_files_for_artist(self, artist_id):
+        self._inc_perf("get_track_files_calls")
+        resp = self.lidarr.get("/api/v1/trackfile", params={"artistId": artist_id})
+        track_files = resp.json()
+        self._inc_perf("track_files_examined_total", len(track_files))
+        return track_files
 
     def _get_tracks(self, album_id):
         self._inc_perf("get_tracks_calls")
@@ -181,6 +197,20 @@ class DeepenCandidateSource:
             "fast_path_reason": None,
         }
 
+    def _get_album_total_track_count_from_album_resource(self, album):
+        stats = album.get("statistics") or {}
+        track_count = stats.get("trackCount")
+
+        try:
+            track_count = int(track_count)
+        except (TypeError, ValueError):
+            return None
+
+        if track_count < 0:
+            return None
+
+        return track_count
+
     def _album_counts_as_partial_present(self, total_tracks, has_file_count):
         if total_tracks <= 0:
             return False
@@ -196,6 +226,15 @@ class DeepenCandidateSource:
 
         artist_id = lidarr_artist.get("id")
         albums = self._get_albums(artist_id)
+        track_files = self._get_track_files_for_artist(artist_id)
+        self._inc_perf("artist_trackfile_batch_count")
+
+        file_count_by_album_id = defaultdict(int)
+        for track_file in track_files:
+            album_id = track_file.get("albumId")
+            if album_id is None:
+                continue
+            file_count_by_album_id[album_id] += 1
 
         partial_present = False
         eligible_album_count = 0
@@ -218,14 +257,26 @@ class DeepenCandidateSource:
             if "collection" in title or "box" in title:
                 continue
 
+            album_id = album.get("id")
             total_album_count += 1
             self._inc_perf("albums_kept_after_filters")
 
-            self._inc_perf("album_track_fallback_count")
+            total_tracks = self._get_album_total_track_count_from_album_resource(album)
+            has_file_count = file_count_by_album_id.get(album_id, 0)
 
-            tracks = self._get_tracks(album.get("id"))
-            total_tracks = len(tracks)
-            has_file_count = sum(1 for t in tracks if t.get("hasFile"))
+            if (
+                total_tracks is None or
+                album_id is None or
+                has_file_count > total_tracks
+            ):
+                self._inc_perf("album_track_fallback_count")
+                self._inc_perf("albums_missing_or_invalid_stats_count")
+
+                tracks = self._get_tracks(album_id)
+                total_tracks = len(tracks)
+                has_file_count = sum(1 for t in tracks if t.get("hasFile"))
+            else:
+                self._inc_perf("albums_using_batched_trackfile_counts")
 
             if total_tracks > 0 and has_file_count == total_tracks:
                 fully_owned_album_count += 1
