@@ -2171,7 +2171,7 @@
           "deepen": {
             "candidate_count": 30,
             "review_queue_count": 30,
-            "partial_present_count": 16,
+            "partial_present_count": 15,
             "suppressed_count": 0,
             "cooldown_count": 0,
             "recommendation_backoff_count": 0
@@ -2456,10 +2456,10 @@
                 "artist_mbid": "164f0d73-1234-4e2c-8743-d77bf2191051",
                 "album_title": null,
                 "album_id": null,
-                "score": 22,
+                "score": 24,
                 "reason": null,
                 "event_ts": null,
-                "lastfm_playcount": 22,
+                "lastfm_playcount": 24,
                 "partial_present": true,
                 "eligible_album_count": 12,
                 "fully_owned": false,
@@ -2483,6 +2483,27 @@
                 "lastfm_playcount": 19,
                 "partial_present": true,
                 "eligible_album_count": 7,
+                "fully_owned": false,
+                "in_cooldown": false,
+                "in_recommendation_backoff": false,
+                "is_suppressed": false
+              },
+              {
+                "kind": "deepen_review",
+                "source": "deepen",
+                "status": "deepen_recommendation",
+                "live": true,
+                "historical": false,
+                "artist_name": "Yung Gravy",
+                "artist_mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
+                "album_title": null,
+                "album_id": null,
+                "score": 18,
+                "reason": null,
+                "event_ts": null,
+                "lastfm_playcount": 18,
+                "partial_present": true,
+                "eligible_album_count": 3,
                 "fully_owned": false,
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
@@ -2546,27 +2567,6 @@
                 "lastfm_playcount": 12,
                 "partial_present": true,
                 "eligible_album_count": 4,
-                "fully_owned": false,
-                "in_cooldown": false,
-                "in_recommendation_backoff": false,
-                "is_suppressed": false
-              },
-              {
-                "kind": "deepen_review",
-                "source": "deepen",
-                "status": "deepen_recommendation",
-                "live": true,
-                "historical": false,
-                "artist_name": "Yung Gravy",
-                "artist_mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
-                "album_title": null,
-                "album_id": null,
-                "score": 12,
-                "reason": null,
-                "event_ts": null,
-                "lastfm_playcount": 12,
-                "partial_present": true,
-                "eligible_album_count": 3,
                 "fully_owned": false,
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
@@ -2746,16 +2746,16 @@
                 "status": "deepen_recommendation",
                 "live": true,
                 "historical": false,
-                "artist_name": "Sugar Ray",
-                "artist_mbid": "9968756b-d504-4c90-a184-776ba1dd32ea",
+                "artist_name": "Bassnectar",
+                "artist_mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
                 "album_title": null,
                 "album_id": null,
-                "score": 5,
+                "score": 81,
                 "reason": null,
                 "event_ts": null,
-                "lastfm_playcount": 5,
-                "partial_present": true,
-                "eligible_album_count": 8,
+                "lastfm_playcount": 81,
+                "partial_present": false,
+                "eligible_album_count": 9,
                 "fully_owned": false,
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
@@ -2767,16 +2767,16 @@
                 "status": "deepen_recommendation",
                 "live": true,
                 "historical": false,
-                "artist_name": "Bassnectar",
-                "artist_mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
+                "artist_name": "Panic! at the Disco",
+                "artist_mbid": "b9472588-93f3-4922-a1a2-74082cdf9ce8",
                 "album_title": null,
                 "album_id": null,
-                "score": 76,
+                "score": 23,
                 "reason": null,
                 "event_ts": null,
-                "lastfm_playcount": 76,
+                "lastfm_playcount": 23,
                 "partial_present": false,
-                "eligible_album_count": 9,
+                "eligible_album_count": 5,
                 "fully_owned": false,
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
@@ -2813,12 +2813,33 @@
                 "artist_mbid": "b28ac005-27fe-4bb9-86a2-dbf55ef21469",
                 "album_title": null,
                 "album_id": null,
+                "score": 17,
+                "reason": null,
+                "event_ts": null,
+                "lastfm_playcount": 17,
+                "partial_present": false,
+                "eligible_album_count": 8,
+                "fully_owned": false,
+                "in_cooldown": false,
+                "in_recommendation_backoff": false,
+                "is_suppressed": false
+              },
+              {
+                "kind": "deepen_review",
+                "source": "deepen",
+                "status": "deepen_recommendation",
+                "live": true,
+                "historical": false,
+                "artist_name": "Tropidelic",
+                "artist_mbid": "6b62d0b0-5925-4ab0-bceb-eca7afbc7c74",
+                "album_title": null,
+                "album_id": null,
                 "score": 12,
                 "reason": null,
                 "event_ts": null,
                 "lastfm_playcount": 12,
                 "partial_present": false,
-                "eligible_album_count": 8,
+                "eligible_album_count": 5,
                 "fully_owned": false,
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
@@ -2987,27 +3008,6 @@
                 "lastfm_playcount": 5,
                 "partial_present": false,
                 "eligible_album_count": 12,
-                "fully_owned": false,
-                "in_cooldown": false,
-                "in_recommendation_backoff": false,
-                "is_suppressed": false
-              },
-              {
-                "kind": "deepen_review",
-                "source": "deepen",
-                "status": "deepen_recommendation",
-                "live": true,
-                "historical": false,
-                "artist_name": "Steve Aoki",
-                "artist_mbid": "a39acc4a-985e-4173-a9ed-f325f2d3bc1c",
-                "album_title": null,
-                "album_id": null,
-                "score": 5,
-                "reason": null,
-                "event_ts": null,
-                "lastfm_playcount": 5,
-                "partial_present": false,
-                "eligible_album_count": 9,
                 "fully_owned": false,
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
@@ -3316,10 +3316,10 @@
               "artist_mbid": "164f0d73-1234-4e2c-8743-d77bf2191051",
               "album_title": null,
               "album_id": null,
-              "score": 22,
+              "score": 24,
               "reason": null,
               "event_ts": null,
-              "lastfm_playcount": 22,
+              "lastfm_playcount": 24,
               "partial_present": true,
               "eligible_album_count": 12,
               "fully_owned": false,
@@ -3354,6 +3354,27 @@
               "status": "deepen_recommendation",
               "live": true,
               "historical": false,
+              "artist_name": "Yung Gravy",
+              "artist_mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
+              "album_title": null,
+              "album_id": null,
+              "score": 18,
+              "reason": null,
+              "event_ts": null,
+              "lastfm_playcount": 18,
+              "partial_present": true,
+              "eligible_album_count": 3,
+              "fully_owned": false,
+              "in_cooldown": false,
+              "in_recommendation_backoff": false,
+              "is_suppressed": false
+            },
+            {
+              "kind": "deepen_review",
+              "source": "deepen",
+              "status": "deepen_recommendation",
+              "live": true,
+              "historical": false,
               "artist_name": "Modest Mouse",
               "artist_mbid": "a96ac800-bfcb-412a-8a63-0a98df600700",
               "album_title": null,
@@ -3368,33 +3389,12 @@
               "in_cooldown": false,
               "in_recommendation_backoff": false,
               "is_suppressed": false
-            },
-            {
-              "kind": "deepen_review",
-              "source": "deepen",
-              "status": "deepen_recommendation",
-              "live": true,
-              "historical": false,
-              "artist_name": "System of a Down",
-              "artist_mbid": "cc0b7089-c08d-4c10-b6b0-873582c17fd6",
-              "album_title": null,
-              "album_id": null,
-              "score": 12,
-              "reason": null,
-              "event_ts": null,
-              "lastfm_playcount": 12,
-              "partial_present": true,
-              "eligible_album_count": 5,
-              "fully_owned": false,
-              "in_cooldown": false,
-              "in_recommendation_backoff": false,
-              "is_suppressed": false
             }
           ],
           "top_prune_candidates": []
         }
       },
-      "updated_ts": 1775059502
+      "updated_ts": 1775080053
     }
   },
   "catalog_snapshots": {
@@ -3814,14 +3814,14 @@
             "artist_mbid": "164f0d73-1234-4e2c-8743-d77bf2191051",
             "album_title": null,
             "album_id": null,
-            "score": 22,
+            "score": 24,
             "reason": null,
             "event_ts": null,
             "raw": {
               "artist_name": "Ye",
               "mbid": "164f0d73-1234-4e2c-8743-d77bf2191051",
               "status": "deepen_recommendation",
-              "lastfm_playcount": 22,
+              "lastfm_playcount": 24,
               "partial_present": true,
               "eligible_album_count": 12,
               "fully_owned": false,
@@ -3829,7 +3829,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 21
+              "rank": 19
             }
           },
           {
@@ -3857,7 +3857,35 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 26
+              "rank": 27
+            }
+          },
+          {
+            "kind": "deepen_review",
+            "source": "deepen",
+            "status": "deepen_recommendation",
+            "live": true,
+            "historical": false,
+            "artist_name": "Yung Gravy",
+            "artist_mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
+            "album_title": null,
+            "album_id": null,
+            "score": 18,
+            "reason": null,
+            "event_ts": null,
+            "raw": {
+              "artist_name": "Yung Gravy",
+              "mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
+              "status": "deepen_recommendation",
+              "lastfm_playcount": 18,
+              "partial_present": true,
+              "eligible_album_count": 3,
+              "fully_owned": false,
+              "in_cooldown": false,
+              "in_recommendation_backoff": false,
+              "is_suppressed": false,
+              "suppression_reason": null,
+              "rank": 30
             }
           },
           {
@@ -3885,7 +3913,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 35
+              "rank": 37
             }
           },
           {
@@ -3913,7 +3941,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 42
+              "rank": 43
             }
           },
           {
@@ -3941,35 +3969,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 40
-            }
-          },
-          {
-            "kind": "deepen_review",
-            "source": "deepen",
-            "status": "deepen_recommendation",
-            "live": true,
-            "historical": false,
-            "artist_name": "Yung Gravy",
-            "artist_mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
-            "album_title": null,
-            "album_id": null,
-            "score": 12,
-            "reason": null,
-            "event_ts": null,
-            "raw": {
-              "artist_name": "Yung Gravy",
-              "mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
-              "status": "deepen_recommendation",
-              "lastfm_playcount": 12,
-              "partial_present": true,
-              "eligible_album_count": 3,
-              "fully_owned": false,
-              "in_cooldown": false,
-              "in_recommendation_backoff": false,
-              "is_suppressed": false,
-              "suppression_reason": null,
-              "rank": 43
+              "rank": 41
             }
           },
           {
@@ -3997,7 +3997,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 47
+              "rank": 48
             }
           },
           {
@@ -4025,7 +4025,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 49
+              "rank": 50
             }
           },
           {
@@ -4053,7 +4053,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 53
+              "rank": 54
             }
           },
           {
@@ -4137,7 +4137,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 79
+              "rank": 80
             }
           },
           {
@@ -4165,7 +4165,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 80
+              "rank": 81
             }
           },
           {
@@ -4193,34 +4193,6 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 96
-            }
-          },
-          {
-            "kind": "deepen_review",
-            "source": "deepen",
-            "status": "deepen_recommendation",
-            "live": true,
-            "historical": false,
-            "artist_name": "Sugar Ray",
-            "artist_mbid": "9968756b-d504-4c90-a184-776ba1dd32ea",
-            "album_title": null,
-            "album_id": null,
-            "score": 5,
-            "reason": null,
-            "event_ts": null,
-            "raw": {
-              "artist_name": "Sugar Ray",
-              "mbid": "9968756b-d504-4c90-a184-776ba1dd32ea",
-              "status": "deepen_recommendation",
-              "lastfm_playcount": 5,
-              "partial_present": true,
-              "eligible_album_count": 8,
-              "fully_owned": false,
-              "in_cooldown": false,
-              "in_recommendation_backoff": false,
-              "is_suppressed": false,
-              "suppression_reason": null,
               "rank": 99
             }
           },
@@ -4234,14 +4206,14 @@
             "artist_mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
             "album_title": null,
             "album_id": null,
-            "score": 76,
+            "score": 81,
             "reason": null,
             "event_ts": null,
             "raw": {
               "artist_name": "Bassnectar",
               "mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
               "status": "deepen_recommendation",
-              "lastfm_playcount": 76,
+              "lastfm_playcount": 81,
               "partial_present": false,
               "eligible_album_count": 9,
               "fully_owned": false,
@@ -4250,6 +4222,34 @@
               "is_suppressed": false,
               "suppression_reason": null,
               "rank": 2
+            }
+          },
+          {
+            "kind": "deepen_review",
+            "source": "deepen",
+            "status": "deepen_recommendation",
+            "live": true,
+            "historical": false,
+            "artist_name": "Panic! at the Disco",
+            "artist_mbid": "b9472588-93f3-4922-a1a2-74082cdf9ce8",
+            "album_title": null,
+            "album_id": null,
+            "score": 23,
+            "reason": null,
+            "event_ts": null,
+            "raw": {
+              "artist_name": "Panic! at the Disco",
+              "mbid": "b9472588-93f3-4922-a1a2-74082cdf9ce8",
+              "status": "deepen_recommendation",
+              "lastfm_playcount": 23,
+              "partial_present": false,
+              "eligible_album_count": 5,
+              "fully_owned": false,
+              "in_cooldown": false,
+              "in_recommendation_backoff": false,
+              "is_suppressed": false,
+              "suppression_reason": null,
+              "rank": 20
             }
           },
           {
@@ -4290,14 +4290,14 @@
             "artist_mbid": "b28ac005-27fe-4bb9-86a2-dbf55ef21469",
             "album_title": null,
             "album_id": null,
-            "score": 12,
+            "score": 17,
             "reason": null,
             "event_ts": null,
             "raw": {
               "artist_name": "Hoodie Allen",
               "mbid": "b28ac005-27fe-4bb9-86a2-dbf55ef21469",
               "status": "deepen_recommendation",
-              "lastfm_playcount": 12,
+              "lastfm_playcount": 17,
               "partial_present": false,
               "eligible_album_count": 8,
               "fully_owned": false,
@@ -4305,7 +4305,35 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 39
+              "rank": 32
+            }
+          },
+          {
+            "kind": "deepen_review",
+            "source": "deepen",
+            "status": "deepen_recommendation",
+            "live": true,
+            "historical": false,
+            "artist_name": "Tropidelic",
+            "artist_mbid": "6b62d0b0-5925-4ab0-bceb-eca7afbc7c74",
+            "album_title": null,
+            "album_id": null,
+            "score": 12,
+            "reason": null,
+            "event_ts": null,
+            "raw": {
+              "artist_name": "Tropidelic",
+              "mbid": "6b62d0b0-5925-4ab0-bceb-eca7afbc7c74",
+              "status": "deepen_recommendation",
+              "lastfm_playcount": 12,
+              "partial_present": false,
+              "eligible_album_count": 5,
+              "fully_owned": false,
+              "in_cooldown": false,
+              "in_recommendation_backoff": false,
+              "is_suppressed": false,
+              "suppression_reason": null,
+              "rank": 44
             }
           },
           {
@@ -4417,7 +4445,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 81
+              "rank": 82
             }
           },
           {
@@ -4473,7 +4501,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 90
+              "rank": 94
             }
           },
           {
@@ -4501,7 +4529,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 92
+              "rank": 95
             }
           },
           {
@@ -4529,35 +4557,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 89
-            }
-          },
-          {
-            "kind": "deepen_review",
-            "source": "deepen",
-            "status": "deepen_recommendation",
-            "live": true,
-            "historical": false,
-            "artist_name": "Steve Aoki",
-            "artist_mbid": "a39acc4a-985e-4173-a9ed-f325f2d3bc1c",
-            "album_title": null,
-            "album_id": null,
-            "score": 5,
-            "reason": null,
-            "event_ts": null,
-            "raw": {
-              "artist_name": "Steve Aoki",
-              "mbid": "a39acc4a-985e-4173-a9ed-f325f2d3bc1c",
-              "status": "deepen_recommendation",
-              "lastfm_playcount": 5,
-              "partial_present": false,
-              "eligible_album_count": 9,
-              "fully_owned": false,
-              "in_cooldown": false,
-              "in_recommendation_backoff": false,
-              "is_suppressed": false,
-              "suppression_reason": null,
-              "rank": 98
+              "rank": 93
             }
           },
           {
@@ -4585,7 +4585,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 88
+              "rank": 92
             }
           },
           {
@@ -4613,7 +4613,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 93
+              "rank": 96
             }
           },
           {
@@ -4794,7 +4794,7 @@
           }
         ]
       },
-      "updated_ts": 1775059502
+      "updated_ts": 1775080053
     }
   }
 }
