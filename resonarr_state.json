@@ -1180,9 +1180,11 @@
       "match_method": "mbid+verified",
       "matched": true,
       "action": "RECOMMEND_PRUNE_ALBUM",
-      "last_seen_ts": 1774959104,
+      "last_seen_ts": 1775011008,
       "first_seen_ts": 1774922323,
-      "status": "prune_recommendation"
+      "status": "prune_rejected",
+      "prune_rejected_ts": 1775011008,
+      "prune_rejected_note": "snapshot_invalidation_test"
     }
   },
   "deepen_candidates": {
@@ -2175,16 +2177,16 @@
             "recommendation_backoff_count": 0
           },
           "prune": {
-            "live_candidate_count": 1,
-            "matched_count": 1,
+            "live_candidate_count": 0,
+            "matched_count": 0,
             "fallback_eligible_count": 0,
             "strictly_unmatched_count": 0,
             "history_count": 3,
-            "prune_recommendation_count": 1,
+            "prune_recommendation_count": 0,
             "prune_approved_count": 0,
             "prune_executed_count": 1,
-            "prune_rejected_count": 1,
-            "reviewable_count": 1
+            "prune_rejected_count": 2,
+            "reviewable_count": 0
           },
           "suppressed_artist_count": 3
         },
@@ -3575,25 +3577,8 @@
           },
           "prune_review_queue": {
             "status": "success",
-            "count": 1,
-            "items": [
-              {
-                "kind": "prune_candidate",
-                "artist_name": "Tribal Seeds",
-                "artist_mbid": null,
-                "status": "prune_recommendation",
-                "album_title": "Tribal Seeds",
-                "album_id": 429,
-                "score": 1.0,
-                "reason": "small album full reject: 1/1 rated tracks at or below 4.0 on album with 1 total tracks",
-                "rated_tracks": 1,
-                "bad_tracks": 1,
-                "total_tracks_seen": 1,
-                "match_method": "mbid+verified",
-                "matched": true,
-                "lidarr_has_files": true
-              }
-            ]
+            "count": 0,
+            "items": []
           }
         },
         "highlights": {
@@ -3833,27 +3818,10 @@
               "is_suppressed": false
             }
           ],
-          "top_prune_candidates": [
-            {
-              "kind": "prune_candidate",
-              "artist_name": "Tribal Seeds",
-              "artist_mbid": null,
-              "status": "prune_recommendation",
-              "album_title": "Tribal Seeds",
-              "album_id": 429,
-              "score": 1.0,
-              "reason": "small album full reject: 1/1 rated tracks at or below 4.0 on album with 1 total tracks",
-              "rated_tracks": 1,
-              "bad_tracks": 1,
-              "total_tracks_seen": 1,
-              "match_method": "mbid+verified",
-              "matched": true,
-              "lidarr_has_files": true
-            }
-          ]
+          "top_prune_candidates": []
         }
       },
-      "updated_ts": 1775010203
+      "updated_ts": 1775011083
     }
   }
 }
