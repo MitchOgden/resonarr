@@ -316,6 +316,15 @@ class DashboardService:
         self._log_phase_elapsed("build_view_cards", phase_started_at)
 
         phase_started_at = time.perf_counter()
+        extend_review_section_count = len(extend_review_cards)
+        extend_promotable_section_count = len(extend_promotable_cards)
+        deepen_candidate_section_count = len(deepen_candidate_cards)
+        deepen_review_section_count = len(deepen_review_cards)
+        suppressed_artist_section_count = len(suppressed_artist_cards)
+        prune_review_section_count = len(prune_candidate_cards)
+        self._log_phase_elapsed("build_section_counts", phase_started_at)
+
+        phase_started_at = time.perf_counter()
         recent_reviewable = extend_review_cards[:5]
         top_promotable = extend_promotable_cards[:5]
         top_deepen = deepen_review_cards[:5]
@@ -354,32 +363,32 @@ class DashboardService:
             "sections": {
                 "extend_review_queue": {
                     "status": extend_review_queue.get("status", "failed"),
-                    "count": extend_review_queue.get("count", 0),
+                    "count": extend_review_section_count,
                     "items": extend_review_cards,
                 },
                 "extend_promotable": {
                     "status": extend_promotable.get("status", "failed"),
-                    "count": extend_promotable.get("count", 0),
+                    "count": extend_promotable_section_count,
                     "items": extend_promotable_cards,
                 },
                 "deepen_candidates": {
                     "status": deepen_candidates.get("status", "failed"),
-                    "count": deepen_candidates.get("count", 0),
+                    "count": deepen_candidate_section_count,
                     "items": deepen_candidate_cards,
                 },
                 "deepen_review_queue": {
                     "status": deepen_review_queue.get("status", "failed"),
-                    "count": deepen_review_queue.get("count", 0),
+                    "count": deepen_review_section_count,
                     "items": deepen_review_cards,
                 },
                 "suppressed_artists": {
                     "status": suppressed.get("status", "failed"),
-                    "count": suppressed.get("count", 0),
+                    "count": suppressed_artist_section_count,
                     "items": suppressed_artist_cards,
                 },
                 "prune_review_queue": {
                     "status": prune_reviewable.get("status", "failed"),
-                    "count": prune_reviewable.get("count", 0),
+                    "count": prune_review_section_count,
                     "items": prune_candidate_cards,
                 },
             },
