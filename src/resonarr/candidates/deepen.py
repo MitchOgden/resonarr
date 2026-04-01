@@ -36,6 +36,9 @@ class DeepenCandidateSource:
             "albums_fetched_total": 0,
             "albums_total_raw": 0,
             "albums_kept_after_filters": 0,
+            "album_stats_fast_path_count": 0,
+            "album_track_fallback_count": 0,
+            "albums_missing_or_invalid_stats_count": 0,
             "fully_owned_album_skips": 0,
             "partial_album_hits": 0,
             "eligible_album_hits": 0,
@@ -74,6 +77,9 @@ class DeepenCandidateSource:
             f"albums_fetched_total={self._perf['albums_fetched_total']} "
             f"albums_total_raw={self._perf['albums_total_raw']} "
             f"albums_kept_after_filters={self._perf['albums_kept_after_filters']} "
+            f"album_stats_fast_path_count={self._perf['album_stats_fast_path_count']} "
+            f"album_track_fallback_count={self._perf['album_track_fallback_count']} "
+            f"albums_missing_or_invalid_stats_count={self._perf['albums_missing_or_invalid_stats_count']} "
             f"fully_owned_album_skips={self._perf['fully_owned_album_skips']} "
             f"partial_album_hits={self._perf['partial_album_hits']} "
             f"eligible_album_hits={self._perf['eligible_album_hits']} "
@@ -162,9 +168,38 @@ class DeepenCandidateSource:
         }
 
     def _classify_album_ownership_from_album_stats(self, album):
+        stats = album.get("statistics") or {}
+
+        track_count = stats.get("trackCount")
+        track_file_count = stats.get("trackFileCount")
+
+        try:
+            track_count = int(track_count)
+            track_file_count = int(track_file_count)
+        except (TypeError, ValueError):
+            return {
+                "can_skip_track_fetch": False,
+                "fully_owned": False,
+                "partial_present": False,
+                "track_count": None,
+                "track_file_count": None,
+            }
+
+        if track_count < 0 or track_file_count < 0 or track_file_count > track_count:
+            return {
+                "can_skip_track_fetch": False,
+                "fully_owned": False,
+                "partial_present": False,
+                "track_count": None,
+                "track_file_count": None,
+            }
+
         return {
-            "can_skip_track_fetch": False,
-            "fully_owned": False,
+            "can_skip_track_fetch": True,
+            "fully_owned": track_count > 0 and track_file_count == track_count,
+            "partial_present": self._album_counts_as_partial_present(track_count, track_file_count),
+            "track_count": track_count,
+            "track_file_count": track_file_count,
         }
 
     def _album_counts_as_partial_present(self, total_tracks, has_file_count):
@@ -207,9 +242,18 @@ class DeepenCandidateSource:
             total_album_count += 1
             self._inc_perf("albums_kept_after_filters")
 
-            tracks = self._get_tracks(album.get("id"))
-            total_tracks = len(tracks)
-            has_file_count = sum(1 for t in tracks if t.get("hasFile"))
+            album_ownership = self._classify_album_ownership_from_album_stats(album)
+
+            if album_ownership["can_skip_track_fetch"]:
+                self._inc_perf("album_stats_fast_path_count")
+                total_tracks = album_ownership["track_count"]
+                has_file_count = album_ownership["track_file_count"]
+            else:
+                self._inc_perf("album_track_fallback_count")
+                self._inc_perf("albums_missing_or_invalid_stats_count")
+                tracks = self._get_tracks(album.get("id"))
+                total_tracks = len(tracks)
+                has_file_count = sum(1 for t in tracks if t.get("hasFile"))
 
             if total_tracks > 0 and has_file_count == total_tracks:
                 fully_owned_album_count += 1
