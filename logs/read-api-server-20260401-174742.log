@@ -20,3 +20,7 @@
 [32mINFO[0m:     127.0.0.1:50568 - "[1mGET /api/v1/catalog/records?source=deepen&sort_by=score&sort_direction=desc&limit=5 HTTP/1.1[0m" [32m200 OK[0m
 [PERF][catalog] snapshot_cache_hit: age_seconds=58 ttl_seconds=1800
 [32mINFO[0m:     127.0.0.1:55611 - "[1mGET /healthz HTTP/1.1[0m" [32m200 OK[0m
+[32mINFO[0m:     Shutting down
+[32mINFO[0m:     Waiting for application shutdown.
+[32mINFO[0m:     Application shutdown complete.
+[32mINFO[0m:     Finished server process [[36m37756[0m]
