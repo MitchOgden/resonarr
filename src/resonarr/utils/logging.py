@@ -11,6 +11,28 @@ class TeeStream:
     def __init__(self, *streams):
         self.streams = streams
 
+    @property
+    def encoding(self):
+        for stream in self.streams:
+            encoding = getattr(stream, "encoding", None)
+            if encoding:
+                return encoding
+        return "utf-8"
+
+    def isatty(self):
+        for stream in self.streams:
+            isatty = getattr(stream, "isatty", None)
+            if callable(isatty) and isatty():
+                return True
+        return False
+
+    def fileno(self):
+        for stream in self.streams:
+            fileno = getattr(stream, "fileno", None)
+            if callable(fileno):
+                return fileno()
+        raise OSError("TeeStream has no file descriptor")
+
     def write(self, data):
         for stream in self.streams:
             try:
