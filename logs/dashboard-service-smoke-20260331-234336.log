@@ -1,0 +1,3077 @@
+[INFO] Timestamped log file: logs\dashboard-service-smoke-20260331-234336.log
+[INFO] Latest log file: logs\dashboard-service-smoke-latest.log
+[INFO] Starting: Initialize dashboard service
+[INFO] Step completed in 0.03s: Initialize dashboard service
+[PROGRESS] [1/3] [######--------------] 33% Dashboard service initialized
+[INFO] Starting: Build dashboard summary
+[PERF][dashboard] snapshot_cache_miss: reason=missing
+[PERF][dashboard] extend_status_summary: 0.00s
+[PERF][dashboard] extend_review_queue: 0.00s
+[PERF][dashboard] extend_promotable: 0.00s
+[PERF][deepen] fetch_lidarr_artists: 0.42s
+[PERF][deepen] fetch_lastfm_top_artists: 0.91s
+[PERF][deepen] candidate_scan_loop: 24.86s
+[PERF][deepen] sort_candidates: 0.00s
+[PERF][deepen] counts: get_lidarr_artists_calls=1 get_albums_calls=99 get_tracks_calls=622 classify_artist_calls=99 lastfm_top_artists_seen=100 playcount_filtered_count=0 missing_in_lidarr_count=1 candidates_built_count=99 artists_with_partial_present=16 artists_fully_owned=12 artists_with_eligible_albums=83 albums_fetched_total=3912 albums_total_raw=3912 albums_kept_after_filters=622 album_stats_fast_path_count=0 album_stats_fully_owned_fast_path_count=0 album_stats_zero_file_fast_path_count=0 album_track_fallback_count=622 albums_missing_or_invalid_stats_count=0 fully_owned_album_skips=206 partial_album_hits=22 eligible_album_hits=412 tracks_examined_total=9516 returned_candidates=30
+[PERF][deepen] seconds: lidarr_artist_fetch_seconds=0.42s lastfm_fetch_seconds=0.91s classify_artist_seconds=24.81s candidate_loop_seconds=24.86s sort_seconds=0.00s
+[PERF][deepen] total_get_candidates: 26.20s
+[PERF][dashboard] deepen_candidates: 26.20s
+[PERF][dashboard] deepen_review_queue: 0.15s
+[PERF][dashboard] suppressed_artists: 0.00s
+[PERF][plex_prune] fetch_artists: 0.29s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.03s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2623 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=1 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1326 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.05s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2516 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.05s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2955 albums=16 child_payload_fast_path_count=0 metadata_cache_hit_count=16 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.05s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1018 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9832 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=5437 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.03s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4732 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=1 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2854 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8169 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2483 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4787 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1094 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3413 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4664 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3419 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3241 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6324 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4668 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1214 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1004 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1189 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3104 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10179 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3110 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=5204 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1338 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3247 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2788 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1392 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4712 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3374 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10224 albums=6 child_payload_fast_path_count=0 metadata_cache_hit_count=6 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3135 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6340 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3098 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4758 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10173 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1007 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2708 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3164 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4588 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1239 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3039 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3062 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3113 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3314 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6870 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1207 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=7840 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6789 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4784 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2938 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3280 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2582 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2700 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2992 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8618 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9095 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3019 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=12006 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10276 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3298 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4688 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1353 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=12653 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1245 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3390 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3123 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1099 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=977 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1048 albums=7 child_payload_fast_path_count=0 metadata_cache_hit_count=7 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2731 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1124 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3059 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3250 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1389 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1158 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1178 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2780 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3231 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9563 albums=7 child_payload_fast_path_count=0 metadata_cache_hit_count=7 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3158 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2588 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=958 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=12047 albums=7 child_payload_fast_path_count=0 metadata_cache_hit_count=7 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3333 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2765 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=56 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4470 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8337 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4790 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1025 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1169 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=995 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1079 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2703 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1034 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2806 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1204 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2653 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3147 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4796 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4715 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10078 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=12623 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3091 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1270 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3025 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3056 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3311 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4438 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1135 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3071 albums=9 child_payload_fast_path_count=0 metadata_cache_hit_count=9 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3405 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3188 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6908 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4793 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4772 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1015 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3292 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6904 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=12259 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=7581 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6075 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3022 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3036 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.03s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4446 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=1 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1361 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8731 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1031 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2519 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2725 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1295 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10662 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=7321 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2602 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1085 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1332 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8666 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=992 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.15s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3088 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.15s
+[PERF][plex_client] get_albums.children_fetch: 0.05s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3197 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.08s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10530 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.08s
+[PERF][plex_client] get_albums.children_fetch: 0.06s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1307 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.06s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8497 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.07s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10112 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.07s
+[PERF][plex_client] get_albums.children_fetch: 0.14s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6520 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.14s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1226 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3215 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.06s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3033 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3277 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=5649 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.06s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4693 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.08s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1312 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.09s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1378 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2716 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3183 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.05s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2577 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.05s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=353 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3399 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10015 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2719 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8966 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3167 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10020 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1161 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2478 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3557 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4706 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1279 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1263 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3340 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=7973 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2467 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=191 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2932 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6275 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9425 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4449 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6629 albums=7 child_payload_fast_path_count=0 metadata_cache_hit_count=7 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6472 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1045 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6693 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1375 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=11832 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4823 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6057 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1183 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1141 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2488 albums=8 child_payload_fast_path_count=0 metadata_cache_hit_count=8 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1290 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4700 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=998 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10147 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=11213 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2907 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2662 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3305 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2728 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1260 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10184 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2570 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2989 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1201 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=5358 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1001 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6792 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1315 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.03s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1395 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=1 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2768 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8232 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1064 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4781 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10424 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10628 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4540 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1175 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2842 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=5284 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8235 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=12179 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6005 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2544 albums=13 child_payload_fast_path_count=0 metadata_cache_hit_count=13 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4501 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9607 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10140 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2591 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2901 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2895 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3268 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1236 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2541 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.03s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2475 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=1 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.03s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3028 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=1 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4709 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1341 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=714 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4512 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=961 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4644 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3402 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1356 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=206 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1335 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3206 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2839 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3209 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3351 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4683 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2771 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=5562 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1028 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=400 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.03s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2859 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=1 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2620 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4625 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3396 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3065 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2950 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2665 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3416 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4726 albums=7 child_payload_fast_path_count=0 metadata_cache_hit_count=7 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2876 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2617 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2791 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6947 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1254 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2947 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9298 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1384 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1369 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2864 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10170 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3045 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2801 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1091 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3107 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=331 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2697 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=7636 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=964 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9026 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3343 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1165 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3226 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3042 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3408 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3262 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=483 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8963 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1042 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3051 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1284 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9199 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.13s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10137 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.13s
+[PERF][plex_client] get_albums.children_fetch: 0.08s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2605 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.08s
+[PERF][plex_client] get_albums.children_fetch: 0.09s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6919 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.09s
+[PERF][plex_client] get_albums.children_fetch: 0.06s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2825 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.07s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3161 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.07s
+[PERF][plex_client] get_albums.children_fetch: 0.05s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3120 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.05s
+[PERF][plex_client] get_albums.children_fetch: 0.15s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3079 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.15s
+[PERF][plex_client] get_albums.children_fetch: 0.05s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2538 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.05s
+[PERF][plex_client] get_albums.children_fetch: 0.11s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1138 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.11s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=967 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.06s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3256 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4729 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=11973 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4818 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.05s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1037 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.05s
+[PERF][plex_client] get_albums.children_fetch: 0.05s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1151 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.06s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2926 albums=7 child_payload_fast_path_count=0 metadata_cache_hit_count=7 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.09s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3265 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.09s
+[PERF][plex_client] get_albums.children_fetch: 0.05s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=7091 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.05s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2611 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4738 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=347 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2608 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=368 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1364 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3377 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1076 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1298 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2713 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3004 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10047 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1021 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9582 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=12089 albums=6 child_payload_fast_path_count=0 metadata_cache_hit_count=6 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3007 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2722 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2818 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3138 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1231 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9616 albums=6 child_payload_fast_path_count=0 metadata_cache_hit_count=6 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2753 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3336 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3359 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1276 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1318 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3476 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10144 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10129 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3369 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3191 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=974 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3234 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=5337 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6962 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=11926 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4721 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3362 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3200 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3180 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9851 albums=6 child_payload_fast_path_count=0 metadata_cache_hit_count=6 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2742 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2747 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3014 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1217 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2904 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1010 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3194 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1146 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3203 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1347 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8500 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1251 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8855 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2920 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2889 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3308 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6204 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8263 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9784 albums=8 child_payload_fast_path_count=0 metadata_cache_hit_count=8 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1304 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4765 albums=6 child_payload_fast_path_count=0 metadata_cache_hit_count=6 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1344 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9513 albums=9 child_payload_fast_path_count=0 metadata_cache_hit_count=9 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9683 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2594 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1071 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1329 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2892 albums=6 child_payload_fast_path_count=0 metadata_cache_hit_count=6 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2682 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2811 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=11984 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2886 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2881 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1257 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=955 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3386 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10167 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=7547 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1248 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4576 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2668 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2871 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3295 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=986 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2914 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8494 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10064 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9202 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=7393 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3381 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4768 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3129 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=989 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10195 albums=5 child_payload_fast_path_count=0 metadata_cache_hit_count=5 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4703 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1082 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4747 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2626 albums=14 child_payload_fast_path_count=0 metadata_cache_hit_count=14 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3101 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3048 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4750 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.03s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4753 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=1 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.05s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3212 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3177 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3244 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1172 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1198 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2917 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3068 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1088 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1051 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=242 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3253 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4565 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2530 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2734 albums=3 child_payload_fast_path_count=0 metadata_cache_hit_count=3 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1186 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3132 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=1192 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2567 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=2659 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3170 albums=2 child_payload_fast_path_count=0 metadata_cache_hit_count=2 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=3317 albums=4 child_payload_fast_path_count=0 metadata_cache_hit_count=4 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.02s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=982 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.02s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=7001 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4776 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=6403 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.01s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=9224 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.01s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=4604 albums=0 child_payload_fast_path_count=0 metadata_cache_hit_count=0 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.03s
+[PERF][plex_client] get_albums.children_fetch: 0.03s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=10669 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_client] get_albums.children_fetch: 0.04s
+[PERF][plex_client] get_albums.resolve_loop: 0.00s
+[PERF][plex_client] get_albums.counts: artist_rating_key=8360 albums=1 child_payload_fast_path_count=0 metadata_cache_hit_count=1 fallback_full_metadata_count=0 missing_rating_key_count=0
+[PERF][plex_client] get_albums.total: 0.04s
+[PERF][plex_prune] track_album_iteration: 30.91s
+[PERF][plex_prune] aggregation_grouping: 0.00s
+[PERF][plex_prune] counts: source_tracks=5850 album_buckets=645 returned_album_signals=645 get_albums_calls=446 get_artist_tracks_calls=446
+[PERF][plex_prune] final_shape_return: 0.00s
+[PERF][plex_prune] total_extract_album_signals: 31.20s
+[PERF][prune] extract_album_signals: 31.20s
+[PERF][prune] fetch_lidarr_albums: 5.12s
+[PERF][prune] index_lidarr_albums: 0.23s
+[PERF][prune] policy_and_match_loop: 0.05s
+[PERF][prune] sort_limit_payload: 0.00s
+[PERF][prune] counts: album_signals=645 policy_hits=2 match_attempts=2 returned_items=2
+[PERF][prune] total_list_prune_candidates: 36.60s
+[PERF][dashboard] prune_live_candidates: 36.74s
+[PERF][dashboard] prune_summary: 0.00s
+[PERF][dashboard] prune_reviewable: 0.00s
+[PERF][catalog] snapshot_store: ttl_seconds=300 record_count=48
+[PERF][dashboard] catalog_snapshot_refresh: 0.01s
+[PERF][dashboard] build_summary_counts: 0.00s
+[PERF][dashboard] build_view_cards: 0.00s
+[PERF][dashboard] build_section_counts: 0.00s
+[PERF][dashboard] assemble_payload: 0.00s
+[PERF][dashboard] snapshot_store: ttl_seconds=60
+[PERF][dashboard] total_get_home_summary: 63.11s
+[INFO] Step completed in 63.11s: Build dashboard summary
+[PROGRESS] [2/3] [#############-------] 66% Dashboard summary built
+[INFO] Starting: Render dashboard payload
+=== Resonarr Dashboard Service Smoke Test ===
+[INFO] Dashboard service result:
+{
+  "status": "success",
+  "errors": [],
+  "home_summary": {
+    "extend": {
+      "total_candidates": 43,
+      "starter_album_recommendation": 8,
+      "starter_album_approved": 2,
+      "starter_album_rejected": 2,
+      "starter_album_exhausted": 0,
+      "recommended": 28,
+      "new": 3,
+      "promotable_count": 12,
+      "review_queue_count": 8
+    },
+    "deepen": {
+      "candidate_count": 30,
+      "review_queue_count": 30,
+      "partial_present_count": 16,
+      "suppressed_count": 0,
+      "cooldown_count": 0,
+      "recommendation_backoff_count": 0
+    },
+    "prune": {
+      "live_candidate_count": 0,
+      "matched_count": 0,
+      "fallback_eligible_count": 0,
+      "strictly_unmatched_count": 0,
+      "history_count": 3,
+      "prune_recommendation_count": 0,
+      "prune_approved_count": 0,
+      "prune_executed_count": 1,
+      "prune_rejected_count": 2,
+      "reviewable_count": 0
+    },
+    "suppressed_artist_count": 3
+  },
+  "sections": {
+    "extend_review_queue": {
+      "status": "success",
+      "count": 8,
+      "items": [
+        {
+          "kind": "extend_review",
+          "source": "extend",
+          "status": "starter_album_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "American Authors",
+          "artist_mbid": "9ce0515d-cc88-4df6-8a2e-d231c13cb2c2",
+          "album_title": "Seasons",
+          "album_id": 17435,
+          "score": 3.0,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 5
+        },
+        {
+          "kind": "extend_review",
+          "source": "extend",
+          "status": "starter_album_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "BoyWithUke",
+          "artist_mbid": "a148ffde-581c-4c39-a8f1-bc49dec7fe68",
+          "album_title": "Fever Dreams",
+          "album_id": 17343,
+          "score": 3.0,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 5
+        },
+        {
+          "kind": "extend_review",
+          "source": "extend",
+          "status": "starter_album_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Capital Cities",
+          "artist_mbid": "119a2c67-e6d6-41cf-a58c-c51b75c80daa",
+          "album_title": "Solarize",
+          "album_id": 17522,
+          "score": 3.0,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 7
+        },
+        {
+          "kind": "extend_review",
+          "source": "extend",
+          "status": "starter_album_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Cardinal Bloom",
+          "artist_mbid": "77f4b530-5657-4c75-ad4f-92a75f72deb1",
+          "album_title": "The Only Place I’ve Ever Known",
+          "album_id": 17504,
+          "score": 3.0,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 2
+        },
+        {
+          "kind": "extend_review",
+          "source": "extend",
+          "status": "starter_album_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Em Beihold",
+          "artist_mbid": "7575e3b8-ba04-4acc-a895-9cc528f86525",
+          "album_title": "Egg in the Backseat",
+          "album_id": 17483,
+          "score": 3.0,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 5
+        },
+        {
+          "kind": "extend_review",
+          "source": "extend",
+          "status": "starter_album_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Flipturn",
+          "artist_mbid": "0c97b403-1aae-4315-93ab-af54fe2169d6",
+          "album_title": "Shadowglow",
+          "album_id": 17272,
+          "score": 3.0,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 2
+        },
+        {
+          "kind": "extend_review",
+          "source": "extend",
+          "status": "starter_album_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Smino",
+          "artist_mbid": "96800e05-9924-4321-859a-76e0d4750f2f",
+          "album_title": "NØIR",
+          "album_id": 17323,
+          "score": 3.0,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 7
+        },
+        {
+          "kind": "extend_review",
+          "source": "extend",
+          "status": "starter_album_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "The Astronomers",
+          "artist_mbid": "2119e495-b0be-452d-adf2-ca38923ecca6",
+          "album_title": "The Occasion",
+          "album_id": 17493,
+          "score": 3.0,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 5
+        }
+      ]
+    },
+    "extend_promotable": {
+      "status": "success",
+      "count": 4,
+      "items": [
+        {
+          "kind": "extend_promotable",
+          "source": "extend",
+          "status": "extend_in_recommendation_backoff",
+          "live": true,
+          "historical": false,
+          "artist_name": "David Guetta",
+          "artist_mbid": "302bd7b9-d012-4360-897a-93b00c855680",
+          "album_title": "7",
+          "album_id": 17124,
+          "score": 1.0,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 7,
+          "source_seeds": [
+            "Calvin Harris"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "kind": "extend_promotable",
+          "source": "extend",
+          "status": "extend_in_recommendation_backoff",
+          "live": true,
+          "historical": false,
+          "artist_name": "Briston Maroney",
+          "artist_mbid": "c0dea069-4f46-4f44-8f44-76831e6abb07",
+          "album_title": "Sunflower",
+          "album_id": 17381,
+          "score": 1.0,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 2,
+          "source_seeds": [
+            "The Backseat Lovers"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "kind": "extend_promotable",
+          "source": "extend",
+          "status": "extend_in_recommendation_backoff",
+          "live": true,
+          "historical": false,
+          "artist_name": "Andy Grammer",
+          "artist_mbid": "9e60ea29-9607-4f7d-aa96-2092ef41f0d3",
+          "album_title": "The Good Parts",
+          "album_id": 17296,
+          "score": 0.657836,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 2,
+          "seen_count": 7,
+          "source_seeds": [
+            "AJR",
+            "Surfaces"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        },
+        {
+          "kind": "extend_promotable",
+          "source": "extend",
+          "status": "extend_in_recommendation_backoff",
+          "live": true,
+          "historical": false,
+          "artist_name": "Peekaboo",
+          "artist_mbid": "c37cb509-b7fd-4212-a6fb-163535eba4c1",
+          "album_title": "Eyes Wide Open",
+          "album_id": 17398,
+          "score": 0.899953,
+          "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+          "event_ts": null,
+          "seed_count": 1,
+          "seen_count": 7,
+          "source_seeds": [
+            "NGHTMRE"
+          ],
+          "in_recommendation_backoff": true,
+          "is_promotable": true
+        }
+      ]
+    },
+    "deepen_candidates": {
+      "status": "success",
+      "count": 0,
+      "items": []
+    },
+    "deepen_review_queue": {
+      "status": "success",
+      "count": 30,
+      "items": [
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Phoenix",
+          "artist_mbid": "8d455809-96b3-4bb6-8829-ea4beb580d35",
+          "album_title": null,
+          "album_id": null,
+          "score": 30,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 30,
+          "partial_present": true,
+          "eligible_album_count": 2,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Ye",
+          "artist_mbid": "164f0d73-1234-4e2c-8743-d77bf2191051",
+          "album_title": null,
+          "album_id": null,
+          "score": 21,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 21,
+          "partial_present": true,
+          "eligible_album_count": 12,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Incubus",
+          "artist_mbid": "e3e0abcd-7671-4482-a9d8-462f5acc9be5",
+          "album_title": null,
+          "album_id": null,
+          "score": 19,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 19,
+          "partial_present": true,
+          "eligible_album_count": 7,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Modest Mouse",
+          "artist_mbid": "a96ac800-bfcb-412a-8a63-0a98df600700",
+          "album_title": null,
+          "album_id": null,
+          "score": 14,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 14,
+          "partial_present": true,
+          "eligible_album_count": 7,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "System of a Down",
+          "artist_mbid": "cc0b7089-c08d-4c10-b6b0-873582c17fd6",
+          "album_title": null,
+          "album_id": null,
+          "score": 12,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 12,
+          "partial_present": true,
+          "eligible_album_count": 5,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Passion Pit",
+          "artist_mbid": "daeec599-bf5d-4428-994a-e76ba5f86e2f",
+          "album_title": null,
+          "album_id": null,
+          "score": 12,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 12,
+          "partial_present": true,
+          "eligible_album_count": 4,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Yung Gravy",
+          "artist_mbid": "20b034b2-35a1-40be-908f-22d1b5681572",
+          "album_title": null,
+          "album_id": null,
+          "score": 10,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 10,
+          "partial_present": true,
+          "eligible_album_count": 3,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Lil Nas X",
+          "artist_mbid": "0b30341b-b59d-4979-8130-b66c0e475321",
+          "album_title": null,
+          "album_id": null,
+          "score": 10,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 10,
+          "partial_present": true,
+          "eligible_album_count": 1,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "CAKE",
+          "artist_mbid": "fa7b9055-3703-473a-8a09-adf2fe031a24",
+          "album_title": null,
+          "album_id": null,
+          "score": 9,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 9,
+          "partial_present": true,
+          "eligible_album_count": 6,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Rage Against the Machine",
+          "artist_mbid": "3798b104-01cb-484c-a3b0-56adc6399b80",
+          "album_title": null,
+          "album_id": null,
+          "score": 9,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 9,
+          "partial_present": true,
+          "eligible_album_count": 4,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Bloodhound Gang",
+          "artist_mbid": "b2dbfc09-b332-408b-a235-1850e41971c5",
+          "album_title": null,
+          "album_id": null,
+          "score": 8,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 8,
+          "partial_present": true,
+          "eligible_album_count": 5,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Blue October",
+          "artist_mbid": "d6a3eeec-cde0-4c10-89b2-93e0bd5f34e6",
+          "album_title": null,
+          "album_id": null,
+          "score": 6,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 6,
+          "partial_present": true,
+          "eligible_album_count": 11,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Post Malone",
+          "artist_mbid": "b1e26560-60e5-4236-bbdb-9aa5a8d5ee19",
+          "album_title": null,
+          "album_id": null,
+          "score": 6,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 6,
+          "partial_present": true,
+          "eligible_album_count": 5,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Sleigh Bells",
+          "artist_mbid": "95f7536d-b2f7-4087-8668-a663ec201f5a",
+          "album_title": null,
+          "album_id": null,
+          "score": 6,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 6,
+          "partial_present": true,
+          "eligible_album_count": 5,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Red Hot Chili Peppers",
+          "artist_mbid": "8bfac288-ccc5-448d-9573-c33ea2aa5c30",
+          "album_title": null,
+          "album_id": null,
+          "score": 5,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 5,
+          "partial_present": true,
+          "eligible_album_count": 13,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Sugar Ray",
+          "artist_mbid": "9968756b-d504-4c90-a184-776ba1dd32ea",
+          "album_title": null,
+          "album_id": null,
+          "score": 5,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 5,
+          "partial_present": true,
+          "eligible_album_count": 8,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Bassnectar",
+          "artist_mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
+          "album_title": null,
+          "album_id": null,
+          "score": 76,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 76,
+          "partial_present": false,
+          "eligible_album_count": 9,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Helynt",
+          "artist_mbid": "761854c7-b435-4581-81aa-ddae031795f9",
+          "album_title": null,
+          "album_id": null,
+          "score": 20,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 20,
+          "partial_present": false,
+          "eligible_album_count": 15,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Hoodie Allen",
+          "artist_mbid": "b28ac005-27fe-4bb9-86a2-dbf55ef21469",
+          "album_title": null,
+          "album_id": null,
+          "score": 11,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 11,
+          "partial_present": false,
+          "eligible_album_count": 8,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "石元丈晴",
+          "artist_mbid": "0e54f9fd-7011-4c77-86f0-59021c5ffddf",
+          "album_title": null,
+          "album_id": null,
+          "score": 8,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 8,
+          "partial_present": false,
+          "eligible_album_count": 13,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Ganja White Night",
+          "artist_mbid": "014abfeb-cdfe-46dc-90fb-e192473ce252",
+          "album_title": null,
+          "album_id": null,
+          "score": 7,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 7,
+          "partial_present": false,
+          "eligible_album_count": 11,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Radiohead",
+          "artist_mbid": "a74b1b7f-71a5-4011-9441-d0b5e4122711",
+          "album_title": null,
+          "album_id": null,
+          "score": 7,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 7,
+          "partial_present": false,
+          "eligible_album_count": 9,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "The Flaming Lips",
+          "artist_mbid": "1f43d76f-8edf-44f6-aaf1-b65f05ad9402",
+          "album_title": null,
+          "album_id": null,
+          "score": 6,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 6,
+          "partial_present": false,
+          "eligible_album_count": 23,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "America",
+          "artist_mbid": "34cf95c7-4be9-4efd-a48a-c2ea4a0bb114",
+          "album_title": null,
+          "album_id": null,
+          "score": 6,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 6,
+          "partial_present": false,
+          "eligible_album_count": 18,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Gucci Mane",
+          "artist_mbid": "36494952-f434-45d8-a958-8b4acdbcf8a8",
+          "album_title": null,
+          "album_id": null,
+          "score": 5,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 5,
+          "partial_present": false,
+          "eligible_album_count": 26,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Korn",
+          "artist_mbid": "ac865b2e-bba8-4f5a-8756-dd40d5e39f46",
+          "album_title": null,
+          "album_id": null,
+          "score": 5,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 5,
+          "partial_present": false,
+          "eligible_album_count": 14,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Foo Fighters",
+          "artist_mbid": "67f66c07-6e61-4026-ade5-7e782fad3a5d",
+          "album_title": null,
+          "album_id": null,
+          "score": 5,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 5,
+          "partial_present": false,
+          "eligible_album_count": 12,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Steve Aoki",
+          "artist_mbid": "a39acc4a-985e-4173-a9ed-f325f2d3bc1c",
+          "album_title": null,
+          "album_id": null,
+          "score": 5,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 5,
+          "partial_present": false,
+          "eligible_album_count": 9,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Fitz and the Tantrums",
+          "artist_mbid": "8560d4e8-05e2-4c20-980b-ad2db445dd5d",
+          "album_title": null,
+          "album_id": null,
+          "score": 5,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 5,
+          "partial_present": false,
+          "eligible_album_count": 6,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        },
+        {
+          "kind": "deepen_review",
+          "source": "deepen",
+          "status": "deepen_recommendation",
+          "live": true,
+          "historical": false,
+          "artist_name": "Limp Bizkit",
+          "artist_mbid": "8f9d6bb2-dba4-4cca-9967-cc02b9f4820c",
+          "album_title": null,
+          "album_id": null,
+          "score": 5,
+          "reason": null,
+          "event_ts": null,
+          "lastfm_playcount": 5,
+          "partial_present": false,
+          "eligible_album_count": 6,
+          "fully_owned": false,
+          "in_cooldown": false,
+          "in_recommendation_backoff": false,
+          "is_suppressed": false
+        }
+      ]
+    },
+    "suppressed_artists": {
+      "status": "success",
+      "count": 3,
+      "items": [
+        {
+          "kind": "suppressed_artist",
+          "source": "suppression",
+          "status": "suppressed",
+          "live": true,
+          "historical": false,
+          "artist_name": "Smash Mouth",
+          "artist_mbid": "944e1036-8a03-4611-8aa0-31515a05c848",
+          "album_title": null,
+          "album_id": null,
+          "score": null,
+          "reason": "operator_rejected_deepen_recommendation",
+          "event_ts": 1774704106,
+          "suppressed_ts": 1774704106
+        },
+        {
+          "kind": "suppressed_artist",
+          "source": "suppression",
+          "status": "suppressed",
+          "live": true,
+          "historical": false,
+          "artist_name": "Andy Grammer",
+          "artist_mbid": "9e60ea29-9607-4f7d-aa96-2092ef41f0d3",
+          "album_title": null,
+          "album_id": null,
+          "score": null,
+          "reason": "operator_rejected_extend_recommendation",
+          "event_ts": 1774648308,
+          "suppressed_ts": 1774648308
+        },
+        {
+          "kind": "suppressed_artist",
+          "source": "suppression",
+          "status": "suppressed",
+          "live": true,
+          "historical": false,
+          "artist_name": "PEEKABOO",
+          "artist_mbid": "c37cb509-b7fd-4212-a6fb-163535eba4c1",
+          "album_title": null,
+          "album_id": null,
+          "score": null,
+          "reason": "operator_rejected_extend_recommendation",
+          "event_ts": 1774644732,
+          "suppressed_ts": 1774644732
+        }
+      ]
+    },
+    "prune_review_queue": {
+      "status": "success",
+      "count": 0,
+      "items": []
+    }
+  },
+  "highlights": {
+    "recent_reviewable": [
+      {
+        "kind": "extend_review",
+        "source": "extend",
+        "status": "starter_album_recommendation",
+        "live": true,
+        "historical": false,
+        "artist_name": "American Authors",
+        "artist_mbid": "9ce0515d-cc88-4df6-8a2e-d231c13cb2c2",
+        "album_title": "Seasons",
+        "album_id": 17435,
+        "score": 3.0,
+        "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "event_ts": null,
+        "seed_count": 1,
+        "seen_count": 5
+      },
+      {
+        "kind": "extend_review",
+        "source": "extend",
+        "status": "starter_album_recommendation",
+        "live": true,
+        "historical": false,
+        "artist_name": "BoyWithUke",
+        "artist_mbid": "a148ffde-581c-4c39-a8f1-bc49dec7fe68",
+        "album_title": "Fever Dreams",
+        "album_id": 17343,
+        "score": 3.0,
+        "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "event_ts": null,
+        "seed_count": 1,
+        "seen_count": 5
+      },
+      {
+        "kind": "extend_review",
+        "source": "extend",
+        "status": "starter_album_recommendation",
+        "live": true,
+        "historical": false,
+        "artist_name": "Capital Cities",
+        "artist_mbid": "119a2c67-e6d6-41cf-a58c-c51b75c80daa",
+        "album_title": "Solarize",
+        "album_id": 17522,
+        "score": 3.0,
+        "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "event_ts": null,
+        "seed_count": 1,
+        "seen_count": 7
+      },
+      {
+        "kind": "extend_review",
+        "source": "extend",
+        "status": "starter_album_recommendation",
+        "live": true,
+        "historical": false,
+        "artist_name": "Cardinal Bloom",
+        "artist_mbid": "77f4b530-5657-4c75-ad4f-92a75f72deb1",
+        "album_title": "The Only Place I’ve Ever Known",
+        "album_id": 17504,
+        "score": 3.0,
+        "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "event_ts": null,
+        "seed_count": 1,
+        "seen_count": 2
+      },
+      {
+        "kind": "extend_review",
+        "source": "extend",
+        "status": "starter_album_recommendation",
+        "live": true,
+        "historical": false,
+        "artist_name": "Em Beihold",
+        "artist_mbid": "7575e3b8-ba04-4acc-a895-9cc528f86525",
+        "album_title": "Egg in the Backseat",
+        "album_id": 17483,
+        "score": 3.0,
+        "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "event_ts": null,
+        "seed_count": 1,
+        "seen_count": 5
+      }
+    ],
+    "top_promotable": [
+      {
+        "kind": "extend_promotable",
+        "source": "extend",
+        "status": "extend_in_recommendation_backoff",
+        "live": true,
+        "historical": false,
+        "artist_name": "David Guetta",
+        "artist_mbid": "302bd7b9-d012-4360-897a-93b00c855680",
+        "album_title": "7",
+        "album_id": 17124,
+        "score": 1.0,
+        "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "event_ts": null,
+        "seed_count": 1,
+        "seen_count": 7,
+        "source_seeds": [
+          "Calvin Harris"
+        ],
+        "in_recommendation_backoff": true,
+        "is_promotable": true
+      },
+      {
+        "kind": "extend_promotable",
+        "source": "extend",
+        "status": "extend_in_recommendation_backoff",
+        "live": true,
+        "historical": false,
+        "artist_name": "Briston Maroney",
+        "artist_mbid": "c0dea069-4f46-4f44-8f44-76831e6abb07",
+        "album_title": "Sunflower",
+        "album_id": 17381,
+        "score": 1.0,
+        "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "event_ts": null,
+        "seed_count": 1,
+        "seen_count": 2,
+        "source_seeds": [
+          "The Backseat Lovers"
+        ],
+        "in_recommendation_backoff": true,
+        "is_promotable": true
+      },
+      {
+        "kind": "extend_promotable",
+        "source": "extend",
+        "status": "extend_in_recommendation_backoff",
+        "live": true,
+        "historical": false,
+        "artist_name": "Andy Grammer",
+        "artist_mbid": "9e60ea29-9607-4f7d-aa96-2092ef41f0d3",
+        "album_title": "The Good Parts",
+        "album_id": 17296,
+        "score": 0.657836,
+        "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "event_ts": null,
+        "seed_count": 2,
+        "seen_count": 7,
+        "source_seeds": [
+          "AJR",
+          "Surfaces"
+        ],
+        "in_recommendation_backoff": true,
+        "is_promotable": true
+      },
+      {
+        "kind": "extend_promotable",
+        "source": "extend",
+        "status": "extend_in_recommendation_backoff",
+        "live": true,
+        "historical": false,
+        "artist_name": "Peekaboo",
+        "artist_mbid": "c37cb509-b7fd-4212-a6fb-163535eba4c1",
+        "album_title": "Eyes Wide Open",
+        "album_id": 17398,
+        "score": 0.899953,
+        "reason": "score 3.00 below acquire threshold 9 but >= staged recommend threshold 3",
+        "event_ts": null,
+        "seed_count": 1,
+        "seen_count": 7,
+        "source_seeds": [
+          "NGHTMRE"
+        ],
+        "in_recommendation_backoff": true,
+        "is_promotable": true
+      }
+    ],
+    "top_deepen_candidates": [
+      {
+        "kind": "deepen_review",
+        "source": "deepen",
+        "status": "deepen_recommendation",
+        "live": true,
+        "historical": false,
+        "artist_name": "Phoenix",
+        "artist_mbid": "8d455809-96b3-4bb6-8829-ea4beb580d35",
+        "album_title": null,
+        "album_id": null,
+        "score": 30,
+        "reason": null,
+        "event_ts": null,
+        "lastfm_playcount": 30,
+        "partial_present": true,
+        "eligible_album_count": 2,
+        "fully_owned": false,
+        "in_cooldown": false,
+        "in_recommendation_backoff": false,
+        "is_suppressed": false
+      },
+      {
+        "kind": "deepen_review",
+        "source": "deepen",
+        "status": "deepen_recommendation",
+        "live": true,
+        "historical": false,
+        "artist_name": "Ye",
+        "artist_mbid": "164f0d73-1234-4e2c-8743-d77bf2191051",
+        "album_title": null,
+        "album_id": null,
+        "score": 21,
+        "reason": null,
+        "event_ts": null,
+        "lastfm_playcount": 21,
+        "partial_present": true,
+        "eligible_album_count": 12,
+        "fully_owned": false,
+        "in_cooldown": false,
+        "in_recommendation_backoff": false,
+        "is_suppressed": false
+      },
+      {
+        "kind": "deepen_review",
+        "source": "deepen",
+        "status": "deepen_recommendation",
+        "live": true,
+        "historical": false,
+        "artist_name": "Incubus",
+        "artist_mbid": "e3e0abcd-7671-4482-a9d8-462f5acc9be5",
+        "album_title": null,
+        "album_id": null,
+        "score": 19,
+        "reason": null,
+        "event_ts": null,
+        "lastfm_playcount": 19,
+        "partial_present": true,
+        "eligible_album_count": 7,
+        "fully_owned": false,
+        "in_cooldown": false,
+        "in_recommendation_backoff": false,
+        "is_suppressed": false
+      },
+      {
+        "kind": "deepen_review",
+        "source": "deepen",
+        "status": "deepen_recommendation",
+        "live": true,
+        "historical": false,
+        "artist_name": "Modest Mouse",
+        "artist_mbid": "a96ac800-bfcb-412a-8a63-0a98df600700",
+        "album_title": null,
+        "album_id": null,
+        "score": 14,
+        "reason": null,
+        "event_ts": null,
+        "lastfm_playcount": 14,
+        "partial_present": true,
+        "eligible_album_count": 7,
+        "fully_owned": false,
+        "in_cooldown": false,
+        "in_recommendation_backoff": false,
+        "is_suppressed": false
+      },
+      {
+        "kind": "deepen_review",
+        "source": "deepen",
+        "status": "deepen_recommendation",
+        "live": true,
+        "historical": false,
+        "artist_name": "System of a Down",
+        "artist_mbid": "cc0b7089-c08d-4c10-b6b0-873582c17fd6",
+        "album_title": null,
+        "album_id": null,
+        "score": 12,
+        "reason": null,
+        "event_ts": null,
+        "lastfm_playcount": 12,
+        "partial_present": true,
+        "eligible_album_count": 5,
+        "fully_owned": false,
+        "in_cooldown": false,
+        "in_recommendation_backoff": false,
+        "is_suppressed": false
+      }
+    ],
+    "top_prune_candidates": []
+  }
+}
+[INFO] Step completed in 0.01s: Render dashboard payload
+[PROGRESS] [3/3] [####################] 100% Dashboard payload rendered
+[INFO] Total elapsed: 63.16s

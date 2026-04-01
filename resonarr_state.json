@@ -2327,7 +2327,7 @@
           },
           "extend_promotable": {
             "status": "success",
-            "count": 12,
+            "count": 4,
             "items": [
               {
                 "kind": "extend_promotable",
@@ -2418,7 +2418,7 @@
           },
           "deepen_candidates": {
             "status": "success",
-            "count": 30,
+            "count": 0,
             "items": []
           },
           "deepen_review_queue": {
@@ -3394,7 +3394,7 @@
           "top_prune_candidates": []
         }
       },
-      "updated_ts": 1775014254
+      "updated_ts": 1775015079
     }
   },
   "catalog_snapshots": {
@@ -4794,7 +4794,7 @@
           }
         ]
       },
-      "updated_ts": 1775014254
+      "updated_ts": 1775015079
     }
   }
 }
