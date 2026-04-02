@@ -189,6 +189,11 @@ Available routes:
 - `GET /api/v1/catalog/records`
 - `GET /api/v1/dashboard/home`
 
+Operator discoverability endpoints:
+
+- `GET /openapi.json`
+- `GET /docs`
+
 The HTTP layer does not refresh snapshots and does not expose any mutation endpoints.
 
 Recommended local workflow:
@@ -203,6 +208,50 @@ Recommended local workflow:
    - `python -m resonarr.runner.run_read_api_smoke`
 
 If snapshots are missing or expired, the read endpoints intentionally return `503 snapshot_unavailable`.
+
+### Catalog query examples
+
+Base route:
+
+- `GET /api/v1/catalog/records`
+
+Supported query params:
+
+- `kind`
+- `source`
+- `status`
+- `artist_name_contains`
+- `album_title_contains`
+- `artist_mbid`
+- `live_only`
+- `historical_only`
+- `event_ts_min`
+- `event_ts_max`
+- `sort_by`
+- `sort_direction`
+- `limit`
+- `offset`
+
+Example queries:
+
+- top deepen review items by score:
+  - `/api/v1/catalog/records?source=deepen&sort_by=score&sort_direction=desc&limit=5`
+- only live extend review items:
+  - `/api/v1/catalog/records?source=extend&live_only=true&sort_by=artist_name&sort_direction=asc`
+- filter by status:
+  - `/api/v1/catalog/records?status=starter_album_recommendation`
+- text filter by artist:
+  - `/api/v1/catalog/records?artist_name_contains=phoenix`
+- paginated query:
+  - `/api/v1/catalog/records?sort_by=event_ts&sort_direction=desc&limit=20&offset=20`
+
+Notes:
+
+- `kind`, `source`, and `status` can be repeated as multi-value query params.
+- `limit` supports values from `0` to `500`.
+- `offset` must be `0` or greater.
+- valid `sort_by` values are: `source`, `kind`, `artist_name`, `album_title`, `status`, `score`, `event_ts`
+- valid `sort_direction` values are: `asc`, `desc`
 
 ## Non-goals for early versions
 
