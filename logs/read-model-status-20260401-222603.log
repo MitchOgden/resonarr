@@ -1,0 +1,30 @@
+[INFO] Timestamped log file: logs\read-model-status-20260401-222603.log
+[INFO] Latest log file: logs\read-model-status-latest.log
+[INFO] Starting: Inspect current read-model snapshot health
+[PERF][catalog] snapshot_cache_miss: reason=expired age_seconds=13650 ttl_seconds=1800
+[INFO] Step completed in 0.05s: Inspect current read-model snapshot health
+[PROGRESS] [1/2] [##########----------] 50% Snapshot health inspected
+[INFO] Starting: Render snapshot status payload
+=== Resonarr Read Model Status ===
+[INFO] Snapshot status:
+{
+  "status": "success",
+  "catalog_snapshot": {
+    "available": false,
+    "reason": "snapshot_expired",
+    "updated_ts": 1775083113,
+    "age_seconds": 13650,
+    "ttl_seconds": 1800,
+    "record_count": 0
+  },
+  "dashboard_snapshot": {
+    "available": false,
+    "reason": "snapshot_expired",
+    "updated_ts": 1775083113,
+    "age_seconds": 13650,
+    "ttl_seconds": 600
+  }
+}
+[INFO] Step completed in 0.00s: Render snapshot status payload
+[PROGRESS] [2/2] [####################] 100% Snapshot status payload rendered
+[INFO] Total elapsed: 0.05s

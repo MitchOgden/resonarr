@@ -2171,7 +2171,7 @@
           "deepen": {
             "candidate_count": 30,
             "review_queue_count": 30,
-            "partial_present_count": 15,
+            "partial_present_count": 14,
             "suppressed_count": 0,
             "cooldown_count": 0,
             "recommendation_backoff_count": 0
@@ -2435,10 +2435,10 @@
                 "artist_mbid": "8d455809-96b3-4bb6-8829-ea4beb580d35",
                 "album_title": null,
                 "album_id": null,
-                "score": 30,
+                "score": 31,
                 "reason": null,
                 "event_ts": null,
-                "lastfm_playcount": 30,
+                "lastfm_playcount": 31,
                 "partial_present": true,
                 "eligible_album_count": 2,
                 "fully_owned": false,
@@ -2725,27 +2725,6 @@
                 "status": "deepen_recommendation",
                 "live": true,
                 "historical": false,
-                "artist_name": "Red Hot Chili Peppers",
-                "artist_mbid": "8bfac288-ccc5-448d-9573-c33ea2aa5c30",
-                "album_title": null,
-                "album_id": null,
-                "score": 5,
-                "reason": null,
-                "event_ts": null,
-                "lastfm_playcount": 5,
-                "partial_present": true,
-                "eligible_album_count": 13,
-                "fully_owned": false,
-                "in_cooldown": false,
-                "in_recommendation_backoff": false,
-                "is_suppressed": false
-              },
-              {
-                "kind": "deepen_review",
-                "source": "deepen",
-                "status": "deepen_recommendation",
-                "live": true,
-                "historical": false,
                 "artist_name": "Bassnectar",
                 "artist_mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
                 "album_title": null,
@@ -2945,6 +2924,27 @@
                 "lastfm_playcount": 6,
                 "partial_present": false,
                 "eligible_album_count": 18,
+                "fully_owned": false,
+                "in_cooldown": false,
+                "in_recommendation_backoff": false,
+                "is_suppressed": false
+              },
+              {
+                "kind": "deepen_review",
+                "source": "deepen",
+                "status": "deepen_recommendation",
+                "live": true,
+                "historical": false,
+                "artist_name": "Steve Aoki",
+                "artist_mbid": "a39acc4a-985e-4173-a9ed-f325f2d3bc1c",
+                "album_title": null,
+                "album_id": null,
+                "score": 6,
+                "reason": null,
+                "event_ts": null,
+                "lastfm_playcount": 6,
+                "partial_present": false,
+                "eligible_album_count": 9,
                 "fully_owned": false,
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
@@ -3295,10 +3295,10 @@
               "artist_mbid": "8d455809-96b3-4bb6-8829-ea4beb580d35",
               "album_title": null,
               "album_id": null,
-              "score": 30,
+              "score": 31,
               "reason": null,
               "event_ts": null,
-              "lastfm_playcount": 30,
+              "lastfm_playcount": 31,
               "partial_present": true,
               "eligible_album_count": 2,
               "fully_owned": false,
@@ -3394,7 +3394,7 @@
           "top_prune_candidates": []
         }
       },
-      "updated_ts": 1775083113
+      "updated_ts": 1775096887
     }
   },
   "catalog_snapshots": {
@@ -3786,14 +3786,14 @@
             "artist_mbid": "8d455809-96b3-4bb6-8829-ea4beb580d35",
             "album_title": null,
             "album_id": null,
-            "score": 30,
+            "score": 31,
             "reason": null,
             "event_ts": null,
             "raw": {
               "artist_name": "Phoenix",
               "mbid": "8d455809-96b3-4bb6-8829-ea4beb580d35",
               "status": "deepen_recommendation",
-              "lastfm_playcount": 30,
+              "lastfm_playcount": 31,
               "partial_present": true,
               "eligible_album_count": 2,
               "fully_owned": false,
@@ -4174,34 +4174,6 @@
             "status": "deepen_recommendation",
             "live": true,
             "historical": false,
-            "artist_name": "Red Hot Chili Peppers",
-            "artist_mbid": "8bfac288-ccc5-448d-9573-c33ea2aa5c30",
-            "album_title": null,
-            "album_id": null,
-            "score": 5,
-            "reason": null,
-            "event_ts": null,
-            "raw": {
-              "artist_name": "Red Hot Chili Peppers",
-              "mbid": "8bfac288-ccc5-448d-9573-c33ea2aa5c30",
-              "status": "deepen_recommendation",
-              "lastfm_playcount": 5,
-              "partial_present": true,
-              "eligible_album_count": 13,
-              "fully_owned": false,
-              "in_cooldown": false,
-              "in_recommendation_backoff": false,
-              "is_suppressed": false,
-              "suppression_reason": null,
-              "rank": 99
-            }
-          },
-          {
-            "kind": "deepen_review",
-            "source": "deepen",
-            "status": "deepen_recommendation",
-            "live": true,
-            "historical": false,
             "artist_name": "Bassnectar",
             "artist_mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
             "album_title": null,
@@ -4445,7 +4417,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 82
+              "rank": 83
             }
           },
           {
@@ -4482,6 +4454,34 @@
             "status": "deepen_recommendation",
             "live": true,
             "historical": false,
+            "artist_name": "Steve Aoki",
+            "artist_mbid": "a39acc4a-985e-4173-a9ed-f325f2d3bc1c",
+            "album_title": null,
+            "album_id": null,
+            "score": 6,
+            "reason": null,
+            "event_ts": null,
+            "raw": {
+              "artist_name": "Steve Aoki",
+              "mbid": "a39acc4a-985e-4173-a9ed-f325f2d3bc1c",
+              "status": "deepen_recommendation",
+              "lastfm_playcount": 6,
+              "partial_present": false,
+              "eligible_album_count": 9,
+              "fully_owned": false,
+              "in_cooldown": false,
+              "in_recommendation_backoff": false,
+              "is_suppressed": false,
+              "suppression_reason": null,
+              "rank": 82
+            }
+          },
+          {
+            "kind": "deepen_review",
+            "source": "deepen",
+            "status": "deepen_recommendation",
+            "live": true,
+            "historical": false,
             "artist_name": "Gucci Mane",
             "artist_mbid": "36494952-f434-45d8-a958-8b4acdbcf8a8",
             "album_title": null,
@@ -4501,7 +4501,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 94
+              "rank": 96
             }
           },
           {
@@ -4529,7 +4529,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 95
+              "rank": 97
             }
           },
           {
@@ -4557,7 +4557,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 93
+              "rank": 95
             }
           },
           {
@@ -4585,7 +4585,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 92
+              "rank": 94
             }
           },
           {
@@ -4613,7 +4613,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 96
+              "rank": 98
             }
           },
           {
@@ -4794,7 +4794,7 @@
           }
         ]
       },
-      "updated_ts": 1775083113
+      "updated_ts": 1775096887
     }
   }
 }
