@@ -16,3 +16,5 @@
 [32mINFO[0m:     127.0.0.1:62649 - "[1mGET /openapi.json HTTP/1.1[0m" [32m200 OK[0m
 [32mINFO[0m:     127.0.0.1:62052 - "[1mGET /openapi.json HTTP/1.1[0m" [32m200 OK[0m
 [32mINFO[0m:     127.0.0.1:62052 - "[1mGET /favicon.ico HTTP/1.1[0m" [31m404 Not Found[0m
+[PERF][catalog] snapshot_cache_hit: age_seconds=74 ttl_seconds=1800
+[32mINFO[0m:     127.0.0.1:56593 - "[1mGET /api/v1/catalog/records?source=deepen&sort_by=score&sort_direction=desc&limit=5 HTTP/1.1[0m" [32m200 OK[0m

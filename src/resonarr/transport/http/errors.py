@@ -3,6 +3,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
+from resonarr.app.action_errors import ManualActionError
 from resonarr.app.read_model_errors import SnapshotUnavailableError
 from resonarr.transport.http.schemas.common import (
     ErrorDetailModel,
@@ -30,6 +31,17 @@ def install_exception_handlers(app: FastAPI):
             content=_error_payload(
                 code="snapshot_unavailable",
                 message=str(exc),
+                details=exc.to_details(),
+            ),
+        )
+
+    @app.exception_handler(ManualActionError)
+    async def handle_manual_action_error(request: Request, exc: ManualActionError):
+        return JSONResponse(
+            status_code=exc.http_status_code,
+            content=_error_payload(
+                code=exc.code,
+                message=exc.message,
                 details=exc.to_details(),
             ),
         )
