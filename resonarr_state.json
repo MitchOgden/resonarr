@@ -252,6 +252,12 @@
       "affinity": 1.2,
       "affinity_reason": "signal_merge(plex,lastfm)",
       "affinity_ts": 1774981292
+    },
+    "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4": {
+      "suppressed": true,
+      "suppression_reason": "operator_rejected_deepen_recommendation",
+      "suppressed_ts": 1775101825,
+      "artist_name": "Bassnectar"
     }
   },
   "extend_candidates": {
@@ -1548,7 +1554,9 @@
       "rank": 2,
       "last_seen_ts": 1775009163,
       "first_seen_ts": 1774703762,
-      "status": "deepen_recommendation"
+      "status": "deepen_rejected",
+      "deepen_rejected_ts": 1775101825,
+      "deepen_rejected_note": "manual_action_api_smoke"
     },
     "mbid:a39acc4a-985e-4173-a9ed-f325f2d3bc1c": {
       "key": "mbid:a39acc4a-985e-4173-a9ed-f325f2d3bc1c",
@@ -2188,7 +2196,7 @@
             "prune_rejected_count": 2,
             "reviewable_count": 0
           },
-          "suppressed_artist_count": 3
+          "suppressed_artist_count": 4
         },
         "sections": {
           "extend_review_queue": {
@@ -2519,10 +2527,10 @@
                 "artist_mbid": "a96ac800-bfcb-412a-8a63-0a98df600700",
                 "album_title": null,
                 "album_id": null,
-                "score": 14,
+                "score": 15,
                 "reason": null,
                 "event_ts": null,
-                "lastfm_playcount": 14,
+                "lastfm_playcount": 15,
                 "partial_present": true,
                 "eligible_album_count": 7,
                 "fully_owned": false,
@@ -2725,27 +2733,6 @@
                 "status": "deepen_recommendation",
                 "live": true,
                 "historical": false,
-                "artist_name": "Bassnectar",
-                "artist_mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
-                "album_title": null,
-                "album_id": null,
-                "score": 81,
-                "reason": null,
-                "event_ts": null,
-                "lastfm_playcount": 81,
-                "partial_present": false,
-                "eligible_album_count": 9,
-                "fully_owned": false,
-                "in_cooldown": false,
-                "in_recommendation_backoff": false,
-                "is_suppressed": false
-              },
-              {
-                "kind": "deepen_review",
-                "source": "deepen",
-                "status": "deepen_recommendation",
-                "live": true,
-                "historical": false,
                 "artist_name": "Panic! at the Disco",
                 "artist_mbid": "b9472588-93f3-4922-a1a2-74082cdf9ce8",
                 "album_title": null,
@@ -2830,6 +2817,27 @@
                 "status": "deepen_recommendation",
                 "live": true,
                 "historical": false,
+                "artist_name": "Borgore",
+                "artist_mbid": "215e2b5d-06f8-4c68-b33b-8fccec27a077",
+                "album_title": null,
+                "album_id": null,
+                "score": 10,
+                "reason": null,
+                "event_ts": null,
+                "lastfm_playcount": 10,
+                "partial_present": false,
+                "eligible_album_count": 5,
+                "fully_owned": false,
+                "in_cooldown": false,
+                "in_recommendation_backoff": false,
+                "is_suppressed": false
+              },
+              {
+                "kind": "deepen_review",
+                "source": "deepen",
+                "status": "deepen_recommendation",
+                "live": true,
+                "historical": false,
                 "artist_name": "\u77f3\u5143\u4e08\u6674",
                 "artist_mbid": "0e54f9fd-7011-4c77-86f0-59021c5ffddf",
                 "album_title": null,
@@ -2840,6 +2848,27 @@
                 "lastfm_playcount": 8,
                 "partial_present": false,
                 "eligible_album_count": 13,
+                "fully_owned": false,
+                "in_cooldown": false,
+                "in_recommendation_backoff": false,
+                "is_suppressed": false
+              },
+              {
+                "kind": "deepen_review",
+                "source": "deepen",
+                "status": "deepen_recommendation",
+                "live": true,
+                "historical": false,
+                "artist_name": "Ballyhoo!",
+                "artist_mbid": "148350d7-1b04-4518-b216-4519eb0bcc08",
+                "album_title": null,
+                "album_id": null,
+                "score": 8,
+                "reason": null,
+                "event_ts": null,
+                "lastfm_playcount": 8,
+                "partial_present": false,
+                "eligible_album_count": 5,
                 "fully_owned": false,
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
@@ -3033,34 +3062,28 @@
                 "in_cooldown": false,
                 "in_recommendation_backoff": false,
                 "is_suppressed": false
-              },
-              {
-                "kind": "deepen_review",
-                "source": "deepen",
-                "status": "deepen_recommendation",
-                "live": true,
-                "historical": false,
-                "artist_name": "Limp Bizkit",
-                "artist_mbid": "8f9d6bb2-dba4-4cca-9967-cc02b9f4820c",
-                "album_title": null,
-                "album_id": null,
-                "score": 5,
-                "reason": null,
-                "event_ts": null,
-                "lastfm_playcount": 5,
-                "partial_present": false,
-                "eligible_album_count": 6,
-                "fully_owned": false,
-                "in_cooldown": false,
-                "in_recommendation_backoff": false,
-                "is_suppressed": false
               }
             ]
           },
           "suppressed_artists": {
             "status": "success",
-            "count": 3,
+            "count": 4,
             "items": [
+              {
+                "kind": "suppressed_artist",
+                "source": "suppression",
+                "status": "suppressed",
+                "live": true,
+                "historical": false,
+                "artist_name": "Bassnectar",
+                "artist_mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
+                "album_title": null,
+                "album_id": null,
+                "score": null,
+                "reason": "operator_rejected_deepen_recommendation",
+                "event_ts": 1775101825,
+                "suppressed_ts": 1775101825
+              },
               {
                 "kind": "suppressed_artist",
                 "source": "suppression",
@@ -3379,10 +3402,10 @@
               "artist_mbid": "a96ac800-bfcb-412a-8a63-0a98df600700",
               "album_title": null,
               "album_id": null,
-              "score": 14,
+              "score": 15,
               "reason": null,
               "event_ts": null,
-              "lastfm_playcount": 14,
+              "lastfm_playcount": 15,
               "partial_present": true,
               "eligible_album_count": 7,
               "fully_owned": false,
@@ -3394,7 +3417,7 @@
           "top_prune_candidates": []
         }
       },
-      "updated_ts": 1775097720
+      "updated_ts": 1775101883
     }
   },
   "catalog_snapshots": {
@@ -3898,14 +3921,14 @@
             "artist_mbid": "a96ac800-bfcb-412a-8a63-0a98df600700",
             "album_title": null,
             "album_id": null,
-            "score": 14,
+            "score": 15,
             "reason": null,
             "event_ts": null,
             "raw": {
               "artist_name": "Modest Mouse",
               "mbid": "a96ac800-bfcb-412a-8a63-0a98df600700",
               "status": "deepen_recommendation",
-              "lastfm_playcount": 14,
+              "lastfm_playcount": 15,
               "partial_present": true,
               "eligible_album_count": 7,
               "fully_owned": false,
@@ -3941,7 +3964,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 43
+              "rank": 44
             }
           },
           {
@@ -3969,7 +3992,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 41
+              "rank": 42
             }
           },
           {
@@ -3997,7 +4020,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 48
+              "rank": 49
             }
           },
           {
@@ -4174,34 +4197,6 @@
             "status": "deepen_recommendation",
             "live": true,
             "historical": false,
-            "artist_name": "Bassnectar",
-            "artist_mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
-            "album_title": null,
-            "album_id": null,
-            "score": 81,
-            "reason": null,
-            "event_ts": null,
-            "raw": {
-              "artist_name": "Bassnectar",
-              "mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
-              "status": "deepen_recommendation",
-              "lastfm_playcount": 81,
-              "partial_present": false,
-              "eligible_album_count": 9,
-              "fully_owned": false,
-              "in_cooldown": false,
-              "in_recommendation_backoff": false,
-              "is_suppressed": false,
-              "suppression_reason": null,
-              "rank": 2
-            }
-          },
-          {
-            "kind": "deepen_review",
-            "source": "deepen",
-            "status": "deepen_recommendation",
-            "live": true,
-            "historical": false,
             "artist_name": "Panic! at the Disco",
             "artist_mbid": "b9472588-93f3-4922-a1a2-74082cdf9ce8",
             "album_title": null,
@@ -4305,7 +4300,35 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 44
+              "rank": 45
+            }
+          },
+          {
+            "kind": "deepen_review",
+            "source": "deepen",
+            "status": "deepen_recommendation",
+            "live": true,
+            "historical": false,
+            "artist_name": "Borgore",
+            "artist_mbid": "215e2b5d-06f8-4c68-b33b-8fccec27a077",
+            "album_title": null,
+            "album_id": null,
+            "score": 10,
+            "reason": null,
+            "event_ts": null,
+            "raw": {
+              "artist_name": "Borgore",
+              "mbid": "215e2b5d-06f8-4c68-b33b-8fccec27a077",
+              "status": "deepen_recommendation",
+              "lastfm_playcount": 10,
+              "partial_present": false,
+              "eligible_album_count": 5,
+              "fully_owned": false,
+              "in_cooldown": false,
+              "in_recommendation_backoff": false,
+              "is_suppressed": false,
+              "suppression_reason": null,
+              "rank": 48
             }
           },
           {
@@ -4334,6 +4357,34 @@
               "is_suppressed": false,
               "suppression_reason": null,
               "rank": 67
+            }
+          },
+          {
+            "kind": "deepen_review",
+            "source": "deepen",
+            "status": "deepen_recommendation",
+            "live": true,
+            "historical": false,
+            "artist_name": "Ballyhoo!",
+            "artist_mbid": "148350d7-1b04-4518-b216-4519eb0bcc08",
+            "album_title": null,
+            "album_id": null,
+            "score": 8,
+            "reason": null,
+            "event_ts": null,
+            "raw": {
+              "artist_name": "Ballyhoo!",
+              "mbid": "148350d7-1b04-4518-b216-4519eb0bcc08",
+              "status": "deepen_recommendation",
+              "lastfm_playcount": 8,
+              "partial_present": false,
+              "eligible_album_count": 5,
+              "fully_owned": false,
+              "in_cooldown": false,
+              "in_recommendation_backoff": false,
+              "is_suppressed": false,
+              "suppression_reason": null,
+              "rank": 56
             }
           },
           {
@@ -4501,7 +4552,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 96
+              "rank": 98
             }
           },
           {
@@ -4529,7 +4580,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 97
+              "rank": 100
             }
           },
           {
@@ -4557,7 +4608,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 95
+              "rank": 97
             }
           },
           {
@@ -4585,35 +4636,7 @@
               "in_recommendation_backoff": false,
               "is_suppressed": false,
               "suppression_reason": null,
-              "rank": 94
-            }
-          },
-          {
-            "kind": "deepen_review",
-            "source": "deepen",
-            "status": "deepen_recommendation",
-            "live": true,
-            "historical": false,
-            "artist_name": "Limp Bizkit",
-            "artist_mbid": "8f9d6bb2-dba4-4cca-9967-cc02b9f4820c",
-            "album_title": null,
-            "album_id": null,
-            "score": 5,
-            "reason": null,
-            "event_ts": null,
-            "raw": {
-              "artist_name": "Limp Bizkit",
-              "mbid": "8f9d6bb2-dba4-4cca-9967-cc02b9f4820c",
-              "status": "deepen_recommendation",
-              "lastfm_playcount": 5,
-              "partial_present": false,
-              "eligible_album_count": 6,
-              "fully_owned": false,
-              "in_cooldown": false,
-              "in_recommendation_backoff": false,
-              "is_suppressed": false,
-              "suppression_reason": null,
-              "rank": 98
+              "rank": 96
             }
           },
           {
@@ -4735,6 +4758,27 @@
             "status": "suppressed",
             "live": true,
             "historical": false,
+            "artist_name": "Bassnectar",
+            "artist_mbid": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
+            "album_title": null,
+            "album_id": null,
+            "score": null,
+            "reason": "operator_rejected_deepen_recommendation",
+            "event_ts": 1775101825,
+            "raw": {
+              "artist_key": "5d7c4cfc-29e7-4c83-8893-ae02679fc9f4",
+              "artist_name": "Bassnectar",
+              "suppressed": true,
+              "suppression_reason": "operator_rejected_deepen_recommendation",
+              "suppressed_ts": 1775101825
+            }
+          },
+          {
+            "kind": "suppressed_artist",
+            "source": "suppression",
+            "status": "suppressed",
+            "live": true,
+            "historical": false,
             "artist_name": "Smash Mouth",
             "artist_mbid": "944e1036-8a03-4611-8aa0-31515a05c848",
             "album_title": null,
@@ -4794,7 +4838,7 @@
           }
         ]
       },
-      "updated_ts": 1775097720
+      "updated_ts": 1775101883
     }
   }
 }
