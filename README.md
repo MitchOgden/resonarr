@@ -132,6 +132,10 @@ Current runner commands:
 
 - `python -m resonarr.runner.run_extend_cycle`
 - `python -m resonarr.runner.run_extend_promotion_cycle`
+- `python -m resonarr.runner.run_read_model_refresh`
+- `python -m resonarr.runner.run_read_model_status`
+- `python -m resonarr.runner.run_read_api_smoke`
+- `python -m resonarr.runner.run_read_api_server`
 
 Operator workflow runners:
 
@@ -154,10 +158,11 @@ Catalog query is the unified backend search/filter surface for future UI work. I
 Prune now has a query/read layer so candidate summaries and reviewable prune recommendations can be consumed as structured backend data before operator execution is added.
 Prune now has an initial backend slice with Plex signal extraction, pure policy evaluation, Lidarr matching, and dry-run candidate generation before any destructive execution is introduced.
 Dashboard sections and highlights now emit normalized UI-facing card shapes so future API/UI layers do not have to depend on raw service-specific item structures.
-The query/smoke runners are intended as backend test points for future API/UI work. They expose summary and review data in stable structured shapes before any web transport is added.
+The query/smoke runners are backend test points for the current read-only API and future UI work.
 Promotion orchestration now also has a service smoke runner so structured planning results can be validated independently of CLI formatting.
 Deepen orchestration also has a dry-run service smoke runner so candidate evaluation can be previewed in structured form without mutating execution state.
-The dashboard smoke/summary runners provide the first unified UI-facing read model by composing extend query, extend operator, extend promotion, and deepen service data into a single payload.
+The dashboard smoke/summary runners provide the unified UI-facing read model by composing extend query, extend operator, extend promotion, and deepen service data into a single payload.
+Catalog and dashboard snapshots now back the read-only HTTP transport so request paths stay cheap and do not trigger heavy live recompute.
 
 Current MVP operator flow:
 
@@ -173,6 +178,31 @@ Each runner writes output to:
 - a stable `*-latest.log` file in `logs/` that is overwritten on each run
 
 This makes it easy to inspect both the latest run and recent run history directly from the codebase.
+
+## Read-only API workflow
+
+The read-only API is intentionally snapshot-backed only.
+
+Available routes:
+
+- `GET /healthz`
+- `GET /api/v1/catalog/records`
+- `GET /api/v1/dashboard/home`
+
+The HTTP layer does not refresh snapshots and does not expose any mutation endpoints.
+
+Recommended local workflow:
+
+1. Prime snapshots outside HTTP:
+   - `python -m resonarr.runner.run_read_model_refresh`
+2. Check snapshot availability:
+   - `python -m resonarr.runner.run_read_model_status`
+3. Start the API server:
+   - `python -m resonarr.runner.run_read_api_server`
+4. Validate the transport contract:
+   - `python -m resonarr.runner.run_read_api_smoke`
+
+If snapshots are missing or expired, the read endpoints intentionally return `503 snapshot_unavailable`.
 
 ## Non-goals for early versions
 

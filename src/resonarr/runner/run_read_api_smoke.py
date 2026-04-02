@@ -27,6 +27,11 @@ def _response_payload(response):
     }
 
 
+def _assert(condition, message):
+    if not condition:
+        raise AssertionError(message)
+
+
 def main():
     configure_runner_logging("read-api-smoke")
     progress = RunnerProgress(total_steps=7)
@@ -67,19 +72,93 @@ def main():
         dashboard_ready = client.get("/api/v1/dashboard/home")
     progress.step("Snapshot-backed read endpoints called")
 
+    with timed_step("Assert read API contract behavior"):
+        health_missing_payload = _response_payload(health_missing)
+        catalog_missing_payload = _response_payload(catalog_missing)
+        dashboard_missing_payload = _response_payload(dashboard_missing)
+
+        health_ready_payload = _response_payload(health_ready)
+        catalog_ready_payload = _response_payload(catalog_ready)
+        dashboard_ready_payload = _response_payload(dashboard_ready)
+
+        _assert(health_missing_payload["status_code"] == 200, "healthz missing-snapshot phase should return 200")
+        _assert(
+            health_missing_payload["body"]["snapshots"]["catalog"]["available"] is False,
+            "catalog snapshot should be unavailable before priming",
+        )
+        _assert(
+            health_missing_payload["body"]["snapshots"]["dashboard"]["available"] is False,
+            "dashboard snapshot should be unavailable before priming",
+        )
+
+        _assert(catalog_missing_payload["status_code"] == 503, "catalog endpoint should return 503 before priming")
+        _assert(
+            catalog_missing_payload["body"]["error"]["code"] == "snapshot_unavailable",
+            "catalog missing-snapshot error code should be snapshot_unavailable",
+        )
+
+        _assert(dashboard_missing_payload["status_code"] == 503, "dashboard endpoint should return 503 before priming")
+        _assert(
+            dashboard_missing_payload["body"]["error"]["code"] == "snapshot_unavailable",
+            "dashboard missing-snapshot error code should be snapshot_unavailable",
+        )
+
+        _assert(health_ready_payload["status_code"] == 200, "healthz ready phase should return 200")
+        _assert(
+            health_ready_payload["body"]["snapshots"]["catalog"]["available"] is True,
+            "catalog snapshot should be available after priming",
+        )
+        _assert(
+            health_ready_payload["body"]["snapshots"]["dashboard"]["available"] is True,
+            "dashboard snapshot should be available after priming",
+        )
+
+        _assert(catalog_ready_payload["status_code"] == 200, "catalog endpoint should return 200 after priming")
+        _assert(
+            catalog_ready_payload["body"]["read_path"] == "snapshot",
+            "catalog endpoint should be snapshot-backed",
+        )
+        _assert(
+            catalog_ready_payload["body"]["count_scope"] == "full_filtered_result_set",
+            "catalog endpoint should preserve count_scope semantics",
+        )
+        _assert(
+            len(catalog_ready_payload["body"]["items"]) > 0,
+            "catalog endpoint should return items after priming",
+        )
+
+        _assert(dashboard_ready_payload["status_code"] == 200, "dashboard endpoint should return 200 after priming")
+        _assert(
+            dashboard_ready_payload["body"]["read_path"] == "snapshot",
+            "dashboard endpoint should be snapshot-backed",
+        )
+        _assert(
+            "home_summary" in dashboard_ready_payload["body"],
+            "dashboard endpoint should return home_summary",
+        )
+        _assert(
+            "sections" in dashboard_ready_payload["body"],
+            "dashboard endpoint should return sections",
+        )
+        _assert(
+            "highlights" in dashboard_ready_payload["body"],
+            "dashboard endpoint should return highlights",
+        )
+    progress.step("Read API contract behavior asserted")
+
     with timed_step("Render smoke payload"):
         print("=== Resonarr Read API Smoke Test ===")
         print("[INFO] Read API result:")
         print(json.dumps({
             "missing_snapshot_phase": {
-                "healthz": _response_payload(health_missing),
-                "catalog_records": _response_payload(catalog_missing),
-                "dashboard_home": _response_payload(dashboard_missing),
+                "healthz": health_missing_payload,
+                "catalog_records": catalog_missing_payload,
+                "dashboard_home": dashboard_missing_payload,
             },
             "snapshot_backed_phase": {
-                "healthz": _response_payload(health_ready),
-                "catalog_records": _response_payload(catalog_ready),
-                "dashboard_home": _response_payload(dashboard_ready),
+                "healthz": health_ready_payload,
+                "catalog_records": catalog_ready_payload,
+                "dashboard_home": dashboard_ready_payload,
             },
         }, indent=2, ensure_ascii=False))
     progress.step("Smoke payload rendered")
