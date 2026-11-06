@@ -1,3 +1,5 @@
+> **This repository has moved.** Development continues privately; this copy is archived and no longer updated (2026-11-06).
+
 # Resonarr
 
 Resonarr is a self-hosted, feedback-driven music discovery and curation engine for Plex/Plexamp and Lidarr.
